@@ -109,6 +109,11 @@ function! ToggleRelativeAbsoluteNumber()
   endif
 endfunction
 
+" Copypasting settings
+set pastetoggle=<F2>
+map <silent><Leader>p :set paste<CR>o<esc>
+map <silent><Leader><S-p> :set paste<CR>0<esc>
+
 
 " ----------------------------
 " PLUGIN SETTINGS
@@ -119,12 +124,6 @@ let g:jsdoc_enable_es6 = 1
 let g:jsdoc_access_descriptions = 1
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_param_description_seperator = ','
-
-" ----------------------------
-" Copypasting settings
-set pastetoggle=<F2>
-map <silent><Leader>p :set paste<CR>o<esc>
-map <silent><Leader><S-p> :set paste<CR>0<esc>
 
 " ----------------------------
 "  startify settings
