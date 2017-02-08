@@ -47,6 +47,7 @@ colorscheme buddy
 autocmd BufWritePost .vimrc source $MYVIMRC
 autocmd BufNewFile,BufRead .babelrc set filetype=json
 autocmd BufNewFile,BufRead .eslintrc set filetype=json
+autocmd BufNewFile,BufRead .tern-project set filetype=json
 
 " ---------------------------
 " Mappings
@@ -117,6 +118,12 @@ map <silent><Leader><S-p> :set paste<CR>0<esc>
 
 " ----------------------------
 " PLUGIN SETTINGS
+
+" YouCompleteMe settings
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_log_level = 'warning'
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 " jsdoc settings
 let g:jsdoc_underscore_privat = 1
