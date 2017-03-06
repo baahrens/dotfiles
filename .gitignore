@@ -3,3 +3,5 @@
 !.tmux.conf
 !.gitignore
 !.tern-project
+!.bashrc
+!.git-prompt.sh

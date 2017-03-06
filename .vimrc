@@ -77,6 +77,10 @@ noremap L $
 noremap % v%
 
 imap ii <Esc>
+inoremap <C-L> <Esc>
+inoremap <silent> <Up> <ESC><Up>
+inoremap <silent> <Down> <ESC><Down>
+" inoremap ^[i <Esc>
 
 " center after scrolling
 nmap G Gzz
@@ -123,7 +127,7 @@ map <silent><Leader><S-p> :set paste<CR>0<esc>
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_log_level = 'warning'
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 
 " jsdoc settings
 let g:jsdoc_underscore_privat = 1
