@@ -2,21 +2,19 @@
 " Call pathogen
 execute pathogen#infect()
 
-set nocompatible
+hi vertsplit guifg=fg guibg=bg
 set history=100
 set clipboard^=unnamed
-set encoding=utf-8
-" set ruler
-set smartcase
-set showmatch
 set autoread
 set noerrorbells
 set novisualbell
 set noswapfile
-"
-" performance
-set lazyredraw
-set ttyfast
+set so=7
+
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 let mapleader = ','
 let g:mapleader = ','
@@ -35,8 +33,11 @@ set shiftround
 set shiftwidth=2
 set backspace=2
 set cursorline
+
 set incsearch
 set hlsearch
+set smartcase
+set showmatch
 set relativenumber
 set splitbelow splitright
 
@@ -45,11 +46,11 @@ set t_Co=256
 colorscheme gruvbox
 set background=dark
 
+" center buffer around cursor
+autocmd BufRead * normal zz
 " Filetypes
 autocmd BufWritePost .vimrc source $MYVIMRC
-autocmd BufNewFile,BufRead .babelrc set filetype=json
-autocmd BufNewFile,BufRead .eslintrc set filetype=json
-autocmd BufNewFile,BufRead .tern-project set filetype=json
+autocmd BufNewFile,BufRead .babelrc,.eslintrc,.tern-project set filetype=json
 
 " ---------------------------
 " Mappings
@@ -62,11 +63,12 @@ map <c-space> ?
 
 " conf files
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
-nnoremap <leader>et :vsplit ~/.tmux.conf<cr>
 
 " center searchresults
 nnoremap n nzzzv
 nnoremap N Nzzzv
+" center after scrolling
+nmap G Gzz
 
 " reindent file
 nnoremap <leader>m G=gg''
@@ -75,32 +77,16 @@ nnoremap <leader>m G=gg''
 noremap H ^
 noremap L $
 
-" vselect between brackets
-noremap % v%
-
-imap ii <Esc>
+" leave insert mode
 imap jk <Esc>
 
-" center after scrolling
-nmap G Gzz
+" vselect between brackets
+noremap % v%
 
 function! Semicolon()
   :execute "normal! mqA;\<esc>`q"
 endfunction
 nnoremap <Leader>s :call Semicolon()<CR>
-
-
-" disable other arrow keys
-no <left> <Nop>
-no <right> <Nop>
-ino <up> <Nop>
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-vno <up> <Nop>
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
 
 " Toggle relative numbers
 nnoremap <F12> :call ToggleRelativeAbsoluteNumber()<CR>
@@ -117,7 +103,6 @@ endfunction
 set pastetoggle=<F2>
 map <silent><Leader>p :set paste<CR>o<esc>
 map <silent><Leader><S-p> :set paste<CR>0<esc>
-
 
 " ----------------------------
 " PLUGIN SETTINGS
@@ -147,6 +132,9 @@ let NERDTreeMinimalUI = 1
 let NERDTreeShowFiles = 1
 let NERDTreeMouseMode = 2
 let NERDTreeShowHidden = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeAutoCenter = 1
+
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -181,15 +169,6 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|.git|.meteor)|(\.(swp|swo|git))$'
 
 " ----------------------------
-" tmuxline settings
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
-
-" ----------------------------
 " airline settings
 set laststatus=2
 
@@ -197,8 +176,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let airline#extensions#tmuxline#snapshot_file = "~/tmuxline.conf"
-let g:airline#extensions#tmuxline#enable = 1
 let g:airline#extensions#ycm#enabled = 1
 
 let g:airline_theme = 'wombat'
@@ -209,3 +186,7 @@ let g:airline_symbols.space = "\ua0"
 
 " enable jsx in non .jsx files
 let g:jsx_ext_required = 0
+
+" nvim
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd BufWritePost * Neomake
