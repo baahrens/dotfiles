@@ -134,20 +134,6 @@ u.remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap 
 u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
 u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
 
---lspsaga
-u.remap('n', '<leader>cf', ':Lspsaga lsp_finder<CR>',                                       { silent = true, noremap = true })
-u.remap('n', '<leader>ca', ':Lspsaga code_action<CR>',                                      { silent = true, noremap = true })
-u.remap('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>',                           { silent = true, noremap = true })
-u.remap('n', 'K',          ':Lspsaga hover_doc<CR>',                                        { silent = true, noremap = true })
-u.remap('n', '<C-f>',      ':lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>',  { silent = true, noremap = true })
-u.remap('n', '<C-b>',      ':lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', { silent = true, noremap = true })
-u.remap('n', '<leader>cs', ':Lspsaga signature_help<CR>',                                   { silent = true, noremap = true })
-u.remap('n', 'gr',         ':Lspsaga rename<CR>',                                           { silent = true, noremap = true })
-u.remap('n', '<leader>cp', ':Lspsaga preview_definition<CR>',                               { silent = true, noremap = true })
-u.remap('n', '<leader>cd', ':Lspsaga show_line_diagnostics<CR>',                            { silent = true, noremap = true })
-u.remap('n', '[e',         ':Lspsaga diagnostic_jump_next<CR>',                             { silent = true, noremap = true })
-u.remap('n', ']e',         ':Lspsaga diagnostic_jump_prev<CR>',                             { silent = true, noremap = true })
-
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
 u.remap("n", "<leader>fg",  telescope.live_grep,        { noremap = true })
