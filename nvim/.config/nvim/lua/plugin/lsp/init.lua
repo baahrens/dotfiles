@@ -24,6 +24,15 @@ function M.on_attach(client)
   cmd('autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()')
   cmd('autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()')
 
+  require "lsp_signature".on_attach({
+    floating_window = true,
+    hint_enable = false,
+    bind = true,
+    handler_opts = {
+      border = "single"
+    }
+  })
+
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_exec([[
       augroup LspAutocommands
