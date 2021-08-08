@@ -40,7 +40,6 @@ u.remap('n', '%', 'v%', { noremap = true })
 
 -- just kidding
 u.remap('i', 'jk', '<ESC>', {})
-u.remap('v', 'jk', '<ESC>', {})
 u.remap('t', 'jk', '<ESC>', {})
 
 -- pane movement
