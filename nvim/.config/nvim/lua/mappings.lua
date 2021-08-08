@@ -151,7 +151,7 @@ u.remap('n', ']e',         ':Lspsaga diagnostic_jump_prev<CR>',                 
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
 u.remap("n", "<leader>fg",  telescope.live_grep,        { noremap = true })
-u.remap("n", "<Leader>fn",  telescope.find_nvim,        { noremap = true })
+u.remap("n", "<Leader>fd",  telescope.find_dotfiles,    { noremap = true })
 u.remap("n", "<Leader>fh",  telescope.find_help,        { noremap = true })
 u.remap("n", "<Leader>fm",  telescope.find_mappings,    { noremap = true })
 u.remap("n", "<Leader>fc",  telescope.find_commands,    { noremap = true })

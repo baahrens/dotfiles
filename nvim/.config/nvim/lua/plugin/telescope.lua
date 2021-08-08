@@ -40,10 +40,11 @@ function M.live_grep()
   })
 end
 
-function M.find_nvim()
+function M.find_dotfiles()
   return require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({
-    cwd = '~/.config/nvim',
-    prompt_title = '~ nvim ~',
+    find_command = {'rg', '--files', '--hidden', '-g', '!.git' },
+    cwd = '~/.dotfiles',
+    prompt_title = '~ dotfiles ~',
     previewer = false
   }))
 end
