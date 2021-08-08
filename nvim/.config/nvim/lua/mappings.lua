@@ -1,4 +1,5 @@
 local g = vim.g
+local lsp = require'plugin/lsp'
 local telescope = require'plugin/telescope'
 local u = require'util'
 
@@ -168,3 +169,5 @@ u.remap('n', 'gn',         vim.lsp.diagnostic.goto_next,            { silent = t
 u.remap('n', 'gN',         vim.lsp.diagnostic.goto_prev,            { silent = true })
 u.remap('n', 'ga',         vim.lsp.diagnostic.get_line_diagnostics, { silent = true })
 u.remap('i', '<C-x><C-x>', vim.lsp.buf.signature_help,              { silent = true })
+u.remap('n', 'gm',         lsp.format_range_operator,               { silent = true })
+
