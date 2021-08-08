@@ -1,0 +1,28 @@
+[user]
+	name = Bastian Ahrens
+	email = bahrens@compeon.de
+
+[core]
+	editor = nvim
+
+[init]
+	defaultBranch = main
+
+[alias]
+	a = add
+	ua = reset HEAD
+	c = commit
+	ca = commit -a
+	cm = commit -m
+	cam = commit -am
+	cne = commit --no-edit
+	amend = commit --amend
+	co = checkout
+	s = status -sb
+	d = diff
+	cp = cherry-pick
+  l = log --graph --pretty=format:'%C(magenta)%h%C(blue)%d%Creset %s %C(blue bold)- %an, %ar%Creset'
+  ll = log --stat --abbrev-commit
+
+[push]
+	default = current
