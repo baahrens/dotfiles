@@ -1,8 +1,18 @@
 local actions = require'telescope.actions'
+local sorters = require 'telescope.sorters'
 
 require'telescope'.setup({
-  extensions = { fzy_native = { override_generic_sorter = false, override_file_sorter = true } },
   defaults = {
+    file_ignore_patterns = {
+      '%.jpg',
+      '%.jpeg',
+      '%.png',
+      '%.svg',
+      '%.otf',
+      '%.ttf',
+    },
+    file_sorter = sorters.get_fzy_sorter,
+    generic_sorter = sorters.get_fzy_sorter,
     mappings = {
       i = {
         ["<C-t>"] = require'trouble.providers.telescope'.open_with_trouble,
@@ -18,6 +28,12 @@ require'telescope'.setup({
     selection_caret = " ",
     winblend = 10
   },
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = true,
+      override_file_sorter = true
+    }
+  }
 })
 
 require'telescope'.load_extension("fzy_native")
@@ -79,9 +95,9 @@ function M.find_buffers()
     prompt_title = '~ buffers ~',
     sort_mru = true,
     previewer = false,
-    path_display = {
-      shorten = 1
-    }
+    path_display = { shorten = 1 },
+    ignore_current_buffer = true,
+    sorter = require('telescope.sorters').get_substr_matcher()
   }))
 end
 
