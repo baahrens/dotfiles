@@ -4,8 +4,14 @@ alt_send_esc: false
 
 window:
   # Spread additional padding evenly around the terminal content.
+  dynamic_title: true
   dynamic_padding: true
   startup_mode: Maximized
+  padding:
+    x: 4
+    y: 4
+
+  decorations: buttonless
 
 font:
   normal:
