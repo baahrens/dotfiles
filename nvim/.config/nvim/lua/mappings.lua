@@ -155,4 +155,5 @@ u.remap('n', 'gN',         vim.lsp.diagnostic.goto_prev,            { silent = t
 u.remap('n', 'ga',         vim.lsp.diagnostic.get_line_diagnostics, { silent = true })
 u.remap('i', '<C-x><C-x>', vim.lsp.buf.signature_help,              { silent = true })
 u.remap('n', 'gm',         lsp.format_range_operator,               { silent = true })
+u.remap('n', 'gf',         vim.lsp.buf.formatting,                  { silent = true })
 

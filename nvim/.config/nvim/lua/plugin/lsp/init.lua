@@ -35,10 +35,27 @@ function M.on_attach(client)
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_exec([[
-      augroup LspAutocommands
+      function! ToggleAutoFormat()
+        let g:lsp_auto_format= !get(g:, 'lsp_auto_format', 1)
+
+        augroup LspFormat
+            autocmd!
+        augroup END
+
+        if g:lsp_auto_format
+          augroup LspFormat
+            autocmd! * <buffer>
+            autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()
+          augroup END
+        endif
+      endfunction
+
+      augroup LspFormat
         autocmd! * <buffer>
         autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()
       augroup END
+
+      nnoremap <F12> :call ToggleAutoFormat()<CR>
       ]], true)
   end
 end
