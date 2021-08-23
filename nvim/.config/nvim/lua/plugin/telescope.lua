@@ -42,6 +42,7 @@ M = {}
 
 function M.find_files()
   return require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({
+    color_devicons = false,
     prompt_title = '~ files ~',
     previewer = false,
     path_display = {
@@ -96,8 +97,7 @@ function M.find_buffers()
     sort_mru = true,
     previewer = false,
     path_display = { shorten = 1 },
-    ignore_current_buffer = true,
-    sorter = require('telescope.sorters').get_substr_matcher()
+    ignore_current_buffer = true
   }))
 end
 
