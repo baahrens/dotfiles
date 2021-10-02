@@ -73,13 +73,6 @@ u.remap('n', '<C-k>', ':TmuxNavigateUp<CR>', { noremap = true, silent = true })
 u.remap('n', '<C-l>', ':TmuxNavigateRight<CR>', { noremap = true, silent = true })
 u.remap('n', '<C-ö>', ':TmuxNavigatePrevious<CR>', { noremap = true, silent = true })
 
--- lsp compe
-u.remap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-u.remap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-u.remap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-u.remap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-u.remap('i', '<CR>', 'compe#confirm("<CR>")', { silent = true, expr = true, noremap = true })
-
 -- nvim tree
 u.remap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
 u.remap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true })
