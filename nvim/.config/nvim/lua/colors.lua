@@ -18,7 +18,6 @@ vim.g.nord_disable_background = true
 -- vim.g.rose_pine_variant = 'moon'
 -- vim.g.rose_pine_enable_italics = false
 -- vim.g.rose_pine_disable_background = true
-
 vim.cmd[[
   fun! SetHighlights() abort
     highlight JsxExpressionBlock guifg=#e0af68
@@ -28,7 +27,7 @@ vim.cmd[[
     highlight Search gui=bold guifg=#EBCB8B guibg=#4C566A
 
     highlight TelescopePreviewNormal guibg=#2E3440
-
+    highlight TelescopeNormal guibg=#2E3440
   endfun
 
   fun! SetNvimHighlights() abort
