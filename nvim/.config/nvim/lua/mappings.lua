@@ -138,6 +138,7 @@ u.remap("n", "<Leader>fhi", telescope.find_highlights,  { noremap = true })
 u.remap("n", "<Leader>fb",  telescope.find_buffers,     { noremap = true })
 u.remap("n", "<Leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
 
+-- lsp
 u.remap('n', 'gD',         vim.lsp.buf.declaration,                 { silent = true })
 u.remap('n', 'gd',         vim.lsp.buf.definition,                  { silent = true })
 u.remap('n', 'gR',         vim.lsp.buf.references,                  { silent = true })
@@ -150,3 +151,10 @@ u.remap('i', '<C-x><C-x>', vim.lsp.buf.signature_help,              { silent = t
 u.remap('n', 'gm',         lsp.format_range_operator,               { silent = true })
 u.remap('n', 'gf',         vim.lsp.buf.formatting,                  { silent = true })
 
+u.remap("n", "<leader>ns", ":lua require('package-info').show()<CR>",           { silent = true, noremap = true })
+u.remap("n", "<leader>nc", ":lua require('package-info').hide()<CR>",           { silent = true, noremap = true })
+u.remap("n", "<leader>nu", ":lua require('package-info').update()<CR>",         { silent = true, noremap = true })
+u.remap("n", "<leader>nd", ":lua require('package-info').delete()<CR>",         { silent = true, noremap = true })
+u.remap("n", "<leader>ni", ":lua require('package-info').install()<CR>",        { silent = true, noremap = true })
+u.remap("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>",      { silent = true, noremap = true })
+u.remap("n", "<leader>np", ":lua require('package-info').change_version()<CR>", { silent = true, noremap = true })

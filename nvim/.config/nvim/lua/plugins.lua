@@ -170,4 +170,10 @@ return require('packer').startup({ function()
 
   use { 'ray-x/lsp_signature.nvim' }
 
+  use {
+    "vuki656/package-info.nvim",
+    requires = "MunifTanjim/nui.nvim",
+    config = function() require'plugin/package_info' end
+  }
+
 end, config = packer_config })
