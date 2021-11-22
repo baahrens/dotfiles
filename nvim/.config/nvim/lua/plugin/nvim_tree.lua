@@ -4,7 +4,6 @@ local nvim_tree = require'nvim-tree'
 vim.g.nvim_tree_highlight_opened_files = 1
 vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.DS_Store' }
 vim.g.nvim_tree_quit_on_open = 1
-vim.g.vim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_special_files = {
   ['package.json'] = 1,
   ['index.js'] = 1,
@@ -43,16 +42,25 @@ vim.g.nvim_tree_icons = {
 
 nvim_tree.setup {
   auto_close = true,
-  lsp_diagnostics = true,
   follow = true,
   git_hl = true,
-  tree_bindings = {
-    { key = "v", cb = tree_cb("vsplit") },
-    { key = "s", cb = tree_cb("split") }
+  update_cwd = true,
+  diagnostics = {
+    enable = true
+  },
+  update_to_buf_dir   = {
+    enable = true,
+    auto_open = true,
   },
   view = {
     width = 40,
-    side = 'left',
+    side = "left",
+    mappings = {
+      list = {
+        { key = "v", cb = tree_cb("vsplit") },
+        { key = "s", cb = tree_cb("split") }
+      }
+    }
   }
 }
 
