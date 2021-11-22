@@ -34,9 +34,16 @@ cmp.setup({
       end
     end,
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'nvim_lua' },
+    { name = 'npm' },
+  }),
+  experimental = {
+    ghost_text = true
   }
 })
 
