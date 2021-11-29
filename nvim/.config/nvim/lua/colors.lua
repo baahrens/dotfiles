@@ -28,6 +28,20 @@ vim.cmd[[
 
     highlight TelescopePreviewNormal guibg=#2E3440
     highlight TelescopeNormal guibg=#2E3440
+
+    highlight CmpItemKindText guifg=#5E81AC
+    highlight CmpItemKindMethod guifg=#5E81AC
+    highlight CmpItemKindFunction guifg=#5E81AC
+    highlight CmpItemKindConstructor guifg=#5E81AC
+    highlight CmpItemKindField guifg=#5E81AC
+    highlight CmpItemKindVariable guifg=#88C0D0
+    highlight CmpItemKindClass guifg=#5E81AC
+    highlight CmpItemKindInterface guifg=#5E81AC
+    highlight CmpItemKindValue guifg=#5E81AC
+    highlight CmpItemKindKeyword guifg=#5E81AC
+    highlight CmpItemKindSnippet guifg=#A3BE8C
+    highlight CmpItemKindFile guifg=#5E81AC
+    highlight CmpItemKindFolder guifg=#5E81AC
   endfun
 
   fun! SetNvimHighlights() abort
@@ -50,6 +64,8 @@ vim.cmd[[
     autocmd BufEnter NvimTree call SetNvimHighlights()
   colorscheme nord
 ]]
+
+vim.cmd [[]]
 
 --   colorscheme rose-pine
 
