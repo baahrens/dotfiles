@@ -42,6 +42,9 @@ vim.cmd[[
     highlight CmpItemKindSnippet guifg=#A3BE8C
     highlight CmpItemKindFile guifg=#5E81AC
     highlight CmpItemKindFolder guifg=#5E81AC
+
+    highlight CmpItemAbbrMatch guifg=#D8DEE9
+    highlight CmpItemAbbr guifg=#c1c9d6
   endfun
 
   fun! SetNvimHighlights() abort
