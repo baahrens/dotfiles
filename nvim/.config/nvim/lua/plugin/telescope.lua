@@ -26,7 +26,6 @@ require'telescope'.setup({
     },
     prompt_prefix = " ",
     selection_caret = " ",
-    winblend = 10
   },
   extensions = {
     fzy_native = {
@@ -42,12 +41,18 @@ M = {}
 
 function M.find_files()
   return require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({
-    color_devicons = false,
-    prompt_title = '~ files ~',
-    previewer = false,
     path_display = {
       shorten = 5
-    }
+    },
+    borderchars = {
+      { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+      prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
+      results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
+      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+    },
+    width = 2,
+    previewer = false,
+    prompt_title = false
   }))
 end
 

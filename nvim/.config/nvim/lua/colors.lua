@@ -26,9 +26,6 @@ vim.cmd[[
 
     highlight Search gui=bold guifg=#EBCB8B guibg=#4C566A
 
-    highlight TelescopePreviewNormal guibg=#2E3440
-    highlight TelescopeNormal guibg=#2E3440
-
     highlight CmpItemKindText guifg=#5E81AC
     highlight CmpItemKindMethod guifg=#5E81AC
     highlight CmpItemKindFunction guifg=#5E81AC
