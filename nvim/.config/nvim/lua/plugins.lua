@@ -139,6 +139,7 @@ return require('packer').startup({ function()
     'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
     wants = 'friendly-snippets',
+    after = "nvim-cmp",
     config = function() require'plugin/luasnip' end
   }
 
@@ -169,11 +170,4 @@ return require('packer').startup({ function()
   }
 
   use { 'ray-x/lsp_signature.nvim' }
-
-  use {
-    "vuki656/package-info.nvim",
-    requires = "MunifTanjim/nui.nvim",
-    config = function() require'plugin/package_info' end
-  }
-
 end, config = packer_config })
