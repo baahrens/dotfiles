@@ -60,11 +60,11 @@ function M.on_attach(client)
   end
 end
 
-
-cmd [[
-  sign define LspDiagnosticsSignError text=🩸 linehl= numhl=
-  sign define LspDiagnosticsSignWarning text=⚠️ linehl= numhl=
-]]
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 function M.format_range_operator()
   local old_func = vim.go.operatorfunc
