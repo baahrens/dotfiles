@@ -20,6 +20,12 @@ return require('packer').startup({ function()
   }
 
   use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require'plugin/gitdiff' end
+  }
+
+  use {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead','BufNewFile' },
     config = function() require'plugin/gitsigns' end,
