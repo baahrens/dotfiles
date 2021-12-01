@@ -28,9 +28,6 @@ u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 u.remap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
 u.remap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 
--- Make Y behave like C and D
-u.remap('n', 'Y', 'y$', { noremap = true })
-
 -- H/L to go to beginning/end of the line
 u.remap('n', 'H', '^', { noremap = true })
 u.remap('n', 'L', '$', { noremap = true })

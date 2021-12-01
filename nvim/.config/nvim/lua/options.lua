@@ -6,7 +6,6 @@ o.backspace      = "2"
 o.clipboard      = "unnamed"
 o.cursorline     = true
 o.expandtab      = true
-o.hidden         = true
 o.history        = 100
 o.incsearch      = true
 o.mouse          = "a"
