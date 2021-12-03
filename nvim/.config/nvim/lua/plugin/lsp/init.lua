@@ -6,8 +6,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   {
     virtual_text = {
       prefix = "",
-      spacing = 5,
-      severity_limit = "Warning"
+      spacing = 5
     },
     signs = true,
     underline = true,
