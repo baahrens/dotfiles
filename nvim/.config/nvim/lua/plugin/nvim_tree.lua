@@ -46,7 +46,13 @@ nvim_tree.setup {
   git_hl = true,
   update_cwd = true,
   diagnostics = {
-    enable = true
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
   },
   update_to_buf_dir   = {
     enable = true,
