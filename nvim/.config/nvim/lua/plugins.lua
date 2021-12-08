@@ -85,8 +85,8 @@ return require('packer').startup({ function()
 
 -- =================== various ===================
   use {
-    'terrortylor/nvim-comment',
-    config = function() require'plugin/nvim_comment' end
+    'numToStr/Comment.nvim',
+    config = function() require'plugin/comment' end
   }
 
   use 'tpope/vim-surround'
