@@ -50,7 +50,6 @@ u.remap('v', '<C-k>', [[<C-\><C-n><C-w>k]], { noremap = true })
 u.remap('v', '<C-l>', [[<C-\><C-n><C-w>l]], { noremap = true })
 
 -- use tab/s-tab to navigate search results while still being able to refine search
--- set wildcharm=<C-z>
 u.remap('c', '<Tab>', "getcmdtype() =~ '[/?]' ? '<C-g>' : '<C-z>'", { expr = true, noremap = true })
 u.remap('c', '<S-Tab>', "getcmdtype() =~ '[/?]' ? '<C-t>' : '<S-Tab>'", { expr = true, noremap = true })
 
@@ -82,6 +81,7 @@ u.remap('n', '<leader>so', ':so %<CR>', { noremap = true })
 
 -- search
 u.remap('n', '<leader><space>', '/', { noremap = true })
+u.remap('n', 's', '/', { noremap = true })
 
 -- Map <leader>o & <leader>O to newline without insert mode
 u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { noremap = true, silent = true })
@@ -129,7 +129,7 @@ u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap =
 
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
-u.remap("n", "<leader>fg",  telescope.live_grep,        { noremap = true })
+u.remap("n", "<C-p>",  telescope.live_grep,        { noremap = true })
 u.remap("n", "<Leader>fd",  telescope.find_dotfiles,    { noremap = true })
 u.remap("n", "<Leader>fh",  telescope.find_help,        { noremap = true })
 u.remap("n", "<Leader>fm",  telescope.find_mappings,    { noremap = true })
