@@ -18,7 +18,9 @@
 	cne = commit --no-edit
 	amend = commit --amend
 	co = checkout
-	s = status -sb
+	com = checkout main
+  cod = checkout development
+  s = status -sb
 	d = diff
 	cp = cherry-pick
   l = log --graph --pretty=format:'%C(magenta)%h%C(blue)%d%Creset %s %C(blue bold)- %an, %ar%Creset'
