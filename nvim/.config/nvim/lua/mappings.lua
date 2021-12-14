@@ -14,6 +14,8 @@ u.remap('n', '<CR>', ':noh<CR><CR>', { noremap = true })
 u.remap('n', 'j', 'gj', { noremap = true })
 u.remap('n', 'k', 'gk', { noremap = true })
 
+u.remap('n', 'Q', ':q<CR>', { noremap = true })
+
 -- center search results + center after scrolling
 u.remap('n', 'n', 'nzz', { noremap = true, silent = true })
 u.remap('n', 'N', 'Nzz', { noremap = true, silent = true })
@@ -129,7 +131,7 @@ u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap =
 
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
-u.remap("n", "<C-p>",  telescope.live_grep,        { noremap = true })
+u.remap("n", "<C-p>",       telescope.live_grep,        { noremap = true })
 u.remap("n", "<Leader>fd",  telescope.find_dotfiles,    { noremap = true })
 u.remap("n", "<Leader>fh",  telescope.find_help,        { noremap = true })
 u.remap("n", "<Leader>fm",  telescope.find_mappings,    { noremap = true })
