@@ -139,6 +139,7 @@ u.remap("n", "<Leader>fc",  telescope.find_commands,    { noremap = true })
 u.remap("n", "<Leader>fhi", telescope.find_highlights,  { noremap = true })
 u.remap("n", "<Leader>fb",  telescope.find_buffers,     { noremap = true })
 u.remap("n", "<Leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
+u.remap("n", "<Leader>fg",  telescope.git_branches,     { noremap = true })
 
 -- lsp
 u.remap('n', 'gD',         vim.lsp.buf.declaration,                 { silent = true })

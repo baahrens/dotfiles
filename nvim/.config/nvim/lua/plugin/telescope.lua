@@ -20,7 +20,6 @@ require'telescope'.setup({
         ["<leader>ff"] = actions.close,
         ["<leader>kk"] = actions.move_selection_previous,
         ["<leader>jj"] = actions.move_selection_next,
-        ["<CR>"] = actions.select_default + actions.center,
         ["<leader>ww"] = actions.file_vsplit
       }
     },
@@ -40,7 +39,7 @@ require'telescope'.load_extension("fzy_native")
 M = {}
 
 function M.find_files()
-  return require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({
+  return require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({
     path_display = {
       shorten = 5
     },
@@ -110,6 +109,12 @@ function M.current_buffer_fuzzy_find()
   return require'telescope.builtin'.current_buffer_fuzzy_find(require'telescope.themes'.get_dropdown({
     prompt_title = '~ search ~',
     previewer = false,
+  }))
+end
+
+function M.git_branches()
+  return require'telescope.builtin'.git_branches(require'telescope.themes'.get_ivy({
+    prompt_title = '~ branches ~',
   }))
 end
 
