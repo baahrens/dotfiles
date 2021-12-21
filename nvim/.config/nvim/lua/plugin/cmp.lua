@@ -76,6 +76,7 @@ cmp.setup({
     { name = 'path' },
     { name = 'nvim_lua' },
     { name = 'npm' },
+    { name = 'rg' },
   }),
   experimental = {
     ghost_text = true
