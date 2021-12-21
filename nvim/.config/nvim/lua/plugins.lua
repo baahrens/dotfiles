@@ -175,5 +175,11 @@ return require('packer').startup({ function()
     end
   }
 
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function() require'plugin/null-ls' end
+  }
+
   use { 'ray-x/lsp_signature.nvim' }
+
 end, config = packer_config })
