@@ -160,6 +160,7 @@ return require('packer').startup({ function()
   use { 'hrsh7th/cmp-nvim-lua' }
   use { "lukas-reineke/cmp-rg"}
   use { 'David-Kunz/cmp-npm' }
+  use { 'hrsh7th/cmp-cmdline'}
 
   use {
     'hrsh7th/nvim-cmp',
