@@ -16,6 +16,29 @@
         },
         "rules": [
           {
+            "description": "Remove CMD + h binding",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "io.alacritty"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "mandatory": ["command"]
+                  }
+                },
+                "to": [],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "CMD-w to close tmux pane",
             "manipulators": [
               {
