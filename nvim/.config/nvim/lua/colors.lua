@@ -14,6 +14,7 @@
 
 vim.g.nord_borders = true
 vim.g.nord_disable_background = true
+vim.g.nord_italic = false
 
 -- vim.g.rose_pine_variant = 'moon'
 -- vim.g.rose_pine_enable_italics = false
