@@ -62,6 +62,8 @@ vim.cmd[[
   augroup NvimTree
     autocmd!
     autocmd BufEnter NvimTree call SetNvimHighlights()
+  augroup end
+
   colorscheme nord
 ]]
 

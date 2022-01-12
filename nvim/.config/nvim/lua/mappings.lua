@@ -74,6 +74,7 @@ u.remap('n', '<C-ö>', ':TmuxNavigatePrevious<CR>', { noremap = true, silent = t
 -- nvim tree
 u.remap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
 u.remap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true })
+u.remap('n', '<leader>nf', ':NvimTreeFindFile<CR>', { noremap = true })
 
 -- delete in v mode without loosing current yank
 u.remap('v', '<leader>p', '"_dP', { noremap = true })

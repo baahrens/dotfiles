@@ -115,6 +115,7 @@ end
 function M.git_branches()
   return require'telescope.builtin'.git_branches(require'telescope.themes'.get_ivy({
     prompt_title = '~ branches ~',
+    sort_mru = true,
   }))
 end
 
