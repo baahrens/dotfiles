@@ -7,7 +7,9 @@ local actions = null_ls.builtins.code_actions
 require("null-ls").setup({
   sources = {
     formatter.stylua,
-    formatter.prettier,
+    formatter.prettier.with({
+      prefer_local = "node_modules/.bin"
+    }),
 
     diagnostics.shellcheck,
     diagnostics.hadolint,
@@ -16,5 +18,15 @@ require("null-ls").setup({
 
     actions.eslint_d,
     actions.gitsigns
-  }
+  },
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd([[
+        augroup LspFormatting
+          autocmd! * <buffer>
+          autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        augroup END
+      ]])
+    end
+  end
 })

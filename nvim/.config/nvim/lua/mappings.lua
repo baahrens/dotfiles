@@ -1,5 +1,4 @@
 local g = vim.g
-local lsp = require'plugin/lsp'
 local telescope = require'plugin/telescope'
 local u = require'util'
 
@@ -143,14 +142,13 @@ u.remap("n", "<Leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = 
 u.remap("n", "<Leader>fg",  telescope.git_branches,     { noremap = true })
 
 -- lsp
-u.remap('n', 'gD',         vim.lsp.buf.declaration,                 { silent = true })
-u.remap('n', 'gd',         vim.lsp.buf.definition,                  { silent = true })
-u.remap('n', 'gR',         vim.lsp.buf.references,                  { silent = true })
-u.remap('n', 'gy',         vim.lsp.buf.type_definition,             { silent = true })
+u.remap('n', '<leader>cD', vim.lsp.buf.declaration,                 { silent = true })
+u.remap('n', '<leader>cd', vim.lsp.buf.definition,                  { silent = true })
+u.remap('n', '<leader>cR', vim.lsp.buf.references,                  { silent = true })
 u.remap('n', 'K',          vim.lsp.buf.hover,                       { silent = true })
-u.remap('n', 'gn',         vim.lsp.diagnostic.goto_next,            { silent = true })
-u.remap('n', 'gN',         vim.lsp.diagnostic.goto_prev,            { silent = true })
-u.remap('n', 'ga',         vim.lsp.diagnostic.get_line_diagnostics, { silent = true })
-u.remap('i', '<C-x><C-x>', vim.lsp.buf.signature_help,              { silent = true })
-u.remap('n', 'gm',         lsp.format_range_operator,               { silent = true })
-u.remap('n', 'gf',         vim.lsp.buf.formatting,                  { silent = true })
+u.remap('n', '<leader>cn', vim.lsp.diagnostic.goto_next,            { silent = true })
+u.remap('n', '<leader>cN', vim.lsp.diagnostic.goto_prev,            { silent = true })
+u.remap('n', '<leader>cd', vim.lsp.diagnostic.get_line_diagnostics, { silent = true })
+u.remap('n', '<leader>cf', vim.lsp.buf.formatting,                  { silent = true })
+u.remap('n', '<leader>cr', vim.lsp.buf.rename,                      { silent = true })
+u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                 { silent = true })
