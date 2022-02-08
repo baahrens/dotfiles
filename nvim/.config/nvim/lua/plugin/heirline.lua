@@ -119,12 +119,12 @@ local FileName = {
     end
     return filename
   end,
-  hl = { fg = utils.get_highlight("Directory").fg },
+  hl = { fg = colors.blue },
 }
 
 local FileFlags = {
   {
-    provider = function() if vim.bo.modified then return "[+]" end end,
+    provider = function() if vim.bo.modified then return " [+] " end end,
     hl = { fg = colors.green }
 
   }, {
@@ -163,6 +163,7 @@ local ruler = {
   -- %c = column number
   -- %P = percentage through file of displayed window
   provider = "%7(%l/%3L%):%2c %P",
+  hl = { fg = colors.purple }
 }
 
 local lsp_servers = {
@@ -197,25 +198,25 @@ local diagnostics = {
 
   {
     provider = function(self)
-      return self.errors > 0 and (self.error_icon .. self.errors .. " ")
+      return self.errors > 0 and (self.error_icon .. " " .. self.errors .. " ")
     end,
     hl = { fg = colors.diag.error },
   },
   {
     provider = function(self)
-      return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
+      return self.warnings > 0 and (self.warn_icon .. " " .. self.warnings .. " ")
     end,
     hl = { fg = colors.diag.warn },
   },
   {
     provider = function(self)
-      return self.info > 0 and (self.info_icon .. self.info .. " ")
+      return self.info > 0 and (self.info_icon .. " " .. self.info .. " ")
     end,
     hl = { fg = colors.diag.info },
   },
   {
     provider = function(self)
-      return self.hints > 0 and (self.hint_icon .. self.hints)
+      return self.hints > 0 and (self.hint_icon .. " " .. self.hints)
     end,
     hl = { fg = colors.diag.hint },
   },
@@ -231,45 +232,32 @@ local git = {
 
   hl = { fg = colors.orange },
 
-
   {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = {style = 'bold'}
-  },
-  {
-    condition = function(self)
-      return self.has_changes
-    end,
-    provider = " ( "
+    hl = { style = 'bold' }
   },
   {
     provider = function(self)
       local count = self.status_dict.added or 0
-      return count > 0 and ("+" .. count)
+      return count > 0 and (" +" .. count)
     end,
     hl = { fg = colors.git.add },
   },
   {
     provider = function(self)
       local count = self.status_dict.removed or 0
-      return count > 0 and ("-" .. count)
+      return count > 0 and (" -" .. count)
     end,
     hl = { fg = colors.git.del },
   },
   {
     provider = function(self)
       local count = self.status_dict.changed or 0
-      return count > 0 and ("~" .. count)
+      return count > 0 and (" ~" .. count)
     end,
     hl = { fg = colors.git.change },
-  },
-  {
-    condition = function(self)
-      return self.has_changes
-    end,
-    provider = " )",
   },
 }
 
@@ -295,7 +283,6 @@ local DefaultStatusline = {
   file_name, space, space, space,
   git, space, space, space,
   diagnostics, align,
-  file_type, space, space, space,
   lsp_servers, space, space, space,
   work_dir, space, space, space,
   ruler,
