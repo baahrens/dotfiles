@@ -88,13 +88,7 @@ local mode = {
   end,
 }
 
-local file_name = {
-  init = function(self)
-    self.filename = vim.api.nvim_buf_get_name(0)
-  end,
-}
-
-local FileIcon = {
+local file_icon = {
   init = function(self)
     local filename = self.filename
     local extension = vim.fn.fnamemodify(filename, ":e")
@@ -108,7 +102,7 @@ local FileIcon = {
   end
 }
 
-local FileName = {
+local file_name = {
   provider = function(self)
     local filename = vim.fn.fnamemodify(self.filename, ":.")
     if filename == "" then
@@ -133,7 +127,7 @@ local FileFlags = {
   }
 }
 
-local FileNameModifer = {
+local file_name_modifier = {
   hl = function()
     if vim.bo.modified then
       return { fg = colors.cyan, style = 'bold', force = true }
@@ -141,21 +135,17 @@ local FileNameModifer = {
   end,
 }
 
-file_name = utils.insert(file_name,
-  FileIcon,
-  utils.insert(FileNameModifer, FileName),
+local file_name_block = utils.insert(
+  {
+    init = function(self)
+      self.filename = vim.api.nvim_buf_get_name(0)
+    end,
+  },
+  file_icon,
+  utils.insert(file_name_modifier, file_name),
   unpack(FileFlags),
   { provider = '%<'}
 )
-
-
-local file_type = {
-  provider = function()
-    return vim.bo.filetype
-  end,
-
-  hl = { fg = utils.get_highlight("Type").fg, style = 'bold' },
-}
 
 local ruler = {
   -- %l = current line number
@@ -275,18 +265,18 @@ local work_dir = {
 }
 
 local align = { provider = "%=" }
-local space = { provider = " " }
+local space = { provider = "   " }
 
 local DefaultStatusline = {
-  space, space, space,
-  mode, space, space, space,
-  file_name, space, space, space,
-  git, space, space, space,
+  space,
+  mode, space,
+  file_name_block, space,
+  git, space,
   diagnostics, align,
-  lsp_servers, space, space, space,
-  work_dir, space, space, space,
+  lsp_servers, space,
+  work_dir, space,
   ruler,
-  space, space, space
+  space
 }
 
 local SpecialStatusline = {
@@ -303,8 +293,8 @@ local InactiveStatusline = {
     return not conditions.is_active()
   end,
 
-  space, space, space,
-  file_name, align,
+  space,
+  file_name_block, align,
 }
 
 local StatusLines = {
