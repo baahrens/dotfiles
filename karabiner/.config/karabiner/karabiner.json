@@ -21,9 +21,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -44,9 +42,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -72,9 +68,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -98,18 +92,14 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": [
-                      "right_command"
-                    ]
+                    "mandatory": ["right_command"]
                   }
                 },
                 "to": [
@@ -126,9 +116,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -152,9 +140,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -178,9 +164,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -204,9 +188,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -230,9 +212,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -256,9 +236,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -282,9 +260,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -308,9 +284,7 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": [
-                      "io.alacritty"
-                    ],
+                    "bundle_identifiers": ["io.alacritty"],
                     "type": "frontmost_application_if"
                   }
                 ],
@@ -323,6 +297,78 @@
                 "to": [
                   { "modifiers": ["control"], "key_code": "g" },
                   { "key_code": "6" }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "CMD+7 for seventh window in tmux session",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["io.alacritty"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "7",
+                  "modifiers": {
+                    "mandatory": ["command"]
+                  }
+                },
+                "to": [
+                  { "modifiers": ["control"], "key_code": "g" },
+                  { "key_code": "7" }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "CMD+8 for eighth window in tmux session",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["io.alacritty"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "8",
+                  "modifiers": {
+                    "mandatory": ["command"]
+                  }
+                },
+                "to": [
+                  { "modifiers": ["control"], "key_code": "g" },
+                  { "key_code": "8" }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "CMD+9 for ninth window in tmux session",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": ["io.alacritty"],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "9",
+                  "modifiers": {
+                    "mandatory": ["command"]
+                  }
+                },
+                "to": [
+                  { "modifiers": ["control"], "key_code": "g" },
+                  { "key_code": "9" }
                 ],
                 "type": "basic"
               }
