@@ -73,11 +73,6 @@ return require('packer').startup({ function()
 
 -- =================== filetypes ===================
   use {
-    'maxmellon/vim-jsx-pretty',
-    ft = { 'typescriptreact', 'javascriptreact' }
-  }
-
-  use {
     'iamcco/markdown-preview.nvim',
     ft = 'markdown',
     run = 'cd app && yarn install'
