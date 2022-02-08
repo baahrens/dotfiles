@@ -92,21 +92,17 @@ return require('packer').startup({ function()
   }
 
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require'plugin/galaxyline' end,
-    requires = {
-      { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
-    }
-  }
-
-  use {
     'kyazdani42/nvim-tree.lua',
     cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
     config = function() require'plugin/nvim_tree' end,
     requires = {
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
     }
+  }
+
+  use {
+    'rebelot/heirline.nvim',
+    config = function() require'plugin/heirline' end
   }
 
   use {

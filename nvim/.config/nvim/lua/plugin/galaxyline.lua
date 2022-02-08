@@ -1,5 +1,5 @@
 local gl = require('galaxyline')
-local colors = require('galaxyline.theme').default
+local colors = require("galaxyline.highlighting")
 local condition = require('galaxyline.condition')
 local gls = gl.section
 
@@ -136,6 +136,7 @@ gls.right[5] = {
     highlight = { colors.green, colors.bg },
   }
 }
+
 gls.right[6] = {
   DiffModified = {
     provider = 'DiffModified',
@@ -144,6 +145,7 @@ gls.right[6] = {
     highlight = { colors.orange, colors.bg },
   }
 }
+
 gls.right[7] = {
   DiffRemove = {
     provider = 'DiffRemove',
@@ -151,17 +153,6 @@ gls.right[7] = {
     icon = '   ',
     highlight = { colors.red,colors.bg },
   }
-}
-
-gls.right[8] = {
-    Time = {
-        provider = function()
-            return ' ' .. '  ' .. os.date('%H:%M') .. ' '
-        end,
-        highlight = { "#e0af68", colors.bg },
-        separator = " ",
-        separator_highlight = { colors.lightBackground, colors.lightBackground }
-    }
 }
 
 gls.short_line_left[2] = {
