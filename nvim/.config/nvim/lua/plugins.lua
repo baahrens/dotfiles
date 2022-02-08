@@ -20,12 +20,6 @@ return require('packer').startup({ function()
   }
 
   use {
-    'sindrets/diffview.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function() require'plugin/gitdiff' end
-  }
-
-  use {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead','BufNewFile' },
     config = function() require'plugin/gitsigns' end,
@@ -34,7 +28,7 @@ return require('packer').startup({ function()
     }
   }
 
--- =================== colorschemes ===================
+-- =================== colors ===================
   use { 'marko-cerovac/material.nvim',        disable = true }
 
   use { 'savq/melange',                       disable = true }
@@ -46,6 +40,12 @@ return require('packer').startup({ function()
   use { 'tyrannicaltoucan/vim-deep-space',    disable = true }
 
   use { 'shaunsingh/nord.nvim' }
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    ft = { 'css', 'javascriptreact', 'javascript', 'typescriptreact', 'vim', 'lua' },
+    config = function() require'plugin/colorizer' end
+  }
 
 -- =================== treesitter ===================
   use({
@@ -89,12 +89,6 @@ return require('packer').startup({ function()
   use {
     'christoomey/vim-tmux-navigator',
     config = function() require'plugin/tmux' end
-  }
-
-  use {
-    'norcalli/nvim-colorizer.lua',
-    ft = { 'css', 'javascriptreact', 'javascript', 'typescriptreact', 'vim', 'lua' },
-    config = function() require'plugin/colorizer' end
   }
 
   use {
