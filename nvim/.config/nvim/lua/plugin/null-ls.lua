@@ -1,20 +1,26 @@
 local null_ls = require'null-ls'
 
-local formatter = null_ls.builtins.formatting
+local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local actions = null_ls.builtins.code_actions
 
 require("null-ls").setup({
   sources = {
-    formatter.stylua,
-    formatter.prettier.with({
-      prefer_local = "node_modules/.bin"
-    }),
+    formatting.fixjson,
+    formatting.gofmt,
+    formatting.stylua,
+    formatting.prettierd,
+    formatting.rubocop,
+    formatting.rustfmt,
+    formatting.stylelint,
 
     diagnostics.shellcheck,
     diagnostics.hadolint,
     diagnostics.yamllint,
     diagnostics.eslint_d,
+    diagnostics.luacheck,
+    diagnostics.rubocop,
+    diagnostics.stylelint,
 
     actions.eslint_d,
     actions.gitsigns
