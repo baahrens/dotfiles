@@ -12,18 +12,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   }
 )
 
-local M = {}
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded',
+  silent = true,
+  focusable = false, -- Sometimes gets set to true if not set explicitly to false for some reason
+})
 
-function M.on_attach()
-  require "lsp_signature".on_attach({
-    floating_window = true,
-    hint_enable = false,
-    bind = true,
-    handler_opts = {
-      border = "single"
-    }
-  })
-end
+local M = {}
 
 local signs = {
   Error = " ",
