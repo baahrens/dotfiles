@@ -25,6 +25,7 @@ require("null-ls").setup({
     actions.eslint_d,
     actions.gitsigns
   },
+
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then
       vim.cmd([[

@@ -1,7 +1,5 @@
 local nvim_tree = require'nvim-tree'
 
-vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.DS_Store' }
-
 vim.g.nvim_tree_icons = {
   symlink = "",
   git = {
@@ -47,8 +45,8 @@ nvim_tree.setup {
     auto_open = true,
   },
   view = {
-    width = 40,
-    side = "left",
+    width = 50,
+    side = "right",
     mappings = {
       list = {
         { key = "v", action = "vsplit" },

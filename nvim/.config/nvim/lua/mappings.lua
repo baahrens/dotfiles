@@ -33,22 +33,9 @@ u.remap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
 u.remap('n', 'H', '^', { noremap = true })
 u.remap('n', 'L', '$', { noremap = true })
 
--- vselect between brackets
-u.remap('n', '%', 'v%', { noremap = true })
-
 -- just kidding
 u.remap('i', 'jk', '<ESC>', {})
 u.remap('t', 'jk', '<ESC>', {})
-
--- pane movement
-u.remap('n', '<C-h>', '<C-w>h', { noremap = true })
-u.remap('n', '<C-j>', '<C-w>j', { noremap = true })
-u.remap('n', '<C-k>', '<C-w>k', { noremap = true })
-u.remap('n', '<C-l>', '<C-w>l', { noremap = true })
-u.remap('v', '<C-h>', [[<C-\><C-n><C-w>h]], { noremap = true })
-u.remap('v', '<C-j>', [[<C-\><C-n><C-w>j]], { noremap = true })
-u.remap('v', '<C-k>', [[<C-\><C-n><C-w>k]], { noremap = true })
-u.remap('v', '<C-l>', [[<C-\><C-n><C-w>l]], { noremap = true })
 
 -- use tab/s-tab to navigate search results while still being able to refine search
 u.remap('c', '<Tab>', "getcmdtype() =~ '[/?]' ? '<C-g>' : '<C-z>'", { expr = true, noremap = true })
