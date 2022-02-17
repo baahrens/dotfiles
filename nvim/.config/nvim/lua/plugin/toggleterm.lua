@@ -26,10 +26,21 @@ local node_term = Terminal:new({
   end
 })
 
+local cheat_term = Terminal:new({
+  cmd = "cht.sh --shell",
+  on_open = function(term)
+    set_close_keymap(term.bufnr, "<leader>th")
+  end
+})
+
 local M = {}
 
 function M.toggle_test_term()
   test_term:toggle()
+end
+
+function M.toggle_cheat_term()
+  cheat_term:toggle()
 end
 
 function M.toggle_node_term()

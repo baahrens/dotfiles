@@ -144,3 +144,4 @@ u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                 { silent = t
 -- term
 u.remap("n", "<leader>tt", toggleterm.toggle_test_term, { noremap = true, silent = true })
 u.remap("n", "<leader>tn", toggleterm.toggle_node_term, { noremap = true, silent = true })
+u.remap("n", "<leader>th", toggleterm.toggle_cheat_term, { noremap = true, silent = true })
