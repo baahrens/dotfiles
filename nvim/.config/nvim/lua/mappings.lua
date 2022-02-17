@@ -1,5 +1,6 @@
 local g = vim.g
 local telescope = require'plugin/telescope'
+local toggleterm = require'plugin/toggleterm'
 local u = require'util'
 
 g.mapleader = ' '
@@ -139,3 +140,7 @@ u.remap('n', '<leader>cd', vim.lsp.diagnostic.get_line_diagnostics, { silent = t
 u.remap('n', '<leader>cf', vim.lsp.buf.formatting,                  { silent = true })
 u.remap('n', '<leader>cr', vim.lsp.buf.rename,                      { silent = true })
 u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                 { silent = true })
+
+-- term
+u.remap("n", "<leader>tt", toggleterm.toggle_test_term, { noremap = true, silent = true })
+u.remap("n", "<leader>tn", toggleterm.toggle_node_term, { noremap = true, silent = true })

@@ -99,6 +99,10 @@ return require('packer').startup({ function()
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
     }
   }
+  use {
+    "akinsho/toggleterm.nvim",
+    config = function() require'plugin/toggleterm' end
+  }
 
   use {
     'rebelot/heirline.nvim',
