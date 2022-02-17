@@ -6,20 +6,20 @@ local actions = null_ls.builtins.code_actions
 
 require("null-ls").setup({
   sources = {
-    formatting.fixjson,
-    formatting.gofmt,
-    formatting.stylua,
+    -- formatting.fixjson,
+    -- formatting.gofmt,
+    -- formatting.stylua,
     formatting.prettierd,
-    formatting.rubocop,
-    formatting.rustfmt,
+    -- formatting.rubocop,
+    -- formatting.rustfmt,
     formatting.stylelint,
 
-    diagnostics.shellcheck,
-    diagnostics.hadolint,
-    diagnostics.yamllint,
+    -- diagnostics.shellcheck,
+    -- diagnostics.hadolint,
+    -- diagnostics.yamllint,
     diagnostics.eslint_d,
-    diagnostics.luacheck,
-    diagnostics.rubocop,
+    -- diagnostics.luacheck,
+    -- diagnostics.rubocop,
     diagnostics.stylelint,
 
     actions.eslint_d,
