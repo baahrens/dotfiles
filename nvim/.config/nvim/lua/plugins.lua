@@ -51,8 +51,6 @@ return require('packer').startup({ function()
   use({
     {
       'nvim-treesitter/nvim-treesitter',
-      branch = '0.5-compat',
-      run = ':TSUpdate',
       config = function() require'plugin/treesitter' end
     },
 
@@ -60,7 +58,6 @@ return require('packer').startup({ function()
       'nvim-treesitter/nvim-treesitter-textobjects',
       disable = true,
       event = "CursorHold",
-      branch = '0.5-compat'
     },
 
     { 'nvim-treesitter/playground', disable = true },
@@ -93,7 +90,7 @@ return require('packer').startup({ function()
 
   use {
     'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
+    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
     config = function() require'plugin/nvim_tree' end,
     requires = {
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
@@ -115,11 +112,8 @@ return require('packer').startup({ function()
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
+      'natecraddock/telescope-zf-native.nvim'
     }
-  }
-
-  use {
-    "natecraddock/telescope-zf-native.nvim"
   }
 
   use {
@@ -136,27 +130,26 @@ return require('packer').startup({ function()
   use {
     'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
-    wants = 'friendly-snippets',
     after = "nvim-cmp",
-    config = function() require'plugin/luasnip' end
+    config = function() require'plugin/luasnip' end,
+    requires = {
+      'rafamadriz/friendly-snippets',
+    }
   }
-
-  use {
-    'rafamadriz/friendly-snippets'
-  }
-
-  use { 'saadparwaiz1/cmp_luasnip' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { "lukas-reineke/cmp-rg"}
-  use { 'David-Kunz/cmp-npm' }
-  use { 'hrsh7th/cmp-cmdline'}
 
   use {
     'hrsh7th/nvim-cmp',
-    config = function() require'plugin/cmp' end
+    config = function() require'plugin/cmp' end,
+    requires = {
+        'saadparwaiz1/cmp_luasnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        "lukas-reineke/cmp-rg",
+        'hrsh7th/cmp-cmdline',
+        { 'hrsh7th/cmp-nvim-lua', ft = { 'lua' } }
+      }
+
   }
 
   use {
