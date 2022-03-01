@@ -16,15 +16,6 @@ u.remap('n', 'k', 'gk', { noremap = true })
 
 u.remap('n', 'Q', ':q<CR>', { noremap = true })
 
--- center search results + center after scrolling
-u.remap('n', 'n', 'nzz', { noremap = true, silent = true })
-u.remap('n', 'N', 'Nzz', { noremap = true, silent = true })
-u.remap('n', '*', '*zz', { noremap = true, silent = true })
-u.remap('n', '#', '#zz', { noremap = true, silent = true })
-u.remap('n', 'g*', 'g*zz', { noremap = true, silent = true })
-u.remap('n', 'G', 'Gzz', { noremap = true, silent = true })
-u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
-u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
 -- Move lines
 u.remap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
@@ -78,18 +69,18 @@ u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<
 u.remap('n', '<leader>O', ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { noremap = true, silent = true })
 
 -- quickfix
-u.remap("n", "<Leader>qc", ":cclose<CR>", { noremap = true })
-u.remap("n", "<Leader>qn", ":cnext<CR>", { noremap = true })
-u.remap("n", "<Leader>qo", ":copen<CR>", { noremap = true })
-u.remap("n", "<Leader>qp", ":cprev<CR>", { noremap = true })
-u.remap("n", "<Leader>qa", ":cc<CR>", { noremap = true })
+u.remap("n", "<leader>qc", ":cclose<CR>", { noremap = true })
+u.remap("n", "<leader>qn", ":cnext<CR>", { noremap = true })
+u.remap("n", "<leader>qo", ":copen<CR>", { noremap = true })
+u.remap("n", "<leader>qp", ":cprev<CR>", { noremap = true })
+u.remap("n", "<leader>qa", ":cc<CR>", { noremap = true })
 
 -- locationlist
-u.remap("n", "<Leader>lc", ":lclose<CR>", { noremap = true })
-u.remap("n", "<Leader>ln", ":lnext<CR>", { noremap = true })
-u.remap("n", "<Leader>lo", ":lopen<CR>", { noremap = true })
-u.remap("n", "<Leader>lp", ":lprev<CR>", { noremap = true })
-u.remap("n", "<Leader>la", ":ll<CR>", { noremap = true })
+u.remap("n", "<leader>lc", ":lclose<CR>", { noremap = true })
+u.remap("n", "<leader>ln", ":lnext<CR>", { noremap = true })
+u.remap("n", "<leader>lo", ":lopen<CR>", { noremap = true })
+u.remap("n", "<leader>lp", ":lprev<CR>", { noremap = true })
+u.remap("n", "<leader>la", ":ll<CR>", { noremap = true })
 
 -- fugitive
 u.remap('n', '<leader>gs',  ':Git<CR>', {})
@@ -120,14 +111,14 @@ u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap =
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
 u.remap("n", "<C-p>",       telescope.live_grep,        { noremap = true })
-u.remap("n", "<Leader>fd",  telescope.find_dotfiles,    { noremap = true })
-u.remap("n", "<Leader>fh",  telescope.find_help,        { noremap = true })
-u.remap("n", "<Leader>fm",  telescope.find_mappings,    { noremap = true })
-u.remap("n", "<Leader>fc",  telescope.find_commands,    { noremap = true })
-u.remap("n", "<Leader>fhi", telescope.find_highlights,  { noremap = true })
-u.remap("n", "<Leader>fb",  telescope.find_buffers,     { noremap = true })
-u.remap("n", "<Leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
-u.remap("n", "<Leader>fg",  telescope.git_branches,     { noremap = true })
+u.remap("n", "<leader>fd",  telescope.find_dotfiles,    { noremap = true })
+u.remap("n", "<leader>fh",  telescope.find_help,        { noremap = true })
+u.remap("n", "<leader>fm",  telescope.find_mappings,    { noremap = true })
+u.remap("n", "<leader>fc",  telescope.find_commands,    { noremap = true })
+u.remap("n", "<leader>fhi", telescope.find_highlights,  { noremap = true })
+u.remap("n", "<leader>fb",  telescope.find_buffers,     { noremap = true })
+u.remap("n", "<leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
+u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 
 -- lsp
 u.remap('n', '<leader>cD', vim.lsp.buf.declaration,                 { silent = true })
@@ -145,3 +136,21 @@ u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                 { silent = t
 u.remap("n", "<leader>tt", toggleterm.toggle_test_term, { noremap = true, silent = true })
 u.remap("n", "<leader>tn", toggleterm.toggle_node_term, { noremap = true, silent = true })
 u.remap("n", "<leader>th", toggleterm.toggle_cheat_term, { noremap = true, silent = true })
+
+-- hlslens
+u.remap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+
+-- center search results + center after scrolling
+u.remap('n', 'n', 'nzz', { noremap = true, silent = true })
+u.remap('n', 'N', 'Nzz', { noremap = true, silent = true })
+u.remap('n', '*', '*zz', { noremap = true, silent = true })
+u.remap('n', '#', '#zz', { noremap = true, silent = true })
+u.remap('n', 'g*', 'g*zz', { noremap = true, silent = true })
+u.remap('n', 'G', 'Gzz', { noremap = true, silent = true })
+u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })

@@ -43,6 +43,11 @@ vim.cmd[[
 
     highlight CmpItemAbbrMatch guifg=#D8DEE9
     highlight CmpItemAbbr guifg=#c1c9d6
+
+    highlight HlSearchNear guifg=#88C0D0
+    highlight HlSearchLens guifg=#88C0D0
+    highlight HlSearchLensNear guifg=#88C0D0
+    highlight HlSearchFloat guifg=#88C0D0
   endfun
 
   fun! SetNvimHighlights() abort

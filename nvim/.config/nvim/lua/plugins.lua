@@ -125,6 +125,11 @@ return require('packer').startup({ function()
     config = function() require'plugin/trouble' end
   }
 
+  use {
+    'kevinhwang91/nvim-hlslens',
+    config = function() require'plugin/hlslens' end
+  }
+
   -- =================== lsp ===================
 
   use {
