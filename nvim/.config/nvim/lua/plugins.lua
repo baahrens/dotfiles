@@ -130,6 +130,11 @@ return require('packer').startup({ function()
     config = function() require'plugin/hlslens' end
   }
 
+  use({
+    "gbprod/substitute.nvim",
+    config = function() require("plugin/substitute") end
+  })
+
   -- =================== lsp ===================
 
   use {

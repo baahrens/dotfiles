@@ -154,3 +154,9 @@ u.remap('n', 'g*', 'g*zz', { noremap = true, silent = true })
 u.remap('n', 'G', 'Gzz', { noremap = true, silent = true })
 u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
+-- substitute
+u.remap("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
+u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
+u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
+u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
