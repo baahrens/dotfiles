@@ -18,6 +18,8 @@ g.loaded_netrwPlugin       = 1
 g.loaded_netrwSettings     = 1
 g.loaded_netrwFileHandlers = 1
 
+require('impatient')
+
 require('plugins')
 require('options')
 require('mappings')
