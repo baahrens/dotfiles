@@ -45,30 +45,45 @@ return require('packer').startup({ function()
 
   use {
     'norcalli/nvim-colorizer.lua',
-    ft = { 'css', 'javascriptreact', 'javascript', 'typescriptreact', 'vim', 'lua' },
+    ft = {
+      'css',
+      'javascriptreact',
+      'javascript',
+      'typescriptreact',
+      'vim',
+      'lua'
+    },
     config = function() require'plugin/colorizer' end
   }
 
 -- =================== treesitter ===================
-  use({
-    {
-      'nvim-treesitter/nvim-treesitter',
-      config = function() require'plugin/treesitter' end
-    },
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function() require'plugin/treesitter' end
+  }
 
-    {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      disable = true,
-      event = "CursorHold",
-    },
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    event = "CursorHold",
+    after = "nvim-treesitter",
+    disable = true
+  }
 
-    { 'nvim-treesitter/playground', disable = true },
+  use {
+    'nvim-treesitter/playground',
+    after = "nvim-treesitter",
+    disable = true
+  }
 
-    {
-      'windwp/nvim-ts-autotag',
-      ft = { "javascriptreact", "typescriptreact", "html", "xml" }
-    },
-  })
+  use {
+    'windwp/nvim-ts-autotag',
+    after = "nvim-treesitter",
+    ft = {
+      "javascriptreact",
+      "typescriptreact",
+      "html", "xml"
+    }
+  }
 
 -- =================== filetypes ===================
   use {
