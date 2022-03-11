@@ -13,6 +13,7 @@ local packer_config = {
 return require('packer').startup({ function()
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
+  use 'nathom/filetype.nvim'
 
 -- =================== git ===================
   use {
