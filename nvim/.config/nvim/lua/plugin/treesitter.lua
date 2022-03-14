@@ -6,7 +6,14 @@ tsConfigs.setup {
     enable = true
   },
   autotag = {
-    enable = true
+    enable = true,
+    filetypes = {
+      "javascriptreact",
+      "javascript",
+      "typescriptreact",
+      "html",
+      "xml"
+    }
   },
   highlight = {
     enable = true

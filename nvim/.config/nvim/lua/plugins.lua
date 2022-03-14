@@ -77,14 +77,9 @@ return require('packer').startup({ function()
 
   use {
     'windwp/nvim-ts-autotag',
-    after = "nvim-treesitter",
-    ft = {
-      "javascriptreact",
-      "typescriptreact",
-      "html", "xml"
-    }
+    after = "nvim-treesitter"
   }
-
+  --
 -- =================== filetypes ===================
   use {
     'iamcco/markdown-preview.nvim',
