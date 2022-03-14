@@ -70,14 +70,14 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = "nvim_lsp_signature_help" },
-    { name = 'luasnip' },
-    { name = 'buffer' },
-    { name = 'path' },
-    { name = 'nvim_lua' },
-    { name = 'npm' },
-    { name = 'rg' },
+    { name = 'nvim_lsp',                max_item_count = 10 },
+    { name = "nvim_lsp_signature_help", max_item_count = 10 },
+    { name = 'luasnip',                 max_item_count = 10 },
+    { name = 'buffer',                  max_item_count = 10 },
+    { name = 'path',                    max_item_count = 10 },
+    { name = 'nvim_lua',                max_item_count = 10 },
+    { name = 'npm',                     max_item_count = 10 },
+    { name = 'rg',                      max_item_count = 10 },
   }),
   experimental = {
     ghost_text = true
