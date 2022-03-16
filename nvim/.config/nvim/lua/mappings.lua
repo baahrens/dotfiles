@@ -89,9 +89,6 @@ u.remap('n', '<leader>gpl', ':Git pull<CR>', {})
 u.remap('n', '<leader>gl',  ':Git log<CR>', {})
 u.remap('n', '<leader>gp',  ':Git push<CR>', {})
 u.remap('n', '<leader>gb',  ':Git blame<CR>', {})
-u.remap('n', '<leader>gd',  ':DiffviewOpen<CR>', {})
-u.remap('n', '<leader>gq',  ':DiffviewClose<CR>', {})
-u.remap('n', '<leader>gh',  ':DiffviewFileHistory<CR>', {})
 
 -- config files
 u.remap('n', '<leader>ev', ':vsplit ~/.config/nvim/init.lua<CR>', { noremap = true })
