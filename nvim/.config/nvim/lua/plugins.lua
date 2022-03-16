@@ -133,6 +133,10 @@ return require('packer').startup({ function()
   }
 
   use {
+    'ThePrimeagen/harpoon'
+  }
+
+  use {
     'folke/trouble.nvim',
     config = function() require'plugin/trouble' end
   }
