@@ -151,6 +151,9 @@ return require('packer').startup({ function()
     config = function() require("plugin/substitute") end
   })
 
+   use {
+    'stevearc/dressing.nvim'
+  }
   -- =================== lsp ===================
 
   use {
