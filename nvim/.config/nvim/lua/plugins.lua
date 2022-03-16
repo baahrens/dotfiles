@@ -129,10 +129,6 @@ return require('packer').startup({ function()
   }
 
   use {
-    'kevinhwang91/nvim-bqf'
-  }
-
-  use {
     'ThePrimeagen/harpoon'
   }
 
