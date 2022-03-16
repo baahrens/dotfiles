@@ -16,7 +16,6 @@ u.remap('n', 'k', 'gk', { noremap = true })
 
 u.remap('n', 'Q', ':q<CR>', { noremap = true })
 
-
 -- Move lines
 u.remap('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
 u.remap('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
@@ -32,11 +31,6 @@ u.remap('t', 'jk', '<ESC>', {})
 -- use tab/s-tab to navigate search results while still being able to refine search
 u.remap('c', '<Tab>', "getcmdtype() =~ '[/?]' ? '<C-g>' : '<C-z>'", { expr = true, noremap = true })
 u.remap('c', '<S-Tab>', "getcmdtype() =~ '[/?]' ? '<C-t>' : '<S-Tab>'", { expr = true, noremap = true })
-
--- buffer management
-u.remap('n', '<leader>b', ':ls<CR>:b<space>', { noremap = true })
-u.remap('n', '<Tab>',     ':bprevious<CR>',       { noremap = true, silent = true })
-u.remap('n', '<S-Tab>',   ':bnext<CR>',   { noremap = true, silent = true })
 
 -- keep visual selection when indenting
 u.remap('v', '<', '<gv', { noremap = true })
@@ -158,9 +152,11 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
 
-u.remap('n', "<C-a>", "<cmd>lua require('harpoon.mark').add_file()<CR>", { noremap = true, silent = true })
-u.remap('n', "<C-s>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", { noremap = true, silent = true })
-u.remap('n', "<leader>h", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
-u.remap('n', "<leader>j", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
-u.remap('n', "<leader>k", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
-u.remap('n', "<leader>l", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
+u.remap('n', "<C-a>", require('harpoon.mark').add_file, { noremap = true, silent = true })
+u.remap('n', "<C-s>", require('harpoon.ui').toggle_quick_menu, { noremap = true, silent = true })
+u.remap('n', "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
+u.remap('n', "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
+u.remap('n', "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
+u.remap('n', "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
+u.remap('n', "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
+u.remap('n', "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<CR>", { noremap = true, silent = true })
