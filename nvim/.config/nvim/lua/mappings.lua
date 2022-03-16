@@ -5,7 +5,6 @@ local u = require'util'
 
 g.mapleader = ' '
 u.remap('n',' ','', { noremap = true })
-
 u.remap('x',' ','', { noremap = true })
 
 -- CR after search to turn off highlight
@@ -55,8 +54,7 @@ u.remap('v', '<leader>p', '"_dP', { noremap = true })
 u.remap('n', '<leader>so', ':so %<CR>', { noremap = true })
 
 -- search
-u.remap('n', '<leader><space>', '/', { noremap = true })
-u.remap('n', 's', '/', { noremap = true })
+u.remap('n', '<C-f>', '/', { noremap = true })
 
 -- Map <leader>o & <leader>O to newline without insert mode
 u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { noremap = true, silent = true })
