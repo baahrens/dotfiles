@@ -187,6 +187,11 @@ return require('packer').startup({ function()
   }
 
   use {
+    'simrat39/rust-tools.nvim',
+    config = function() require'plugin/rust-tools' end
+  }
+
+  use {
     'jose-elias-alvarez/null-ls.nvim',
     config = function() require'plugin/null-ls' end
   }
