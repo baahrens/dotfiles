@@ -71,8 +71,7 @@ return require('packer').startup({ function()
 
   use {
     'nvim-treesitter/playground',
-    after = "nvim-treesitter",
-    disable = true
+    after = "nvim-treesitter"
   }
 
   use {
