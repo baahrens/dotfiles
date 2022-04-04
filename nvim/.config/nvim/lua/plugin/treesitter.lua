@@ -19,6 +19,10 @@ tsConfigs.setup {
     enable = true
   },
 
+  matchup = {
+    enable = true
+  },
+
   -- textobjects = {
   --   select = {
   --     enable = true,

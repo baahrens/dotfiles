@@ -143,11 +143,15 @@ return require('packer').startup({ function()
 
   use({
     "gbprod/substitute.nvim",
-    config = function() require("plugin/substitute") end
+    config = function() require'plugin/substitute' end
   })
 
    use {
     'stevearc/dressing.nvim'
+  }
+
+  use {
+    'andymass/vim-matchup'
   }
   -- =================== lsp ===================
 
