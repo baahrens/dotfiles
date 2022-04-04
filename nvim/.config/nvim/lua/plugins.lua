@@ -151,6 +151,11 @@ return require('packer').startup({ function()
   }
 
   use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require'plugin/indent' end
+  }
+
+  use {
     'andymass/vim-matchup'
   }
   -- =================== lsp ===================
