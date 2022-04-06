@@ -1,33 +1,28 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="/usr/local/Cellar/openvpn/2.5.3/sbin:$PATH"
 
 abbr -a g git
 abbr -a v nvim
 
+abbr -a dot cd ~/.dotfiles/
 abbr -a w cd ~/dev/work/
 abbr -a d cd ~/dev/projects/
 abbr -a n cd ~/notes/
 
-alias ..='cd ..'
-alias ...='cd ../..'
+abbr -a .. cd ..
+abbr -a ... cd ../..
 
-alias ef='v ~/.config/fish/config.fish'
-alias eg='v ~/.gitconfig'
-alias ev='v ~/.config/nvim/init.vim'
-alias et='v ~/.tmux.conf'
-alias ek='v ~/.config/karabiner/karabiner.json'
-alias ea='v ~/.config/alacritty/alacritty.yml'
+abbr -a q exit
+abbr -a :q exit
 
-alias q='exit'
-alias :q='exit'
+abbr -a t tmux
+abbr -a ta tmux attach -t
+abbr -a tn tmux new-session
+abbr -a tl tmux list-sessions
+abbr -a tk tmux kill-server
 
-alias t='tmux attach || tmux new-session'
-alias ta='tmux attach -t'
-alias tn='tmux new-session'
-alias tl='tmux list-sessions'
-alias tk='tmux kill-server'
+abbr -a cl clear
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
