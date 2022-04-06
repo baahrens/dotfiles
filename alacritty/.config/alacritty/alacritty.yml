@@ -49,6 +49,8 @@ selection:
   save_to_clipboard: true
 
 key_bindings:
+  - { key: J, mods: Command, chars: " jj" }
+  - { key: K, mods: Command, chars: " kk" }
   - { key: P, mods: Command, chars: " ff" }
   - { key: P, mods: Command|Shift, chars: " fg" }
   - { key: Return, mods: Command, chars: " ww" }

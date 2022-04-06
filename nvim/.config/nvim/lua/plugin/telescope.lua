@@ -18,6 +18,8 @@ require'telescope'.setup({
         ["<C-t>"] = require'trouble.providers.telescope'.open_with_trouble,
         ["<ESC>"] = actions.close,
         ["<leader>ff"] = actions.close,
+        ["<leader>kk"] = actions.move_selection_previous,
+        ["<leader>jj"] = actions.move_selection_next,
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
         ["<leader>ww"] = actions.file_vsplit
