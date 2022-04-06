@@ -1,3 +1,4 @@
+rename-window "#{b:pane_current_path}"
 selectp -t 1
 send-keys -t 1 'nvim' C-m
 splitw -v -p 20 -c '#{pane_current_path}'
