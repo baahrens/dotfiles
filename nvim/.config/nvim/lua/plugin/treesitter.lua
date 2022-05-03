@@ -1,7 +1,7 @@
 local tsConfigs = require'nvim-treesitter.configs'
 
 tsConfigs.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   indent = {
     enable = true
   },
@@ -10,6 +10,7 @@ tsConfigs.setup {
     filetypes = {
       "javascriptreact",
       "javascript",
+      "typescript",
       "typescriptreact",
       "html",
       "xml"
