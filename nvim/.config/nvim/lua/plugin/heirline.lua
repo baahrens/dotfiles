@@ -84,7 +84,7 @@ local mode = {
   end,
   hl = function(self)
     local mode = self.mode:sub(1, 1)
-    return { fg = self.mode_colors[mode], style = "bold", }
+    return { fg = self.mode_colors[mode], bold = true, }
   end,
 }
 
@@ -130,7 +130,7 @@ local FileFlags = {
 local file_name_modifier = {
   hl = function()
     if vim.bo.modified then
-      return { fg = colors.cyan, style = 'bold', force = true }
+      return { fg = colors.cyan, bold = true, force = true }
     end
   end,
 }
@@ -166,7 +166,7 @@ local lsp_servers = {
     end
     return " [" .. table.concat(names, " ") .. "]"
   end,
-  hl = { fg = colors.green, style = "bold" },
+  hl = { fg = colors.green, bold = true },
 }
 
 local diagnostics = {
@@ -226,7 +226,7 @@ local git = {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { style = 'bold' }
+    hl = { bold = true }
   },
   {
     provider = function(self)
@@ -261,7 +261,7 @@ local work_dir = {
     local trail = cwd:sub(-1) == '/' and '' or "/"
     return " " .. cwd  .. trail
   end,
-  hl = { fg = colors.blue, style = "bold" },
+  hl = { fg = colors.blue, bold = true },
 }
 
 local align = { provider = "%=" }
