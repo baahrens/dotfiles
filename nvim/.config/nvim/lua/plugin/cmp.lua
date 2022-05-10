@@ -35,11 +35,13 @@ end
 
 cmp.setup({
   formatting = {
+    fields = { "kind", "abbr", "menu" },
     format = function(_, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
-      return vim_item
-    end
+        vim_item.menu = "    " .. "[" .. vim_item.kind .. "]"
+        vim_item.kind = kind_icons[vim_item.kind] .. "  "
+
+        return vim_item
+    end,
   },
   snippet = {
     expand = function(args)
@@ -87,6 +89,7 @@ cmp.setup({
     { name = 'rg',                      max_item_count = 10 },
   }),
   experimental = {
+    native_menu = false,
     ghost_text = true
   }
 })
