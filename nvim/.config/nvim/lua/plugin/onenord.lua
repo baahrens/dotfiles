@@ -45,38 +45,30 @@ require('onenord').setup({
     diagnostics = "underline",
   },
   custom_highlights = {
-    VertSplit = { fg = colors.grey14 },
-    BufferLineIndicatorSelected = { fg = colors.cyan, bg = colors.bg },
-    BufferLineFill = { fg = colors.fg, bg = colors.grey14 },
-    NvimTreeNormal = { fg = colors.grey5, bg = colors.grey14 },
-    WhichKeyFloat = { bg = colors.grey14 },
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.orange },
     GitSignsDelete = { fg = colors.red },
+
     NvimTreeFolderIcon = { fg = colors.grey9 },
     NvimTreeIndentMarker = { fg = colors.grey12 },
 
-    NormalFloat = { bg = colors.grey14 },
+    NormalFloat = { bg = colors.bg },
     FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
 
-    TelescopePromptPrefix = { bg = colors.grey14 },
-    TelescopePromptNormal = { bg = colors.grey14 },
-    TelescopeResultsNormal = { bg = colors.grey15 },
-    TelescopePreviewNormal = { bg = colors.grey16 },
-
-    TelescopePromptBorder = { bg = colors.grey14, fg = colors.grey14 },
-    TelescopeResultsBorder = { bg = colors.grey15, fg = colors.grey15 },
-    TelescopePreviewBorder = { bg = colors.grey16, fg = colors.grey16 },
-
-    TelescopePromptTitle = { fg = colors.grey14 },
-    TelescopeResultsTitle = { fg = colors.grey15 },
-    TelescopePreviewTitle = { fg = colors.grey16 },
-
-    PmenuSel = { bg = colors.grey12 },
-    Pmenu = { bg = colors.grey14 },
-    PMenuThumb = { bg = colors.grey16 },
+    TelescopeNormal = { bg = "NONE" },
 
     LspFloatWinNormal = { fg = colors.fg, bg = colors.grey14 },
     LspFloatWinBorder = { fg = colors.grey14 },
+
+    JsxExpressionBlock = { fg = colors.yellow },
+
+    CursorLineNr = { fg = colors.yellow },
+
+    Search = { fg = colors.yellow , bg = colors.grey11, bold = true },
+
+    HlSearchNear = { fg = colors.cyan },
+    HlSearchLens = { fg= colors.cyan },
+    HlSearchLensNear = { fg = colors.cyan },
+    HlSearchFloat = { fg = colors.cyan },
   }
 })
