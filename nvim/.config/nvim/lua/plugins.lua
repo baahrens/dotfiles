@@ -41,7 +41,12 @@ return require('packer').startup({ function()
 
   use { 'tyrannicaltoucan/vim-deep-space',    disable = true }
 
-  use { 'shaunsingh/nord.nvim' }
+  use { 'shaunsingh/nord.nvim',               disable = true }
+
+  use {
+    'rmehri01/onenord.nvim',
+    config = function() require 'plugin/onenord' end
+  }
 
   use {
     'norcalli/nvim-colorizer.lua',
