@@ -266,15 +266,17 @@ local work_dir = {
 
 local align = { provider = "%=" }
 local space = { provider = "   " }
+local separator = { provider = "│", hl = {  fg = colors.gray } }
 
 local DefaultStatusline = {
   space,
-  mode, space,
-  file_name_block, space,
-  git, space,
+  work_dir,
+  space, separator, space,
+  git,
+  space, separator, space,
   diagnostics, align,
-  lsp_servers, space,
-  work_dir, space,
+  lsp_servers,
+  space, separator, space,
   ruler,
   space
 }
@@ -294,7 +296,6 @@ local InactiveStatusline = {
   end,
 
   space,
-  file_name_block, align,
 }
 
 local StatusLines = {
@@ -315,5 +316,26 @@ local StatusLines = {
 
   SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
+local WinBars = {
+    init = utils.pick_child_on_condition,
+    {   -- Hide the winbar for special buffers
+        condition = function()
+            return conditions.buffer_matches({
+                buftype = { "nofile", "prompt", "help", "quickfix" },
+                filetype = { "^git.*", "fugitive" },
+            })
+        end,
+        provider = "",
+    },
+    {   -- An inactive winbar for regular files
+        condition = function()
+            return not conditions.is_active()
+        end,
+        align, file_name_block, space
+    },
+  {
+  { provider = "◉", hl = { fg = colors.red }  }, align, file_name_block, space
+  }
+}
 
-require("heirline").setup(StatusLines)
+require("heirline").setup(StatusLines, WinBars)

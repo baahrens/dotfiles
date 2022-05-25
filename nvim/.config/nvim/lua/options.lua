@@ -37,3 +37,4 @@ o.completeopt    = "menuone,noselect"
 o.pumheight      = 10
 o.pumblend       = 10
 o.undofile       = true
+o.laststatus     = 3

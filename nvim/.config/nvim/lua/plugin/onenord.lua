@@ -40,7 +40,6 @@ require('onenord').setup({
     comments = "italic",
     strings = "NONE",
     keywords = "NONE",
-    functions = "italic",
     variables = "bold",
     diagnostics = "underline",
   },
