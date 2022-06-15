@@ -114,6 +114,7 @@ u.remap('n', '<leader>cD', vim.lsp.buf.declaration,                 { silent = t
 u.remap('n', '<leader>cd', vim.lsp.buf.definition,                  { silent = true })
 u.remap('n', '<leader>cR', vim.lsp.buf.references,                  { silent = true })
 u.remap('n', 'K',          vim.lsp.buf.hover,                       { silent = true })
+u.remap('n', "<leader>cs", vim.diagnostic.open_float,               { silent = true })
 u.remap('n', '<leader>cn', vim.lsp.diagnostic.goto_next,            { silent = true })
 u.remap('n', '<leader>cN', vim.lsp.diagnostic.goto_prev,            { silent = true })
 u.remap('n', '<leader>cd', vim.lsp.diagnostic.get,                  { silent = true })
