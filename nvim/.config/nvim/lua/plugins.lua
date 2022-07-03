@@ -197,6 +197,7 @@ return require('packer').startup({ function()
       require'plugin/lsp/lua'
       require'plugin/lsp/javascript'
       require'plugin/lsp/css'
+      require'plugin/lsp/prisma'
     end
   }
 
