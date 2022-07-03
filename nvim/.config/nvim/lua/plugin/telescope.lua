@@ -57,9 +57,16 @@ function M.find_files()
   }))
 end
 
-function M.live_grep()
+function M.grep_cwd()
   return require'telescope.builtin'.live_grep({
     prompt_title = '~ search ~'
+  })
+end
+
+function M.grep_notes()
+  return require'telescope.builtin'.live_grep({
+    prompt_title = '~ notes ~',
+    cwd = '~/notes/tech',
   })
 end
 
