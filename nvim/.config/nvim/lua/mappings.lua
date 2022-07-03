@@ -82,13 +82,6 @@ u.remap('n', '<leader>gl',  ':Git log<CR>', {})
 u.remap('n', '<leader>gp',  ':Git push<CR>', {})
 u.remap('n', '<leader>gb',  ':Git blame<CR>', {})
 
--- config files
-u.remap('n', '<leader>ev', ':vsplit ~/.config/nvim/init.lua<CR>', { noremap = true })
-u.remap('n', '<leader>et', ':vsplit ~/.tmux.conf<CR>', { noremap = true })
-u.remap('n', '<leader>ez', ':vsplit ~/.zshrc<CR>', { noremap = true })
-u.remap('n', '<leader>ef', ':vsplit ~/.config/fish/config.fish<CR>', { noremap = true })
-u.remap('n', '<leader>ek', ':vsplit ~/.config/Karabiner/karabiner.json<CR>', { noremap = true })
-
 -- Trouble
 u.remap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
 u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
@@ -99,7 +92,8 @@ u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap =
 
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
-u.remap("n", "<C-p>",       telescope.live_grep,        { noremap = true })
+u.remap("n", "<C-p>",       telescope.grep_cwd,         { noremap = true })
+u.remap("n", "<leader>fn",  telescope.grep_notes,       { noremap = true })
 u.remap("n", "<leader>fd",  telescope.find_dotfiles,    { noremap = true })
 u.remap("n", "<leader>fh",  telescope.find_help,        { noremap = true })
 u.remap("n", "<leader>fm",  telescope.find_mappings,    { noremap = true })
@@ -110,17 +104,17 @@ u.remap("n", "<leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = 
 u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 
 -- lsp
-u.remap('n', '<leader>cD', vim.lsp.buf.declaration,                 { silent = true })
-u.remap('n', '<leader>cd', vim.lsp.buf.definition,                  { silent = true })
-u.remap('n', '<leader>cR', vim.lsp.buf.references,                  { silent = true })
-u.remap('n', 'K',          vim.lsp.buf.hover,                       { silent = true })
-u.remap('n', "<leader>cs", vim.diagnostic.open_float,               { silent = true })
-u.remap('n', '<leader>cn', vim.lsp.diagnostic.goto_next,            { silent = true })
-u.remap('n', '<leader>cN', vim.lsp.diagnostic.goto_prev,            { silent = true })
-u.remap('n', '<leader>cd', vim.lsp.diagnostic.get,                  { silent = true })
-u.remap('n', '<leader>cf', vim.lsp.buf.formatting,                  { silent = true })
-u.remap('n', '<leader>cr', vim.lsp.buf.rename,                      { silent = true })
-u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                 { silent = true })
+u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { silent = true })
+u.remap('n', '<leader>cd', vim.lsp.buf.definition,       { silent = true })
+u.remap('n', '<leader>cR', vim.lsp.buf.references,       { silent = true })
+u.remap('n', 'K',          vim.lsp.buf.hover,            { silent = true })
+u.remap('n', "<leader>cs", vim.diagnostic.open_float,    { silent = true })
+u.remap('n', '<leader>cn', vim.lsp.diagnostic.goto_next, { silent = true })
+u.remap('n', '<leader>cN', vim.lsp.diagnostic.goto_prev, { silent = true })
+u.remap('n', '<leader>cd', vim.lsp.diagnostic.get,       { silent = true })
+u.remap('n', '<leader>cf', vim.lsp.buf.formatting,       { silent = true })
+u.remap('n', '<leader>cr', vim.lsp.buf.rename,           { silent = true })
+u.remap('n', '<leader>ca', vim.lsp.buf.code_action,      { silent = true })
 
 -- term
 u.remap("n", "<leader>tt", toggleterm.toggle_test_term, { noremap = true, silent = true })
