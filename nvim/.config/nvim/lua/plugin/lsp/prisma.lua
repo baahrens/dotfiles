@@ -1,10 +1,10 @@
+local lsp = require'plugin/lsp'
+
 require'lspconfig'.prismals.setup {
-  on_attach = function()
-    vim.cmd([[
-      augroup LspFormatting
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-      augroup END
-    ]])
+  on_attach = function(client)
+    client.server_capabilities.document_formatting = true
+    client.server_capabilities.document_range_formatting = true
+
+    lsp.on_attach(client)
   end,
 }

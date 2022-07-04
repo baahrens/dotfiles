@@ -45,4 +45,18 @@ function M.format_range_operator()
   vim.api.nvim_feedkeys('g@', 'n', false)
 end
 
+local format_lsps = { 'null_ls' }
+function M.on_attach (client)
+  if client.server_capabilities.document_formatting then
+    vim.api.nvim_create_augroup('LspFormatting', {})
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = 'LspFormatting',
+      pattern = '*',
+      callback = function()
+        vim.lsp.buf.formatting_seq_sync({}, nil, format_lsps)
+      end
+    })
+  end
+end
+
 return M
