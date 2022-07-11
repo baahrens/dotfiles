@@ -98,7 +98,7 @@ u.remap("n", "<leader>fm",  telescope.find_mappings,    { noremap = true })
 u.remap("n", "<leader>fc",  telescope.find_commands,    { noremap = true })
 u.remap("n", "<leader>fhi", telescope.find_highlights,  { noremap = true })
 u.remap("n", "<leader>fb",  telescope.find_buffers,     { noremap = true })
-u.remap("n", "<leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
+u.remap("n", "<leader>fs",  telescope.fuzzy_find,       { noremap = true })
 u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 

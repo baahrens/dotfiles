@@ -114,7 +114,7 @@ function M.find_buffers()
   }))
 end
 
-function M.current_buffer_fuzzy_find()
+function M.fuzzy_find()
   return require'telescope.builtin'.current_buffer_fuzzy_find(require'telescope.themes'.get_dropdown({
     prompt_title = '~ search ~',
     previewer = false,
