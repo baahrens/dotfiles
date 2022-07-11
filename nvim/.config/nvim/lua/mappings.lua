@@ -103,6 +103,7 @@ u.remap("n", "<leader>fhi", telescope.find_highlights,  { noremap = true })
 u.remap("n", "<leader>fb",  telescope.find_buffers,     { noremap = true })
 u.remap("n", "<leader>fs",  telescope.current_buffer_fuzzy_find,    { noremap = true })
 u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
+u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 
 -- lsp
 u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { silent = true })

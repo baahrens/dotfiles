@@ -128,4 +128,10 @@ function M.git_branches()
   }))
 end
 
+function M.find_diagnostics()
+  return require'telescope.builtin'.diagnostics(require'telescope.themes'.get_ivy({
+    prompt_title = '~ diagnostics ~'
+  }))
+end
+
 return M
