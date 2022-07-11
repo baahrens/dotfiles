@@ -109,17 +109,19 @@ u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { silent = true })
 u.remap('n', '<leader>cd', vim.lsp.buf.definition,       { silent = true })
 u.remap('n', '<leader>cR', vim.lsp.buf.references,       { silent = true })
 u.remap('n', 'K',          vim.lsp.buf.hover,            { silent = true })
-u.remap('n', "<leader>cs", vim.diagnostic.open_float,    { silent = true })
-u.remap('n', '<leader>cn', vim.lsp.diagnostic.goto_next, { silent = true })
-u.remap('n', '<leader>cN', vim.lsp.diagnostic.goto_prev, { silent = true })
-u.remap('n', '<leader>cd', vim.lsp.diagnostic.get,       { silent = true })
-u.remap('n', '<leader>cf', lsp.format,       { silent = true })
+u.remap('n', '<leader>cf', lsp.format,                   { silent = true })
 u.remap('n', '<leader>cr', vim.lsp.buf.rename,           { silent = true })
 u.remap('n', '<leader>ca', vim.lsp.buf.code_action,      { silent = true })
 
+-- diagnostics
+u.remap('n', "<leader>cs", vim.diagnostic.open_float, { silent = true })
+u.remap('n', '<leader>cn', vim.diagnostic.goto_next,  { silent = true })
+u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,  { silent = true })
+u.remap('n', '<leader>cd', vim.diagnostic.get,        { silent = true })
+
 -- term
-u.remap("n", "<leader>tt", toggleterm.toggle_test_term, { noremap = true, silent = true })
-u.remap("n", "<leader>tn", toggleterm.toggle_node_term, { noremap = true, silent = true })
+u.remap("n", "<leader>tt", toggleterm.toggle_test_term,  { noremap = true, silent = true })
+u.remap("n", "<leader>tn", toggleterm.toggle_node_term,  { noremap = true, silent = true })
 u.remap("n", "<leader>th", toggleterm.toggle_cheat_term, { noremap = true, silent = true })
 
 -- hlslens
