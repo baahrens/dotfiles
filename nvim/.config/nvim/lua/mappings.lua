@@ -29,7 +29,7 @@ u.remap('i', 'jk', '<ESC>', {})
 u.remap('t', 'jk', '<ESC>', {})
 
 -- use tab/s-tab to navigate search results while still being able to refine search
-u.remap('c', '<Tab>', "getcmdtype() =~ '[/?]' ? '<C-g>' : '<C-z>'", { expr = true, noremap = true })
+u.remap('c', '<Tab>', "getcmdtype() =~ '[/?]' ? '<C-g>' : '<C-z>'",     { expr = true, noremap = true })
 u.remap('c', '<S-Tab>', "getcmdtype() =~ '[/?]' ? '<C-t>' : '<S-Tab>'", { expr = true, noremap = true })
 
 -- keep visual selection when indenting
@@ -37,22 +37,21 @@ u.remap('v', '<', '<gv', { noremap = true })
 u.remap('v', '>', '>gv', { noremap = true })
 
 -- tmux
-u.remap('n', '<C-h>', ':TmuxNavigateLeft<CR>', { noremap = true, silent = true })
-u.remap('n', '<C-j>', ':TmuxNavigateDown<CR>', { noremap = true, silent = true })
-u.remap('n', '<C-k>', ':TmuxNavigateUp<CR>', { noremap = true, silent = true })
-u.remap('n', '<C-l>', ':TmuxNavigateRight<CR>', { noremap = true, silent = true })
-u.remap('n', '<C-ö>', ':TmuxNavigatePrevious<CR>', { noremap = true, silent = true })
+u.remap('n', '<C-h>', ':TmuxNavigateLeft<CR>',     { noremap = true, silent = true })
+u.remap('n', '<C-j>', ':TmuxNavigateDown<CR>',     { noremap = true, silent = true })
+u.remap('n', '<C-k>', ':TmuxNavigateUp<CR>',       { noremap = true, silent = true })
+u.remap('n', '<C-l>', ':TmuxNavigateRight<CR>',    { noremap = true, silent = true })
 
 -- nvim tree
-u.remap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
-u.remap('n', '<leader>r', ':NvimTreeRefresh<CR>', { noremap = true })
+u.remap('n', '<C-n>', ':NvimTreeToggle<CR>',        { noremap = true })
+u.remap('n', '<leader>r', ':NvimTreeRefresh<CR>',   { noremap = true })
 u.remap('n', '<leader>nf', ':NvimTreeFindFile<CR>', { noremap = true })
 
 -- delete in v mode without loosing current yank
 u.remap('v', '<leader>p', '"_dP', { noremap = true })
 
 -- shoutout
-u.remap('n', '<leader>so', ':so %<CR>', { noremap = true })
+u.remap('n', '<leader>so', ':luafile %<CR>', { noremap = true })
 
 -- Map <leader>o & <leader>O to newline without insert mode
 u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { noremap = true, silent = true })
@@ -60,33 +59,33 @@ u.remap('n', '<leader>O', ':<C-u>call append(line(".")-1, repeat([""], v:count1)
 
 -- quickfix
 u.remap("n", "<leader>qc", ":cclose<CR>", { noremap = true })
-u.remap("n", "<leader>qn", ":cnext<CR>", { noremap = true })
-u.remap("n", "<leader>qo", ":copen<CR>", { noremap = true })
-u.remap("n", "<leader>qp", ":cprev<CR>", { noremap = true })
-u.remap("n", "<leader>qa", ":cc<CR>", { noremap = true })
+u.remap("n", "<leader>qn", ":cnext<CR>",  { noremap = true })
+u.remap("n", "<leader>qo", ":copen<CR>",  { noremap = true })
+u.remap("n", "<leader>qp", ":cprev<CR>",  { noremap = true })
+u.remap("n", "<leader>qa", ":cc<CR>",     { noremap = true })
 
 -- locationlist
 u.remap("n", "<leader>lc", ":lclose<CR>", { noremap = true })
-u.remap("n", "<leader>ln", ":lnext<CR>", { noremap = true })
-u.remap("n", "<leader>lo", ":lopen<CR>", { noremap = true })
-u.remap("n", "<leader>lp", ":lprev<CR>", { noremap = true })
-u.remap("n", "<leader>la", ":ll<CR>", { noremap = true })
+u.remap("n", "<leader>ln", ":lnext<CR>",  { noremap = true })
+u.remap("n", "<leader>lo", ":lopen<CR>",  { noremap = true })
+u.remap("n", "<leader>lp", ":lprev<CR>",  { noremap = true })
+u.remap("n", "<leader>la", ":ll<CR>",     { noremap = true })
 
 -- fugitive
-u.remap('n', '<leader>gs',  ':Git<CR>', {})
-u.remap('n', '<leader>gc',  ':Git commit<CR>', {})
-u.remap('n', '<leader>gpl', ':Git pull<CR>', {})
-u.remap('n', '<leader>gl',  ':Git log<CR>', {})
-u.remap('n', '<leader>gp',  ':Git push<CR>', {})
-u.remap('n', '<leader>gb',  ':Git blame<CR>', {})
+u.remap('n', '<leader>gs',  ':Git<CR>',        { noremap = true })
+u.remap('n', '<leader>gc',  ':Git commit<CR>', { noremap = true })
+u.remap('n', '<leader>gpl', ':Git pull<CR>',   { noremap = true })
+u.remap('n', '<leader>gl',  ':Git log<CR>',    { noremap = true })
+u.remap('n', '<leader>gp',  ':Git push<CR>',   { noremap = true })
+u.remap('n', '<leader>gb',  ':Git blame<CR>',  { noremap = true })
 
 -- Trouble
-u.remap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
+u.remap("n", "<leader>xx", "<cmd>Trouble<cr>",                           { silent = true, noremap = true })
 u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
-u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>", { silent = true, noremap = true })
-u.remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
-u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
-u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>",  { silent = true, noremap = true })
+u.remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",                   { silent = true, noremap = true })
+u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",                  { silent = true, noremap = true })
+u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>",                    { silent = true, noremap = true })
 
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true })
@@ -103,19 +102,19 @@ u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 
 -- lsp
-u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { silent = true })
-u.remap('n', '<leader>cd', vim.lsp.buf.definition,       { silent = true })
-u.remap('n', '<leader>cR', vim.lsp.buf.references,       { silent = true })
-u.remap('n', 'K',          vim.lsp.buf.hover,            { silent = true })
-u.remap('n', '<leader>cf', lsp.format,                   { silent = true })
-u.remap('n', '<leader>cr', vim.lsp.buf.rename,           { silent = true })
-u.remap('n', '<leader>ca', vim.lsp.buf.code_action,      { silent = true })
+u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { noremap = true, silent = true })
+u.remap('n', '<leader>cd', vim.lsp.buf.definition,       { noremap = true, silent = true })
+u.remap('n', '<leader>cR', vim.lsp.buf.references,       { noremap = true, silent = true })
+u.remap('n', 'K',          vim.lsp.buf.hover,            { noremap = true, silent = true })
+u.remap('n', '<leader>cf', lsp.format,                   { noremap = true, silent = true })
+u.remap('n', '<leader>cr', vim.lsp.buf.rename,           { noremap = true, silent = true })
+u.remap('n', '<leader>ca', vim.lsp.buf.code_action,      { noremap = true, silent = true })
 
 -- diagnostics
-u.remap('n', "<leader>cs", vim.diagnostic.open_float, { silent = true })
-u.remap('n', '<leader>cn', vim.diagnostic.goto_next,  { silent = true })
-u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,  { silent = true })
-u.remap('n', '<leader>cd', vim.diagnostic.get,        { silent = true })
+u.remap('n', "<leader>cs", vim.diagnostic.open_float, { noremap = true, silent = true })
+u.remap('n', '<leader>cn', vim.diagnostic.goto_next,  { noremap = true, silent = true })
+u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,  { noremap = true, silent = true })
+u.remap('n', '<leader>cd', vim.diagnostic.get,        { noremap = true, silent = true })
 
 -- term
 u.remap("n", "<leader>tt", toggleterm.toggle_test_term,  { noremap = true, silent = true })
@@ -131,23 +130,23 @@ u.remap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], { silent = tru
 u.remap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 
 -- center search results + center after scrolling
-u.remap('n', 'n', 'nzz', { noremap = true, silent = true })
-u.remap('n', 'N', 'Nzz', { noremap = true, silent = true })
-u.remap('n', '*', '*zz', { noremap = true, silent = true })
-u.remap('n', '#', '#zz', { noremap = true, silent = true })
-u.remap('n', 'g*', 'g*zz', { noremap = true, silent = true })
-u.remap('n', 'G', 'Gzz', { noremap = true, silent = true })
+u.remap('n', 'n', 'nzz',         { noremap = true, silent = true })
+u.remap('n', 'N', 'Nzz',         { noremap = true, silent = true })
+u.remap('n', '*', '*zz',         { noremap = true, silent = true })
+u.remap('n', '#', '#zz',         { noremap = true, silent = true })
+u.remap('n', 'g*', 'g*zz',       { noremap = true, silent = true })
+u.remap('n', 'G', 'Gzz',         { noremap = true, silent = true })
 u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
 -- substitute
 u.remap("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>", { noremap = true })
-u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>", { noremap = true })
-u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>", { noremap = true })
+u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>",    { noremap = true })
+u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = true })
+u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
-u.remap('n', "<C-a>", require('harpoon.mark').add_file, { noremap = true, silent = true })
-u.remap('n', "<C-s>", require('harpoon.ui').toggle_quick_menu, { noremap = true, silent = true })
+u.remap('n', "<C-a>", require('harpoon.mark').add_file,                     { noremap = true, silent = true })
+u.remap('n', "<C-s>", require('harpoon.ui').toggle_quick_menu,              { noremap = true, silent = true })
 u.remap('n', "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
 u.remap('n', "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
 u.remap('n', "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
