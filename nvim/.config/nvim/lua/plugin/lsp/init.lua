@@ -45,19 +45,21 @@ function M.format_range_operator()
   vim.api.nvim_feedkeys('g@', 'n', false)
 end
 
+function M.format()
+  vim.lsp.buf.format {
+    filter = function(lsp_client)
+      return lsp_client.name == "null-ls" or lsp_client.name == "prismals"
+    end
+  }
+end
+
 function M.on_attach (client)
   if client.server_capabilities.document_formatting then
     vim.api.nvim_create_augroup('LspFormatting', {})
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = 'LspFormatting',
       pattern = '*',
-      callback = function()
-        vim.lsp.buf.format {
-          filter = function(lsp_client)
-            return lsp_client.name == "null-ls" or lsp_client.name == "prismals"
-          end
-        }
-      end
+      callback = M.format
     })
   end
 end
