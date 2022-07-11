@@ -54,9 +54,6 @@ u.remap('v', '<leader>p', '"_dP', { noremap = true })
 -- shoutout
 u.remap('n', '<leader>so', ':so %<CR>', { noremap = true })
 
--- search
-u.remap('n', '<C-f>', '/', { noremap = true })
-
 -- Map <leader>o & <leader>O to newline without insert mode
 u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { noremap = true, silent = true })
 u.remap('n', '<leader>O', ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { noremap = true, silent = true })
