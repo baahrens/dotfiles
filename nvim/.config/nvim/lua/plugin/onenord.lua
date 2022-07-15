@@ -30,6 +30,8 @@ local colors = {
     grey19 = "#020203",
 }
 
+local none = "NONE"
+
 require('onenord').setup({
   borders = true,
   fade_nc = true,
@@ -38,8 +40,8 @@ require('onenord').setup({
   },
   styles = {
     comments = "italic",
-    strings = "NONE",
-    keywords = "NONE",
+    strings = none,
+    keywords = none,
     variables = "bold",
     diagnostics = "underline",
   },
@@ -49,12 +51,16 @@ require('onenord').setup({
     GitSignsDelete = { fg = colors.red },
 
     NvimTreeFolderIcon = { fg = colors.grey9 },
+    NvimTreeOpenedFolderName = { style = none },
     NvimTreeIndentMarker = { fg = colors.grey12 },
+    NvimTreeGitNew = { fg = colors.yellow },
+    NvimTreeGitDirty = { fg = colors.pink },
+    NvimTreeSpecialFile = { fg = colors.fg, style = "bold" },
 
-    NormalFloat = { bg = "NONE" },
-    FloatBorder = { bg = "NONE", fg = colors.grey9 },
+    NormalFloat = { bg = none },
+    FloatBorder = { bg = none, fg = colors.grey9 },
 
-    TelescopeNormal = { bg = "NONE" },
+    TelescopeNormal = { bg = none },
 
     JsxExpressionBlock = { fg = colors.yellow },
 

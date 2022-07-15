@@ -1,31 +1,12 @@
 local nvim_tree = require'nvim-tree'
 
-vim.g.nvim_tree_icons = {
-  symlink = "",
-  git = {
-    unstaged = "✗",
-    staged = "✓",
-    unmerged = "",
-    renamed = "➜",
-    untracked = "★",
-    deleted = "",
-    ignored = "◌"
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "", -- 
-    empty_open = "",
-    symlink = "",
-    symlink_open = ""
-  }
-}
-
 nvim_tree.setup {
-  auto_close = true,
   update_cwd = true,
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    }
+  },
   git = {
     enable = true,
     ignore = true,
@@ -33,16 +14,13 @@ nvim_tree.setup {
   },
   diagnostics = {
     enable = true,
+    show_on_dirs = true,
     icons = {
       hint = "",
       info = "",
       warning = "",
       error = "",
     }
-  },
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
   },
   view = {
     width = 50,
@@ -54,6 +32,44 @@ nvim_tree.setup {
         { key = "x", action = "close_node" }
       }
     }
+  },
+  renderer = {
+    special_files = { "package.json", "Cargo.toml", "index.js", "index.ts", "init.lua", "main.rs", "index.tsx", "index.jsx" },
+    icons = {
+      webdev_colors = false ,
+      git_placement = "after",
+      padding = " ",
+      symlink_arrow = " ➛ ",
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "✗",
+          staged = "✓",
+          unmerged = "",
+          renamed = "➜",
+          untracked = "★",
+          deleted = "",
+          ignored = "◌"
+        },
+        folder = {
+          arrow_open = "",
+          arrow_closed = "",
+          default = "",
+          open = "",
+          empty = "", -- 
+          empty_open = "",
+          symlink = "",
+          symlink_open = ""
+        }
+      },
+    },
   }
 }
 
