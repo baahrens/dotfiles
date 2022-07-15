@@ -51,13 +51,10 @@ require('onenord').setup({
     NvimTreeFolderIcon = { fg = colors.grey9 },
     NvimTreeIndentMarker = { fg = colors.grey12 },
 
-    NormalFloat = { bg = colors.bg },
-    FloatBorder = { bg = colors.grey14, fg = colors.grey14 },
+    NormalFloat = { bg = "NONE" },
+    FloatBorder = { bg = "NONE", fg = colors.grey9 },
 
     TelescopeNormal = { bg = "NONE" },
-
-    LspFloatWinNormal = { fg = colors.fg, bg = colors.grey14 },
-    LspFloatWinBorder = { fg = colors.grey14 },
 
     JsxExpressionBlock = { fg = colors.yellow },
 

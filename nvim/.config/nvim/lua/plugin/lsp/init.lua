@@ -3,20 +3,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
     virtual_text = {
+      source = true,
       prefix = "",
-      spacing = 5
+      spacing = 5,
     },
-    signs = true,
-    underline = true,
-    update_in_insert = false
+    update_in_insert = false,
+    severity_sort = true,
   }
 )
 
-vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = 'rounded',
-  silent = true,
-  focusable = false, -- Sometimes gets set to true if not set explicitly to false for some reason
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 local M = {}
 
@@ -47,6 +44,8 @@ function M.format()
 end
 
 function M.on_attach (client)
+  client.config.flags.debounce_text_changes = 200
+
   if client.server_capabilities.document_formatting then
     vim.api.nvim_create_augroup('LspFormatting', {})
     vim.api.nvim_create_autocmd('BufWritePre', {

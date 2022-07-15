@@ -5,7 +5,4 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.cssls.setup{
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 500
-  }
 }

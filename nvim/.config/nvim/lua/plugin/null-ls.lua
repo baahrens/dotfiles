@@ -26,6 +26,9 @@ require("null-ls").setup({
     actions.eslint_d,
     actions.gitsigns
   },
+  flags = {
+    debounce_text_changes = 200
+  },
 
   on_attach = function(client)
     client.server_capabilities.document_formatting = true
