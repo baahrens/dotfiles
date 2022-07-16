@@ -3,6 +3,7 @@ local sorters = require 'telescope.sorters'
 
 require'telescope'.setup({
   defaults = {
+    -- color_devicons = false,
     file_ignore_patterns = {
       '%.jpg',
       '%.jpeg',
@@ -41,7 +42,7 @@ require("telescope").load_extension("zf-native")
 M = {}
 
 function M.find_files()
-  return require'telescope.builtin'.find_files(require('telescope.themes').get_ivy({
+  return require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({
     path_display = {
       shorten = 5
     },
@@ -51,8 +52,8 @@ function M.find_files()
       results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
       preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
     },
-    width = 2,
     previewer = false,
+    width = 1,
     prompt_title = false
   }))
 end
@@ -86,19 +87,19 @@ function M.find_help()
 end
 
 function M.find_mappings()
-  return require'telescope.builtin'.keymaps(require'telescope.themes'.get_ivy({
+  return require'telescope.builtin'.keymaps(require'telescope.themes'.get_dropdown({
     prompt_title = '~ mappings ~'
   }))
 end
 
 function M.find_commands()
-  return require'telescope.builtin'.commands(require'telescope.themes'.get_ivy({
+  return require'telescope.builtin'.commands(require'telescope.themes'.get_dropdown({
     prompt_title = '~ commands ~'
   }))
 end
 
 function M.find_highlights()
-  return require'telescope.builtin'.highlights(require'telescope.themes'.get_ivy({
+  return require'telescope.builtin'.highlights(require'telescope.themes'.get_dropdown({
     prompt_title = '~ highlights ~',
     previewer = false
   }))
@@ -122,7 +123,7 @@ function M.fuzzy_find()
 end
 
 function M.git_branches()
-  return require'telescope.builtin'.git_branches(require'telescope.themes'.get_ivy({
+  return require'telescope.builtin'.git_branches(require'telescope.themes'.get_dropdown({
     prompt_title = '~ branches ~',
     sort_mru = true,
   }))

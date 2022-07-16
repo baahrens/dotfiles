@@ -57,10 +57,19 @@ require('onenord').setup({
     NvimTreeGitDirty = { fg = colors.pink },
     NvimTreeSpecialFile = { fg = colors.fg, style = "bold" },
 
+    StatusLine = { bg = none },
+    WinBar = { bg = none },
+    WinBarNC = { bg = none },
+    CursorLine = { bg = none, style = "bold" },
+
     NormalFloat = { bg = none },
     FloatBorder = { bg = none, fg = colors.grey9 },
 
     TelescopeNormal = { bg = none },
+    TelescopeBorder = { fg = colors.grey9, bg = none },
+    TelescopeResultsBorder = { fg = colors.grey9, bg = none },
+    TelescopePreviewBorder = { fg = colors.grey9, bg = none },
+    TelescopePromptBorder = { fg = colors.grey9, bg = none },
 
     JsxExpressionBlock = { fg = colors.yellow },
 
