@@ -34,7 +34,6 @@ local none = "NONE"
 
 require('onenord').setup({
   borders = true,
-  fade_nc = true,
   disable = {
     background = true
   },
@@ -42,7 +41,7 @@ require('onenord').setup({
     comments = "italic",
     strings = none,
     keywords = none,
-    variables = "bold",
+    variables = none,
     diagnostics = "underline",
   },
   custom_highlights = {
@@ -60,10 +59,17 @@ require('onenord').setup({
     StatusLine = { bg = none },
     WinBar = { bg = none },
     WinBarNC = { bg = none },
+
     CursorLine = { bg = none, style = "bold" },
 
     NormalFloat = { bg = none },
     FloatBorder = { bg = none, fg = colors.grey9 },
+
+    CmpDocBorder = { fg = colors.grey9, bg = none },
+    CmpBorder = { bg = none, fg = colors.grey9 },
+
+    PmenuThumb = { bg = colors.grey9  },
+    PmenuSel = { bg = "#343b47" },
 
     TelescopeNormal = { bg = none },
     TelescopeBorder = { fg = colors.grey9, bg = none },

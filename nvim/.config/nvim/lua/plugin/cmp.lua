@@ -28,8 +28,28 @@ local kind_icons = {
   Operator = "",
   TypeParameter = ""
 }
+local function border(hl_name)
+   return {
+      { "╭", hl_name },
+      { "─", hl_name },
+      { "╮", hl_name },
+      { "│", hl_name },
+      { "╯", hl_name },
+      { "─", hl_name },
+      { "╰", hl_name },
+      { "│", hl_name },
+   }
+end
 
 cmp.setup({
+   window = {
+      completion = {
+         border = border "CmpBorder",
+      },
+      documentation = {
+         border = border "CmpDocBorder",
+      },
+   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(_, vim_item)
@@ -58,8 +78,6 @@ cmp.setup({
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      -- elseif has_words_before() then
-      --   cmp.complete()
       else
         fallback()
       end
@@ -75,7 +93,7 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp',                max_item_count = 10 },
+    { name = 'nvim_lsp'                                     },
     { name = "nvim_lsp_signature_help", max_item_count = 10 },
     { name = 'luasnip',                 max_item_count = 10 },
     { name = 'buffer',                  max_item_count = 10 },
