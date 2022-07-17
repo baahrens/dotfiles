@@ -1,8 +1,8 @@
 local lspconfig = require'lspconfig'
+local lsp = require('plugin/lsp')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.cssls.setup{
-  capabilities = capabilities,
+  capabilities = lsp.capabilities,
 }
