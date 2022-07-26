@@ -152,7 +152,8 @@ return require('packer').startup({ function()
   })
 
    use {
-    'stevearc/dressing.nvim'
+    'stevearc/dressing.nvim',
+    config = function() require'plugin/dressing' end
   }
 
   use {
@@ -168,7 +169,6 @@ return require('packer').startup({ function()
   use {
     'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
-    after = "nvim-cmp",
     config = function() require'plugin/luasnip' end,
     requires = {
       'rafamadriz/friendly-snippets',

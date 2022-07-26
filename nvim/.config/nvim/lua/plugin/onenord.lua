@@ -64,6 +64,7 @@ require('onenord').setup({
 
     NormalFloat = { bg = none },
     FloatBorder = { bg = none, fg = colors.grey9 },
+    FloatTitle = { bg = none, fg = colors.fg },
 
     CmpDocBorder = { fg = colors.grey9, bg = none },
     CmpBorder = { bg = none, fg = colors.grey9 },
