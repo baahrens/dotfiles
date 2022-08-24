@@ -51,7 +51,7 @@ require('onenord').setup({
 
     NvimTreeFolderIcon = { fg = colors.grey9 },
     NvimTreeOpenedFolderName = { style = none },
-    NvimTreeIndentMarker = { fg = colors.grey12 },
+    NvimTreeIndentMarker = { fg = colors.cyan },
     NvimTreeGitNew = { fg = colors.yellow },
     NvimTreeGitDirty = { fg = colors.pink },
     NvimTreeSpecialFile = { fg = colors.fg, style = "bold" },

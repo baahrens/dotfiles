@@ -34,6 +34,15 @@ nvim_tree.setup {
     }
   },
   renderer = {
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└",
+        edge = "│",
+        item = "│",
+        none = " ",
+      },
+    },
     special_files = { "package.json", "Cargo.toml", "index.js", "index.ts", "init.lua", "main.rs", "index.tsx", "index.jsx" },
     icons = {
       webdev_colors = false ,
