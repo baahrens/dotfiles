@@ -8,10 +8,10 @@ tsConfigs.setup {
   autotag = {
     enable = true,
     filetypes = {
-      "javascriptreact",
       "javascript",
+      "javascriptreact", "jsx",
       "typescript",
-      "typescriptreact",
+      "typescriptreact", "tsx",
       "html",
       "xml"
     }
