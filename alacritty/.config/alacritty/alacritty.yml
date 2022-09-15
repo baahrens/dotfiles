@@ -50,8 +50,12 @@ selection:
 
 key_bindings:
   - { key: J, mods: Command, chars: " jj" }
+  - { key: S, mods: Command, chars: " ss" }
   - { key: K, mods: Command, chars: " kk" }
   - { key: P, mods: Command, chars: " ff" }
+  - { key: F, mods: Command, chars: " f;" }
+  - { key: LBracket, mods: Control, chars: " fr" }
+  - { key: RBracket, mods: Control, chars: " fw" }
   - { key: P, mods: Command|Shift, chars: " fg" }
   - { key: Return, mods: Command, chars: " ww" }
 
