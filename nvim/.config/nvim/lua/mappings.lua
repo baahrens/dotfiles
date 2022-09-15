@@ -103,6 +103,7 @@ u.remap("n", "<leader>fb",  telescope.find_buffers,     { noremap = true })
 u.remap("n", "<leader>fs",  telescope.fuzzy_find,       { noremap = true })
 u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
+u.remap("n", "<leader>fr",  telescope.resume,           { noremap = true })
 
 -- lsp
 u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { noremap = true, silent = true })
@@ -148,5 +149,5 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>",    { noremap = t
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = true })
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
-u.remap("n", "<leader>fr", ":CybuPrev<CR>")
-u.remap("n", "<leader>fw", ":CybuNext<CR>")
+u.remap("n", "<leader>zx", ":CybuPrev<CR>") -- Alacritty: Control + [
+u.remap("n", "<leader>zz", ":CybuNext<CR>") -- Alacritty: Control + ]

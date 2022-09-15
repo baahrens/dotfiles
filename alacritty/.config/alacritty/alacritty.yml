@@ -54,8 +54,8 @@ key_bindings:
   - { key: K, mods: Command, chars: " kk" }
   - { key: P, mods: Command, chars: " ff" }
   - { key: F, mods: Command, chars: " f;" }
-  - { key: LBracket, mods: Control, chars: " fr" }
-  - { key: RBracket, mods: Control, chars: " fw" }
+  - { key: LBracket, mods: Control, chars: " zx" }
+  - { key: RBracket, mods: Control, chars: " zz" }
   - { key: P, mods: Command|Shift, chars: " fg" }
   - { key: Return, mods: Command, chars: " ww" }
 
