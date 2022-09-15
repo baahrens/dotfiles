@@ -327,31 +327,31 @@ local StatusLines = {
       }
     end
   end,
-  init = utils.pick_child_on_condition,
+  fallthrough = false,
 
   SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
 local WinBars = {
-    init = utils.pick_child_on_condition,
-    {   -- Hide the winbar for special buffers
-        condition = function()
-            return conditions.buffer_matches({
-                buftype = { "nofile", "prompt", "help", "quickfix" },
-                filetype = { "^git.*", "fugitive" },
-            })
-        end,
-        init = function()
-            vim.opt_local.winbar = nil
-        end
-    },
-    {   -- An inactive winbar for regular files
-        condition = function()
-            return not conditions.is_active()
-        end,
-        align, file_name_block, space
-    },
+  fallthrough = false,
+  {   -- Hide the winbar for special buffers
+      condition = function()
+          return conditions.buffer_matches({
+              buftype = { "nofile", "prompt", "help", "quickfix" },
+              filetype = { "^git.*", "fugitive" },
+          })
+      end,
+      init = function()
+          vim.opt_local.winbar = nil
+      end
+  },
+  {   -- An inactive winbar for regular files
+      condition = function()
+          return not conditions.is_active()
+      end,
+      align, file_name_block, space
+  },
   {
-  { provider = "◉", hl = { fg = colors.red }  }, align, file_name_block, space
+    { provider = "◉", hl = { fg = colors.red }  }, align, file_name_block, space
   }
 }
 
