@@ -82,7 +82,7 @@ u.remap('n', '<leader>gl',  ':Git log<CR>',    { noremap = true })
 u.remap('n', '<leader>gp',  ':Git push<CR>',   { noremap = true })
 u.remap('n', '<leader>gb',  ':Git blame<CR>',  { noremap = true })
 
--- Trouble
+-- trouble
 u.remap("n", "<leader>xx", "<cmd>Trouble<cr>",                           { silent = true, noremap = true })
 u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
 u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>",  { silent = true, noremap = true })
@@ -125,23 +125,17 @@ u.remap("n", "<leader>tt", toggleterm.toggle_test_term,  { noremap = true, silen
 u.remap("n", "<leader>tn", toggleterm.toggle_node_term,  { noremap = true, silent = true })
 u.remap("n", "<leader>th", toggleterm.toggle_cheat_term, { noremap = true, silent = true })
 
--- hlslens
-u.remap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-u.remap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-u.remap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-u.remap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-u.remap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-u.remap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
-
--- center search results + center after scrolling
-u.remap('n', 'n', 'nzz',         { noremap = true, silent = true })
-u.remap('n', 'N', 'Nzz',         { noremap = true, silent = true })
-u.remap('n', '*', '*zz',         { noremap = true, silent = true })
-u.remap('n', '#', '#zz',         { noremap = true, silent = true })
-u.remap('n', 'g*', 'g*zz',       { noremap = true, silent = true })
-u.remap('n', 'G', 'Gzz',         { noremap = true, silent = true })
+-- center after scrolling
 u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+
+-- hlslens (+ center search results)
+u.remap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'Nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', '*', [[*zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', '#', [[#zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'g*', [[g*zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap('n', 'g#', [[g#zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 
 -- substitute
 u.remap("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
@@ -149,5 +143,6 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>",    { noremap = t
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = true })
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
+-- cybu
 u.remap("n", "<leader>zx", ":CybuPrev<CR>") -- Alacritty: Control + [
 u.remap("n", "<leader>zz", ":CybuNext<CR>") -- Alacritty: Control + ]

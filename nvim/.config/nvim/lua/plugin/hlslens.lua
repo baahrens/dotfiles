@@ -1,3 +1,5 @@
 require('hlslens').setup({
-  nearest_only = true
+  calm_down = true,
+  nearest_only = true,
+  float_shadow_blend = 100
 })
