@@ -25,7 +25,7 @@ return require('packer').startup({ function()
     }
   }
 
--- =================== colors ===================
+-- =================== UI ===================
   use { 'marko-cerovac/material.nvim',        disable = true }
 
   use { 'savq/melange',                       disable = true }
@@ -48,6 +48,23 @@ return require('packer').startup({ function()
     config = function() require'plugin/colorizer' end
   }
 
+  use {
+    'stevearc/dressing.nvim',
+    config = function() require'plugin/dressing' end
+  }
+
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function() require'plugin/indent' end
+  }
+
+  use {
+    "levouh/tint.nvim",
+    config = function()
+      require'plugin/tint'
+    end
+  }
+
 -- =================== treesitter ===================
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -62,7 +79,8 @@ return require('packer').startup({ function()
 
   use {
     'nvim-treesitter/playground',
-    after = "nvim-treesitter"
+    after = "nvim-treesitter",
+    disable = true
   }
 
   use {
@@ -132,16 +150,6 @@ return require('packer').startup({ function()
     config = function() require'plugin/substitute' end
   })
 
-   use {
-    'stevearc/dressing.nvim',
-    config = function() require'plugin/dressing' end
-  }
-
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function() require'plugin/indent' end
-  }
-
   use {
     'andymass/vim-matchup'
   }
@@ -156,13 +164,6 @@ return require('packer').startup({ function()
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end },
       "nvim-lua/plenary.nvim"
     }
-  }
-
-  use {
-    "levouh/tint.nvim",
-    config = function()
-      require'plugin/tint'
-    end
   }
 
   -- =================== lsp ===================
