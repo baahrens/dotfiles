@@ -92,7 +92,6 @@ return require('packer').startup({ function()
 
   use {
     'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
     config = function() require'plugin/nvim_tree' end,
     requires = {
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
