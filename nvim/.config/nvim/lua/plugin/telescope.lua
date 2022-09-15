@@ -135,4 +135,8 @@ function M.find_diagnostics()
   }))
 end
 
+function M.resume()
+  return require'telescope.builtin'.resume()
+end
+
 return M
