@@ -15,10 +15,7 @@ return require('packer').startup({ function()
   use 'lewis6991/impatient.nvim'
 
 -- =================== git ===================
-  use {
-    'tpope/vim-fugitive',
-    cmd = 'Git'
-  }
+  use { 'tpope/vim-fugitive' }
 
   use {
     'lewis6991/gitsigns.nvim',
