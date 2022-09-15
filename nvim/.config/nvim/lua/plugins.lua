@@ -119,10 +119,6 @@ return require('packer').startup({ function()
   }
 
   use {
-    'ThePrimeagen/harpoon'
-  }
-
-  use {
     'folke/trouble.nvim',
     config = function() require'plugin/trouble' end
   }
@@ -154,20 +150,19 @@ return require('packer').startup({ function()
   use {
     "ghillb/cybu.nvim",
     branch = "main",
-    requires = { "kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim"},
     config = function()
-      require("cybu").setup()
-    end
+      require'plugin/cybu'
+    end,
+    requires = {
+      { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end },
+      "nvim-lua/plenary.nvim"
+    }
   }
 
   use {
     "levouh/tint.nvim",
     config = function()
-      require("tint").setup({
-        tint = -20,
-        saturation = 0.7,
-        highlight_ignore_patterns = { "WinSeparator", "Status.*", "EndOfBuffer", "NonText" }
-      })
+      require'plugin/tint'
     end
   }
 

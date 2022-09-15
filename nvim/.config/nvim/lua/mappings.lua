@@ -148,14 +148,5 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>",    { noremap = t
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = true })
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
--- u.remap('n', "<C-a>", require('harpoon.mark').add_file,                     { noremap = true, silent = true })
--- u.remap('n', "<C-s>", require('harpoon.ui').toggle_quick_menu,              { noremap = true, silent = true })
--- u.remap('n', "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
--- u.remap('n', "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
--- u.remap('n', "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
--- u.remap('n', "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
--- u.remap('n', "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
--- u.remap('n', "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<CR>", { noremap = true, silent = true })
-
 u.remap("n", "<leader>fr", ":CybuPrev<CR>")
 u.remap("n", "<leader>fw", ":CybuNext<CR>")
