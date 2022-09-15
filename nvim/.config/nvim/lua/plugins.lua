@@ -13,7 +13,6 @@ local packer_config = {
 return require('packer').startup({ function()
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
-  use 'nathom/filetype.nvim'
 
 -- =================== git ===================
   use {
@@ -23,7 +22,6 @@ return require('packer').startup({ function()
 
   use {
     'lewis6991/gitsigns.nvim',
-    event = { 'BufRead','BufNewFile' },
     config = function() require'plugin/gitsigns' end,
     requires = {
       { 'nvim-lua/plenary.nvim' }
@@ -69,7 +67,6 @@ return require('packer').startup({ function()
 
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    event = "CursorHold",
     after = "nvim-treesitter",
     disable = true
   }
@@ -164,6 +161,27 @@ return require('packer').startup({ function()
   use {
     'andymass/vim-matchup'
   }
+
+  use {
+    "ghillb/cybu.nvim",
+    branch = "main",
+    requires = { "kyazdani42/nvim-web-devicons", "nvim-lua/plenary.nvim"},
+    config = function()
+      require("cybu").setup()
+    end
+  }
+
+  use {
+    "levouh/tint.nvim",
+    config = function()
+      require("tint").setup({
+        tint = -20,
+        saturation = 0.7,
+        highlight_ignore_patterns = { "WinSeparator", "Status.*", "EndOfBuffer", "NonText" }
+      })
+    end
+  }
+
   -- =================== lsp ===================
 
   use {
