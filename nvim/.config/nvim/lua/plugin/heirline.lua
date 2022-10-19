@@ -121,7 +121,7 @@ local file_name = {
   provider = function(self)
     local filename = vim.fn.fnamemodify(self.filename, ":.")
     if filename == "" then
-      return "[No Name]"
+      return ""
     end
     if not conditions.width_percent_below(#filename, 0.25) then
       filename = vim.fn.pathshorten(filename)
@@ -348,10 +348,10 @@ local WinBars = {
       condition = function()
           return not conditions.is_active()
       end,
-      align, file_name_block, space
+      space, space, file_name_block
   },
   {
-    { provider = "◉", hl = { fg = colors.red }  }, align, file_name_block, space
+    space, space, file_name_block,
   }
 }
 
