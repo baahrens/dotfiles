@@ -1,7 +1,6 @@
 local g = vim.g
 local api = vim.api
 local telescope = require'plugin/telescope'
-local toggleterm = require'plugin/toggleterm'
 local lsp = require'plugin/lsp'
 local u = require'util'
 
@@ -106,8 +105,7 @@ u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 u.remap("n", "<leader>fr",  telescope.resume,           { noremap = true })
 
 -- lsp
-u.remap('n', '<leader>cD', vim.lsp.buf.declaration,      { noremap = true, silent = true })
-u.remap('n', '<leader>cd', vim.lsp.buf.definition,       { noremap = true, silent = true })
+u.remap('n', 'gd',         vim.lsp.buf.definition,       { noremap = true, silent = true })
 u.remap('n', '<leader>cR', vim.lsp.buf.references,       { noremap = true, silent = true })
 u.remap('n', 'K',          vim.lsp.buf.hover,            { noremap = true, silent = true })
 u.remap('n', '<leader>cf', lsp.format,                   { noremap = true, silent = true })
@@ -119,11 +117,6 @@ u.remap('n', "<leader>cs", vim.diagnostic.open_float, { noremap = true, silent =
 u.remap('n', '<leader>cn', vim.diagnostic.goto_next,  { noremap = true, silent = true })
 u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,  { noremap = true, silent = true })
 u.remap('n', '<leader>cd', vim.diagnostic.get,        { noremap = true, silent = true })
-
--- term
-u.remap("n", "<leader>tt", toggleterm.toggle_test_term,  { noremap = true, silent = true })
-u.remap("n", "<leader>tn", toggleterm.toggle_node_term,  { noremap = true, silent = true })
-u.remap("n", "<leader>th", toggleterm.toggle_cheat_term, { noremap = true, silent = true })
 
 -- center after scrolling
 u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
@@ -144,5 +137,5 @@ u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = t
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
 -- cybu
-u.remap("n", "<leader>zx", ":CybuPrev<CR>") -- Alacritty: Control + [
-u.remap("n", "<leader>zz", ":CybuNext<CR>") -- Alacritty: Control + ]
+u.remap("n", "<leader>zx", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
+u.remap("n", "<leader>zz", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]

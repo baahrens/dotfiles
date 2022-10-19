@@ -9,6 +9,10 @@ require("cybu").setup({
         switch = "immediate",
         view = "paging"
       },
+      last_used = {
+        switch = "immediate",
+        view = "paging"
+      },
     }
   },
   style = {

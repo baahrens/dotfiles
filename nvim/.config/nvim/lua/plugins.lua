@@ -44,11 +44,6 @@ return require('packer').startup({ function()
   }
 
   use {
-    'NvChad/nvim-colorizer.lua',
-    config = function() require'plugin/colorizer' end
-  }
-
-  use {
     'stevearc/dressing.nvim',
     config = function() require'plugin/dressing' end
   }
@@ -115,10 +110,6 @@ return require('packer').startup({ function()
       { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
     }
   }
-  use {
-    "akinsho/toggleterm.nvim",
-    config = function() require'plugin/toggleterm' end
-  }
 
   use {
     'rebelot/heirline.nvim',
@@ -170,7 +161,6 @@ return require('packer').startup({ function()
 
   use {
     'L3MON4D3/LuaSnip',
-    event = 'InsertEnter',
     config = function() require'plugin/luasnip' end,
     requires = {
       'rafamadriz/friendly-snippets',
