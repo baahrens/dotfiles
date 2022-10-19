@@ -20,6 +20,7 @@
             "description": "Remove CMD + h binding",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -28,12 +29,9 @@
                 ],
                 "from": {
                   "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
-                "to": [],
-                "type": "basic"
+                "to": []
               }
             ]
           },
@@ -41,6 +39,7 @@
             "description": "CMD-w to close tmux pane",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -49,17 +48,9 @@
                 ],
                 "from": {
                   "key_code": "w",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
-                "to": [
-                  {
-                    "key_code": "d",
-                    "modifiers": ["control"]
-                  }
-                ],
-                "type": "basic"
+                "to": [{ "key_code": "d", "modifiers": ["control"] }]
               }
             ]
           },
@@ -67,6 +58,7 @@
             "description": "Right-Command + l for tmux split right",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -75,20 +67,12 @@
                 ],
                 "from": {
                   "key_code": "l",
-                  "modifiers": {
-                    "mandatory": ["right_command"]
-                  }
+                  "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "l"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "l" }
+                ]
               }
             ]
           },
@@ -96,6 +80,7 @@
             "description": "Right-Command + j for tmux split below",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -104,20 +89,12 @@
                 ],
                 "from": {
                   "key_code": "j",
-                  "modifiers": {
-                    "mandatory": ["right_command"]
-                  }
+                  "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "j"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "j" }
+                ]
               }
             ]
           },
@@ -125,6 +102,7 @@
             "description": "Right-Command + g for dev setup",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -133,20 +111,12 @@
                 ],
                 "from": {
                   "key_code": "g",
-                  "modifiers": {
-                    "mandatory": ["right_command"]
-                  }
+                  "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "g"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g" }
+                ]
               }
             ]
           },
@@ -154,6 +124,7 @@
             "description": "CMD-t to create new tmux tab",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -162,20 +133,12 @@
                 ],
                 "from": {
                   "key_code": "t",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "c"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "c" }
+                ]
               }
             ]
           },
@@ -183,6 +146,7 @@
             "description": "CMD-1 for first window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -191,20 +155,12 @@
                 ],
                 "from": {
                   "key_code": "1",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "1"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "1" }
+                ]
               }
             ]
           },
@@ -212,6 +168,7 @@
             "description": "CMD+2 for second window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -220,20 +177,12 @@
                 ],
                 "from": {
                   "key_code": "2",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "2"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "2" }
+                ]
               }
             ]
           },
@@ -241,6 +190,7 @@
             "description": "CMD+3 for third window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -249,20 +199,12 @@
                 ],
                 "from": {
                   "key_code": "3",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "3"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "3" }
+                ]
               }
             ]
           },
@@ -270,6 +212,7 @@
             "description": "CMD+4 for fourth window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -278,20 +221,12 @@
                 ],
                 "from": {
                   "key_code": "4",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "4"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "4" }
+                ]
               }
             ]
           },
@@ -299,6 +234,7 @@
             "description": "CMD+5 for fifth window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -307,20 +243,12 @@
                 ],
                 "from": {
                   "key_code": "5",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "5"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "5" }
+                ]
               }
             ]
           },
@@ -328,6 +256,7 @@
             "description": "CMD+6 for sixth window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -336,20 +265,12 @@
                 ],
                 "from": {
                   "key_code": "6",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "6"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "6" }
+                ]
               }
             ]
           },
@@ -357,6 +278,7 @@
             "description": "CMD+7 for seventh window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -365,20 +287,12 @@
                 ],
                 "from": {
                   "key_code": "7",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "7"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "7" }
+                ]
               }
             ]
           },
@@ -386,6 +300,7 @@
             "description": "CMD+8 for eighth window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -394,20 +309,12 @@
                 ],
                 "from": {
                   "key_code": "8",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "8"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "8" }
+                ]
               }
             ]
           },
@@ -415,6 +322,7 @@
             "description": "CMD+9 for ninth window in tmux session",
             "manipulators": [
               {
+                "type": "basic",
                 "conditions": [
                   {
                     "bundle_identifiers": ["org.alacritty"],
@@ -423,20 +331,12 @@
                 ],
                 "from": {
                   "key_code": "9",
-                  "modifiers": {
-                    "mandatory": ["command"]
-                  }
+                  "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["control"]
-                  },
-                  {
-                    "key_code": "9"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "9" }
+                ]
               }
             ]
           },
@@ -444,6 +344,7 @@
             "description": "Change option + a/o/u to ä/ö/ü",
             "manipulators": [
               {
+                "type": "basic",
                 "from": {
                   "key_code": "a",
                   "modifiers": {
@@ -452,42 +353,25 @@
                   }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "a"
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "a" },
+                  { "key_code": "vk_none" }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "a",
-                  "modifiers": {
-                    "mandatory": ["option", "shift"]
-                  }
+                  "modifiers": { "mandatory": ["option", "shift"] }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "a",
-                    "modifiers": ["left_shift"]
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "a", "modifiers": ["left_shift"] },
+                  { "key_code": "vk_none" }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "o",
                   "modifiers": {
@@ -496,42 +380,25 @@
                   }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "o"
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "o" },
+                  { "key_code": "vk_none" }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "o",
-                  "modifiers": {
-                    "mandatory": ["option", "shift"]
-                  }
+                  "modifiers": { "mandatory": ["option", "shift"] }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "o",
-                    "modifiers": ["left_shift"]
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "o", "modifiers": ["left_shift"] },
+                  { "key_code": "vk_none" }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "u",
                   "modifiers": {
@@ -540,40 +407,22 @@
                   }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "u"
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "u" },
+                  { "key_code": "vk_none" }
+                ]
               },
               {
+                "type": "basic",
                 "from": {
                   "key_code": "u",
-                  "modifiers": {
-                    "mandatory": ["option", "shift"]
-                  }
+                  "modifiers": { "mandatory": ["option", "shift"] }
                 },
                 "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_option"]
-                  },
-                  {
-                    "key_code": "u",
-                    "modifiers": ["left_shift"]
-                  },
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "type": "basic"
+                  { "key_code": "u", "modifiers": ["left_option"] },
+                  { "key_code": "u", "modifiers": ["left_shift"] },
+                  { "key_code": "vk_none" }
+                ]
               }
             ]
           }
