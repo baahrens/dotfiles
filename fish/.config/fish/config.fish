@@ -26,6 +26,7 @@ abbr -a tl tmux list-sessions
 abbr -a tk tmux kill-server
 
 abbr -a cl clear
+abbr -a asd clear
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
