@@ -40,9 +40,9 @@ for type, icon in pairs(signs) do
 end
 
 local format_clients = {
-    "null-ls",
-    "prismals",
-    "rust_analyzer"
+  "null-ls",
+  "prismals",
+  "rust_analyzer"
 }
 
 function M.format()

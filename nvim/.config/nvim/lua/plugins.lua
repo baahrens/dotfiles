@@ -122,8 +122,13 @@ return require('packer').startup({ function()
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
-      'natecraddock/telescope-zf-native.nvim'
+      'nvim-telescope/telescope-fzf-native.nvim',
     }
+  }
+
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
 
   use {
