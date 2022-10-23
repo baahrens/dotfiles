@@ -55,6 +55,32 @@
             ]
           },
           {
+            "description": "right command single to cmd+f",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_command",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "f",
+                    "modifiers": ["command"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Right-Command + l for tmux split right",
             "manipulators": [
               {
