@@ -38,6 +38,12 @@ u.remap('t', 'jk', '<ESC>', {})
 u.remap('v', '<', '<gv', { noremap = true })
 u.remap('v', '>', '>gv', { noremap = true })
 
+-- move lines in visual mode
+u.remap('n', '<leader>z]', '<CMD>move .+1<CR>',   { silent = true }) -- Alacritty: Option + j
+u.remap('n', '<leader>z[', '<CMD>move .-2<CR>',   { silent = true }) -- Alacritty: Option + k
+u.remap('x', '<leader>z]', ":move '>+1<CR>gv=gv", { silent = true }) -- Alacritty: Option + j
+u.remap('x', '<leader>z[', ":move '<-2<CR>gv=gv", { silent = true }) -- Alacritty: Option + k
+
 -- tmux
 u.remap('n', '<C-h>', ':TmuxNavigateLeft<CR>',     { noremap = true, silent = true })
 u.remap('n', '<C-j>', ':TmuxNavigateDown<CR>',     { noremap = true, silent = true })

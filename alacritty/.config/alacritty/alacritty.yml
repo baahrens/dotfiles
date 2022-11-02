@@ -54,6 +54,8 @@ key_bindings:
   - { key: F, mods: Command, chars: " f;" }
   - { key: LBracket, mods: Control, chars: " zx" }
   - { key: RBracket, mods: Control, chars: " zz" }
+  - { key: J, mods: Option, chars: " z]" }
+  - { key: K, mods: Option, chars: " z[" }
   - { key: P, mods: Command|Shift, chars: " fg" }
   - { key: Return, mods: Command, chars: " ww" }
   - { key: Space, mods: Control, chars: "\x00" }  # workaround https://github.com/alacritty/alacritty/issues/6234
