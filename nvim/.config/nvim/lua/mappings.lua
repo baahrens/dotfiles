@@ -80,15 +80,6 @@ u.remap('n', '<leader>gpl', ':Git pull<CR>',   { noremap = true })
 u.remap('n', '<leader>gl',  ':Git log<CR>',    { noremap = true })
 u.remap('n', '<leader>gp',  ':Git push<CR>',   { noremap = true })
 u.remap('n', '<leader>gb',  ':Git blame<CR>',  { noremap = true })
-
--- trouble
-u.remap("n", "<leader>xx", "<cmd>Trouble<cr>",                           { silent = true, noremap = true })
-u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<cr>", { silent = true, noremap = true })
-u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<cr>",  { silent = true, noremap = true })
-u.remap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",                   { silent = true, noremap = true })
-u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",                  { silent = true, noremap = true })
-u.remap("n", "gR", "<cmd>Trouble lsp_references<cr>",                    { silent = true, noremap = true })
-
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true }) -- Alacritty: Command + p
 u.remap("n", "<C-p>",       telescope.grep_cwd,         { noremap = true })
@@ -105,18 +96,24 @@ u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 u.remap("n", "<leader>fr",  telescope.resume,           { noremap = true })
 
 -- lsp
-u.remap('n', 'gd',         vim.lsp.buf.definition,       { noremap = true, silent = true })
-u.remap('n', '<leader>cR', vim.lsp.buf.references,       { noremap = true, silent = true })
-u.remap('n', 'K',          vim.lsp.buf.hover,            { noremap = true, silent = true })
-u.remap('n', '<leader>cf', lsp.format,                   { noremap = true, silent = true })
-u.remap('n', '<leader>cr', vim.lsp.buf.rename,           { noremap = true, silent = true })
-u.remap('n', '<leader>ca', vim.lsp.buf.code_action,      { noremap = true, silent = true })
+u.remap('n', 'gd',         '<cmd>Telescope lsp_definitions<CR>',         { noremap = true, silent = true })
+u.remap('n', 'gD',         '<cmd>Telescope lsp_declarations<CR>',        { noremap = true, silent = true })
+u.remap('n', 'gr',         '<cmd>Telescope lsp_references<CR>',          { noremap = true, silent = true })
+u.remap('n', 'gR',         '<cmd>Trouble lsp_references<CR>',            { noremap = true, silent = true })
+u.remap('n', 'K',          vim.lsp.buf.hover,                            { noremap = true, silent = true })
+u.remap('n', '<leader>cf', lsp.format,                                   { noremap = true, silent = true })
+u.remap('n', '<leader>cr', vim.lsp.buf.rename,                           { noremap = true, silent = true })
+u.remap('n', '<leader>ca', vim.lsp.buf.code_action,                      { noremap = true, silent = true })
+u.remap('n', "<leader>cs", vim.diagnostic.open_float,                    { noremap = true, silent = true })
+u.remap('n', '<leader>cn', vim.diagnostic.goto_next,                     { noremap = true, silent = true })
+u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,                     { noremap = true, silent = true })
+u.remap('n', '<leader>cd', vim.diagnostic.get,                           { noremap = true, silent = true })
+u.remap("n", "<leader>xx", "<cmd>Trouble<CR>",                           { silent = true, noremap = true })
+u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", { silent = true, noremap = true })
+u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  { silent = true, noremap = true })
+u.remap("n", "<leader>xl", "<cmd>Trouble loclist<CR>",                   { silent = true, noremap = true })
+u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<CR>",                  { silent = true, noremap = true })
 
--- diagnostics
-u.remap('n', "<leader>cs", vim.diagnostic.open_float, { noremap = true, silent = true })
-u.remap('n', '<leader>cn', vim.diagnostic.goto_next,  { noremap = true, silent = true })
-u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,  { noremap = true, silent = true })
-u.remap('n', '<leader>cd', vim.diagnostic.get,        { noremap = true, silent = true })
 
 -- center after scrolling
 u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
@@ -131,10 +128,10 @@ u.remap('n', 'g*', [[g*zz<Cmd>lua require('hlslens').start()<CR>]], { silent = t
 u.remap('n', 'g#', [[g#zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 
 -- substitute
-u.remap("n", "s", "<cmd>lua require('substitute').operator()<cr>", { noremap = true })
-u.remap("n", "ss", "<cmd>lua require('substitute').line()<cr>",    { noremap = true })
-u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = true })
-u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
+u.remap("n", "s", "<cmd>lua require('substitute').operator()<CR>", { noremap = true })
+u.remap("n", "ss", "<cmd>lua require('substitute').line()<CR>",    { noremap = true })
+u.remap("n", "S", "<cmd>lua require('substitute').eol()<CR>",      { noremap = true })
+u.remap("x", "s", "<cmd>lua require('substitute').visual()<CR>",   { noremap = true })
 
 -- cybu
 u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
