@@ -26,21 +26,15 @@ return require('packer').startup({ function()
   }
 
 -- =================== UI ===================
-  use { 'marko-cerovac/material.nvim',        disable = true }
-
-  use { 'savq/melange',                       disable = true }
-
-  use { 'rose-pine/neovim', as = 'rose-pine', disable = true }
-
-  use { 'folke/tokyonight.nvim',              disable = true }
-
-  use { 'tyrannicaltoucan/vim-deep-space',    disable = true }
-
-  use { 'shaunsingh/nord.nvim',               disable = true }
-
   use {
-    'rmehri01/onenord.nvim',
-    config = function() require 'plugin/onenord' end
+    'EdenEast/nightfox.nvim' ,
+    config = function()
+      require('nightfox').setup({
+        options = {
+          transparent = true
+        }
+      })
+    end
   }
 
   use {

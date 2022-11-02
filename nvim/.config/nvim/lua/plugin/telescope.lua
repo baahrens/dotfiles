@@ -3,7 +3,7 @@ local sorters = require 'telescope.sorters'
 
 require'telescope'.setup({
   defaults = {
-    -- color_devicons = false,
+    color_devicons = false,
     file_ignore_patterns = {
       '%.jpg',
       '%.jpeg',
