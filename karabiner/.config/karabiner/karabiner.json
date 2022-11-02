@@ -96,7 +96,7 @@
                   "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "l" }
                 ]
               }
@@ -118,7 +118,7 @@
                   "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "j" }
                 ]
               }
@@ -140,7 +140,7 @@
                   "modifiers": { "mandatory": ["right_command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "g" }
                 ]
               }
@@ -162,7 +162,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "c" }
                 ]
               }
@@ -184,7 +184,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "1" }
                 ]
               }
@@ -206,7 +206,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "2" }
                 ]
               }
@@ -228,7 +228,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "3" }
                 ]
               }
@@ -250,7 +250,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "4" }
                 ]
               }
@@ -272,7 +272,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "5" }
                 ]
               }
@@ -294,7 +294,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "6" }
                 ]
               }
@@ -316,7 +316,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "7" }
                 ]
               }
@@ -338,7 +338,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "8" }
                 ]
               }
@@ -360,7 +360,7 @@
                   "modifiers": { "mandatory": ["command"] }
                 },
                 "to": [
-                  { "key_code": "spacebar", "modifiers": ["control"] },
+                  { "key_code": "g", "modifiers": ["control"] },
                   { "key_code": "9" }
                 ]
               }
