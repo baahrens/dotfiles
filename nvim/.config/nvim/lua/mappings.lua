@@ -137,5 +137,5 @@ u.remap("n", "S", "<cmd>lua require('substitute').eol()<cr>",      { noremap = t
 u.remap("x", "s", "<cmd>lua require('substitute').visual()<cr>",   { noremap = true })
 
 -- cybu
-u.remap("n", "<leader>zx", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
-u.remap("n", "<leader>zz", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
+u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
+u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
