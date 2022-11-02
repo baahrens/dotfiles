@@ -60,14 +60,14 @@
               {
                 "type": "basic",
                 "from": {
-                  "key_code": "right_command",
+                  "key_code": "left_command",
                   "modifiers": {
                     "optional": ["any"]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "right_command",
+                    "key_code": "left_command",
                     "lazy": true
                   }
                 ],
