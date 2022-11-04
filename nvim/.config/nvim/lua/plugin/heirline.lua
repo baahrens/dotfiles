@@ -1,4 +1,5 @@
 local conditions = require("heirline.conditions")
+local palette = require('nightfox.palette').load("duskfox")
 local utils = require("heirline.utils")
 
 vim.api.nvim_create_autocmd("User", {
@@ -37,71 +38,9 @@ local colors = {
   },
 }
 
-local mode = {
-  init = function(self)
-    self.mode = vim.fn.mode(1)
-  end,
-  static = {
-    mode_names = {
-      n = "N",
-      no = "N?",
-      nov = "N?",
-      noV = "N?",
-      ["no^V"] = "N?",
-      niI = "Ni",
-      niR = "Nr",
-      niV = "Nv",
-      nt = "Nt",
-      v = "V",
-      vs = "Vs",
-      V = "V_",
-      Vs = "Vs",
-      ["^V"] = "^V",
-      ["^Vs"] = "^V",
-      s = "S",
-      S = "S_",
-      ["^S"] = "^S",
-      i = "I",
-      ic = "Ic",
-      ix = "Ix",
-      R = "R",
-      Rc = "Rc",
-      Rx = "Rx",
-      Rv = "Rv",
-      Rvc = "Rv",
-      Rvx = "Rv",
-      c = "C",
-      cv = "Ex",
-      r = "...",
-      rm = "M",
-      ["r?"] = "?",
-      ["!"] = "!",
-      t = "T",
-    },
-    mode_colors = {
-      n = colors.red ,
-      i = colors.green,
-      v = colors.cyan,
-      V =  colors.cyan,
-      ["^V"] =  colors.cyan,
-      c =  colors.orange,
-      s =  colors.purple,
-      S =  colors.purple,
-      ["^S"] =  colors.purple,
-      R =  colors.orange,
-      r =  colors.orange,
-      ["!"] =  colors.red,
-      t =  colors.red,
-    }
-  },
-  provider = function(self)
-    return " %2("..self.mode_names[self.mode].."%)"
-  end,
-  hl = function(self)
-    local mode = self.mode:sub(1, 1)
-    return { fg = self.mode_colors[mode], bold = true, }
-  end,
-}
+local align = { provider = "%=" }
+local space = { provider = "   " }
+local separator = { provider = "  │  ", hl = {  fg = colors.gray } }
 
 local file_icon = {
   init = function(self)
@@ -128,7 +67,13 @@ local file_name = {
     end
     return filename
   end,
-  hl = { fg = colors.blue },
+  hl = function()
+    if conditions.is_active() then
+      return { fg = palette.yellow.base }
+    else
+      return { fg = palette.fg3 }
+    end
+  end
 }
 
 local FileFlags = {
@@ -167,7 +112,7 @@ local ruler = {
   -- %L = number of lines in the buffer
   -- %c = column number
   -- %P = percentage through file of displayed window
-  provider = "%7(%l/%3L%):%2c %P",
+  provider = "%l/%3L%:%2c %P",
   hl = { fg = colors.purple }
 }
 
@@ -181,7 +126,7 @@ local lsp_servers = {
     end
     return " [" .. table.concat(names, " ") .. "]"
   end,
-  hl = { fg = colors.green, bold = true },
+  hl = { fg = palette.fg1 },
 }
 
 local diagnostics = {
@@ -227,6 +172,24 @@ local diagnostics = {
   },
 }
 
+local branch_name = {
+  condition = conditions.is_git_repo,
+
+  init = function(self)
+    self.status_dict = vim.b.gitsigns_status_dict
+    self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
+  end,
+
+  hl = { fg = palette.yellow.base },
+
+  {
+    provider = function(self)
+      return " " .. self.status_dict.head
+    end,
+    hl = { bold = true }
+  },
+}
+
 local git = {
   condition = conditions.is_git_repo,
 
@@ -235,18 +198,12 @@ local git = {
     self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
   end,
 
-  hl = { fg = colors.orange },
+  hl = { fg = palette.fg2 },
 
   {
     provider = function(self)
-      return " " .. self.status_dict.head
-    end,
-    hl = { bold = true }
-  },
-  {
-    provider = function(self)
       local count = self.status_dict.added or 0
-      return count > 0 and (" +" .. count)
+      return count > 0 and ("+" .. count)
     end,
     hl = { fg = colors.git.add },
   },
@@ -276,23 +233,16 @@ local work_dir = {
     local trail = cwd:sub(-1) == '/' and '' or "/"
     return " " .. cwd  .. trail
   end,
-  hl = { fg = colors.blue, bold = true },
+  hl = { fg = palette.fg1 },
 }
 
-local align = { provider = "%=" }
-local space = { provider = "   " }
-local separator = { provider = "│", hl = {  fg = colors.gray } }
-
 local DefaultStatusline = {
-  space,
+  space, space,
   work_dir,
-  space, separator, space,
-  git,
-  space, separator, space,
-  diagnostics, align,
+  separator,
+  branch_name,
+  align,
   lsp_servers,
-  space, separator, space,
-  ruler,
   space
 }
 
@@ -331,9 +281,10 @@ local StatusLines = {
 
   SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
+
 local WinBars = {
   fallthrough = false,
-  {   -- Hide the winbar for special buffers
+  {
       condition = function()
           return conditions.buffer_matches({
               buftype = { "nofile", "prompt", "help", "quickfix" },
@@ -344,15 +295,22 @@ local WinBars = {
           vim.opt_local.winbar = nil
       end
   },
-  {   -- An inactive winbar for regular files
+  {
       condition = function()
           return not conditions.is_active()
       end,
-      space, space, file_name_block
+      space, space, file_name_block, align
   },
   {
     space, space, file_name_block,
-  }
+    separator,
+    git,
+    align,
+    diagnostics,
+    separator,
+    ruler,
+    space
+  },
 }
 
 require("heirline").setup(StatusLines, WinBars)
