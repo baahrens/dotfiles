@@ -63,11 +63,14 @@ local custom_highlights = {
   PmenuThumb = { bg = colors.grey9  },
   PmenuSel = { bg = "#343b47" },
 
-  TelescopeNormal = { bg = none },
+  TelescopeNormal = { bg = none, fg = colors.grey5 },
   TelescopeBorder = { fg = colors.grey9, bg = none },
   TelescopeResultsBorder = { fg = colors.grey9, bg = none },
   TelescopePreviewBorder = { fg = colors.grey9, bg = none },
   TelescopePromptBorder = { fg = colors.grey9, bg = none },
+  TelescopeMatching = { fg = colors.yellow, bold = true },
+  TelescopeSelection = { fg = colors.grey2, bold = true },
+  TelescopeSelectionCaret = { fg = colors.yellow },
 
   JsxExpressionBlock = { fg = colors.yellow },
 
