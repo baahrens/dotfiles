@@ -16,20 +16,6 @@ local SIGNS = {
   Info = " "
 }
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = {
-      source = true,
-      prefix = "",
-      spacing = 5,
-    },
-    update_in_insert = false,
-    severity_sort = true,
-  }
-)
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = BORDER })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = BORDER })
 vim.lsp.handlers['textDocument/references'] = function()
@@ -74,7 +60,7 @@ M.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.diagnostic.config({
   virtual_text = { spacing = 4, prefix = '●' },
-  float = { border = BORDER, source = 'if_many' },
+  float = { border = BORDER, source = true },
   signs = true,
   update_in_insert = false,
 })
