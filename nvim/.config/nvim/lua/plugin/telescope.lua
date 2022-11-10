@@ -48,12 +48,6 @@ function M.find_files()
     path_display = {
       shorten = 5
     },
-    borderchars = {
-      { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-      prompt = {"─", "│", " ", "│", '┌', '┐', "│", "│"},
-      results = {"─", "│", "─", "│", "├", "┤", "┘", "└"},
-      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-    },
     previewer = false,
     width = 1,
     prompt_title = false
