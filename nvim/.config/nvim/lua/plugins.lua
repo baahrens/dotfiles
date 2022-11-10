@@ -141,10 +141,6 @@ return require('packer').startup({ function()
   })
 
   use {
-    'andymass/vim-matchup'
-  }
-
-  use {
     "ghillb/cybu.nvim",
     branch = "main",
     config = function()
