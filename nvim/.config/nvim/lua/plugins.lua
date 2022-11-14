@@ -156,10 +156,7 @@ return require('packer').startup({ function()
 
   use {
     'L3MON4D3/LuaSnip',
-    config = function() require'plugin/luasnip' end,
-    requires = {
-      'rafamadriz/friendly-snippets',
-    }
+    config = function() require'plugin/luasnip' end
   }
 
   use {
