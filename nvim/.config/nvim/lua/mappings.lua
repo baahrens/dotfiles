@@ -44,6 +44,12 @@ u.remap('n', '<leader>z[', '<CMD>move .-2<CR>',   { silent = true }) -- Alacritt
 u.remap('x', '<leader>z]', ":move '>+1<CR>gv=gv", { silent = true }) -- Alacritty: Option + j
 u.remap('x', '<leader>z[', ":move '<-2<CR>gv=gv", { silent = true }) -- Alacritty: Option + k
 
+-- delete in v mode without loosing current yank
+u.remap('v', '<leader>p', '"_dP', { noremap = true })
+
+-- shoutout
+u.remap('n', '<leader>so', ':luafile %<CR>', { noremap = true })
+
 -- tmux
 u.remap('n', '<C-h>', ':TmuxNavigateLeft<CR>',     { noremap = true, silent = true })
 u.remap('n', '<C-j>', ':TmuxNavigateDown<CR>',     { noremap = true, silent = true })
@@ -54,12 +60,6 @@ u.remap('n', '<C-l>', ':TmuxNavigateRight<CR>',    { noremap = true, silent = tr
 u.remap('n', '<C-n>', ':NvimTreeToggle<CR>',        { noremap = true })
 u.remap('n', '<leader>r', ':NvimTreeRefresh<CR>',   { noremap = true })
 u.remap('n', '<leader>nf', ':NvimTreeFindFile<CR>', { noremap = true })
-
--- delete in v mode without loosing current yank
-u.remap('v', '<leader>p', '"_dP', { noremap = true })
-
--- shoutout
-u.remap('n', '<leader>so', ':luafile %<CR>', { noremap = true })
 
 -- Map <leader>o & <leader>O to newline without insert mode
 u.remap('n', '<leader>o', ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { noremap = true, silent = true })
@@ -86,6 +86,7 @@ u.remap('n', '<leader>gpl', ':Git pull<CR>',   { noremap = true })
 u.remap('n', '<leader>gl',  ':Git log<CR>',    { noremap = true })
 u.remap('n', '<leader>gp',  ':Git push<CR>',   { noremap = true })
 u.remap('n', '<leader>gb',  ':Git blame<CR>',  { noremap = true })
+
 -- telescope
 u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true }) -- Alacritty: Command + p
 u.remap("n", "<C-p>",       telescope.grep_cwd,         { noremap = true })
@@ -101,7 +102,7 @@ u.remap("n", "<leader>fg",  telescope.git_branches,     { noremap = true })
 u.remap("n", "<leader>fx",  telescope.find_diagnostics, { noremap = true })
 u.remap("n", "<leader>fr",  telescope.resume,           { noremap = true })
 
--- lsp
+-- lsp/diagnostics/trouble
 u.remap('n', 'gd',         '<cmd>Telescope lsp_definitions<CR>',         { noremap = true, silent = true })
 u.remap('n', 'gD',         '<cmd>Telescope lsp_declarations<CR>',        { noremap = true, silent = true })
 u.remap('n', 'gr',         '<cmd>Telescope lsp_references<CR>',          { noremap = true, silent = true })
@@ -120,18 +121,15 @@ u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  { silen
 u.remap("n", "<leader>xl", "<cmd>Trouble loclist<CR>",                   { silent = true, noremap = true })
 u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<CR>",                  { silent = true, noremap = true })
 
-
--- center after scrolling
-u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
-u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
-
--- hlslens (+ center search results)
+-- search
 u.remap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 u.remap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'Nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 u.remap('n', '*', [[*zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 u.remap('n', '#', [[#zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 u.remap('n', 'g*', [[g*zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
 u.remap('n', 'g#', [[g#zz<Cmd>lua require('hlslens').start()<CR>]], { silent = true })
+u.remap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+u.remap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
 -- substitute
 u.remap("n", "s", "<cmd>lua require('substitute').operator()<CR>", { noremap = true })
