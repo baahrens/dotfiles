@@ -1,5 +1,4 @@
 local actions = require'telescope.actions'
-local sorters = require 'telescope.sorters'
 
 require'telescope'.setup({
   defaults = {
@@ -12,8 +11,6 @@ require'telescope'.setup({
       '%.otf',
       '%.ttf',
     },
-    file_sorter = sorters.get_fzy_sorter,
-    generic_sorter = sorters.get_fzy_sorter,
     mappings = {
       i = {
         ["<C-t>"] = require'trouble.providers.telescope'.open_with_trouble,
