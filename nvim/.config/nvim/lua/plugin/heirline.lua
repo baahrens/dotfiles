@@ -236,18 +236,18 @@ local work_dir = {
   hl = { fg = palette.fg1 },
 }
 
-local Recording = {
-  condition = require("noice").api.statusline.mode.has,
-  provider = require("noice").api.statusline.mode.get,
-}
+-- local Recording = {
+--   condition = require("noice").api.statusline.mode.has,
+--   provider = require("noice").api.statusline.mode.get,
+-- }
 
 local DefaultStatusline = {
   space, space,
   work_dir,
   separator,
   branch_name,
-  separator,
-  Recording,
+  -- separator,
+  -- Recording,
   align,
   lsp_servers,
   space
