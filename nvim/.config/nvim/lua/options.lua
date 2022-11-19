@@ -32,7 +32,6 @@ o.wildignore     = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip
 o.grepprg        = "rg --vimgrep --no-heading --smart-case"
 o.grepformat     = "%f:%l:%c:%m"
 o.shell          = "/bin/bash"
-o.lazyredraw     = true
 o.completeopt    = "menuone,noselect"
 o.pumheight      = 10
 o.pumblend       = 0
