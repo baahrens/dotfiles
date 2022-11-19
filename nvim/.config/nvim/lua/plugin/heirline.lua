@@ -112,7 +112,7 @@ local ruler = {
   -- %L = number of lines in the buffer
   -- %c = column number
   -- %P = percentage through file of displayed window
-  provider = "%l/%3L%:%2c %P",
+  provider = "%l/%3L%: %2c %P",
   hl = { fg = colors.purple }
 }
 
@@ -236,11 +236,18 @@ local work_dir = {
   hl = { fg = palette.fg1 },
 }
 
+local Recording = {
+  condition = require("noice").api.statusline.mode.has,
+  provider = require("noice").api.statusline.mode.get,
+}
+
 local DefaultStatusline = {
   space, space,
   work_dir,
   separator,
   branch_name,
+  separator,
+  Recording,
   align,
   lsp_servers,
   space
@@ -281,6 +288,7 @@ local StatusLines = {
 
   SpecialStatusline, InactiveStatusline, DefaultStatusline,
 }
+
 
 local WinBars = {
   fallthrough = false,
