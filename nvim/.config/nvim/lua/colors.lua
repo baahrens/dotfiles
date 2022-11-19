@@ -4,6 +4,7 @@ local colors = {
   fg = "#ECEFF4",
   red = "#bf616a",
   orange = "#d08770",
+
   yellow = "#ebcb8b",
   blue = "#5e81ac",
   green = "#a3be8c",
@@ -52,12 +53,15 @@ local custom_highlights = {
 
   CursorLine = { bg = none, bold = true},
 
+  Normal = { bg = none },
   NormalFloat = { bg = none },
   FloatBorder = { bg = none, fg = colors.grey9 },
   FloatTitle = { bg = none, fg = colors.fg },
 
   CmpDocBorder = { fg = colors.grey9, bg = none },
   CmpBorder = { bg = none, fg = colors.grey9 },
+  CmpItemKindSnippet = { fg = colors.yellow },
+  CmpItemKindConstant = { fg = colors.magenta },
 
   PMenu = { bg = none },
   PmenuThumb = { bg = colors.grey9  },
@@ -71,6 +75,8 @@ local custom_highlights = {
   TelescopeMatching = { fg = colors.yellow, bold = true },
   TelescopeSelection = { fg = colors.grey2, bold = true },
   TelescopeSelectionCaret = { fg = colors.yellow },
+
+  NoiceMini = { bg = none },
 
   JsxExpressionBlock = { fg = colors.yellow },
 
