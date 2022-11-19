@@ -20,7 +20,8 @@ require'telescope'.setup({
         ["<leader>jj"] = actions.move_selection_next,
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
-        ["<leader>ww"] = actions.file_vsplit
+        ["<leader>ww"] = actions.file_vsplit,
+        ["<leader>f;"] = function () end
       }
     },
     prompt_prefix = " ",
