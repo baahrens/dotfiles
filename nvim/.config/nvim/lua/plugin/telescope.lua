@@ -21,7 +21,8 @@ require'telescope'.setup({
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
         ["<leader>ww"] = actions.file_vsplit,
-        ["<leader>f;"] = function () end
+        ["<leader>f;"] = function () end,
+        ["<c-f>"] = actions.to_fuzzy_refine
       }
     },
     prompt_prefix = " ",
