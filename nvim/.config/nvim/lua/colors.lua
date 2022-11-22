@@ -1,87 +1,56 @@
-
-local colors = {
-  bg = "#2e3440",
-  fg = "#ECEFF4",
-  red = "#bf616a",
-  orange = "#d08770",
-  yellow = "#ebcb8b",
-  blue = "#5e81ac",
-  green = "#a3be8c",
-  cyan = "#88c0d0",
-  magenta = "#b48ead",
-  pink = "#FFA19F",
-  grey1 = "#f8fafc",
-  grey2 = "#f0f1f4",
-  grey3 = "#eaecf0",
-  grey4 = "#d9dce3",
-  grey5 = "#c4c9d4",
-  grey6 = "#b5bcc9",
-  grey7 = "#929cb0",
-  grey8 = "#8e99ae",
-  grey9 = "#74819a",
-  grey10 = "#616d85",
-  grey11 = "#464f62",
-  grey12 = "#3a4150",
-  grey13 = "#333a47",
-  grey14 = "#242932",
-  grey15 = "#1e222a",
-  grey16 = "#1c1f26",
-  grey17 = "#0f1115",
-  grey18 = "#0d0e11",
-  grey19 = "#020203",
-}
+local palette = require('nightfox.palette').load("duskfox")
 
 local none = "NONE"
 
 local custom_highlights = {
-  GitSignsAdd = { fg = colors.green },
-  GitSignsChange = { fg = colors.orange },
-  GitSignsDelete = { fg = colors.red },
+  GitSignsAdd = { fg = palette.green.base },
+  GitSignsChange = { fg = palette.orange.base },
+  GitSignsDelete = { fg = palette.red.base },
 
   NvimTreeNormal = { bg = none },
-  NvimTreeFolderIcon = { fg = colors.grey9 },
+  NvimTreeFolderIcon = { fg = palette.fg3 },
   NvimTreeOpenedFolderName = {},
-  NvimTreeIndentMarker = { fg = colors.cyan },
-  NvimTreeGitNew = { fg = colors.yellow },
-  NvimTreeGitDirty = { fg = colors.pink },
-  NvimTreeSpecialFile = { fg = colors.fg,  bold = true },
+  NvimTreeIndentMarker = { fg = palette.cyan.base },
+  NvimTreeGitNew = { fg = palette.yellow.base },
+  NvimTreeGitDirty = { fg = palette.pink.base },
+  NvimTreeSpecialFile = { fg = palette.fg1,  bold = true },
 
   StatusLine = { bg = none },
   WinBar = { bg = none },
   WinBarNC = { bg = none },
 
-  CursorLine = { bg = none, bold = true},
+  CursorLine = { bg = none, bold = true },
 
   NormalFloat = { bg = none },
-  FloatBorder = { bg = none, fg = colors.grey9 },
-  FloatTitle = { bg = none, fg = colors.fg },
+  FloatBorder = { bg = none, fg = palette.fg3 },
+  FloatTitle = { bg = none, fg = palette.fg1 },
 
-  CmpDocBorder = { fg = colors.grey9, bg = none },
-  CmpBorder = { bg = none, fg = colors.grey9 },
+  CmpDocBorder = { fg = palette.fg3, bg = none },
+  CmpBorder = { bg = none, fg = palette.fg3 },
 
   PMenu = { bg = none },
-  PmenuThumb = { bg = colors.grey9  },
+  PmenuThumb = { bg = palette.fg3  },
   PmenuSel = { bg = "#343b47" },
 
-  TelescopeNormal = { bg = none, fg = colors.grey5 },
-  TelescopeBorder = { fg = colors.grey9, bg = none },
-  TelescopeResultsBorder = { fg = colors.grey9, bg = none },
-  TelescopePreviewBorder = { fg = colors.grey9, bg = none },
-  TelescopePromptBorder = { fg = colors.grey9, bg = none },
-  TelescopeMatching = { fg = colors.yellow, bold = true },
-  TelescopeSelection = { fg = colors.grey2, bold = true },
-  TelescopeSelectionCaret = { fg = colors.yellow },
+  TelescopeNormal = { bg = none, fg = palette.fg2 },
+  TelescopeBorder = { fg = palette.cyan.base , bg = none },
+  TelescopeResultsBorder = { fg = palette.blue.dim, bg = none },
+  TelescopePreviewBorder = { fg = palette.blue.dim, bg = none },
+  TelescopePromptBorder = { fg = palette.blue.dim, bg = none },
+  TelescopeMatching = { fg = palette.yellow.base, bold = true },
+  TelescopeSelection = { fg = palette.fg0, bold = true },
+  TelescopeSelectionCaret = { fg = palette.yellow.base },
 
-  JsxExpressionBlock = { fg = colors.yellow },
+  JsxExpressionBlock = { fg = palette.yellow.base },
 
-  CursorLineNr = { fg = colors.yellow },
+  CursorLineNr = { fg = palette.yellow.base },
 
-  Search = { fg = colors.yellow , bg = colors.grey11, bold = true },
+  Search = { fg = palette.yellow.base , bg = palette.bg3, bold = true },
 
-  HlSearchNear = { fg = colors.cyan },
-  HlSearchLens = { fg= colors.cyan },
-  HlSearchLensNear = { fg = colors.cyan },
-  HlSearchFloat = { fg = colors.cyan },
+  HlSearchNear = { fg = palette.cyan.base },
+  HlSearchLens = { fg = palette.cyan.base },
+  HlSearchLensNear = { fg = palette.cyan.base },
+  HlSearchFloat = { fg = palette.cyan.base },
 }
 
 vim.api.nvim_create_augroup('colors', { clear = true })
