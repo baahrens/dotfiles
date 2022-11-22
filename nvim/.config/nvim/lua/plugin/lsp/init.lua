@@ -36,24 +36,25 @@ local format_clients = {
 }
 
 function M.format()
-  vim.lsp.buf.format {
+  vim.lsp.buf.format({
     filter = function(lsp_client)
       return vim.tbl_contains(format_clients, lsp_client.name)
     end
-  }
+  })
 end
 
 function M.on_attach (client)
   client.config.flags.debounce_text_changes = 200
 
-  if client.server_capabilities.document_formatting then
-    vim.api.nvim_create_augroup('LspFormatting', {})
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = 'LspFormatting',
-      pattern = '*',
-      callback = M.format
-    })
-  end
+  -- autosave
+  -- if client.server_capabilities.document_formatting then
+  --   vim.api.nvim_create_augroup('LspFormatting', {})
+  --   vim.api.nvim_create_autocmd('BufWritePre', {
+  --     group = 'LspFormatting',
+  --     pattern = '*',
+  --     callback = M.format
+  --   })
+  -- end
 end
 
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
