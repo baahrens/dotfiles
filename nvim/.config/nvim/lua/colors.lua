@@ -8,6 +8,7 @@ local custom_highlights = {
   GitSignsDelete = { fg = palette.red.base },
 
   NvimTreeNormal = { bg = none },
+  NvimTreeRootFolder = { fg = palette.yellow.dim },
   NvimTreeFolderIcon = { fg = palette.fg3 },
   NvimTreeOpenedFolderName = {},
   NvimTreeIndentMarker = { fg = palette.cyan.base },
