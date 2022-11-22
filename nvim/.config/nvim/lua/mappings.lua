@@ -120,6 +120,8 @@ u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", { silen
 u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  { silent = true, noremap = true })
 u.remap("n", "<leader>xl", "<cmd>Trouble loclist<CR>",                   { silent = true, noremap = true })
 u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<CR>",                  { silent = true, noremap = true })
+u.remap("n", "<leader>qN", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", { silent = true, noremap = true })
+u.remap("n", "<leader>qn", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", { silent = true, noremap = true })
 
 -- search
 u.remap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], { silent = true })

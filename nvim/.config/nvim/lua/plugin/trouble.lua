@@ -1,8 +1,10 @@
 require("trouble").setup({
-  position    = "bottom", -- position of the list can be: bottom, top, left, right
-  height      = 7, -- height of the trouble list when position is top or bottom
-  icons       = true, -- use devicons for filenames
-  mode        = "workspace_diagnostics", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-  fold_open   = "", -- icon used for open folds
-  fold_closed = "", -- icon used for closed folds
+  position = "bottom",
+  height = 10,
+  icons = true,
+  mode = "workspace_diagnostics", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
+  fold_open = "",
+  fold_closed = "",
+  use_diagnostic_signs = true,
+  auto_close = true,
 })
