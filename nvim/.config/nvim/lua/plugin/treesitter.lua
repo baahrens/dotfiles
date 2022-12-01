@@ -5,17 +5,6 @@ tsConfigs.setup {
   indent = {
     enable = true
   },
-  autotag = {
-    enable = true,
-    filetypes = {
-      "javascript",
-      "javascriptreact", "jsx",
-      "typescript",
-      "typescriptreact", "tsx",
-      "html",
-      "xml"
-    }
-  },
   highlight = {
     enable = true
   },
@@ -50,7 +39,7 @@ tsConfigs.setup {
   --   lint_events = {"BufWrite", "CursorHold"}
   -- },
   playground = {
-    enable = true,
+    enable = false,
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     keybindings = {
       toggle_query_editor = 'o',
