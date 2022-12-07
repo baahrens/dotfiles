@@ -88,7 +88,8 @@ u.remap('n', '<leader>gp',  ':Git push<CR>',   { noremap = true })
 u.remap('n', '<leader>gb',  ':Git blame<CR>',  { noremap = true })
 
 -- telescope
-u.remap("n", "<leader>ff",  telescope.find_files,       { noremap = true }) -- Alacritty: Command + p
+vim.keymap.set("n", "<leader>ff", telescope.find_files)
+-- u.remap("n", "<leader>ff",  "<cmd>lua require('plugin.telescope').find_files()<CR>",       { noremap = true }) -- Alacritty: Command + p
 u.remap("n", "<C-p>",       telescope.grep_cwd,         { noremap = true })
 u.remap("n", "<leader>fn",  telescope.grep_notes,       { noremap = true })
 u.remap("n", "<leader>fd",  telescope.find_dotfiles,    { noremap = true })

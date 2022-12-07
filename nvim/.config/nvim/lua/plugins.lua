@@ -53,6 +53,15 @@ return require('packer').startup({ function()
       require'plugin/tint'
     end
   }
+  use({
+    "folke/noice.nvim",
+    config = function()
+      require'plugin/noice'
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+    }
+})
 
 -- =================== treesitter ===================
   use {

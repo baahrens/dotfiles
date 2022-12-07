@@ -22,6 +22,7 @@ local custom_highlights = {
 
   CursorLine = { bg = none, bold = true },
 
+  Normal = { bg = none },
   NormalFloat = { bg = none },
   FloatBorder = { bg = none, fg = palette.fg3 },
   FloatTitle = { bg = none, fg = palette.fg1 },
@@ -43,6 +44,8 @@ local custom_highlights = {
   TelescopeSelectionCaret = { fg = palette.yellow.base },
 
   JsxExpressionBlock = { fg = palette.yellow.base },
+
+  NoiceMini = { bg = none },
 
   CursorLineNr = { fg = palette.yellow.base },
 
