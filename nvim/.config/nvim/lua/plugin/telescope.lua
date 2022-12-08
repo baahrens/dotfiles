@@ -13,16 +13,18 @@ require'telescope'.setup({
     },
     mappings = {
       i = {
-        ["<C-t>"] = require'trouble.providers.telescope'.open_with_trouble,
-        ["<ESC>"] = actions.close,
-        ["<leader>ff"] = actions.close,
-        ["<leader>kk"] = actions.move_selection_previous,
-        ["<leader>jj"] = actions.move_selection_next,
-        ["<S-Tab>"] = actions.move_selection_previous,
-        ["<Tab>"] = actions.move_selection_next,
-        ["<leader>ww"] = actions.file_vsplit,
+        ["<C-t>"]      = require'trouble.providers.telescope'.open_with_trouble,
+        ["<ESC>"]      = actions.close,
+        ["<leader>ff"] = actions.close,                   -- Alacritty: CMD + p
+        ["<leader>kk"] = actions.move_selection_previous, -- Alacritty: CMD + k
+        ["<S-Tab>"]    = actions.move_selection_previous,
+        ["<leader>jj"] = actions.move_selection_next,     -- Alacritty: CMD + j
+        ["<Tab>"]      = actions.move_selection_next,
+        ['<C-d>']      = actions.preview_scrolling_down,
+        ['<C-u>']      = actions.preview_scrolling_up,
+        ["<leader>ww"] = actions.file_vsplit,             -- Alacritty: CMD + <CR>
+        ["<C-f>"]      = actions.to_fuzzy_refine,
         ["<leader>f;"] = function () end,
-        ["<c-f>"] = actions.to_fuzzy_refine
       }
     },
     prompt_prefix = " ",
