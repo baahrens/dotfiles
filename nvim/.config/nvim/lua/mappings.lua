@@ -46,6 +46,7 @@ u.remap('x', '<leader>z[', ":move '<-2<CR>gv=gv", { silent = true }) -- Alacritt
 
 -- delete in v mode without loosing current yank
 u.remap('v', '<leader>p', '"_dP', { noremap = true })
+u.remap('v', 'y', 'ygv<ESC>')
 
 -- shoutout
 u.remap('n', '<leader>so', ':luafile %<CR>', { noremap = true })
