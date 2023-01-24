@@ -18,7 +18,8 @@ g.loaded_netrwPlugin       = 1
 g.loaded_netrwSettings     = 1
 g.loaded_netrwFileHandlers = 1
 
-require('impatient')
+local ok, impatient = pcall(require, 'impatient')
+if ok then impatient.enable_profile() end
 
 require('plugins')
 require('options')
