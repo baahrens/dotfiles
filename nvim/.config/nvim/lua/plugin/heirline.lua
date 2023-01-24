@@ -321,4 +321,7 @@ local WinBars = {
   },
 }
 
-require("heirline").setup(StatusLines, WinBars)
+require("heirline").setup({
+  statusline = StatusLines,
+  winbar = WinBars
+})
