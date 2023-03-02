@@ -11,6 +11,7 @@ require("null-ls").setup({
     -- formatting.gofmt,
     -- formatting.stylua,
     formatting.prettierd,
+    formatting.eslint_d,
     -- formatting.rubocop,
     -- formatting.rustfmt,
     formatting.stylelint,
