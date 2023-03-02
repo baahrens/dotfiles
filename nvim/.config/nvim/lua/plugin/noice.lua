@@ -72,11 +72,6 @@ require("noice").setup({
       size = {
         width = 60,
         height = "auto",
-      },
-    },
-    mini = {
-      win_options = {
-        winblend = 0
       }
     },
     popupmenu = {
@@ -93,6 +88,14 @@ require("noice").setup({
         style = "rounded",
         padding = { 0, 1 },
       },
+      win_options = {
+        winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+      },
+    },
+    mini = {
+      win_options = {
+        winblend = 0
+      }
     },
   },
 })
