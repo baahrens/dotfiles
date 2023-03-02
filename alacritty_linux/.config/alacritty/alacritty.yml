@@ -1,0 +1,89 @@
+live_config_reload: true
+
+alt_send_esc: false
+shell:
+  program: /usr/bin/fish
+
+window:
+  # Spread additional padding evenly around the terminal content.
+  dynamic_title: true
+  dynamic_padding: true
+
+  startup_mode: Maximized
+
+  opacity: 0.92
+  padding:
+    x: 4
+    y: 4
+  # decorations: None
+
+font:
+  normal:
+    family: Hack Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: Hack Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: Hack Nerd Font Mono
+    style: Italic
+
+  bold_italic:
+    family: Hack Nerd Font Mono
+    style: Bold Italic
+
+  size: 11.0
+
+  offset:
+   x: 0
+   y: 4
+
+  glyph_offset:
+   x: 0
+   y: 0
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+key_bindings:
+  - { key: J, mods: Alt, chars: " jj" }
+  - { key: S, mods: Alt, chars: " ss" }
+  - { key: K, mods: Alt, chars: " kk" }
+  - { key: P, mods: Alt, chars: " ff" }
+  - { key: F, mods: Alt, chars: " f;" }
+  - { key: LBracket, mods: Control, chars: " zx" }
+  - { key: RBracket, mods: Control, chars: " zz" }
+  # - { key: P, mods: Command|Shift, chars: " fg" }
+  - { key: Return, mods: Alt, chars: " ww" }
+  - { key: Space, mods: Control, chars: "\x00" }  # workaround https://github.com/alacritty/alacritty/issues/6234
+
+colors:
+  primary:
+    background: '0x232136'
+    foreground: '0xe0def4'
+  # Normal colors
+  normal:
+    black:   '0x393552'
+    red:     '0xeb6f92'
+    green:   '0xa3be8c'
+    yellow:  '0xf6c177'
+    blue:    '0x569fba'
+    magenta: '0xc4a7e7'
+    cyan:    '0x9ccfd8'
+    white:   '0xe0def4'
+  # Bright colors
+  bright:
+    black:   '0x47407d'
+    red:     '0xf083a2'
+    green:   '0xb1d196'
+    yellow:  '0xf9cb8c'
+    blue:    '0x65b1cd'
+    magenta: '0xccb1ed'
+    cyan:    '0xa6dae3'
+    white:   '0xe2e0f7'
+  indexed_colors:
+    - { index: 16, color: '0xea9a97' }
+    - { index: 17, color: '0xeb98c3' }
