@@ -1,12 +1,12 @@
 local BORDER = {
-  "╭",
-  "─",
-  "╮",
-  "│",
-  "╯",
-  "─",
-  "╰",
-  "│",
+    { "╭", "CmpBorder" },
+    { "─", "CmpBorder" },
+    { "╮", "CmpBorder" },
+    { "│", "CmpBorder" },
+    { "╯", "CmpBorder" },
+    { "─", "CmpBorder" },
+    { "╰", "CmpBorder" },
+    { "│", "CmpBorder" }
 }
 
 local SIGNS = {
@@ -44,17 +44,18 @@ function M.format()
 end
 
 function M.on_attach (client)
-  client.config.flags.debounce_text_changes = 200
-
-  -- autosave
-  -- if client.server_capabilities.document_formatting then
-  --   vim.api.nvim_create_augroup('LspFormatting', {})
-  --   vim.api.nvim_create_autocmd('BufWritePre', {
-  --     group = 'LspFormatting',
-  --     pattern = '*',
-  --     callback = M.format
-  --   })
-  -- end
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.formatting_sync()
+        end,
+      })
+    end
+  end
 end
 
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()

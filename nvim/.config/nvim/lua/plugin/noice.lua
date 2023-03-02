@@ -1,4 +1,5 @@
 require('noice.util.hacks').fix_cmp()
+
 require("noice").setup({
   lsp = {
     progress = {
@@ -9,6 +10,49 @@ require("noice").setup({
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
+    hover = {
+        enabled = true,
+        opts = {
+          border = { style = 'rounded' },
+          relative = 'cursor',
+          position = {
+            row = 2,
+          },
+          win_options = {
+          concealcursor = 'n',
+          conceallevel = 3,
+          winhighlight = {
+            Normal = 'LspFloat',
+            FloatBorder = 'CmpBorder',
+          },
+        }
+      }
+    },
+    signature = {
+      enabled = true,
+      auto_open = {
+        enabled = true,
+        trigger = true,
+        luasnip = true,
+        throttle = 50,
+      },
+      view = "hover",
+      opts = {
+        border = { style = 'rounded' },
+        relative = 'cursor',
+        position = {
+          row = 2,
+        },
+        win_options = {
+          concealcursor = 'n',
+          conceallevel = 3,
+          winhighlight = {
+            Normal = 'LspFloat',
+            FloatBorder = 'CmpBorder',
+          },
+        }
+      }
+    }
   },
   routes = {
     {
