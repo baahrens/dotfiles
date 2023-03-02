@@ -2,6 +2,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 fnm env --use-on-cd | source
+fzf_configure_bindings --directory=/cf --variables=/e/cv
+
+setxkbmap -option compose:menu
 
 set -x LC_ALL en_US.UTF-8
 set -x LC_CTYPE en_US.UTF-8
@@ -16,6 +19,7 @@ abbr -a n cd ~/notes/
 
 abbr -a .. cd ..
 abbr -a ... cd ../..
+abbr -a .... cd ../../..
 
 abbr -a q exit
 abbr -a :q exit
