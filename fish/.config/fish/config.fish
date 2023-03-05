@@ -2,12 +2,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 fnm env --use-on-cd | source
-fzf_configure_bindings --directory=/cf --variables=/e/cv
 
-setxkbmap -option compose:menu
-
-set -x LC_ALL en_US.UTF-8
-set -x LC_CTYPE en_US.UTF-8
+if test uname = "Linux"
+  setxkbmap -option compose:menu
+  fzf_configure_bindings --directory=/cf --variables=/e/cv
+else 
+  set -x LC_ALL en_US.UTF-8
+  set -x LC_CTYPE en_US.UTF-8
+end
 
 abbr -a g git
 abbr -a v nvim
@@ -31,7 +33,6 @@ abbr -a tl tmux list-sessions
 abbr -a tk tmux kill-server
 
 abbr -a cl clear
-abbr -a asd clear
 
 if command -v exa > /dev/null
 	abbr -a l 'exa'
