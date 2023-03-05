@@ -59,6 +59,14 @@ require("noice").setup({
       filter = { event = "msg_show", kind = "search_count" },
       opts = { skip = true },
     },
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
+    {
+      filter = { event = "msg_show", kind = "", find = "written" },
+      opts = { skip = true },
+    },
   },
   notify = {
     enabled = false,
@@ -75,6 +83,7 @@ require("noice").setup({
       }
     },
     popupmenu = {
+      backend = "cmp",
       relative = "editor",
       position = {
         row = 8,
