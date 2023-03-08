@@ -61,6 +61,7 @@ key_bindings:
   - { key: P, mods: Command|Shift, chars: " fg" }
   - { key: Return, mods: Command, chars: " ww" }
   - { key: Space, mods: Control, chars: "\x00" }  # workaround https://github.com/alacritty/alacritty/issues/6234
+  - { key: N, mods: Control|Shift, chars: "\x1b[78;5u"                }
 
 colors:
   primary:
