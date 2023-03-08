@@ -65,6 +65,7 @@ vim.diagnostic.config({
   float = { border = BORDER, source = true },
   signs = true,
   update_in_insert = false,
+  severity_sort = true
 })
 
 return M
