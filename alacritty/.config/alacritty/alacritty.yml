@@ -1,3 +1,6 @@
+import:
+  - ~/.dotfiles/alacritty/.config/alacritty/theme.yml
+
 live_config_reload: true
 
 alt_send_esc: false
@@ -62,31 +65,3 @@ key_bindings:
   - { key: Return, mods: Command, chars: " ww" }
   - { key: Space, mods: Control, chars: "\x00" }  # workaround https://github.com/alacritty/alacritty/issues/6234
   - { key: N, mods: Control|Shift, chars: "\x1b[78;5u"                }
-
-colors:
-  primary:
-    background: '0x232136'
-    foreground: '0xe0def4'
-  # Normal colors
-  normal:
-    black:   '0x393552'
-    red:     '0xeb6f92'
-    green:   '0xa3be8c'
-    yellow:  '0xf6c177'
-    blue:    '0x569fba'
-    magenta: '0xc4a7e7'
-    cyan:    '0x9ccfd8'
-    white:   '0xe0def4'
-  # Bright colors
-  bright:
-    black:   '0x47407d'
-    red:     '0xf083a2'
-    green:   '0xb1d196'
-    yellow:  '0xf9cb8c'
-    blue:    '0x65b1cd'
-    magenta: '0xccb1ed'
-    cyan:    '0xa6dae3'
-    white:   '0xe2e0f7'
-  indexed_colors:
-    - { index: 16, color: '0xea9a97' }
-    - { index: 17, color: '0xeb98c3' }
