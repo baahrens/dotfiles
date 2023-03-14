@@ -61,7 +61,11 @@ end
 M.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 vim.diagnostic.config({
-  virtual_text = { spacing = 4, prefix = '●' },
+  virtual_text = { 
+    spacing = 4, 
+    prefix = '●', 
+    severity = { min = vim.diagnostic.severity.ERROR, max = vim.diagnostic.severity.ERROR },
+  },
   float = { border = BORDER, source = true },
   signs = true,
   update_in_insert = false,
