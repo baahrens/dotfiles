@@ -119,6 +119,8 @@ u.remap('n', "<leader>cs", vim.diagnostic.open_float,                    noremap
 u.remap('n', '<leader>cn', vim.diagnostic.goto_next,                     noremapSilent)
 u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,                     noremapSilent)
 u.remap('n', '<leader>cd', vim.diagnostic.get,                           noremapSilent)
+u.remap('n', '<leader>k', '<cmd>Glance type_definitions<CR>',            noremapSilent)
+u.remap('n', '<leader>d', '<cmd>Glance references<CR>',                  noremapSilent)
 u.remap("n", "<leader>xx", "<cmd>Trouble<CR>",                           noremapSilent)
 u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", noremapSilent)
 u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  noremapSilent)

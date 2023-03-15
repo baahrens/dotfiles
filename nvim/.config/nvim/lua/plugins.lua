@@ -168,6 +168,13 @@ return require('packer').startup({ function()
 
   -- =================== lsp ===================
 
+  use({
+    "dnlhc/glance.nvim",
+    config = function() 
+      require'plugin/glance'
+    end
+  })
+
   use {
     'L3MON4D3/LuaSnip',
     config = function() require'plugin/luasnip' end
