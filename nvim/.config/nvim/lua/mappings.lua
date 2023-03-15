@@ -148,6 +148,8 @@ u.remap("x", "s", "<cmd>lua require('substitute').visual()<CR>",   noremap)
 u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
 u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
 
+u.remap('n', 'J', require('treesj').toggle)
+
 api.nvim_create_user_command('WQ', 'wq', {})
 api.nvim_create_user_command('Wq', 'wq', {})
 api.nvim_create_user_command('W', 'w', {})
