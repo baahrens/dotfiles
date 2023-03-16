@@ -1,201 +1,202 @@
 vim.fn.setenv('MACOSX_DEPLOYMENT_TARGET', '10.15')
 
-local packer_config = {
-  display = {
-    open_fn = require('packer.util').float,
-    profile = {
-      enable = false,
-      threshold = 1,
-    }
-  }
-}
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup({ function()
-  use 'wbthomason/packer.nvim'
-  use 'lewis6991/impatient.nvim'
-  use {
+function get_plugin_config(name)
+  return function()
+    require('plugin/' .. name)
+  end
+end
+
+local plugins = {
+  {
     "williamboman/mason.nvim",
-    config = function() require'plugin/mason' end
-  }
+    config = get_plugin_config'mason'
+  },
 
 -- =================== git ===================
-  use { 'tpope/vim-fugitive' }
+  { 'tpope/vim-fugitive' },
 
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    config = function() require'plugin/gitsigns' end,
-    requires = {
-      { 'nvim-lua/plenary.nvim' }
+    config = get_plugin_config('gitsigns'),
+    dependencies = {
+      'nvim-lua/plenary.nvim'
     }
-  }
+  },
 
 -- =================== UI ===================
-  use {
+  {
     'EdenEast/nightfox.nvim' ,
+    lazy = false,
+    priority = 1000,
     config = function()
       require('nightfox').setup({
         options = {
           transparent = true
         }
       })
+      require'colors'
     end
-  }
+  },
 
-  use {
+  {
     'stevearc/dressing.nvim',
-    config = function() require'plugin/dressing' end
-  }
+    config = get_plugin_config('dressing')
+  },
 
-  use {
+  {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() require'plugin/indent' end
-  }
+    config = get_plugin_config('indent')
+  },
 
-  use {
+  {
     "levouh/tint.nvim",
-    config = function()
-      require'plugin/tint'
-    end
-  }
-  use({
+    config = get_plugin_config('tint')
+  },
+  {
     "folke/noice.nvim",
-    config = function()
-      require'plugin/noice'
-    end,
-    requires = {
+    config = get_plugin_config('noice'),
+    dependencies = {
       "MunifTanjim/nui.nvim",
     }
-})
+  },
 
 -- =================== treesitter ===================
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    config = function() require'plugin/treesitter' end
-  }
+    config = get_plugin_config('treesitter')
+  },
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = "nvim-treesitter",
-    disable = true
-  }
+    enabled = false
+  },
 
-  use {
+  {
     'nvim-treesitter/playground',
     after = "nvim-treesitter",
-    disable = true
-  }
+    enabled = false
+  },
 -- =================== filetypes ===================
-  use {
+  {
     'iamcco/markdown-preview.nvim',
     ft = 'markdown',
-    run = 'cd app && yarn install'
-  }
+    build = 'cd app && yarn install'
+  },
 
 -- =================== various ===================
-  use {
+  {
     'numToStr/Comment.nvim',
-    config = function() require'plugin/comment' end
-  }
+    config = get_plugin_config('comment')
+  },
 
-  use 'tpope/vim-surround'
+  { 'tpope/vim-surround' },
 
-  use {
+  {
     'christoomey/vim-tmux-navigator',
-    config = function() require'plugin/tmux' end
-  }
+    config = get_plugin_config('tmux')
+  },
 
-  use {
+  {
     'kyazdani42/nvim-tree.lua',
-    config = function() require'plugin/nvim_tree' end,
-    requires = {
-      { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end }
+    config = get_plugin_config('nvim_tree'),
+    dependencies = {
+      'kyazdani42/nvim-web-devicons'
     }
-  }
+  },
 
-  use {
+  {
     'rebelot/heirline.nvim',
-    config = function() require'plugin/heirline' end
-  }
+    config = get_plugin_config('heirline')
+  },
 
-  use {
+  {
     'nvim-telescope/telescope.nvim',
-    config = function() require'plugin/telescope' end,
-    requires = {
+    config = get_plugin_config('telescope'),
+    dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-fzf-native.nvim',
     }
-  }
+  },
 
-  use {
+  {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  }
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
 
-  use {
+  {
     'folke/trouble.nvim',
-    config = function() require'plugin/trouble' end
-  }
+    config = get_plugin_config('trouble')
+  },
 
-  use {
+  {
     'kevinhwang91/nvim-hlslens',
-    config = function() require'plugin/hlslens' end
-  }
+    config = get_plugin_config('hlslens')
+  },
 
-  use({
+  {
     "gbprod/substitute.nvim",
-    config = function() require'plugin/substitute' end
-  })
-  use({
+    config = get_plugin_config('substitute')
+  },
+  {
     'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
-    config = function()
-      require('treesj').setup()
-    end,
-  })
+    dependencies = {
+      'nvim-treesitter',
+    },
+    setup = true
+  },
 
-  use {
+  {
     "ghillb/cybu.nvim",
     branch = "main",
-    config = function()
-      require'plugin/cybu'
-    end,
-    requires = {
-      { 'kyazdani42/nvim-web-devicons', config = function() require'plugin/devicons' end },
+    config = get_plugin_config('cybu'),
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
       "nvim-lua/plenary.nvim"
     }
-  }
+  },
 
   -- =================== lsp ===================
 
-  use({
+  {
     "dnlhc/glance.nvim",
-    config = function() 
-      require'plugin/glance'
-    end
-  })
+    config = get_plugin_config('glance')
+  },
 
-  use {
+  {
     'L3MON4D3/LuaSnip',
-    config = function() require'plugin/luasnip' end
-  }
+    config = get_plugin_config('luasnip')
+  },
 
-  use {
+  {
     'hrsh7th/nvim-cmp',
-    config = function() require'plugin/cmp' end,
-    requires = {
+    config = get_plugin_config('cmp'),
+    dependencies = {
         'saadparwaiz1/cmp_luasnip',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
         "lukas-reineke/cmp-rg",
         'hrsh7th/cmp-cmdline',
-        { 'hrsh7th/cmp-nvim-lua', ft = { 'lua' } }
+        'hrsh7th/cmp-nvim-lua'
       }
+  },
 
-  }
-
-  use {
+  {
     'neovim/nvim-lspconfig',
     config = function()
       require'plugin/lsp'
@@ -205,10 +206,38 @@ return require('packer').startup({ function()
       require'plugin/lsp/prisma'
       require'plugin/lsp/tailwind'
     end
-  }
+  },
 
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    config = function() require'plugin/null-ls' end
+    config = get_plugin_config('null-ls')
   }
-end, config = packer_config })
+}
+
+local lazy_config = {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "tar",
+        "tarPlugin",
+        "zip",
+        "zipPlugin",
+        "getscript",
+        "getscriptPlugin",
+        "vimball",
+        "vimballPlugin",
+        "matchit",
+        "2html_plugin",
+        "logiPat",
+        "rrhelper",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+      }
+    }
+  }
+}
+
+require("lazy").setup(plugins, lazy_config)

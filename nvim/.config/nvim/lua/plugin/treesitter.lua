@@ -1,7 +1,6 @@
 local tsConfigs = require'nvim-treesitter.configs'
 
 tsConfigs.setup {
-  ensure_installed = "all",
   indent = {
     enable = true
   },
