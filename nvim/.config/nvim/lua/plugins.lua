@@ -146,6 +146,13 @@ return require('packer').startup({ function()
     "gbprod/substitute.nvim",
     config = function() require'plugin/substitute' end
   })
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup()
+    end,
+  })
 
   use {
     "ghillb/cybu.nvim",
@@ -160,6 +167,13 @@ return require('packer').startup({ function()
   }
 
   -- =================== lsp ===================
+
+  use({
+    "dnlhc/glance.nvim",
+    config = function() 
+      require'plugin/glance'
+    end
+  })
 
   use {
     'L3MON4D3/LuaSnip',

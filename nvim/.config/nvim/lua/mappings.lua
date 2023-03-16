@@ -109,8 +109,7 @@ u.remap("n", "<leader>fr",  telescope.resume,           noremap)
 -- lsp/diagnostics/trouble
 u.remap('n', 'gd',         '<cmd>Telescope lsp_definitions<CR>',         noremapSilent)
 u.remap('n', 'gD',         '<cmd>Telescope lsp_declarations<CR>',        noremapSilent)
-u.remap('n', 'gr',         '<cmd>Telescope lsp_references<CR>',          noremapSilent)
-u.remap('n', 'gR',         '<cmd>Trouble lsp_references<CR>',            noremapSilent)
+u.remap('n', 'gr',         '<cmd>Trouble lsp_references<CR>',            noremapSilent)
 u.remap('n', 'K',          vim.lsp.buf.hover,                            noremapSilent)
 u.remap('v', '<C-f>',      lsp.format,                                   noremapSilent)
 u.remap('n', '<C-f>',      lsp.format,                                   noremapSilent)
@@ -120,6 +119,8 @@ u.remap('n', "<leader>cs", vim.diagnostic.open_float,                    noremap
 u.remap('n', '<leader>cn', vim.diagnostic.goto_next,                     noremapSilent)
 u.remap('n', '<leader>cN', vim.diagnostic.goto_prev,                     noremapSilent)
 u.remap('n', '<leader>cd', vim.diagnostic.get,                           noremapSilent)
+u.remap('n', '<leader>k',  vim.lsp.buf.signature_help,                   noremapSilent)
+u.remap('n', '<leader>d', '<cmd>Glance references<CR>',                  noremapSilent)
 u.remap("n", "<leader>xx", "<cmd>Trouble<CR>",                           noremapSilent)
 u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", noremapSilent)
 u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>",  noremapSilent)
@@ -147,6 +148,8 @@ u.remap("x", "s", "<cmd>lua require('substitute').visual()<CR>",   noremap)
 -- cybu
 u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
 u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
+
+u.remap('n', '<leader>j', require('treesj').toggle)
 
 api.nvim_create_user_command('WQ', 'wq', {})
 api.nvim_create_user_command('Wq', 'wq', {})
