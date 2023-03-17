@@ -120,9 +120,6 @@ cmp.setup({
     { name = 'luasnip',                 max_item_count = 10 },
     { name = 'buffer',                  max_item_count = 10 },
     { name = 'path',                    max_item_count = 10 },
-    { name = 'nvim_lua',                max_item_count = 10 },
-    { name = 'npm',                     max_item_count = 10 },
-    { name = 'rg',                      max_item_count = 10 },
   }),
   experimental = {
     native_menu = false,

@@ -1,12 +1,11 @@
 local lsp = require('plugin/lsp')
 
 require'lspconfig'.lua_ls.setup({
-  debounce_text_changes = 500,
-  settings = {
-    Lua = {
-      completion = {
-        callSnippet = "Replace"
-      }
-    }
-  }
+  capabilities = lsp.capabilities,
+  on_attach = function(client)
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
+
+    lsp.on_attach(client)
+  end
 })

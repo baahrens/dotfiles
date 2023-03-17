@@ -1,243 +1,268 @@
-vim.fn.setenv('MACOSX_DEPLOYMENT_TARGET', '10.15')
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 function get_plugin_config(name)
-  return function()
-    require('plugin/' .. name)
-  end
+	return function()
+		require("plugin/" .. name)
+	end
 end
 
 local plugins = {
-  {
-    "williamboman/mason.nvim",
-    config = get_plugin_config'mason'
-  },
+	-- =================== git ===================
+	{
+		"tpope/vim-fugitive",
+		cmd = "Git",
+	},
 
--- =================== git ===================
-  { 'tpope/vim-fugitive' },
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		config = get_plugin_config("gitsigns"),
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 
-  {
-    'lewis6991/gitsigns.nvim',
-    config = get_plugin_config('gitsigns'),
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    }
-  },
+	-- =================== UI ===================
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nightfox").setup({
+				options = {
+					transparent = true,
+				},
+			})
+			require("colors")
+		end,
+	},
 
--- =================== UI ===================
-  {
-    'EdenEast/nightfox.nvim' ,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('nightfox').setup({
-        options = {
-          transparent = true
-        }
-      })
-      require'colors'
-    end
-  },
+	{
+		"stevearc/dressing.nvim",
+		config = get_plugin_config("dressing"),
+		event = "VeryLazy",
+	},
 
-  {
-    'stevearc/dressing.nvim',
-    config = get_plugin_config('dressing')
-  },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		config = get_plugin_config("indent"),
+	},
 
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    config = get_plugin_config('indent')
-  },
+	{
+		"levouh/tint.nvim",
+		config = get_plugin_config("tint"),
+		event = "VeryLazy",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("noice"),
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+	},
 
-  {
-    "levouh/tint.nvim",
-    config = get_plugin_config('tint')
-  },
-  {
-    "folke/noice.nvim",
-    config = get_plugin_config('noice'),
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    }
-  },
+	-- =================== treesitter ===================
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+		config = get_plugin_config("treesitter"),
+	},
 
--- =================== treesitter ===================
-  {
-    'nvim-treesitter/nvim-treesitter',
-    config = get_plugin_config('treesitter')
-  },
+	-- =================== various ===================
+	{
+		"numToStr/Comment.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("comment"),
+	},
 
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = "nvim-treesitter",
-    enabled = false
-  },
+	{
+		"tpope/vim-surround",
+		event = "VeryLazy",
+	},
 
-  {
-    'nvim-treesitter/playground',
-    after = "nvim-treesitter",
-    enabled = false
-  },
--- =================== filetypes ===================
-  {
-    'iamcco/markdown-preview.nvim',
-    ft = 'markdown',
-    build = 'cd app && yarn install'
-  },
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+		},
+		config = get_plugin_config("tmux"),
+	},
 
--- =================== various ===================
-  {
-    'numToStr/Comment.nvim',
-    config = get_plugin_config('comment')
-  },
+	{
+		"kyazdani42/nvim-tree.lua",
+		cmd = { "NvimTreeToggle" },
+		config = get_plugin_config("nvim_tree"),
+		dependencies = {
+			"kyazdani42/nvim-web-devicons",
+		},
+	},
 
-  { 'tpope/vim-surround' },
+	{
+		"rebelot/heirline.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("heirline"),
+	},
 
-  {
-    'christoomey/vim-tmux-navigator',
-    config = get_plugin_config('tmux')
-  },
+	{
+		"nvim-telescope/telescope.nvim",
+		config = get_plugin_config("telescope"),
+		dependencies = {
+			"nvim-lua/popup.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
 
-  {
-    'kyazdani42/nvim-tree.lua',
-    config = get_plugin_config('nvim_tree'),
-    dependencies = {
-      'kyazdani42/nvim-web-devicons'
-    }
-  },
+	{
+		"folke/trouble.nvim",
+		config = get_plugin_config("trouble"),
+		event = "VeryLazy",
+	},
 
-  {
-    'rebelot/heirline.nvim',
-    config = get_plugin_config('heirline')
-  },
+	{
+		"kevinhwang91/nvim-hlslens",
+		event = "VeryLazy",
+		config = get_plugin_config("hlslens"),
+	},
 
-  {
-    'nvim-telescope/telescope.nvim',
-    config = get_plugin_config('telescope'),
-    dependencies = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim',
-    }
-  },
+	{
+		"gbprod/substitute.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("substitute"),
+	},
+	{
+		"Wansmer/treesj",
+		event = "VeryLazy",
+		config = true,
+	},
 
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
+	{
+		"ghillb/cybu.nvim",
+		config = get_plugin_config("cybu"),
+		cmd = { "CybuLastusedPrev", "CybuLastusedNext" },
+		dependencies = {
+			"kyazdani42/nvim-web-devicons",
+			"nvim-lua/plenary.nvim",
+		},
+	},
 
-  {
-    'folke/trouble.nvim',
-    config = get_plugin_config('trouble')
-  },
+	{
+		"dnlhc/glance.nvim",
+		config = get_plugin_config("glance"),
+	},
 
-  {
-    'kevinhwang91/nvim-hlslens',
-    config = get_plugin_config('hlslens')
-  },
+	{
+		"L3MON4D3/LuaSnip",
+		config = get_plugin_config("luasnip"),
+		event = "VeryLazy",
+	},
 
-  {
-    "gbprod/substitute.nvim",
-    config = get_plugin_config('substitute')
-  },
-  {
-    'Wansmer/treesj',
-    dependencies = {
-      'nvim-treesitter',
-    },
-    setup = true
-  },
+	{
+		"hrsh7th/nvim-cmp",
+		config = get_plugin_config("cmp"),
+		event = "InsertEnter",
+		dependencies = {
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+		},
+	},
 
-  {
-    "ghillb/cybu.nvim",
-    branch = "main",
-    config = get_plugin_config('cybu'),
-    dependencies = {
-      'kyazdani42/nvim-web-devicons',
-      "nvim-lua/plenary.nvim"
-    }
-  },
+	-- =================== lsp ===================
 
-  -- =================== lsp ===================
+	{
+		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = {
+			"mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+		config = function()
+			require("plugin/lsp")
+			require("plugin/lsp/lua")
+			require("plugin/lsp/typescript")
+			require("plugin/lsp/css")
+			require("plugin/lsp/prisma")
+			require("plugin/lsp/rust")
+			require("plugin/lsp/tailwind")
+		end,
+	},
+	{
+		event = "VeryLazy",
+		"williamboman/mason-lspconfig.nvim",
+		config = get_plugin_config("mason-lspconfig"),
+	},
+	{
+		"williamboman/mason.nvim",
+		cmd = "Mason",
+		config = get_plugin_config("mason"),
+	},
 
-  {
-    "dnlhc/glance.nvim",
-    config = get_plugin_config('glance')
-  },
-
-  {
-    'L3MON4D3/LuaSnip',
-    config = get_plugin_config('luasnip')
-  },
-
-  {
-    'hrsh7th/nvim-cmp',
-    config = get_plugin_config('cmp'),
-    dependencies = {
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        "lukas-reineke/cmp-rg",
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lua'
-      }
-  },
-
-  {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require'plugin/lsp'
-      require'plugin/lsp/lua'
-      require'plugin/lsp/typescript'
-      require'plugin/lsp/css'
-      require'plugin/lsp/prisma'
-      require'plugin/lsp/tailwind'
-    end
-  },
-
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = get_plugin_config('null-ls')
-  }
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = get_plugin_config("null-ls"),
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+	},
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = get_plugin_config("mason-null-ls"),
+		dependencies = {
+			"williamboman/mason.nvim",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+	},
 }
 
 local lazy_config = {
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "tar",
-        "tarPlugin",
-        "zip",
-        "zipPlugin",
-        "getscript",
-        "getscriptPlugin",
-        "vimball",
-        "vimballPlugin",
-        "matchit",
-        "2html_plugin",
-        "logiPat",
-        "rrhelper",
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-      }
-    }
-  }
+	defaults = {
+		lazy = true,
+	},
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"tar",
+				"tarPlugin",
+				"zip",
+				"zipPlugin",
+				"getscript",
+				"getscriptPlugin",
+				"vimball",
+				"vimballPlugin",
+				"matchit",
+				"2html_plugin",
+				"logiPat",
+				"rrhelper",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+			},
+		},
+	},
 }
 
 require("lazy").setup(plugins, lazy_config)
