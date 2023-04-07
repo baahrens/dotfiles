@@ -153,11 +153,6 @@ local plugins = {
 		event = "VeryLazy",
 		config = get_plugin_config("substitute"),
 	},
-	{
-		"Wansmer/treesj",
-		event = "VeryLazy",
-		config = true,
-	},
 
 	{
 		"ghillb/cybu.nvim",
