@@ -48,9 +48,7 @@ function M.on_attach(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = formatting_augroup,
 			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format()
-			end,
+			callback = M.format,
 		})
 	end
 end
