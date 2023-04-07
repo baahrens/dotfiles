@@ -166,6 +166,7 @@ local plugins = {
 
 	{
 		"dnlhc/glance.nvim",
+		cmd = { "Glance" },
 		config = get_plugin_config("glance"),
 	},
 
