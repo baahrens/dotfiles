@@ -114,7 +114,7 @@ local plugins = {
 
 	{
 		"kyazdani42/nvim-tree.lua",
-		cmd = { "NvimTreeToggle" },
+		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
 		config = get_plugin_config("nvim_tree"),
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",

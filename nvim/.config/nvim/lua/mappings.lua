@@ -145,7 +145,7 @@ u.remap("n", "<C-l>", ":TmuxNavigateRight<CR>", noremapSilent)
 
 -- nvim tree
 u.remap("n", "<C-n>", ":NvimTreeToggle<CR>", noremap)
-u.remap("n", "<C-S-n>", ":NvimTreeFindFileToggle<CR>", noremap)
+u.remap("n", "<C-b>", ":NvimTreeFindFileToggle<CR>", noremap)
 
 -- p <leader>o & <leader>O to newline without insert mode
 u.remap("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', noremapSilent)
