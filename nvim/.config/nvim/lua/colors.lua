@@ -43,6 +43,8 @@ local custom_highlights = {
 	HlSearchLens = { fg = palette.cyan.base },
 	HlSearchLensNear = { fg = palette.cyan.base },
 	HlSearchFloat = { fg = palette.cyan.base },
+
+	DiffDelete = { bg = "#4b3346", fg = palette.bg3 },
 }
 
 vim.api.nvim_create_augroup("colors", { clear = true })

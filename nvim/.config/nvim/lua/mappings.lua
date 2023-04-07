@@ -165,7 +165,7 @@ u.remap("n", "<leader>lo", ":lopen<CR>", noremap)
 u.remap("n", "<leader>lp", ":lprev<CR>", noremap)
 u.remap("n", "<leader>la", ":ll<CR>", noremap)
 
--- fugitive
+-- git
 u.remap("n", "<leader>gs", ":Git<CR>", noremap)
 u.remap("n", "<leader>gc", ":Git commit<CR>", noremap)
 u.remap("n", "<leader>gpl", ":Git pull<CR>", noremap)
@@ -179,6 +179,7 @@ u.remap("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", noremap)
 u.remap("n", "<leader>gg", ":Gitsigns preview_hunk_inline<CR>", noremap)
 u.remap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", noremap)
 u.remap("n", "<leader>gN", ":Gitsigns prev_hunk<CR>", noremap)
+u.remap("n", "<leader>gd", ":DiffviewOpen origin/master...HEAD<CR>", noremap)
 
 -- telescope
 u.remap("n", "<leader>ff", find_files, noremap)
