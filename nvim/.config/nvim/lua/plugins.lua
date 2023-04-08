@@ -169,6 +169,11 @@ local plugins = {
 		cmd = { "Glance" },
 		config = get_plugin_config("glance"),
 	},
+	{
+		"folke/which-key.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = get_plugin_config("which-key"),
+	},
 
 	{
 		"L3MON4D3/LuaSnip",
@@ -221,8 +226,8 @@ local plugins = {
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
 		config = get_plugin_config("null-ls"),
+		lazy = false,
 		dependencies = {
 			"williamboman/mason.nvim",
 		},

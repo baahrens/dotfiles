@@ -26,7 +26,8 @@ o.scrolloff = 10
 o.splitbelow = true
 o.splitright = true
 o.tabstop = 2
-o.timeoutlen = 1000
+o.timeout = true
+o.timeoutlen = 300
 o.ttimeoutlen = 50
 o.wildignore =
 	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"

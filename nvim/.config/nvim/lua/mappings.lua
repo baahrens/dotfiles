@@ -4,6 +4,8 @@ local lsp = require("plugin/lsp")
 local u = require("util")
 local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
+local settings = require("settings")
+local wk = require("which-key")
 
 local silent = { silent = true }
 local noremap = { noremap = true }
@@ -109,7 +111,7 @@ u.remap("n", "j", "gj", noremap)
 u.remap("n", "k", "gk", noremap)
 
 u.remap("n", "Q", ":q<CR>", noremap)
-u.remap("n", "<leader>ss", ":w<CR>", noremap) -- Alacritty: Command + s
+-- u.remap("n", "<leader>ss", ":w<CR>", noremap) -- Alacritty: Command + s
 u.remap("n", "<leader>f;", "/ <BS>", noremap) -- Alacritty: Command + f
 
 -- H/L to go to beginning/end of the line
@@ -134,8 +136,8 @@ u.remap("x", "<leader>z[", ":move '<-2<CR>gv=gv", silent) -- Alacritty: Option +
 u.remap("v", "<leader>p", '"_dP', noremap)
 u.remap("v", "y", "ygv<ESC>", noremap)
 
--- shoutout
-u.remap("n", "<leader>so", ":luafile %<CR>", noremap)
+-- -- shoutout
+-- u.remap("n", "<leader>so", ":luafile %<CR>", noremap)
 
 -- tmux
 u.remap("n", "<C-h>", ":TmuxNavigateLeft<CR>", noremapSilent)
@@ -241,6 +243,17 @@ u.remap("x", "s", "<cmd>lua require('substitute').visual()<CR>", noremap)
 -- cybu
 u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
 u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
+
+wk.register({
+	["<leader>s"] = {
+		name = "settings",
+		f = { settings.toggle_format_on_save, "Toggle on save formatting" },
+		p = { settings.toggle_format_prettier, "Toggle prettier formatting" },
+		e = { settings.toggle_format_eslint, "Toggle eslint formatting" },
+		u = { settings.toggle_diagnostic_underline, "Toggle diagnostic underline" },
+		v = { settings.toggle_diagnostic_virtual, "Toggle diagnostic virtual" },
+	},
+})
 
 api.nvim_create_user_command("WQ", "wq", {})
 api.nvim_create_user_command("Wq", "wq", {})

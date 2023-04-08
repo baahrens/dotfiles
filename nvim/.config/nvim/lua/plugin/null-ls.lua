@@ -1,4 +1,5 @@
 local null_ls = require("null-ls")
+local settings = require("settings")
 local lsp = require("plugin/lsp")
 
 local formatting = null_ls.builtins.formatting
@@ -8,8 +9,8 @@ local actions = null_ls.builtins.code_actions
 require("null-ls").setup({
 	sources = {
 		formatting.stylua,
-		formatting.prettierd,
-		formatting.eslint_d,
+		settings.format.eslint and formatting.eslint_d or nil,
+		settings.format.prettier and formatting.prettierd or nil,
 		formatting.fish_indent,
 
 		diagnostics.eslint_d,
