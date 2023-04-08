@@ -71,7 +71,7 @@ local plugins = {
 	{
 		"levouh/tint.nvim",
 		config = get_plugin_config("tint"),
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 	},
 	{
 		"folke/noice.nvim",
@@ -92,7 +92,7 @@ local plugins = {
 	-- =================== various ===================
 	{
 		"numToStr/Comment.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		config = get_plugin_config("comment"),
 	},
 
@@ -139,7 +139,7 @@ local plugins = {
 	{
 		"folke/trouble.nvim",
 		config = get_plugin_config("trouble"),
-		event = "VeryLazy",
+    cmd = { "Trouble" },
 	},
 
 	{
@@ -178,7 +178,7 @@ local plugins = {
 	{
 		"L3MON4D3/LuaSnip",
 		config = get_plugin_config("luasnip"),
-		event = "VeryLazy",
+		event = "InsertEnter",
 	},
 
 	{
