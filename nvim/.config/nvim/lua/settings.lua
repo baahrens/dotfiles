@@ -39,9 +39,13 @@ local M = {
 	},
 }
 
+local function notify(msg, enabled)
+	vim.notify(msg .. " " .. (enabled and "enabled" or "disabled"))
+end
+
 function M.toggle_format_on_save()
 	M.format.on_save = not M.format.on_save
-	vim.notify("Formatting on save " .. (M.format.on_save and "on" or "off"))
+	notify("Formatting on save", M.format.on_save)
 end
 
 function M.toggle_format_prettier()
@@ -51,7 +55,7 @@ function M.toggle_format_prettier()
 	else
 		null_ls.deregister("prettierd")
 	end
-	vim.notify("Formatting with prettier " .. (M.format.prettier and "on" or "off"))
+	notify("Formatting with prettier", M.format.prettier)
 end
 
 function M.toggle_format_eslint()
@@ -61,7 +65,7 @@ function M.toggle_format_eslint()
 	else
 		null_ls.deregister("eslint_d")
 	end
-	vim.notify("Formatting with eslint " .. (M.format.eslint and "on" or "off"))
+	notify("Formatting with eslint", M.format.eslint)
 end
 
 function M.toggle_diagnostic_underline()
@@ -69,7 +73,7 @@ function M.toggle_diagnostic_underline()
 	vim.diagnostic.config({
 		underline = M.diagnostics.show_underline,
 	})
-	vim.notify("Diagnostic underlines " .. (M.diagnostics.show_underline and "on" or "off"))
+	notify("Diagnostic underlines", M.diagnostics.show_underline)
 end
 
 function M.toggle_diagnostic_virtual()
@@ -77,7 +81,7 @@ function M.toggle_diagnostic_virtual()
 	vim.diagnostic.config({
 		virtual_text = M.diagnostics.show_virtual and M.diagnostics.virtual_text or false,
 	})
-	vim.notify("Diagnostic virtual " .. (M.diagnostics.show_virtual and "on" or "off"))
+	notify("Diagnostic virtual", M.diagnostics.show_virtual)
 end
 
 return M
