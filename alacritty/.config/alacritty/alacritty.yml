@@ -3,7 +3,6 @@ import:
 
 live_config_reload: true
 
-alt_send_esc: false
 shell:
   program: /usr/local/bin/fish
 
