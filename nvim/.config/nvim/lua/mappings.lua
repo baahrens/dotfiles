@@ -11,23 +11,6 @@ local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
 
-local function find_files()
-	return t_builtin.find_files(t_themes.get_dropdown({
-		path_display = {
-			shorten = 5,
-		},
-		previewer = false,
-		width = 1,
-		prompt_title = false,
-	}))
-end
-
-local function grep_cwd()
-	return t_builtin.live_grep({
-		prompt_title = "~ search ~",
-	})
-end
-
 local function grep_notes()
 	return t_builtin.live_grep({
 		prompt_title = "~ notes ~",
@@ -41,61 +24,6 @@ local function find_dotfiles()
 		cwd = "~/.dotfiles",
 		prompt_title = "~ dotfiles ~",
 		previewer = false,
-	}))
-end
-
-local function find_help()
-	return t_builtin.help_tags(t_themes.get_ivy({
-		prompt_title = "~ help ~",
-	}))
-end
-
-local function find_mappings()
-	return t_builtin.keymaps(t_themes.get_dropdown({
-		prompt_title = "~ mappings ~",
-	}))
-end
-
-local function find_commands()
-	return t_builtin.commands(t_themes.get_dropdown({
-		prompt_title = "~ commands ~",
-	}))
-end
-
-local function find_highlights()
-	return t_builtin.highlights(t_themes.get_dropdown({
-		prompt_title = "~ highlights ~",
-		previewer = false,
-	}))
-end
-
-local function find_buffers()
-	return t_builtin.buffers(t_themes.get_dropdown({
-		prompt_title = "~ buffers ~",
-		sort_mru = true,
-		previewer = false,
-		path_display = { shorten = 1 },
-		ignore_current_buffer = true,
-	}))
-end
-
-local function fuzzy_find()
-	return t_builtin.current_buffer_fuzzy_find(t_themes.get_dropdown({
-		prompt_title = "~ search ~",
-		previewer = false,
-	}))
-end
-
-local function git_branches()
-	return t_builtin.git_branches(t_themes.get_dropdown({
-		prompt_title = "~ branches ~",
-		sort_mru = true,
-	}))
-end
-
-local function find_diagnostics()
-	return t_builtin.diagnostics(t_themes.get_ivy({
-		prompt_title = "~ diagnostics ~",
 	}))
 end
 
@@ -187,19 +115,19 @@ u.remap("n", "<leader>gN", ":Gitsigns prev_hunk<CR>", noremap)
 u.remap("n", "<leader>gd", ":DiffviewOpen origin/master...HEAD<CR>", noremap)
 
 -- telescope
-u.remap("n", "<leader>ff", find_files, noremap)
-u.remap("n", "<C-p>", grep_cwd, noremap)
+u.remap("n", "<leader>ff", t_builtin.find_files, noremap)
+u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
 u.remap("n", "<leader>fn", grep_notes, noremap)
 u.remap("n", "<leader>fd", find_dotfiles, noremap)
-u.remap("n", "<leader>fh", find_help, noremap)
-u.remap("n", "<leader>fm", find_mappings, noremap)
-u.remap("n", "<leader>fc", find_commands, noremap)
-u.remap("n", "<leader>fi", find_highlights, noremap)
-u.remap("n", "<leader>fb", find_buffers, noremap)
-u.remap("n", "<leader>fs", fuzzy_find, noremap)
-u.remap("n", "<leader>fg", git_branches, noremap)
-u.remap("n", "<leader>fx", find_diagnostics, noremap)
-u.remap("n", "<leader>fr", "<cmd>Telescope resume<CR>", noremap)
+u.remap("n", "<leader>fh", t_builtin.help_tags, noremap)
+u.remap("n", "<leader>fm", t_builtin.keymaps, noremap)
+u.remap("n", "<leader>fc", t_builtin.commands, noremap)
+u.remap("n", "<leader>fi", t_builtin.highlights, noremap)
+u.remap("n", "<leader>fb", t_builtin.buffers, noremap)
+u.remap("n", "<leader>fs", t_builtin.current_buffer_fuzzy_find, noremap)
+u.remap("n", "<leader>fg", t_builtin.git_branches, noremap)
+u.remap("n", "<leader>fx", t_builtin.diagnostics, noremap)
+u.remap("n", "<leader>fr", t_builtin.resume, noremap)
 
 -- lsp/diagnostics/trouble
 u.remap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", noremapSilent)
