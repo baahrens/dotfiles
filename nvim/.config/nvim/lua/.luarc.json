@@ -1,0 +1,24 @@
+{
+    "workspace.library": [
+        "/Users/basti/.config/nvim",
+        "/Users/basti/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/basti/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/basti/.local/share/nvim/lazy/mason-lspconfig.nvim",
+        "/Users/basti/.local/share/nvim/lazy/nvim-hlslens",
+        "/Users/basti/.local/share/nvim/lazy/which-key.nvim",
+        "/Users/basti/.local/share/nvim/lazy/cmp-nvim-lsp",
+        "/Users/basti/.local/share/nvim/lazy/trouble.nvim",
+        "/Users/basti/.local/share/nvim/lazy/plenary.nvim",
+        "/Users/basti/.local/share/nvim/lazy/popup.nvim",
+        "/Users/basti/.local/share/nvim/lazy/telescope.nvim",
+        "/Users/basti/.local/share/nvim/lazy/mason.nvim",
+        "/Users/basti/.local/share/nvim/lazy/null-ls.nvim",
+        "/Users/basti/.local/share/nvim/lazy/nightfox.nvim",
+        "/usr/local/Cellar/neovim/0.8.3/share/nvim/runtime",
+        "/usr/local/Cellar/neovim/0.8.3/lib/nvim",
+        "/Users/basti/.local/share/nvim/lazy/cmp-nvim-lsp/after",
+        "/Users/basti/.config/nvim/after",
+        "/Users/basti/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ]
+}
