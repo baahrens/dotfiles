@@ -45,6 +45,8 @@ u.remap("n", "<leader>f;", "/ <BS>", noremap) -- Alacritty: Command + f
 -- H/L to go to beginning/end of the line
 u.remap("n", "H", "^", noremap)
 u.remap("n", "L", "$", noremap)
+u.remap("x", "H", "^", noremap)
+u.remap("x", "L", "$", noremap)
 
 -- just kidding
 u.remap("i", "jk", "<ESC>", {})
