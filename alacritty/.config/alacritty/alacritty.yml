@@ -1,5 +1,6 @@
 import:
-  - ~/.dotfiles/alacritty/.config/alacritty/theme.yml
+  # - ~/.dotfiles/alacritty/.config/alacritty/duskfox.yml
+  - ~/.dotfiles/alacritty/.config/alacritty/clown.yml
 
 live_config_reload: true
 
@@ -13,7 +14,7 @@ window:
 
   startup_mode: Maximized
 
-  opacity: 0.92
+  # opacity: 0.92
   padding:
     x: 4
     y: 4

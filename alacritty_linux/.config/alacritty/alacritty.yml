@@ -1,5 +1,6 @@
 import:
-  - ~/dotfiles/alacritty_linux/.config/alacritty/theme.yml
+  # - ~/dotfiles/alacritty_linux/.config/alacritty/duskfox.yml
+  - ~/dotfiles/alacritty_linux/.config/alacritty/clown.yml
 
 live_config_reload: true
 
