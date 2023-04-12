@@ -66,13 +66,17 @@ local overrides = {
 
 		NoiceLspProgressTitle = { fg = clown_palette.white },
 
-		FloatBorder = { fg = clown_palette.light_gray, bg = none },
-		CmpDocBorder = { fg = clown_palette.light_gray, bg = none },
-		CmpBorder = { fg = clown_palette.light_gray, bg = none },
+		CmpDocBorder = { fg = clown_palette.medium_gray, bg = none },
+		CmpBorder = { fg = clown_palette.medium_gray, bg = none },
 
+		FloatBorder = { fg = clown_palette.medium_gray, bg = none },
 		NormalFloat = { bg = none },
+
 		PmenuThumb = { bg = duskfox_palette.fg3 },
 		PmenuSel = { bg = "#343b47" },
+
+		LineNr = { fg = clown_palette.medium_gray },
+		CursorLineNr = { fg = clown_palette.orange },
 	},
 }
 
