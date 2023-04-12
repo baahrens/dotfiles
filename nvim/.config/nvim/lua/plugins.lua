@@ -100,6 +100,12 @@ local plugins = {
 		},
 	},
 
+	{
+		"luukvbaal/statuscol.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("statuscol"),
+	},
+
 	-- =================== treesitter ===================
 	{
 		"nvim-treesitter/nvim-treesitter",
