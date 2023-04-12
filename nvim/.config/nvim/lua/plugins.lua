@@ -13,7 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-function get_plugin_config(name)
+local function get_plugin_config(name)
 	return function()
 		require("plugin/" .. name)
 	end
@@ -43,6 +43,25 @@ local plugins = {
 
 	-- =================== UI ===================
 	{
+		"aktersnurra/no-clown-fiesta.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("no-clown-fiesta").setup({
+				transparent = false,
+				styles = {
+					comments = {},
+					keywords = {},
+					functions = {},
+					variables = {},
+					type = { bold = true },
+					lsp = { underline = true },
+				},
+			})
+			require("colors")
+		end,
+	},
+	{
 		"EdenEast/nightfox.nvim",
 		lazy = false,
 		priority = 1000,
@@ -52,7 +71,6 @@ local plugins = {
 					transparent = true,
 				},
 			})
-			require("colors")
 		end,
 	},
 
@@ -139,7 +157,7 @@ local plugins = {
 	{
 		"folke/trouble.nvim",
 		config = get_plugin_config("trouble"),
-    cmd = { "Trouble" },
+		cmd = { "Trouble" },
 	},
 
 	{
