@@ -14,7 +14,7 @@ window:
 
   startup_mode: Maximized
 
-  opacity: 0.92
+  # opacity: 0.92
   padding:
     x: 4
     y: 4
