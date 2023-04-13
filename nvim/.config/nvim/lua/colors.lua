@@ -77,6 +77,11 @@ local overrides = {
 
 		LineNr = { fg = clown_palette.medium_gray },
 		CursorLineNr = { fg = clown_palette.orange },
+
+		TelescopeBorder = { fg = clown_palette.medium_gray, bg = none },
+		TelescopeResultsBorder = { fg = clown_palette.medium_gray, bg = none },
+		TelescopePreviewBorder = { fg = clown_palette.medium_gray, bg = none },
+		TelescopePromptBorder = { fg = clown_palette.medium_gray, bg = none },
 	},
 }
 
