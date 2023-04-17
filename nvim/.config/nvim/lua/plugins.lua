@@ -112,6 +112,11 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		config = get_plugin_config("treesitter"),
 	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = "nvim-treesitter",
+	},
 
 	-- =================== various ===================
 	{
