@@ -1,16 +1,7 @@
-local tsConfigs = require("nvim-treesitter.configs")
-
-tsConfigs.setup({
-	indent = {
-		enable = true,
-	},
-	highlight = {
-		enable = true,
-	},
-
-	matchup = {
-		enable = true,
-	},
+require("nvim-treesitter.configs").setup({
+	indent = { enable = true },
+	highlight = { enable = true },
+	matchup = { enable = true },
 
 	textobjects = {
 		select = {
@@ -26,16 +17,9 @@ tsConfigs.setup({
 			},
 		},
 	},
-
-	------- nvim development stuff
-	-- query_linter = {
-	--   enable = true,
-	--   use_virtual_text = true,
-	--   lint_events = {"BufWrite", "CursorHold"}
-	-- },
 	playground = {
 		enable = false,
-		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		updatetime = 25,
 		keybindings = {
 			toggle_query_editor = "o",
 			toggle_hl_groups = "i",
@@ -49,13 +33,13 @@ tsConfigs.setup({
 			show_help = "?",
 		},
 	},
-	-- incremental_selection = {
-	--   enable = true,
-	--   keymaps = {
-	--     init_selection = "gnn",
-	--     node_incremental = "grn",
-	--     scope_incremental = "grc",
-	--     node_decremental = "grm",
-	--   }
-	-- }
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<C-S>",
+			node_incremental = ",",
+			scope_incremental = "grc",
+			node_decremental = ".",
+		},
+	},
 })
