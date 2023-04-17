@@ -131,6 +131,12 @@ local plugins = {
 	},
 
 	{
+		"echasnovski/mini.pairs",
+		event = "InsertEnter",
+		config = get_plugin_config("pairs"),
+	},
+
+	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
 			"TmuxNavigateLeft",
