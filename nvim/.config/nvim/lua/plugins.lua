@@ -13,9 +13,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function get_plugin_config(name)
+local function load_plugin_conf(name)
 	return function()
-		require("plugin/" .. name)
+		local ok, conf = pcall(require, "plugin/" .. name)
+		if not ok then
+			print("Error loading " .. name)
+		end
 	end
 end
 
@@ -29,7 +32,7 @@ local plugins = {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		config = get_plugin_config("gitsigns"),
+		config = load_plugin_conf("gitsigns"),
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -38,7 +41,7 @@ local plugins = {
 		"sindrets/diffview.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		cmd = { "DiffviewOpen" },
-		config = get_plugin_config("diffview"),
+		config = load_plugin_conf("diffview"),
 	},
 
 	-- =================== UI ===================
@@ -76,25 +79,25 @@ local plugins = {
 
 	{
 		"stevearc/dressing.nvim",
-		config = get_plugin_config("dressing"),
+		config = load_plugin_conf("dressing"),
 		event = "VeryLazy",
 	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		config = get_plugin_config("indent"),
+		config = load_plugin_conf("indent"),
 	},
 
 	{
 		"levouh/tint.nvim",
-		config = get_plugin_config("tint"),
+		config = load_plugin_conf("tint"),
 		event = { "BufReadPost", "BufNewFile" },
 	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		config = get_plugin_config("noice"),
+		config = load_plugin_conf("noice"),
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
@@ -103,14 +106,14 @@ local plugins = {
 	{
 		"luukvbaal/statuscol.nvim",
 		event = "VeryLazy",
-		config = get_plugin_config("statuscol"),
+		config = load_plugin_conf("statuscol"),
 	},
 
 	-- =================== treesitter ===================
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
-		config = get_plugin_config("treesitter"),
+		config = load_plugin_conf("treesitter"),
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
@@ -122,12 +125,12 @@ local plugins = {
 	{
 		"uga-rosa/ccc.nvim",
 		event = "VeryLazy",
-		config = get_plugin_config("ccc"),
+		config = load_plugin_conf("ccc"),
 	},
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		config = get_plugin_config("comment"),
+		config = load_plugin_conf("comment"),
 	},
 
 	{
@@ -138,7 +141,7 @@ local plugins = {
 	{
 		"echasnovski/mini.pairs",
 		event = "InsertEnter",
-		config = get_plugin_config("pairs"),
+		config = load_plugin_conf("pairs"),
 	},
 
 	{
@@ -149,13 +152,13 @@ local plugins = {
 			"TmuxNavigateUp",
 			"TmuxNavigateRight",
 		},
-		config = get_plugin_config("tmux"),
+		config = load_plugin_conf("tmux"),
 	},
 
 	{
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
-		config = get_plugin_config("nvim_tree"),
+		config = load_plugin_conf("nvim_tree"),
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
 		},
@@ -165,12 +168,12 @@ local plugins = {
 		"rebelot/heirline.nvim",
 		event = "VeryLazy",
 		commit = "750a112",
-		config = get_plugin_config("heirline"),
+		config = load_plugin_conf("heirline"),
 	},
 
 	{
 		"nvim-telescope/telescope.nvim",
-		config = get_plugin_config("telescope"),
+		config = load_plugin_conf("telescope"),
 		dependencies = {
 			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
@@ -179,25 +182,25 @@ local plugins = {
 
 	{
 		"folke/trouble.nvim",
-		config = get_plugin_config("trouble"),
+		config = load_plugin_conf("trouble"),
 		cmd = { "Trouble" },
 	},
 
 	{
 		"kevinhwang91/nvim-hlslens",
 		event = "VeryLazy",
-		config = get_plugin_config("hlslens"),
+		config = load_plugin_conf("hlslens"),
 	},
 
 	{
 		"gbprod/substitute.nvim",
 		event = "VeryLazy",
-		config = get_plugin_config("substitute"),
+		config = load_plugin_conf("substitute"),
 	},
 
 	{
 		"ghillb/cybu.nvim",
-		config = get_plugin_config("cybu"),
+		config = load_plugin_conf("cybu"),
 		cmd = { "CybuLastusedPrev", "CybuLastusedNext" },
 		dependencies = {
 			"kyazdani42/nvim-web-devicons",
@@ -208,23 +211,23 @@ local plugins = {
 	{
 		"dnlhc/glance.nvim",
 		cmd = { "Glance" },
-		config = get_plugin_config("glance"),
+		config = load_plugin_conf("glance"),
 	},
 	{
 		"folke/which-key.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		config = get_plugin_config("which-key"),
+		config = load_plugin_conf("which-key"),
 	},
 
 	{
 		"L3MON4D3/LuaSnip",
-		config = get_plugin_config("luasnip"),
+		config = load_plugin_conf("luasnip"),
 		event = "InsertEnter",
 	},
 
 	{
 		"hrsh7th/nvim-cmp",
-		config = get_plugin_config("cmp"),
+		config = load_plugin_conf("cmp"),
 		event = "InsertEnter",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
@@ -257,17 +260,17 @@ local plugins = {
 	{
 		event = "VeryLazy",
 		"williamboman/mason-lspconfig.nvim",
-		config = get_plugin_config("mason-lspconfig"),
+		config = load_plugin_conf("mason-lspconfig"),
 	},
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
-		config = get_plugin_config("mason"),
+		config = load_plugin_conf("mason"),
 	},
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		config = get_plugin_config("null-ls"),
+		config = load_plugin_conf("null-ls"),
 		lazy = false,
 		dependencies = {
 			"williamboman/mason.nvim",
@@ -276,7 +279,7 @@ local plugins = {
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		config = get_plugin_config("mason-null-ls"),
+		config = load_plugin_conf("mason-null-ls"),
 		dependencies = {
 			"williamboman/mason.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
