@@ -115,6 +115,11 @@ local plugins = {
 
 	-- =================== various ===================
 	{
+		"uga-rosa/ccc.nvim",
+		event = "VeryLazy",
+		config = get_plugin_config("ccc"),
+	},
+	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = get_plugin_config("comment"),
