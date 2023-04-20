@@ -120,6 +120,11 @@ local plugins = {
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = "nvim-treesitter",
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = "nvim-treesitter",
+	},
 
 	-- =================== various ===================
 	{
