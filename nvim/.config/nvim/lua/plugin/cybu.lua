@@ -5,13 +5,9 @@ require("cybu").setup({
   },
   behavior = {
     mode = {
-      default = {
-        switch = "immediate",
-        view = "paging"
-      },
       last_used = {
         switch = "immediate",
-        view = "paging"
+        view = "rolling"
       },
     }
   },
