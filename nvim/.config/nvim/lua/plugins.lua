@@ -45,10 +45,19 @@ local plugins = {
 	},
 
 	-- =================== UI ===================
+  {
+    'atelierbram/Base2Tone-nvim',
+    lazy = false,
+		priority = 1000,
+		config = function()
+      vim.cmd("colorscheme base2tone_drawbridge_dark")
+			require("plugin/colors/drawbridge")
+		end,
+
+  },
 	{
 		"aktersnurra/no-clown-fiesta.nvim",
-		lazy = false,
-		priority = 1000,
+    enabled = false,
 		config = function()
 			require("no-clown-fiesta").setup({
 				transparent = false,
@@ -61,19 +70,19 @@ local plugins = {
 					lsp = { underline = true },
 				},
 			})
-			require("colors")
+      vim.cmd("colorscheme no-clown-fiesta")
+			require("plugin/colors/clown")
 		end,
 	},
 	{
 		"EdenEast/nightfox.nvim",
+    enabled = false,
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("nightfox").setup({
-				options = {
-					transparent = true,
-				},
-			})
+			require("nightfox").setup()
+      vim.cmd("colorscheme duskfox")
+			require("plugin/colors/duskfox")
 		end,
 	},
 
@@ -126,10 +135,11 @@ local plugins = {
 		dependencies = "nvim-treesitter",
 	},
 
+
 	-- =================== various ===================
 	{
 		"uga-rosa/ccc.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 		config = load_plugin_conf("ccc"),
 	},
 	{
@@ -140,7 +150,7 @@ local plugins = {
 
 	{
 		"tpope/vim-surround",
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
 	},
 
 	{
@@ -193,13 +203,13 @@ local plugins = {
 
 	{
 		"kevinhwang91/nvim-hlslens",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		config = load_plugin_conf("hlslens"),
 	},
 
 	{
 		"gbprod/substitute.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 		config = load_plugin_conf("substitute"),
 	},
 
@@ -276,7 +286,7 @@ local plugins = {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		config = load_plugin_conf("null-ls"),
-		lazy = false,
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 		},
