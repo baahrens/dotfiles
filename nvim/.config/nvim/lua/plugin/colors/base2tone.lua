@@ -93,6 +93,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       GitSignsAdd = { bg = none, fg = utils.darken(diagnostic_colors.Hint, 0.8) },
       GitSignsDelete = { bg = none,fg = utils.darken(diagnostic_colors.Error, 0.8) },
       GitSignsChange = { bg = none,fg = utils.darken(diagnostic_colors.Information, 0.8) },
+
+      NvimTreeNormal = { fg = palette.B2T_B5 },
+      NvimTreeGitNew = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
+      NvimTreeGitDirty = { fg = utils.darken(diagnostic_colors.Warning, 0.8) },
+      NvimTreeGitDeleted = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
+      NvimTreeGitStaged = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
     })
 
 	end,
