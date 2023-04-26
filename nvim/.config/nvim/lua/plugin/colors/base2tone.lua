@@ -56,6 +56,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     utils.overwrite_hl_groups({
       NormalNC = { bg = palette.B2T_A0 },
       StatusLine = { bg = palette.B2T_A0 },
+      SignColumn = { bg = none },
 
       Comment = { fg = palette.B2T_A6 },
 
@@ -80,12 +81,18 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
       ["@punctuation"] = { fg = palette.B2T_C3 },
 
-      fugitiveUnstagedHeading = { fg = palette.B2T_D1},
-
       Pmenu = { bg = palette.B2T_A0 },
       PmenuSel = { bg = palette.B2T_A2 },
       PmenuThumb = { bg = palette.B2T_A2 },
       NormalFloat = { bg = palette.B2T_A0},
+
+      diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
+      diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
+
+      fugitiveUnstagedHeading = { fg = palette.B2T_D1},
+      GitSignsAdd = { bg = none, fg = utils.darken(diagnostic_colors.Hint, 0.8) },
+      GitSignsDelete = { bg = none,fg = utils.darken(diagnostic_colors.Error, 0.8) },
+      GitSignsChange = { bg = none,fg = utils.darken(diagnostic_colors.Information, 0.8) },
     })
 
 	end,
