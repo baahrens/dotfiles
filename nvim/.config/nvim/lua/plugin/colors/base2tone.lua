@@ -57,6 +57,8 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       NormalNC = { bg = palette.B2T_A0 },
       StatusLine = { bg = palette.B2T_A0 },
       SignColumn = { bg = none },
+      FloatTitle = { fg = palette.B2T_A6, bg =  palette.B2T_A0},
+      FloatBorder = { fg = palette.B2T_A4, bg = palette.B2T_A0 },
 
       Comment = { fg = palette.B2T_A6 },
 
