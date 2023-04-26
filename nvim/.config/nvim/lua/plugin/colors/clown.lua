@@ -1,9 +1,9 @@
 local palette = require("no-clown-fiesta.palette")
-local util = require("util")
+local utils = require("plugin/colors/utils")
 
 local none = "NONE"
 
-util.overwrite_hl_groups({
+utils.overwrite_hl_groups({
 		diffAdded = {
 			bg = palette.neogit_light_green,
 			fg = palette.light_gray,

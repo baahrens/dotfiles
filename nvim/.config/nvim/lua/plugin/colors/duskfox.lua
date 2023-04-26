@@ -1,9 +1,9 @@
 local palette = require("nightfox.palette").load("duskfox")
-local util = require('util')
+local utils = require('plugin/colors/utils')
 
 local none = "NONE"
 
-util.overwrite_hl_groups({
+utils.overwrite_hl_groups({
 		GitSignsAdd = { fg = palette.green.base },
 		GitSignsChange = { fg = palette.orange.base },
 		GitSignsDelete = { fg = palette.red.base },

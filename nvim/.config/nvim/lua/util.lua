@@ -34,10 +34,4 @@ function M.remap(mode, key, cmd, opt, defaults)
   return map(mode, key, cmd, opt, defaults)
 end
 
-function M.overwrite_hl_groups(groups)
-  for group, spec in pairs(groups) do
-    vim.api.nvim_set_hl(0, group, spec)
-  end
-end
-
 return M

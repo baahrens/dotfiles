@@ -50,8 +50,8 @@ local plugins = {
     lazy = false,
 		priority = 1000,
 		config = function()
+			require("plugin/colors/Base2Tone")
       vim.cmd("colorscheme base2tone_drawbridge_dark")
-			require("plugin/colors/drawbridge")
 		end,
 
   },
