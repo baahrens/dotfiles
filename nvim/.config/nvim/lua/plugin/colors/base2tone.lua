@@ -37,6 +37,14 @@ local colors = {
   B2T_D7 = "#99e9ff",
 }
 
+local diagnostic_colors = {
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#67c9e4",
+  Hint = "#10B981"
+}
+
+
 vim.api.nvim_create_augroup("colors", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = "colors",
@@ -46,13 +54,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
     if not ok then return end
 
-    local diagnostic_colors = {
-      Error = "#db4b4b",
-      Warning = "#e0af68", 
-      Information = palette.B2T_D4,
-      Hint = "#10B981"
-    }
-
     utils.overwrite_hl_groups({
       NormalNC = { bg = palette.B2T_A0 },
       StatusLine = { bg = palette.B2T_A0 },
@@ -61,6 +62,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       FloatBorder = { fg = palette.B2T_A4, bg = palette.B2T_A0 },
 
       Comment = { fg = palette.B2T_A6 },
+      Type = { fg = palette.B2T_D1 },
+      Todo = { fg = palette.B2T_D4 },
+      ["@lsp.type.namespace"]= { fg = palette.B2T_D1 },
+      ["@lsp.type.interface"]= { fg = palette.B2T_D1 },
 
       TelescopeMatching = { fg = palette.B2T_D3 },
       TelescopeResultsLineNr = { fg = palette.B2T_D3 },
@@ -91,6 +96,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
       diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
       diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
 
+      fugitiveUntrackedHeading = { fg = palette.B2T_D1},
       fugitiveUnstagedHeading = { fg = palette.B2T_D1},
       GitSignsAdd = { bg = none, fg = utils.darken(diagnostic_colors.Hint, 0.8) },
       GitSignsDelete = { bg = none,fg = utils.darken(diagnostic_colors.Error, 0.8) },

@@ -71,18 +71,13 @@ local plugins = {
 				},
 			})
       vim.cmd("colorscheme no-clown-fiesta")
-			require("plugin/colors/clown")
+			-- require("plugin/colors/clown")
 		end,
 	},
 	{
 		"EdenEast/nightfox.nvim",
-    enabled = false,
-		lazy = false,
-		priority = 1000,
 		config = function()
 			require("nightfox").setup()
-      vim.cmd("colorscheme duskfox")
-			require("plugin/colors/duskfox")
 		end,
 	},
 
