@@ -306,6 +306,9 @@ local lazy_config = {
 	defaults = {
 		lazy = true,
 	},
+  ui = {
+    border = "rounded"
+  },
 	performance = {
 		rtp = {
 			disabled_plugins = {
