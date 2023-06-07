@@ -39,7 +39,7 @@ u.remap("n", "j", "gj", noremap)
 u.remap("n", "k", "gk", noremap)
 
 u.remap("n", "Q", ":q<CR>", noremap)
--- u.remap("n", "<leader>ss", ":w<CR>", noremap) -- Alacritty: Command + s
+u.remap("n", "W", ":w<CR>", noremap)
 u.remap("n", "<leader>f;", "/ <BS>", noremap) -- Alacritty: Command + f
 
 -- H/L to go to beginning/end of the line
