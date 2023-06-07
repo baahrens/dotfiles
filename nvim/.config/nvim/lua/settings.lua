@@ -14,10 +14,9 @@ local BORDER = {
 local M = {
 	format = {
 		on_save = true,
-		prettier = false,
-		eslint = true,
+		prettier = true,
+		eslint = false,
 	},
-	autoformat = true,
 	border = BORDER,
 	diagnostics = {
 		show_underline = true,
