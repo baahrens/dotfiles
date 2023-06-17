@@ -300,6 +300,10 @@ local plugins = {
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 	},
+  {
+    "yioneko/nvim-vtsls",
+		event = { "BufReadPre", "BufNewFile" },
+  }
 }
 
 local lazy_config = {
