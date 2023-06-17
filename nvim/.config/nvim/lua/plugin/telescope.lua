@@ -1,9 +1,4 @@
 local actions = require("telescope.actions")
-local keyopts = { noremap = true, silent = true }
-
-local telescope = require("telescope")
-local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
 
 local generate_offset = function(str, tabsize)
 	local offset = (tabsize - vim.fn.strdisplaywidth(str) % tabsize) % tabsize
@@ -78,23 +73,6 @@ local grep_entry_maker = function(entry)
 	return res
 end
 
-local buffers_entry_maker = function(entry)
-	local res = require("telescope.make_entry").gen_from_buffer()(entry)
-	res.display = function(entry_tbl)
-		local icon, dir, name = refine_filename(entry_tbl.filename)
-		local offset = generate_offset(tostring(entry_tbl.bufnr), 4)
-		return generate_display({
-			{ tostring(entry_tbl.bufnr) .. offset, "TelescopeResultsNumber" },
-			{ entry_tbl.indicator, "TelescopeResultsComment" },
-			icon,
-			dir,
-			name,
-			{ " " .. tostring(entry_tbl.lnum), "TelescopeResultsLineNr" },
-		})
-	end
-	return res
-end
-
 require("telescope").setup({
 	pickers = {
 		live_grep = {
@@ -111,22 +89,6 @@ require("telescope").setup({
 				shorten = 5,
 			},
 			prompt_title = false,
-		},
-		oldfiles = {
-			entry_maker = files_entry_maker,
-		},
-		buffers = {
-			entry_maker = buffers_entry_maker,
-			sort_mru = true,
-			mappings = {
-				i = {
-					["<C-q>"] = actions.delete_buffer,
-				},
-			},
-			prompt_title = "~ buffers ~",
-			previewer = false,
-			path_display = { shorten = 1 },
-			ignore_current_buffer = true,
 		},
 		lsp_references = {
 			entry_maker = lsp_entry_maker,
@@ -167,6 +129,8 @@ require("telescope").setup({
 			"%.svg",
 			"%.otf",
 			"%.ttf",
+      "node_modules",
+      "package-lock.json"
 		},
 		mappings = {
 			i = {
