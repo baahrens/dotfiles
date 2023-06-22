@@ -1,6 +1,8 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
+export BACKGROUND_COLOR="#1a1a1a"
+
 fnm env --use-on-cd | source
 
 if test uname = "Linux"
