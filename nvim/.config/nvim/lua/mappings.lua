@@ -99,23 +99,25 @@ u.remap("n", "<leader>lp", ":lprev<CR>", noremap)
 u.remap("n", "<leader>la", ":ll<CR>", noremap)
 
 -- git
-u.remap("n", "<leader>gs", ":Git<CR>", noremap)
-u.remap("n", "<leader>gc", ":Git commit<CR>", noremap)
-u.remap("n", "<leader>gpl", ":Git pull<CR>", noremap)
-u.remap("n", "<leader>gl", ":Git log<CR>", noremap)
-u.remap("n", "<leader>gp", ":Git push<CR>", noremap)
-u.remap("n", "<leader>gb", ":Git blame<CR>", noremap)
-u.remap("x", "<leader>ga", ":Gitsigns stage_hunk<CR>", noremap)
-u.remap("n", "<leader>ga", ":Gitsigns stage_hunk<CR>", noremap)
-u.remap("n", "<leader>gA", ":Gitsigns stage_buffer<CR>", noremap)
-u.remap("n", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", noremap)
-u.remap("x", "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", noremap)
-u.remap("n", "<leader>gr", ":Gitsigns reset_hunk<CR>", noremap)
-u.remap("x", "<leader>gr", ":Gitsigns reset_hunk<CR>", noremap)
-u.remap("n", "<leader>gg", ":Gitsigns preview_hunk_inline<CR>", noremap)
-u.remap("n", "<leader>gn", ":Gitsigns next_hunk<CR>", noremap)
-u.remap("n", "<leader>gN", ":Gitsigns prev_hunk<CR>", noremap)
-u.remap("n", "<leader>gd", ":DiffviewOpen origin/master...HEAD<CR>", noremap)
+wk.register({
+	["<leader>g"] = {
+		name = "git",
+    ["s"] = { ":Git<CR>", "Status", noremap = true },
+    ["c"] = { ":Git commit<CR>", "Commit", noremap = true },
+    ["u"] = { ":Git pull<CR>", "Pull", noremap = true },
+    ["l"] = { ":Git log<CR>", "Log", noremap = true },
+    ["p"] = { ":Git push<CR>", "Push", noremap = true },
+    ["b"] = { ":Git blame<CR>", "Blame", noremap = true },
+    ["a"] = { ":Gitsigns stage_hunk<CR>", "Stage hunk", mode = {"v", "n"},  noremap = true },
+    ["A"] = { ":Gitsigns stage_buffer<CR>", "Stage buffer", noremap = true },
+    ["d"] = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage hunk", mode = { "v", "n" }, noremap = true },
+    ["r"] = { ":Gitsigns reset_hunk<CR>", "Reset hunk", mode = { "v", "n" }, noremap = true },
+    ["g"] = { ":Gitsigns preview_hunk<CR>", "Preview hunk", noremap = true },
+    ["n"] = { ":Gitsigns next_hunk<CR>", "Next hunk", noremap = true },
+    ["N"] = { ":Gitsigns prev_hunk<CR>", "Previous hunk", noremap = true },
+    ["o"] = { ":DiffviewOpen origin/master...HEAD<CR>", "Diffview master", noremap = true },
+	},
+})
 
 -- telescope
 u.remap("n", "<leader>ff", t_builtin.find_files, noremap)
@@ -211,4 +213,3 @@ wk.register({
 		["4"] = { function () colors.switch_colorscheme("no-clown-fiesta") end, "no-clown-fiesta" },
 	},
 })
-
