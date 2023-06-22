@@ -140,6 +140,18 @@ local plugins = {
 	},
 
 	{
+		"echasnovski/mini.jump",
+		event = "InsertEnter",
+		config = load_plugin_conf("jump"),
+	},
+
+	{
+		"echasnovski/mini.ai",
+		event = "InsertEnter",
+		config = load_plugin_conf("ai"),
+	},
+
+	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
 			"TmuxNavigateLeft",
