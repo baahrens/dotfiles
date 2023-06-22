@@ -108,6 +108,8 @@ wk.register({
     ["l"] = { ":Git log<CR>", "Log", noremap = true },
     ["p"] = { ":Git push<CR>", "Push", noremap = true },
     ["b"] = { ":Git blame<CR>", "Blame", noremap = true },
+    ["h"] = { ":Gclog<CR>", "File history", noremap = true },
+
     ["a"] = { ":Gitsigns stage_hunk<CR>", "Stage hunk", mode = {"v", "n"},  noremap = true },
     ["A"] = { ":Gitsigns stage_buffer<CR>", "Stage buffer", noremap = true },
     ["d"] = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage hunk", mode = { "v", "n" }, noremap = true },
@@ -115,6 +117,7 @@ wk.register({
     ["g"] = { ":Gitsigns preview_hunk<CR>", "Preview hunk", noremap = true },
     ["n"] = { ":Gitsigns next_hunk<CR>", "Next hunk", noremap = true },
     ["N"] = { ":Gitsigns prev_hunk<CR>", "Previous hunk", noremap = true },
+
     ["o"] = { ":DiffviewOpen origin/master...HEAD<CR>", "Diffview master", noremap = true },
 	},
 })

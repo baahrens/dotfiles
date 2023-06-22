@@ -26,7 +26,7 @@ local plugins = {
 	-- =================== git ===================
 	{
 		"tpope/vim-fugitive",
-		cmd = "Git",
+		cmd = { "Git", "Gclog" },
 	},
 
 	{
