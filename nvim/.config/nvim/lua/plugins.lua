@@ -46,55 +46,24 @@ local plugins = {
 
 	-- =================== UI ===================
   {
-    -- background: #1b1f32
     'atelierbram/Base2Tone-nvim',
-  --   lazy = false,
-		-- priority = 1000,
-		config = function()
-			require("plugin/colors/Base2Tone")
-      -- vim.cmd("colorscheme base2tone_drawbridge_dark")
-		end,
+		priority = 1000,
+    lazy = false,
   },
   {
-    -- background: #1a1a1a
     'ramojus/mellifluous.nvim',
-    lazy = false,
 		priority = 1000,
-		config = function()
-      vim.cmd("colorscheme mellifluous")
-      require 'mellifluous'.setup({
-        mellifluous = {
-          neutral = true,
-          bg_contrast = 'soft'
-        }
-      })
-		end,
+    lazy = false,
   },
 	{
 		"aktersnurra/no-clown-fiesta.nvim",
-    enabled = false,
-		config = function()
-			require("no-clown-fiesta").setup({
-				transparent = false,
-				styles = {
-					comments = {},
-					keywords = {},
-					functions = {},
-					variables = {},
-					type = { bold = true },
-					lsp = { underline = true },
-				},
-			})
-      vim.cmd("colorscheme no-clown-fiesta")
-			-- require("plugin/colors/clown")
-		end,
+		priority = 1000,
+    lazy = false,
 	},
 	{
-    -- background: #1b1f32
 		"EdenEast/nightfox.nvim",
-		config = function()
-			require("nightfox").setup()
-		end,
+		priority = 1000,
+    lazy = false,
 	},
 
 	{

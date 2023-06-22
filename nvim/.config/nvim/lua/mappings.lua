@@ -1,6 +1,7 @@
 local g = vim.g
 local api = vim.api
 local lsp = require("plugin/lsp")
+local colors = require("plugin/colors/utils")
 local u = require("util")
 local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
@@ -200,3 +201,14 @@ vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), {noremap = true})
 vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), {noremap = true})
 vim.keymap.set("v", "g<C-a>",require("dial.map").inc_gvisual(), {noremap = true})
 vim.keymap.set("v", "g<C-x>",require("dial.map").dec_gvisual(), {noremap = true})
+
+wk.register({
+	["<leader>t"] = {
+		name = "theme",
+		["1"] = { function () colors.switch_colorscheme("mellifluous") end, "mellifluous" },
+		["2"] = { function () colors.switch_colorscheme("duskfox") end, "duskfox" },
+		["3"] = { function () colors.switch_colorscheme("base2tone_drawbridge_dark") end, "drawbridge" },
+		["4"] = { function () colors.switch_colorscheme("no-clown-fiesta") end, "no-clown-fiesta" },
+	},
+})
+

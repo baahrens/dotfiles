@@ -34,4 +34,69 @@ function M.lighten(hex, amount, fg)
   return M.blend(hex, fg or M.fg, amount)
 end
 
+local function set_tmux_colors(color)
+  vim.fn.system([[tmux set-environment -g "BACKGROUND_COLOR" "]] .. color .. '"')
+  vim.fn.system([[tmux source-file ~/.dotfiles/tmux/.tmux.conf]])
+end
+
+local function set_alacritty_theme(name)
+  local config_path = "~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
+  vim.fn.system([[sed -i '' '2s/.*/  - ~\/\.dotfiles\/alacritty\/\.config\/alacritty\/]] .. name.. [[.yml/' ]] .. config_path)
+end
+
+local function load_theme_config(name)
+  local ok = pcall(require, "plugin/colors/" .. name)
+  if not ok then print("Error loading colorscheme config: " .. name) end
+end
+
+local function set_theme_env(name)
+  vim.fn.system([[fish -c 'set -Ux THEME "]] .. name .. [["']])
+end
+
+local themes = {
+  mellifluous = {
+    bg = "#1a1a1a",
+    alacritty_theme = "everforest"
+  },
+  duskfox = {
+    bg = "#1b1f32",
+    alacritty_theme = "duskfox"
+  },
+  base2tone_drawbridge_dark = {
+    bg = "#1b1f32",
+    alacritty_theme = "duskfox"
+  },
+  ["no-clown-fiesta"] = {
+    bg = "#151515",
+    alacritty_theme = "clown"
+  }
+}
+function M.switch_colorscheme(theme_name)
+  local conf = themes[theme_name]
+  if not conf then return end
+
+  set_theme_env(theme_name)
+  set_tmux_colors(conf.bg)
+  set_alacritty_theme(conf.alacritty_theme)
+
+  load_theme_config(theme_name)
+
+  vim.cmd("colorscheme" .. " " .. theme_name)
+end
+
+function M.set_colorscheme()
+  local theme_name = vim.fn.getenv("THEME")
+  if theme_name == vim.NIL then theme_name = "duskfox" end
+
+  local conf = themes[theme_name]
+  if not conf then return end
+
+  load_theme_config(theme_name)
+
+  -- @TODO needed for heirline colors to work
+  require("nightfox").setup()
+
+  vim.cmd("colorscheme" .. " " .. theme_name)
+end
+
 return M
