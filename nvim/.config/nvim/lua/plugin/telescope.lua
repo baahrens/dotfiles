@@ -73,7 +73,28 @@ local grep_entry_maker = function(entry)
 	return res
 end
 
+local ignore_patterns = {
+  "%.jpg",
+  "%.jpeg",
+  "%.png",
+  "%.svg",
+  "%.otf",
+  "%.ttf",
+  "node_modules",
+  "yarn.lock",
+  "package-lock.json",
+  "prisma",
+  ".next",
+  ".git"
+}
+
 require("telescope").setup({
+  extensions = {
+    fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+    },
+  },
 	pickers = {
 		live_grep = {
 			entry_maker = grep_entry_maker,
@@ -122,16 +143,7 @@ require("telescope").setup({
 			},
 		},
 		color_devicons = false,
-		file_ignore_patterns = {
-			"%.jpg",
-			"%.jpeg",
-			"%.png",
-			"%.svg",
-			"%.otf",
-			"%.ttf",
-      "node_modules",
-      "package-lock.json"
-		},
+		file_ignore_patterns = ignore_patterns,
 		mappings = {
 			i = {
 				["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
@@ -152,3 +164,6 @@ require("telescope").setup({
 		selection_caret = " ",
 	},
 })
+
+require('telescope').load_extension('fzy_native')
+

@@ -194,6 +194,8 @@ local plugins = {
 		},
 	},
 
+  { "nvim-telescope/telescope-fzy-native.nvim" },
+
 	{
 		"folke/trouble.nvim",
 		config = load_plugin_conf("trouble"),
