@@ -41,7 +41,6 @@ u.remap("n", "k", "gk", noremap)
 
 u.remap("n", "Q", ":q<CR>", noremap)
 u.remap("n", "W", ":w<CR>", noremap)
-u.remap("n", "<leader>f;", "/ <BS>", noremap) -- Alacritty: Command + f
 
 -- H/L to go to beginning/end of the line
 u.remap("n", "H", "^", noremap)
@@ -123,7 +122,7 @@ wk.register({
 })
 
 -- telescope
-u.remap("n", "<leader>ff", t_builtin.find_files, noremap)
+u.remap("n", "<leader><leader>p", t_builtin.find_files, noremap)
 u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
 u.remap("n", "<leader>fn", grep_notes, noremap)
 u.remap("n", "<leader>fd", find_dotfiles, noremap)

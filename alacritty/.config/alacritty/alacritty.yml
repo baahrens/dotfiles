@@ -1,7 +1,5 @@
 import:
   - ~/.dotfiles/alacritty/.config/alacritty/everforest.yml
-  # - ~/.dotfiles/alacritty/.config/alacritty/duskfox.yml
-  # - ~/.dotfiles/alacritty/.config/alacritty/clown.yml
 
 live_config_reload: true
 
@@ -53,15 +51,34 @@ selection:
   save_to_clipboard: true
 
 key_bindings:
-  - { key: J, mods: Command, chars: " jj" }
-  - { key: S, mods: Command, chars: " ss" }
-  - { key: K, mods: Command, chars: " kk" }
-  - { key: P, mods: Command, chars: " ff" }
-  - { key: F, mods: Command, chars: " f;" }
   - { key: LBracket, mods: Control, chars: " zx" }
   - { key: RBracket, mods: Control, chars: " zz" }
   - { key: J, mods: Option, chars: " z]" }
   - { key: K, mods: Option, chars: " z[" }
-  - { key: P, mods: Command|Shift, chars: " fg" }
-  - { key: Return, mods: Command, chars: " ww" }
-  - { key: N, mods: Control|Shift, chars: "\x1b[78;5u"                }
+  - { key: N, mods: Control|Shift, chars: "\x1b[78;5u" }
+
+  - { key: A, mods: Command, chars: "  a" }
+  - { key: B, mods: Command, chars: "  b" }
+  - { key: C, mods: Command, chars: "  c" }
+  - { key: D, mods: Command, chars: "  d" }
+  - { key: E, mods: Command, chars: "  e" }
+  - { key: G, mods: Command, chars: "  g" }
+  - { key: H, mods: Command, chars: "  h" }
+  - { key: I, mods: Command, chars: "  i" }
+  - { key: J, mods: Command, chars: "  j" }
+  - { key: K, mods: Command, chars: "  k" }
+  - { key: L, mods: Command, chars: "  l" }
+  - { key: M, mods: Command, chars: "  m" }
+  - { key: N, mods: Command, chars: "  n" }
+  - { key: O, mods: Command, chars: "  o" }
+  - { key: P, mods: Command, chars: "  p" }
+  - { key: R, mods: Command, chars: "  r" }
+  - { key: S, mods: Command, chars: "  s" }
+  - { key: T, mods: Command, chars: "  t" }
+  - { key: U, mods: Command, chars: "  u" }
+  - { key: V, mods: Command, chars: "  v" }
+  - { key: X, mods: Command, chars: "  x" }
+  - { key: Y, mods: Command, chars: "  y" }
+  - { key: Z, mods: Command, chars: "  z" }
+  - { key: Return, mods: Command, chars: "   n" }
+  - { key: P, mods: Command|Shift, chars: "   p" }
