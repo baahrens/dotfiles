@@ -83,7 +83,7 @@ local ignore_patterns = {
   "node_modules",
   "yarn.lock",
   "package-lock.json",
-  "prisma",
+  "prisma/data.db",
   ".next",
   ".git"
 }
