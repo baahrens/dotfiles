@@ -1,5 +1,4 @@
 local conditions = require("heirline.conditions")
-local palette = require("nightfox.palette").load("duskfox")
 local utils = require("heirline.utils")
 
 vim.api.nvim_create_autocmd("User", {
@@ -18,7 +17,8 @@ local colors = {
 	red = utils.get_highlight("DiagnosticError").fg,
 	green = utils.get_highlight("String").fg,
 	blue = utils.get_highlight("Function").fg,
-	gray = utils.get_highlight("NonText").fg,
+	gray = utils.get_highlight("Normal").fg,
+	inactive = utils.get_highlight("LineNr").fg,
 	orange = utils.get_highlight("DiagnosticWarn").fg,
 	purple = utils.get_highlight("Statement").fg,
 	cyan = utils.get_highlight("Special").fg,
@@ -37,7 +37,7 @@ local colors = {
 
 local align = { provider = "%=" }
 local space = { provider = "   " }
-local separator = { provider = "  │  ", hl = { fg = colors.gray } }
+local separator = { provider = "  │  ", hl = { fg = colors.inactive } }
 
 local file_icon = {
 	init = function(self)
@@ -67,9 +67,9 @@ local file_name = {
 	end,
 	hl = function()
 		if conditions.is_active() then
-			return { fg = palette.yellow.base }
+			return { fg = colors.diag.warn }
 		else
-			return { fg = palette.fg3 }
+			return { fg = colors.inactive }
 		end
 	end,
 }
@@ -126,7 +126,7 @@ local lsp_servers = {
 		end
 		return " " .. table.concat(names, " ") .. ""
 	end,
-	hl = { fg = palette.fg1 },
+	hl = { fg = colors.gray },
 }
 
 local diagnostics = {
@@ -180,7 +180,7 @@ local branch_name = {
 		self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
 	end,
 
-	hl = { fg = palette.yellow.base },
+	hl = { fg = colors.diag.warn },
 
 	{
 		provider = function(self)
@@ -198,7 +198,7 @@ local git = {
 		self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
 	end,
 
-	hl = { fg = palette.fg2 },
+	hl = { fg = colors.gray },
 
 	{
 		provider = function(self)
@@ -233,7 +233,7 @@ local work_dir = {
 		local trail = cwd:sub(-1) == "/" and "" or "/"
 		return " " .. cwd .. trail
 	end,
-	hl = { fg = palette.fg1 },
+	hl = { fg = colors.gray },
 }
 
 -- local Recording = {
