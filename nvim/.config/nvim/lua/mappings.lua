@@ -101,23 +101,23 @@ u.remap("n", "<leader>la", ":ll<CR>", noremap)
 wk.register({
 	["<leader>g"] = {
 		name = "git",
-    ["s"] = { ":Git<CR>", "Status", noremap = true },
-    ["c"] = { ":Git commit<CR>", "Commit", noremap = true },
-    ["u"] = { ":Git pull<CR>", "Pull", noremap = true },
-    ["l"] = { ":Git log<CR>", "Log", noremap = true },
-    ["p"] = { ":Git push<CR>", "Push", noremap = true },
-    ["b"] = { ":Git blame<CR>", "Blame", noremap = true },
-    ["h"] = { ":Gclog<CR>", "File history", noremap = true },
+		["s"] = { ":Git<CR>", "Status", noremap = true },
+		["c"] = { ":Git commit<CR>", "Commit", noremap = true },
+		["u"] = { ":Git pull<CR>", "Pull", noremap = true },
+		["l"] = { ":Git log<CR>", "Log", noremap = true },
+		["p"] = { ":Git push<CR>", "Push", noremap = true },
+		["b"] = { ":Git blame<CR>", "Blame", noremap = true },
+		["h"] = { ":Gclog<CR>", "File history", noremap = true },
 
-    ["a"] = { ":Gitsigns stage_hunk<CR>", "Stage hunk", mode = {"v", "n"},  noremap = true },
-    ["A"] = { ":Gitsigns stage_buffer<CR>", "Stage buffer", noremap = true },
-    ["d"] = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage hunk", mode = { "v", "n" }, noremap = true },
-    ["r"] = { ":Gitsigns reset_hunk<CR>", "Reset hunk", mode = { "v", "n" }, noremap = true },
-    ["g"] = { ":Gitsigns preview_hunk<CR>", "Preview hunk", noremap = true },
-    ["n"] = { ":Gitsigns next_hunk<CR>", "Next hunk", noremap = true },
-    ["N"] = { ":Gitsigns prev_hunk<CR>", "Previous hunk", noremap = true },
+		["a"] = { ":Gitsigns stage_hunk<CR>", "Stage hunk", mode = { "v", "n" }, noremap = true },
+		["A"] = { ":Gitsigns stage_buffer<CR>", "Stage buffer", noremap = true },
+		["d"] = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage hunk", mode = { "v", "n" }, noremap = true },
+		["r"] = { ":Gitsigns reset_hunk<CR>", "Reset hunk", mode = { "v", "n" }, noremap = true },
+		["g"] = { ":Gitsigns preview_hunk<CR>", "Preview hunk", noremap = true },
+		["n"] = { ":Gitsigns next_hunk<CR>", "Next hunk", noremap = true },
+		["N"] = { ":Gitsigns prev_hunk<CR>", "Previous hunk", noremap = true },
 
-    ["o"] = { ":DiffviewOpen origin/master...HEAD<CR>", "Diffview master", noremap = true },
+		["o"] = { ":DiffviewOpen origin/master...HEAD<CR>", "Diffview master", noremap = true },
 	},
 })
 
@@ -197,21 +197,41 @@ api.nvim_create_user_command("Qa", "qa", {})
 api.nvim_create_user_command("Q", "q", {})
 api.nvim_create_user_command("Lw", "w", {})
 
-vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), {noremap = true})
-vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), {noremap = true})
-vim.keymap.set("n", "g<C-a>", require("dial.map").inc_gnormal(), {noremap = true})
-vim.keymap.set("n", "g<C-x>", require("dial.map").dec_gnormal(), {noremap = true})
-vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), {noremap = true})
-vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), {noremap = true})
-vim.keymap.set("v", "g<C-a>",require("dial.map").inc_gvisual(), {noremap = true})
-vim.keymap.set("v", "g<C-x>",require("dial.map").dec_gvisual(), {noremap = true})
+vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
+vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
+vim.keymap.set("n", "g<C-a>", require("dial.map").inc_gnormal(), { noremap = true })
+vim.keymap.set("n", "g<C-x>", require("dial.map").dec_gnormal(), { noremap = true })
+vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), { noremap = true })
+vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), { noremap = true })
+vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
+vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
 
 wk.register({
 	["<leader>t"] = {
 		name = "theme",
-		["1"] = { function () colors.switch_colorscheme("mellifluous") end, "mellifluous" },
-		["2"] = { function () colors.switch_colorscheme("duskfox") end, "duskfox" },
-		["3"] = { function () colors.switch_colorscheme("base2tone_drawbridge_dark") end, "drawbridge" },
-		["4"] = { function () colors.switch_colorscheme("no-clown-fiesta") end, "no-clown-fiesta" },
+		["1"] = {
+			function()
+				colors.switch_colorscheme("mellifluous")
+			end,
+			"mellifluous",
+		},
+		["2"] = {
+			function()
+				colors.switch_colorscheme("duskfox")
+			end,
+			"duskfox",
+		},
+		["3"] = {
+			function()
+				colors.switch_colorscheme("base2tone_drawbridge_dark")
+			end,
+			"drawbridge",
+		},
+		["4"] = {
+			function()
+				colors.switch_colorscheme("no-clown-fiesta")
+			end,
+			"no-clown-fiesta",
+		},
 	},
 })

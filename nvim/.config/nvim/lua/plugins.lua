@@ -17,7 +17,7 @@ local function load_plugin_conf(name)
 	return function()
 		local ok, conf = pcall(require, "plugin/" .. name)
 		if not ok then
-			print("Error loading " .. name)
+			print("Error loading " .. name .. ". Error: " .. conf)
 		end
 	end
 end
@@ -45,25 +45,25 @@ local plugins = {
 	},
 
 	-- =================== UI ===================
-  {
-    'atelierbram/Base2Tone-nvim',
+	{
+		"atelierbram/Base2Tone-nvim",
 		priority = 1000,
-    lazy = false,
-  },
-  {
-    'ramojus/mellifluous.nvim',
+		lazy = false,
+	},
+	{
+		"ramojus/mellifluous.nvim",
 		priority = 1000,
-    lazy = false,
-  },
+		lazy = false,
+	},
 	{
 		"aktersnurra/no-clown-fiesta.nvim",
 		priority = 1000,
-    lazy = false,
+		lazy = false,
 	},
 	{
 		"EdenEast/nightfox.nvim",
 		priority = 1000,
-    lazy = false,
+		lazy = false,
 	},
 
 	{
@@ -115,7 +115,6 @@ local plugins = {
 		dependencies = "nvim-treesitter",
 	},
 
-
 	-- =================== various ===================
 	{
 		"uga-rosa/ccc.nvim",
@@ -161,11 +160,11 @@ local plugins = {
 		},
 		config = load_plugin_conf("tmux"),
 	},
-  {
-    "monaqa/dial.nvim",
-    config = load_plugin_conf("dial"),
-    lazy=false
-  },
+	{
+		"monaqa/dial.nvim",
+		config = load_plugin_conf("dial"),
+		lazy = false,
+	},
 	{
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
@@ -191,7 +190,7 @@ local plugins = {
 		},
 	},
 
-  { "nvim-telescope/telescope-fzy-native.nvim" },
+	{ "nvim-telescope/telescope-fzy-native.nvim" },
 
 	{
 		"folke/trouble.nvim",
@@ -242,7 +241,7 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		config = load_plugin_conf("cmp"),
 		event = "InsertEnter",
-    commit = "1cad30fcffa282c0a9199c524c821eadc24bf939",
+		commit = "1cad30fcffa282c0a9199c524c821eadc24bf939",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
@@ -299,19 +298,19 @@ local plugins = {
 			"jose-elias-alvarez/null-ls.nvim",
 		},
 	},
-  {
-    "yioneko/nvim-vtsls",
+	{
+		"yioneko/nvim-vtsls",
 		event = { "BufReadPre", "BufNewFile" },
-  }
+	},
 }
 
 local lazy_config = {
 	defaults = {
 		lazy = true,
 	},
-  ui = {
-    border = "rounded"
-  },
+	ui = {
+		border = "rounded",
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {

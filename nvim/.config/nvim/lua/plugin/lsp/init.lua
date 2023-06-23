@@ -13,6 +13,7 @@ for type, icon in pairs(settings.diagnostics.signs) do
 end
 
 local format_clients = {
+	"lua_ls",
 	"null-ls",
 	"prismals",
 	"rust_analyzer",
@@ -34,7 +35,7 @@ function M.on_attach(client, bufnr)
 			group = formatting_augroup,
 			buffer = bufnr,
 			callback = function()
-				if settings.format.on_save then
+				if settings.format.on_save and client.server_capabilities.document_formatting then
 					M.format()
 				end
 			end,

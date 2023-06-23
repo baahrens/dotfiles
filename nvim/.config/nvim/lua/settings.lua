@@ -1,5 +1,3 @@
-local null_ls = require("null-ls")
-
 local BORDER = {
 	{ "╭", "CmpBorder" },
 	{ "─", "CmpBorder" },
@@ -48,6 +46,8 @@ function M.toggle_format_on_save()
 end
 
 function M.toggle_format_prettier()
+  local null_ls = require("null-ls")
+
 	M.format.prettier = not M.format.prettier
 	if M.format.prettier then
 		null_ls.register(null_ls.builtins.formatting.prettierd)
@@ -58,6 +58,8 @@ function M.toggle_format_prettier()
 end
 
 function M.toggle_format_eslint()
+  local null_ls = require("null-ls")
+
 	M.format.eslint = not M.format.eslint
 	if M.format.eslint then
 		null_ls.register(null_ls.builtins.formatting.eslint_d)

@@ -1,16 +1,14 @@
 local null_ls = require("null-ls")
 local settings = require("settings")
-local lsp = require("plugin/lsp")
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local actions = null_ls.builtins.code_actions
 
-require("null-ls").setup({
+null_ls.setup({
+	debug = true,
 	sources = {
 		formatting.stylua,
-		settings.format.eslint and formatting.eslint_d or nil,
-		settings.format.prettier and formatting.prettierd or nil,
 		formatting.fish_indent,
 
 		diagnostics.eslint_d,
@@ -26,6 +24,14 @@ require("null-ls").setup({
 		client.server_capabilities.document_formatting = true
 		client.server_capabilities.document_range_formatting = true
 
-		lsp.on_attach(client)
+		require("plugin/lsp").on_attach(client)
 	end,
 })
+
+if settings.format.prettier then
+	null_ls.register(null_ls.builtins.formatting.prettierd)
+end
+
+if settings.format.eslint then
+	null_ls.register(null_ls.builtins.formatting.eslint_d)
+end
