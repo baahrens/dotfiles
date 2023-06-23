@@ -1,7 +1,7 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
-set BACKGROUND_COLOR "#1a1a1a"
+set -g BACKGROUND_COLOR "#1a1a1a"
 
 fnm env --use-on-cd | source
 
