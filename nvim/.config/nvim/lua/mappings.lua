@@ -206,32 +206,18 @@ vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), { noremap = true 
 vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
 vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
 
+local function set_colorscheme(name)
+	return function()
+		colors.switch_colorscheme(name)
+	end
+end
+
 wk.register({
 	["<leader>t"] = {
 		name = "theme",
-		["1"] = {
-			function()
-				colors.switch_colorscheme("mellifluous")
-			end,
-			"mellifluous",
-		},
-		["2"] = {
-			function()
-				colors.switch_colorscheme("duskfox")
-			end,
-			"duskfox",
-		},
-		["3"] = {
-			function()
-				colors.switch_colorscheme("base2tone_drawbridge_dark")
-			end,
-			"drawbridge",
-		},
-		["4"] = {
-			function()
-				colors.switch_colorscheme("no-clown-fiesta")
-			end,
-			"no-clown-fiesta",
-		},
+		["1"] = { set_colorscheme("mellifluous"), "mellifluous" },
+		["2"] = { set_colorscheme("duskfox"), "duskfox" },
+		["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
+		["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
 	},
 })
