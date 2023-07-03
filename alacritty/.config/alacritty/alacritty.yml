@@ -39,12 +39,12 @@ font:
   size: 14.0
 
   offset:
-   x: 0
-   y: 4
+    x: 0
+    y: 4
 
   glyph_offset:
-   x: 0
-   y: 2
+    x: 0
+    y: 2
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

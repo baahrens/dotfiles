@@ -40,25 +40,44 @@ font:
   size: 11.0
 
   offset:
-   x: 0
-   y: 4
+    x: 0
+    y: 4
 
   glyph_offset:
-   x: 0
-   y: 0
+    x: 0
+    y: 0
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
 
 key_bindings:
-  - { key: J, mods: Alt, chars: " jj" }
-  - { key: S, mods: Alt, chars: " ss" }
-  - { key: K, mods: Alt, chars: " kk" }
-  - { key: P, mods: Alt, chars: " ff" }
-  - { key: F, mods: Alt, chars: " f;" }
   - { key: LBracket, mods: Control, chars: " zx" }
   - { key: RBracket, mods: Control, chars: " zz" }
-  # - { key: P, mods: Command|Shift, chars: " fg" }
-  - { key: Return, mods: Alt, chars: " ww" }
-  - { key: Space, mods: Control, chars: "\x00" }  # workaround https://github.com/alacritty/alacritty/issues/6234
+  - { key: N, mods: Control|Shift, chars: "\x1b[78;5u" }
+
+  - { key: A, mods: Alt, chars: "  a" }
+  - { key: B, mods: Alt, chars: "  b" }
+  - { key: C, mods: Alt, chars: "  c" }
+  - { key: D, mods: Alt, chars: "  d" }
+  - { key: E, mods: Alt, chars: "  e" }
+  - { key: G, mods: Alt, chars: "  g" }
+  - { key: H, mods: Alt, chars: "  h" }
+  - { key: I, mods: Alt, chars: "  i" }
+  - { key: J, mods: Alt, chars: "  j" }
+  - { key: K, mods: Alt, chars: "  k" }
+  - { key: L, mods: Alt, chars: "  l" }
+  - { key: M, mods: Alt, chars: "  m" }
+  - { key: N, mods: Alt, chars: "  n" }
+  - { key: O, mods: Alt, chars: "  o" }
+  - { key: P, mods: Alt, chars: "  p" }
+  - { key: R, mods: Alt, chars: "  r" }
+  - { key: S, mods: Alt, chars: "  s" }
+  - { key: T, mods: Alt, chars: "  t" }
+  - { key: U, mods: Alt, chars: "  u" }
+  - { key: V, mods: Alt, chars: "  v" }
+  - { key: X, mods: Alt, chars: "  x" }
+  - { key: Y, mods: Alt, chars: "  y" }
+  - { key: Z, mods: Alt, chars: "  z" }
+  - { key: Return, mods: Alt, chars: "   n" }
+  - { key: P, mods: Alt|Shift, chars: "   p" }
