@@ -65,6 +65,11 @@ local plugins = {
 		priority = 1000,
 		lazy = false,
 	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+	},
 
 	{
 		"stevearc/dressing.nvim",

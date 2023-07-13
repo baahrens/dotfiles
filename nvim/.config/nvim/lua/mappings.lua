@@ -219,5 +219,6 @@ wk.register({
 		["2"] = { set_colorscheme("duskfox"), "duskfox" },
 		["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
 		["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
+		["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
 	},
 })

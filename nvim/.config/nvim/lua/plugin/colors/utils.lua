@@ -36,13 +36,16 @@ end
 
 local function set_tmux_colors(color)
 	vim.fn.system([[tmux set-environment -g "BACKGROUND_COLOR" "]] .. color .. '"')
-	vim.fn.system([[tmux source-file ~/.dotfiles/tmux/.tmux.conf]])
+	vim.fn.system([[tmux source-file ~/dotfiles/tmux/.tmux.conf]])
 end
 
 local function set_alacritty_theme(name)
-	local config_path = "~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
+	local config_path = "~/dotfiles/alacritty_linux/.config/alacritty/alacritty.yml"
 	vim.fn.system(
-		[[sed -i '' '2s/.*/  - ~\/\.dotfiles\/alacritty\/\.config\/alacritty\/]] .. name .. [[.yml/' ]] .. config_path
+		[[sed -i '' '2s/.*/  - ~\/dotfiles\/alacritty_linux\/\.config\/alacritty\/]]
+			.. name
+			.. [[.yml/' ]]
+			.. config_path
 	)
 end
 
@@ -58,6 +61,10 @@ local function set_theme_env(name)
 end
 
 local themes = {
+	tokyonight = {
+		bg = "#1a1b26",
+		alacritty_theme = "tokyonight",
+	},
 	mellifluous = {
 		bg = "#1a1a1a",
 		alacritty_theme = "everforest",
