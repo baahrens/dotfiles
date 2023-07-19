@@ -53,6 +53,8 @@ function M.lighten(hex, amount, fg)
 end
 
 local function set_tmux_colors(color)
+	print(color)
+	vim.fn.system([[fish -c 'set -Ux BACKGROUND_COLOR "]] .. color .. [["']])
 	vim.fn.system([[tmux set-environment -g "BACKGROUND_COLOR" "]] .. color .. '"')
 	vim.fn.system("tmux source-file" .. " " .. dotfile_path .. "/tmux/.tmux.conf")
 end
@@ -92,6 +94,10 @@ local themes = {
 	["no-clown-fiesta"] = {
 		bg = "#151515",
 		alacritty_theme = "clown",
+	},
+	nord = {
+		bg = "#373e4d",
+		alacritty_theme = "nord",
 	},
 }
 function M.switch_colorscheme(theme_name)

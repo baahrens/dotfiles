@@ -220,5 +220,6 @@ wk.register({
 		["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
 		["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
 		["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
+		["6"] = { set_colorscheme("nord"), "nord" },
 	},
 })
