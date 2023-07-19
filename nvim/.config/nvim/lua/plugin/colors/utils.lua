@@ -6,6 +6,24 @@ function M.overwrite_hl_groups(groups)
 	end
 end
 
+function M.is_macos()
+	return vim.loop.os_uname().sysname == "Darwin"
+end
+
+local dotfile_path
+local alacritty_path
+local escaped_alacritty_path
+
+if M.is_macos() then
+	dotfile_path = "~/.dotfiles"
+	alacritty_path = dotfile_path .. "/alacritty/.config/alacritty/alacritty.yml"
+	escaped_alacritty_path = [[~\/\.dotfiles\/alacritty\/\.config\/alacritty\/]]
+else
+	dotfile_path = "~/dotfiles"
+	alacritty_path = dotfile_path .. "/alacritty_linux/.config/alacritty/alacritty.yml"
+	escaped_alacritty_path = [[~\/dotfiles\/alacritty_linux\/\.config\/alacritty\/]]
+end
+
 -- taken from folke/tokyonight.nvim
 -- https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/util.lua
 local function hexToRgb(c)
@@ -36,17 +54,11 @@ end
 
 local function set_tmux_colors(color)
 	vim.fn.system([[tmux set-environment -g "BACKGROUND_COLOR" "]] .. color .. '"')
-	vim.fn.system([[tmux source-file ~/dotfiles/tmux/.tmux.conf]])
+	vim.fn.system("tmux source-file" .. " " .. dotfile_path .. "/tmux/.tmux.conf")
 end
 
 local function set_alacritty_theme(name)
-	local config_path = "~/dotfiles/alacritty_linux/.config/alacritty/alacritty.yml"
-	vim.fn.system(
-		[[sed -i '' '2s/.*/  - ~\/dotfiles\/alacritty_linux\/\.config\/alacritty\/]]
-			.. name
-			.. [[.yml/' ]]
-			.. config_path
-	)
+	vim.fn.system("sed -i '' '2s/.*/  - " .. escaped_alacritty_path .. name .. ".yml/'" .. " " .. alacritty_path)
 end
 
 local function load_theme_config(name)

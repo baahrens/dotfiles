@@ -1,5 +1,5 @@
 import:
-  - ~/.dotfiles/alacritty/.config/alacritty/everforest.yml
+  - ~/.dotfiles/alacritty/.config/alacritty/duskfox.yml
 
 live_config_reload: true
 
