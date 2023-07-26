@@ -204,7 +204,7 @@ vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = tru
 
 local function set_colorscheme(name)
 	return function()
-		colors.switch_colorscheme(name)
+		colors.set_colorscheme(name)
 	end
 end
 

@@ -1,5 +1,5 @@
 import:
-  - ~/.dotfiles/alacritty/.config/alacritty/tokyonight.yml
+  - ~/.dotfiles/alacritty/.config/alacritty/nord.yml
 
 live_config_reload: true
 

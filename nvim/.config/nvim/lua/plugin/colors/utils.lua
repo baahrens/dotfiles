@@ -53,7 +53,6 @@ function M.lighten(hex, amount, fg)
 end
 
 local function set_tmux_colors(color)
-	print(color)
 	vim.fn.system([[fish -c 'set -Ux BACKGROUND_COLOR "]] .. color .. [["']])
 	vim.fn.system([[tmux set-environment -g "BACKGROUND_COLOR" "]] .. color .. '"')
 	vim.fn.system("tmux source-file" .. " " .. dotfile_path .. "/tmux/.tmux.conf")
@@ -63,12 +62,7 @@ local function set_alacritty_theme(name)
 	vim.fn.system("sed -i '' '2s/.*/  - " .. escaped_alacritty_path .. name .. ".yml/'" .. " " .. alacritty_path)
 end
 
-local function load_theme_config(name)
-	local ok = pcall(require, "plugin/colors/" .. name)
-	if not ok then
-		print("Error loading colorscheme config: " .. name)
-	end
-end
+local function load_theme_config(name) end
 
 local function set_theme_env(name)
 	vim.fn.system([[fish -c 'set -Ux THEME "]] .. name .. [["']])
@@ -100,23 +94,9 @@ local themes = {
 		alacritty_theme = "nord",
 	},
 }
-function M.switch_colorscheme(theme_name)
-	local conf = themes[theme_name]
-	if not conf then
-		return
-	end
 
-	set_theme_env(theme_name)
-	set_tmux_colors(conf.bg)
-	set_alacritty_theme(conf.alacritty_theme)
-
-	load_theme_config(theme_name)
-
-	vim.cmd("colorscheme" .. " " .. theme_name)
-end
-
-function M.set_colorscheme()
-	local theme_name = vim.fn.getenv("THEME")
+function M.set_colorscheme(colorscheme)
+	local theme_name = colorscheme or vim.fn.getenv("THEME")
 	if theme_name == vim.NIL then
 		theme_name = "duskfox"
 	end
@@ -126,9 +106,29 @@ function M.set_colorscheme()
 		return
 	end
 
-	load_theme_config(theme_name)
+	-- if a colorscheme is passed, this is not the initial colorscheme load
+	-- so we need to set all the themes
+	if colorscheme then
+		set_theme_env(theme_name)
+		set_tmux_colors(conf.bg)
+		set_alacritty_theme(conf.alacritty_theme)
+	end
+
+	local ok, colorscheme_conf = pcall(require, "plugin/colors/" .. theme_name)
+	if not ok then
+		print("Error loading colorscheme config: " .. theme_name)
+		print(colorscheme_conf)
+		return
+	end
+
+	-- setup colorscheme if needed
+	if colorscheme_conf.setup then
+		colorscheme_conf.setup()
+	end
 
 	vim.cmd("colorscheme" .. " " .. theme_name)
+
+	M.overwrite_hl_groups(colorscheme_conf.highlight_overwrites or {})
 end
 
 return M
