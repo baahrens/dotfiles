@@ -12,6 +12,12 @@ local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
 
+local function vim_cmd(cmd)
+	return function()
+		vim.cmd(cmd)
+	end
+end
+
 local function grep_notes()
 	return t_builtin.live_grep({
 		prompt_title = "~ notes ~",
@@ -66,51 +72,48 @@ u.remap("x", "<leader>z[", ":move '<-2<CR>gv=gv", silent) -- Alacritty: Option +
 u.remap("v", "<leader>p", '"_dP', noremap)
 u.remap("v", "y", "ygv<ESC>", noremap)
 
--- -- shoutout
--- u.remap("n", "<leader>so", ":luafile %<CR>", noremap)
-
 -- tmux
-u.remap("n", "<C-h>", ":TmuxNavigateLeft<CR>", noremapSilent)
-u.remap("n", "<C-j>", ":TmuxNavigateDown<CR>", noremapSilent)
-u.remap("n", "<C-k>", ":TmuxNavigateUp<CR>", noremapSilent)
-u.remap("n", "<C-l>", ":TmuxNavigateRight<CR>", noremapSilent)
+u.remap("n", "<C-h>", vim_cmd("TmuxNavigateLeft"), noremapSilent)
+u.remap("n", "<C-j>", vim_cmd("TmuxNavigateDown"), noremapSilent)
+u.remap("n", "<C-k>", vim_cmd("TmuxNavigateUp"), noremapSilent)
+u.remap("n", "<C-l>", vim_cmd("TmuxNavigateRight"), noremapSilent)
 
 -- nvim tree
-u.remap("n", "<C-n>", ":NvimTreeToggle<CR>", noremap)
-u.remap("n", "<C-b>", ":NvimTreeFindFileToggle<CR>", noremap)
+u.remap("n", "<C-n>", vim_cmd("NvimTreeToggle"), noremap)
+u.remap("n", "<C-b>", vim_cmd("NvimTreeFindFileToggle"), noremap)
 
 -- p <leader>o & <leader>O to newline without insert mode
 u.remap("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', noremapSilent)
 u.remap("n", "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', noremapSilent)
 
 -- quickfix
-u.remap("n", "<leader>qc", ":cclose<CR>", noremap)
-u.remap("n", "<leader>qn", ":cnext<CR>", noremap)
-u.remap("n", "<leader>qo", ":copen<CR>", noremap)
-u.remap("n", "<leader>qp", ":cprev<CR>", noremap)
-u.remap("n", "<leader>qa", ":cc<CR>", noremap)
+u.remap("n", "<leader>qc", vim_cmd("cclose"), noremap)
+u.remap("n", "<leader>qn", vim_cmd("cnext"), noremap)
+u.remap("n", "<leader>qo", vim_cmd("copen"), noremap)
+u.remap("n", "<leader>qp", vim_cmd("cprev"), noremap)
+u.remap("n", "<leader>qa", vim_cmd("cc"), noremap)
 
 -- git
 wk.register({
 	["<leader>g"] = {
 		name = "git",
-		["s"] = { ":Git<CR>", "Status", noremap = true },
-		["c"] = { ":Git commit<CR>", "Commit", noremap = true },
-		["u"] = { ":Git pull<CR>", "Pull", noremap = true },
-		["l"] = { ":Git log<CR>", "Log", noremap = true },
-		["p"] = { ":Git push<CR>", "Push", noremap = true },
-		["b"] = { ":Git blame<CR>", "Blame", noremap = true },
-		["h"] = { ":Gclog<CR>", "File history", noremap = true },
+		["s"] = { vim_cmd("Git"), "Status", noremap = true },
+		["c"] = { vim_cmd("Git commit"), "Commit", noremap = true },
+		["u"] = { vim_cmd("Git pull"), "Pull", noremap = true },
+		["l"] = { vim_cmd("Git log"), "Log", noremap = true },
+		["p"] = { vim_cmd("Git push"), "Push", noremap = true },
+		["b"] = { vim_cmd("Git blame"), "Blame", noremap = true },
+		["h"] = { vim_cmd("Gclog"), "File history", noremap = true },
 
-		["a"] = { ":Gitsigns stage_hunk<CR>", "Stage hunk", mode = { "v", "n" }, noremap = true },
-		["A"] = { ":Gitsigns stage_buffer<CR>", "Stage buffer", noremap = true },
-		["d"] = { ":Gitsigns undo_stage_hunk<CR>", "Undo stage hunk", mode = { "v", "n" }, noremap = true },
-		["r"] = { ":Gitsigns reset_hunk<CR>", "Reset hunk", mode = { "v", "n" }, noremap = true },
-		["g"] = { ":Gitsigns preview_hunk<CR>", "Preview hunk", noremap = true },
-		["n"] = { ":Gitsigns next_hunk<CR>", "Next hunk", noremap = true },
-		["N"] = { ":Gitsigns prev_hunk<CR>", "Previous hunk", noremap = true },
+		["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
+		["A"] = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer", noremap = true },
+		["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
+		["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
+		["g"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
+		["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
+		["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
 
-		["o"] = { ":DiffviewOpen origin/master...HEAD<CR>", "Diffview master", noremap = true },
+		["o"] = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master", noremap = true },
 	},
 })
 
@@ -130,9 +133,9 @@ u.remap("n", "<leader>fx", t_builtin.diagnostics, noremap)
 u.remap("n", "<leader>fr", t_builtin.resume, noremap)
 
 -- lsp/diagnostics/trouble
-u.remap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", noremapSilent)
-u.remap("n", "gD", "<cmd>Telescope lsp_declarations<CR>", noremapSilent)
-u.remap("n", "gr", "<cmd>Trouble lsp_references<CR>", noremapSilent)
+u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
+u.remap("n", "gD", vim_cmd("Telescope lsp_declarations"), noremapSilent)
+u.remap("n", "gr", vim_cmd("Trouble lsp_references"), noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
 u.remap("v", "<C-f>", lsp.format, noremapSilent)
 u.remap("n", "<C-f>", lsp.format, noremapSilent)
@@ -143,14 +146,14 @@ u.remap("n", "<leader>cn", vim.diagnostic.goto_next, noremapSilent)
 u.remap("n", "<leader>cN", vim.diagnostic.goto_prev, noremapSilent)
 u.remap("n", "<leader>cd", vim.diagnostic.get, noremapSilent)
 u.remap("n", "<leader>k", vim.lsp.buf.signature_help, noremapSilent)
-u.remap("n", "<leader>d", "<cmd>Glance references<CR>", noremapSilent)
-u.remap("n", "<leader>xx", "<cmd>Trouble<CR>", noremapSilent)
-u.remap("n", "<leader>xw", "<cmd>Trouble lsp_workspace_diagnostics<CR>", noremapSilent)
-u.remap("n", "<leader>xd", "<cmd>Trouble lsp_document_diagnostics<CR>", noremapSilent)
-u.remap("n", "<leader>xl", "<cmd>Trouble loclist<CR>", noremapSilent)
-u.remap("n", "<leader>xq", "<cmd>Trouble quickfix<CR>", noremapSilent)
-u.remap("n", "<leader>qN", "<cmd>lua require('trouble').previous({skip_groups = true, jump = true})<CR>", noremapSilent)
-u.remap("n", "<leader>qn", "<cmd>lua require('trouble').next({skip_groups = true, jump = true})<CR>", noremapSilent)
+u.remap("n", "<leader>d", vim_cmd("Glance references"), noremapSilent)
+u.remap("n", "<leader>xx", vim_cmd("Trouble"), noremapSilent)
+u.remap("n", "<leader>xw", vim_cmd("Trouble lsp_workspace_diagnostics"), noremapSilent)
+u.remap("n", "<leader>xd", vim_cmd("Trouble lsp_document_diagnostics"), noremapSilent)
+u.remap("n", "<leader>xl", vim_cmd("Trouble loclist"), noremapSilent)
+u.remap("n", "<leader>xq", vim_cmd("Trouble quickfix"), noremapSilent)
+u.remap("n", "<leader>qN", vim_cmd("lua require('trouble').previous({skip_groups = true, jump = true})"), noremapSilent)
+u.remap("n", "<leader>qn", vim_cmd("lua require('trouble').next({skip_groups = true, jump = true})"), noremapSilent)
 
 -- search
 u.remap("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], silent)
@@ -217,17 +220,11 @@ wk.register({
 	},
 })
 
-function run_command(cmd)
-	return function()
-		vim.cmd(cmd)
-	end
-end
-
 wk.register({
 	["<leader>l"] = {
 		name = "LSP",
-		i = { run_command("TSToolsAddMissingImports"), "Add missing imports" },
-		f = { run_command("TSToolsFixAll"), "Fix all" },
-		u = { run_command("TSToolsRemoveUnused"), "Remove unused" },
+		i = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
+		f = { vim_cmd("TSToolsFixAll"), "Fix all" },
+		u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
 	},
 })
