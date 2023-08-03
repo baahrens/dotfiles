@@ -2,7 +2,10 @@ require("nvim-treesitter.configs").setup({
 	indent = { enable = true },
 	highlight = { enable = true },
 	matchup = { enable = true },
-	autotag = { enable = true },
+	autotag = {
+		enable = true,
+		enable_close_on_slash = false,
+	},
 	textobjects = {
 		select = {
 			enable = true,
