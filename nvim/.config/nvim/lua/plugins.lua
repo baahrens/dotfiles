@@ -309,8 +309,9 @@ local plugins = {
 		},
 	},
 	{
-		"yioneko/nvim-vtsls",
-		event = { "BufReadPre", "BufNewFile" },
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 }
 

@@ -90,13 +90,6 @@ u.remap("n", "<leader>qo", ":copen<CR>", noremap)
 u.remap("n", "<leader>qp", ":cprev<CR>", noremap)
 u.remap("n", "<leader>qa", ":cc<CR>", noremap)
 
--- locationlist
-u.remap("n", "<leader>lc", ":lclose<CR>", noremap)
-u.remap("n", "<leader>ln", ":lnext<CR>", noremap)
-u.remap("n", "<leader>lo", ":lopen<CR>", noremap)
-u.remap("n", "<leader>lp", ":lprev<CR>", noremap)
-u.remap("n", "<leader>la", ":ll<CR>", noremap)
-
 -- git
 wk.register({
 	["<leader>g"] = {
@@ -221,5 +214,20 @@ wk.register({
 		["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
 		["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
 		["6"] = { set_colorscheme("nord"), "nord" },
+	},
+})
+
+function run_command(cmd)
+	return function()
+		vim.cmd(cmd)
+	end
+end
+
+wk.register({
+	["<leader>l"] = {
+		name = "LSP",
+		i = { run_command("TSToolsAddMissingImports"), "Add missing imports" },
+		f = { run_command("TSToolsFixAll"), "Fix all" },
+		u = { run_command("TSToolsRemoveUnused"), "Remove unused" },
 	},
 })
