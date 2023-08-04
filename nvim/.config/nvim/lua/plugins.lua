@@ -251,7 +251,6 @@ local plugins = {
 		"hrsh7th/nvim-cmp",
 		config = load_plugin_conf("cmp"),
 		event = "InsertEnter",
-		commit = "1cad30fcffa282c0a9199c524c821eadc24bf939",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
