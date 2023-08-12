@@ -40,9 +40,9 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		keymaps = {
 			init_selection = "<C-S>",
-			node_incremental = ",",
+			node_incremental = "<C-S>",
 			scope_incremental = "grc",
-			node_decremental = ".",
+			node_decremental = "<C-X>",
 		},
 	},
 })
