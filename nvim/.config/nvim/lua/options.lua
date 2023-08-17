@@ -1,34 +1,27 @@
 local o = vim.o
 
 o.termguicolors = true
-o.autoread = true
-o.backspace = "2"
 o.clipboard = "unnamedplus"
 o.cursorline = true
 o.expandtab = true
 o.history = 100
 o.incsearch = true
 o.mouse = "a"
-o.errorbells = false
 o.swapfile = false
-o.visualbell = false
 o.wrap = false
 o.number = true
 o.relativenumber = true
 o.scroll = 10
+o.scrolloff = 10
 o.shiftround = true
 o.shiftwidth = 2
 o.showmatch = true
 o.signcolumn = "yes"
 o.smartcase = true
 o.smartindent = true
-o.scrolloff = 10
 o.splitbelow = true
 o.splitright = true
-o.tabstop = 2
-o.timeout = true
 o.timeoutlen = 300
-o.ttimeoutlen = 50
 o.wildignore =
 	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 o.grepprg = "rg --vimgrep --no-heading --smart-case"
