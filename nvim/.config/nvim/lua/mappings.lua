@@ -183,6 +183,7 @@ wk.register({
 		e = { settings.toggle_format_eslint, "Toggle eslint formatting" },
 		u = { settings.toggle_diagnostic_underline, "Toggle diagnostic underline" },
 		v = { settings.toggle_diagnostic_virtual, "Toggle diagnostic virtual" },
+		c = { settings.toggle_colorcode_highlights, "Toggle colorcode highlights" },
 	},
 })
 

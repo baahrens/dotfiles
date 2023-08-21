@@ -15,6 +15,7 @@ local M = {
 		prettier = true,
 		eslint = false,
 	},
+	colorcode_highlights = true,
 	border = BORDER,
 	diagnostics = {
 		show_underline = true,
@@ -45,8 +46,14 @@ function M.toggle_format_on_save()
 	notify("Formatting on save", M.format.on_save)
 end
 
+function M.toggle_colorcode_highlights()
+	M.colorcode_highlights = not M.colorcode_highlights
+	vim.cmd("CccHighlighterToggle")
+	notify("Colorcode highlighting", M.colorcode_highlights)
+end
+
 function M.toggle_format_prettier()
-  local null_ls = require("null-ls")
+	local null_ls = require("null-ls")
 
 	M.format.prettier = not M.format.prettier
 	if M.format.prettier then
@@ -58,7 +65,7 @@ function M.toggle_format_prettier()
 end
 
 function M.toggle_format_eslint()
-  local null_ls = require("null-ls")
+	local null_ls = require("null-ls")
 
 	M.format.eslint = not M.format.eslint
 	if M.format.eslint then
