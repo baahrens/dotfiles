@@ -68,8 +68,8 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		["<C-u>"] = cmp.mapping.scroll_docs(-4),
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<C-h>"] = cmp.mapping.close(),
-		["<C-l>"] = cmp.mapping.confirm({
+		["<leader><leader>h"] = cmp.mapping.close(),
+		["<leader><leader>l"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}),
@@ -95,7 +95,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-j>"] = cmp.mapping(function(fallback)
+		["<leader><leader>j"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.expand_or_locally_jumpable() then
@@ -104,7 +104,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<C-k>"] = cmp.mapping(function(fallback)
+		["<leader><leader>k"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
 			elseif luasnip.jumpable(-1) then
