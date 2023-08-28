@@ -54,6 +54,9 @@ u.remap("n", "L", "$", noremap)
 u.remap("x", "H", "^", noremap)
 u.remap("x", "L", "$", noremap)
 
+u.remap("i", "<C-h>", "<C-O>h")
+u.remap("i", "<C-l>", "<C-O>a")
+
 -- just kidding
 u.remap("i", "jk", "<ESC>", {})
 u.remap("t", "jk", "<ESC>", {})

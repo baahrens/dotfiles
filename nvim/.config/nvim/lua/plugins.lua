@@ -135,26 +135,6 @@ local plugins = {
 		end,
 	},
 	{
-		"abecodes/tabout.nvim",
-		lazy = false,
-		config = function()
-			require("tabout").setup({
-				tabkey = "<C-l>", -- key to trigger tabout, set to an empty string to disable
-				backwards_tabkey = "<C-h>", -- key to trigger backwards tabout, set to an empty string to disable
-				enable_backwards = true, -- well ...
-				tabouts = {
-					{ open = "'", close = "'" },
-					{ open = '"', close = '"' },
-					{ open = "`", close = "`" },
-					{ open = "(", close = ")" },
-					{ open = "[", close = "]" },
-					{ open = "{", close = "}" },
-				},
-			})
-		end,
-		dependencies = { "nvim-treesitter" }, -- or require if not used so far
-	},
-	{
 		"uga-rosa/ccc.nvim",
 		event = { "BufReadPost", "BufNewFile" },
 		config = load_plugin_conf("ccc"),
