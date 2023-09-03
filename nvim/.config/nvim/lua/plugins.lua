@@ -128,7 +128,7 @@ local plugins = {
 	-- =================== various ===================
 	{
 		"Wansmer/treesj",
-		lazy = false,
+		keys = { "<space>m", "<space>j", "<space>s" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("treesj").setup({})
@@ -181,7 +181,6 @@ local plugins = {
 	{
 		"monaqa/dial.nvim",
 		config = load_plugin_conf("dial"),
-		lazy = false,
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
