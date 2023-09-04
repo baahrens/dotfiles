@@ -8,7 +8,6 @@ local actions = null_ls.builtins.code_actions
 null_ls.setup({
 	debug = true,
 	sources = {
-		formatting.stylua,
 		formatting.fish_indent,
 
 		diagnostics.eslint_d,
