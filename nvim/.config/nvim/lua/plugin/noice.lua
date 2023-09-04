@@ -11,14 +11,14 @@ require("noice").setup({
       ["cmp.entry.get_documentation"] = true,
     },
     hover = {
-        enabled = true,
-        opts = {
-          border = { style = 'rounded' },
-          relative = 'cursor',
-          position = {
-            row = 2,
-          },
-          win_options = {
+      enabled = true,
+      opts = {
+        border = { style = 'rounded' },
+        relative = 'cursor',
+        position = {
+          row = 2,
+        },
+        win_options = {
           concealcursor = 'n',
           conceallevel = 3,
           winhighlight = {

@@ -1,3 +1,3 @@
 require("gitsigns").setup({
-	numhl = false,
+  numhl = false,
 })

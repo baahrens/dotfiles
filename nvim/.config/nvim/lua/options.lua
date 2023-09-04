@@ -23,7 +23,7 @@ o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 300
 o.wildignore =
-	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 o.grepprg = "rg --vimgrep --no-heading --smart-case"
 o.grepformat = "%f:%l:%c:%m"
 o.shell = "/bin/bash"
