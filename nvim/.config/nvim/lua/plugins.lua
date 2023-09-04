@@ -97,9 +97,7 @@ local plugins = {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		config = load_plugin_conf("noice"),
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
+		dependencies = "MunifTanjim/nui.nvim",
 	},
 
 	{
@@ -121,6 +119,11 @@ local plugins = {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = { "BufReadPost", "BufNewFile" },
+		dependencies = "nvim-treesitter",
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = "nvim-treesitter",
 	},
