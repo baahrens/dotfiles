@@ -48,7 +48,7 @@ cmp.setup({
       border = border("CmpBorder"),
     },
     documentation = {
-      border = border("CmpDocBorder"),
+      border = border("CmpBorder"),
     },
   },
   formatting = {
@@ -97,7 +97,7 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = "nvim_lsp",                max_item_count = 10, keyword_length = 2 },
+    { name = "nvim_lsp",                max_item_count = 50, keyword_length = 2 },
     { name = "nvim_lsp_signature_help", max_item_count = 10 },
     { name = "luasnip",                 max_item_count = 10 },
     { name = "buffer",                  max_item_count = 10 },

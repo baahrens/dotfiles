@@ -32,7 +32,7 @@ function M.darken(hex, amount, bg)
 end
 
 function M.lighten(hex, amount, fg)
-  return M.blend(hex, fg or M.fg, amount)
+  return M.blend(hex, fg or "#000000", amount)
 end
 
 

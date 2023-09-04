@@ -16,8 +16,6 @@ M.highlight_overwrites = {
   NormalNC = { bg = palette.B2T_A0 },
   StatusLine = { bg = palette.B2T_A0 },
   SignColumn = { bg = none },
-  FloatTitle = { fg = palette.B2T_A6, bg = palette.B2T_A0 },
-  FloatBorder = { fg = palette.B2T_A4, bg = palette.B2T_A0 },
 
   Comment = { fg = palette.B2T_A6 },
   Type = { fg = palette.B2T_D1 },
@@ -47,9 +45,12 @@ M.highlight_overwrites = {
   ["@punctuation"] = { fg = palette.B2T_C3 },
 
   Pmenu = { bg = palette.B2T_A0 },
-  PmenuSel = { bg = palette.B2T_A2 },
-  PmenuThumb = { bg = palette.B2T_A2 },
+  PmenuSel = { fg = palette.B2T_D3 },
+  PmenuThumb = { bg = palette.B2T_A3 },
   NormalFloat = { bg = palette.B2T_A0 },
+  FloatTitle = { fg = palette.B2T_A6, bg = palette.B2T_A0 },
+  FloatBorder = { fg = palette.B2T_A4, bg = palette.B2T_A0 },
+  CmpBorder = { fg = palette.B2T_A4, bg = palette.B2T_A0 },
 
   diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
   diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },

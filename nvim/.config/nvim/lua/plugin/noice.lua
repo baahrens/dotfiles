@@ -22,7 +22,7 @@ require("noice").setup({
           concealcursor = 'n',
           conceallevel = 3,
           winhighlight = {
-            Normal = 'LspFloat',
+            Normal = 'NormalFloat',
             FloatBorder = 'CmpBorder',
           },
         }
@@ -30,12 +30,6 @@ require("noice").setup({
     },
     signature = {
       enabled = true,
-      auto_open = {
-        enabled = true,
-        trigger = true,
-        luasnip = true,
-        throttle = 50,
-      },
       view = "hover",
       opts = {
         border = { style = 'rounded' },
@@ -47,7 +41,7 @@ require("noice").setup({
           concealcursor = 'n',
           conceallevel = 3,
           winhighlight = {
-            Normal = 'LspFloat',
+            Normal = 'NormalFloat',
             FloatBorder = 'CmpBorder',
           },
         }
@@ -81,25 +75,6 @@ require("noice").setup({
         width = 60,
         height = "auto",
       }
-    },
-    popupmenu = {
-      backend = "cmp",
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
-      },
     },
     mini = {
       win_options = {
