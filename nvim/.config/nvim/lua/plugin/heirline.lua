@@ -17,7 +17,7 @@ local colors = {
   red = utils.get_highlight("DiagnosticError").fg,
   green = utils.get_highlight("String").fg,
   blue = utils.get_highlight("Function").fg,
-  gray = utils.get_highlight("Normal").fg,
+  gray = utils.get_highlight("Keyword").fg,
   inactive = utils.get_highlight("LineNr").fg,
   orange = utils.get_highlight("DiagnosticWarn").fg,
   purple = utils.get_highlight("Statement").fg,
@@ -124,7 +124,7 @@ local lsp_servers = {
     for _, server in ipairs(vim.lsp.buf_get_clients(0)) do
       table.insert(names, server.name)
     end
-    return " " .. table.concat(names, " ") .. ""
+    return " " .. table.concat(names, " - ") .. ""
   end,
   hl = { fg = colors.gray },
 }

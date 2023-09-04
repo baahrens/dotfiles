@@ -192,7 +192,6 @@ local plugins = {
   {
     "rebelot/heirline.nvim",
     event = "VeryLazy",
-    commit = "750a112",
     config = load_plugin_conf("heirline"),
   },
 
