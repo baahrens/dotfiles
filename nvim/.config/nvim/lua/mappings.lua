@@ -1,7 +1,7 @@
 local g = vim.g
 local api = vim.api
 local lsp = require("plugin/lsp")
-local colors = require("plugin/colors/utils")
+local theme = require("plugin/colors/theme")
 local u = require("util")
 local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
@@ -13,25 +13,25 @@ local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
 
 local function vim_cmd(cmd)
-	return function()
-		vim.cmd(cmd)
-	end
+  return function()
+    vim.cmd(cmd)
+  end
 end
 
 local function grep_notes()
-	return t_builtin.live_grep({
-		prompt_title = "~ notes ~",
-		cwd = "~/notes/tech",
-	})
+  return t_builtin.live_grep({
+    prompt_title = "~ notes ~",
+    cwd = "~/notes/tech",
+  })
 end
 
 local function find_dotfiles()
-	return t_builtin.find_files(t_themes.get_dropdown({
-		find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-		cwd = "~/.dotfiles",
-		prompt_title = "~ dotfiles ~",
-		previewer = false,
-	}))
+  return t_builtin.find_files(t_themes.get_dropdown({
+    find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+    cwd = "~/.dotfiles",
+    prompt_title = "~ dotfiles ~",
+    previewer = false,
+  }))
 end
 
 g.mapleader = " "
@@ -66,8 +66,8 @@ u.remap("v", "<", "<gv", noremap)
 u.remap("v", ">", ">gv", noremap)
 
 -- move lines in visual mode
-u.remap("n", "<leader>z]", "<C>move .+1<CR>", silent) -- Alacritty: Option + j
-u.remap("n", "<leader>z[", "<C>move .-2<CR>", silent) -- Alacritty: Option + k
+u.remap("n", "<leader>z]", "<C>move .+1<CR>", silent)     -- Alacritty: Option + j
+u.remap("n", "<leader>z[", "<C>move .-2<CR>", silent)     -- Alacritty: Option + k
 u.remap("x", "<leader>z]", ":move '>+1<CR>gv=gv", silent) -- Alacritty: Option + j
 u.remap("x", "<leader>z[", ":move '<-2<CR>gv=gv", silent) -- Alacritty: Option + k
 
@@ -98,26 +98,26 @@ u.remap("n", "<leader>qa", vim_cmd("cc"), noremap)
 
 -- git
 wk.register({
-	["<leader>g"] = {
-		name = "git",
-		["s"] = { vim_cmd("Git"), "Status", noremap = true },
-		["c"] = { vim_cmd("Git commit"), "Commit", noremap = true },
-		["u"] = { vim_cmd("Git pull"), "Pull", noremap = true },
-		["l"] = { vim_cmd("Git log"), "Log", noremap = true },
-		["p"] = { vim_cmd("Git push"), "Push", noremap = true },
-		["b"] = { vim_cmd("Git blame"), "Blame", noremap = true },
-		["h"] = { vim_cmd("Gclog"), "File history", noremap = true },
+  ["<leader>g"] = {
+    name = "git",
+    ["s"] = { vim_cmd("Git"), "Status", noremap = true },
+    ["c"] = { vim_cmd("Git commit"), "Commit", noremap = true },
+    ["u"] = { vim_cmd("Git pull"), "Pull", noremap = true },
+    ["l"] = { vim_cmd("Git log"), "Log", noremap = true },
+    ["p"] = { vim_cmd("Git push"), "Push", noremap = true },
+    ["b"] = { vim_cmd("Git blame"), "Blame", noremap = true },
+    ["h"] = { vim_cmd("Gclog"), "File history", noremap = true },
 
-		["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
-		["A"] = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer", noremap = true },
-		["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
-		["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
-		["g"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
-		["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
-		["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
+    ["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
+    ["A"] = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer", noremap = true },
+    ["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
+    ["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
+    ["g"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
+    ["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
+    ["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
 
-		["o"] = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master", noremap = true },
-	},
+    ["o"] = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master", noremap = true },
+  },
 })
 
 -- telescope
@@ -179,15 +179,15 @@ u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
 u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
 
 wk.register({
-	["<leader>s"] = {
-		name = "settings",
-		f = { settings.toggle_format_on_save, "Toggle on save formatting" },
-		p = { settings.toggle_format_prettier, "Toggle prettier formatting" },
-		e = { settings.toggle_format_eslint, "Toggle eslint formatting" },
-		u = { settings.toggle_diagnostic_underline, "Toggle diagnostic underline" },
-		v = { settings.toggle_diagnostic_virtual, "Toggle diagnostic virtual" },
-		c = { settings.toggle_colorcode_highlights, "Toggle colorcode highlights" },
-	},
+  ["<leader>s"] = {
+    name = "settings",
+    f = { settings.toggle_format_on_save, "Toggle on save formatting" },
+    p = { settings.toggle_format_prettier, "Toggle prettier formatting" },
+    e = { settings.toggle_format_eslint, "Toggle eslint formatting" },
+    u = { settings.toggle_diagnostic_underline, "Toggle diagnostic underline" },
+    v = { settings.toggle_diagnostic_virtual, "Toggle diagnostic virtual" },
+    c = { settings.toggle_colorcode_highlights, "Toggle colorcode highlights" },
+  },
 })
 
 api.nvim_create_user_command("WQ", "wq", {})
@@ -207,28 +207,28 @@ vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = tru
 vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
 
 local function set_colorscheme(name)
-	return function()
-		colors.set_colorscheme(name)
-	end
+  return function()
+    theme.set_colorscheme(name)
+  end
 end
 
 wk.register({
-	["<leader>t"] = {
-		name = "theme",
-		["1"] = { set_colorscheme("mellifluous"), "mellifluous" },
-		["2"] = { set_colorscheme("duskfox"), "duskfox" },
-		["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
-		["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
-		["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
-		["6"] = { set_colorscheme("nord"), "nord" },
-	},
+  ["<leader>t"] = {
+    name = "theme",
+    ["1"] = { set_colorscheme("mellifluous"), "mellifluous" },
+    ["2"] = { set_colorscheme("duskfox"), "duskfox" },
+    ["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
+    ["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
+    ["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
+    ["6"] = { set_colorscheme("nordfox"), "nord" },
+  },
 })
 
 wk.register({
-	["<leader>l"] = {
-		name = "LSP",
-		i = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
-		f = { vim_cmd("TSToolsFixAll"), "Fix all" },
-		u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
-	},
+  ["<leader>l"] = {
+    name = "LSP",
+    i = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
+    f = { vim_cmd("TSToolsFixAll"), "Fix all" },
+    u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
+  },
 })

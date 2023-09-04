@@ -1,4 +1,4 @@
-local palette = require("nightfox.palette").load("duskfox")
+local palette = require("nightfox.palette").load("nordfox")
 
 local none = "NONE"
 
