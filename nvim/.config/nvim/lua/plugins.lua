@@ -120,6 +120,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
+    config = load_plugin_conf("context"),
     dependencies = "nvim-treesitter",
   },
 

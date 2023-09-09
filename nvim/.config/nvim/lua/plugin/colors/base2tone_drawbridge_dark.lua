@@ -66,7 +66,7 @@ M.highlight_overwrites = {
   NvimTreeGitDirty = { fg = utils.darken(diagnostic_colors.Warning, 0.8) },
   NvimTreeGitDeleted = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
   NvimTreeGitStaged = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
-  TreesitterContext = { bg = palette.B2T_A1 },
+
   TreesitterContextLineNumber = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
 }
 
