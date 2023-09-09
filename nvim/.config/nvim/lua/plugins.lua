@@ -168,12 +168,12 @@ local plugins = {
   },
 
   {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
+    "aserowy/tmux.nvim",
+    keys = {
+      "<C-l>",
+      "<C-h>",
+      "<C-k>",
+      "<C-j>",
     },
     config = load_plugin_conf("tmux"),
   },

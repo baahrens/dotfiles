@@ -75,12 +75,6 @@ u.remap("x", "<leader>z[", ":move '<-2<CR>gv=gv", silent) -- Alacritty: Option +
 u.remap("v", "<leader>p", '"_dP', noremap)
 u.remap("v", "y", "ygv<ESC>", noremap)
 
--- tmux
-u.remap("n", "<C-h>", vim_cmd("TmuxNavigateLeft"), noremapSilent)
-u.remap("n", "<C-j>", vim_cmd("TmuxNavigateDown"), noremapSilent)
-u.remap("n", "<C-k>", vim_cmd("TmuxNavigateUp"), noremapSilent)
-u.remap("n", "<C-l>", vim_cmd("TmuxNavigateRight"), noremapSilent)
-
 -- nvim tree
 u.remap("n", "<C-n>", vim_cmd("NvimTreeToggle"), noremap)
 u.remap("n", "<C-b>", vim_cmd("NvimTreeFindFileToggle"), noremap)
