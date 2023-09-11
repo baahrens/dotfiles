@@ -145,8 +145,9 @@ local plugins = {
   },
 
   {
-    "tpope/vim-surround",
+    "echasnovski/mini.surround",
     event = { "BufReadPost", "BufNewFile" },
+    config = load_plugin_conf("surround"),
   },
 
   {
@@ -193,6 +194,7 @@ local plugins = {
   {
     "rebelot/heirline.nvim",
     event = "VeryLazy",
+    commit = "750a112",
     config = load_plugin_conf("heirline"),
   },
 
