@@ -179,10 +179,6 @@ local plugins = {
     config = load_plugin_conf("tmux"),
   },
   {
-    "monaqa/dial.nvim",
-    config = load_plugin_conf("dial"),
-  },
-  {
     "kyazdani42/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
     config = load_plugin_conf("nvim_tree"),
@@ -202,7 +198,6 @@ local plugins = {
     "nvim-telescope/telescope.nvim",
     config = load_plugin_conf("telescope"),
     dependencies = {
-      "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
     },
   },
