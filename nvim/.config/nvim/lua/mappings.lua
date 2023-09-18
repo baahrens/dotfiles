@@ -2,27 +2,28 @@ local g = vim.g
 local api = vim.api
 local lsp = require("plugin/lsp")
 local theme = require("plugin/colors/theme")
+
 local u = require("util")
 local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
 local settings = require("settings")
 local wk = require("which-key")
-
 local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
-
 local function vim_cmd(cmd)
   return function()
     vim.cmd(cmd)
   end
 end
 
-local function grep_notes()
-  return t_builtin.live_grep({
-    prompt_title = "~ notes ~",
-    cwd = "~/notes/tech",
-  })
+-- map CMD on mac, Alt on linux
+local function map_cmd_alt(key)
+  if u.is_macos() then
+    return "<D-" .. key .. ">"
+  else
+    return "<A-" .. key .. ">"
+  end
 end
 
 local function find_dotfiles()
@@ -48,6 +49,13 @@ u.remap("n", "k", "gk", noremap)
 u.remap("n", "Q", ":q<CR>", noremap)
 u.remap("n", "W", ":w<CR>", noremap)
 
+api.nvim_create_user_command("WQ", "wq", {})
+api.nvim_create_user_command("Wq", "wq", {})
+api.nvim_create_user_command("W", "w", {})
+api.nvim_create_user_command("Qa", "qa", {})
+api.nvim_create_user_command("Q", "q", {})
+api.nvim_create_user_command("Lw", "w", {})
+
 -- H/L to go to beginning/end of the line
 u.remap("n", "H", "^", noremap)
 u.remap("n", "L", "$", noremap)
@@ -66,10 +74,10 @@ u.remap("v", "<", "<gv", noremap)
 u.remap("v", ">", ">gv", noremap)
 
 -- move lines in visual mode
-u.remap("n", "<leader>z]", "<C>move .+1<CR>", silent)     -- Alacritty: Option + j
-u.remap("n", "<leader>z[", "<C>move .-2<CR>", silent)     -- Alacritty: Option + k
-u.remap("x", "<leader>z]", ":move '>+1<CR>gv=gv", silent) -- Alacritty: Option + j
-u.remap("x", "<leader>z[", ":move '<-2<CR>gv=gv", silent) -- Alacritty: Option + k
+u.remap("n", map_cmd_alt "j", "<C>move .+1<CR>", silent)
+u.remap("n", map_cmd_alt "k", "<C>move .-2<CR>", silent)
+u.remap("x", map_cmd_alt "j", ":move '>+1<CR>gv=gv", silent)
+u.remap("x", map_cmd_alt "k", ":move '<-2<CR>gv=gv", silent)
 
 -- delete in v mode without loosing current yank
 u.remap("v", "<leader>p", '"_dP', noremap)
@@ -83,14 +91,22 @@ u.remap("n", "<C-b>", vim_cmd("NvimTreeFindFileToggle"), noremap)
 u.remap("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', noremapSilent)
 u.remap("n", "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', noremapSilent)
 
--- quickfix
-u.remap("n", "<leader>qc", vim_cmd("cclose"), noremap)
-u.remap("n", "<leader>qn", vim_cmd("cnext"), noremap)
-u.remap("n", "<leader>qo", vim_cmd("copen"), noremap)
-u.remap("n", "<leader>qp", vim_cmd("cprev"), noremap)
-u.remap("n", "<leader>qa", vim_cmd("cc"), noremap)
+vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
+vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
+vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
+vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 
--- git
+wk.register({
+  ["<leader>q"] = {
+    name = "quickfix",
+    ["c"] = { vim_cmd("cclose"), "Close", noremap = true },
+    ["n"] = { vim_cmd("cnext"), "Next", noremap = true },
+    ["o"] = { vim_cmd("copen"), "Open", noremap = true },
+    ["p"] = { vim_cmd("cprev"), "Previous", noremap = true },
+    ["a"] = { vim_cmd("cc"), "", noremap = true }
+  }
+})
+
 wk.register({
   ["<leader>g"] = {
     name = "git",
@@ -114,20 +130,24 @@ wk.register({
   },
 })
 
--- telescope
-u.remap("n", "<leader><leader>p", t_builtin.find_files, noremap)
+u.remap("n", map_cmd_alt "p", t_builtin.find_files, noremap)
 u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
-u.remap("n", "<leader>fn", grep_notes, noremap)
-u.remap("n", "<leader>fd", find_dotfiles, noremap)
-u.remap("n", "<leader>fh", t_builtin.help_tags, noremap)
-u.remap("n", "<leader>fm", t_builtin.keymaps, noremap)
-u.remap("n", "<leader>fc", t_builtin.commands, noremap)
-u.remap("n", "<leader>fi", t_builtin.highlights, noremap)
-u.remap("n", "<leader>fb", t_builtin.buffers, noremap)
-u.remap("n", "<leader>fs", t_builtin.current_buffer_fuzzy_find, noremap)
-u.remap("n", "<leader>fg", t_builtin.git_branches, noremap)
-u.remap("n", "<leader>fx", t_builtin.diagnostics, noremap)
-u.remap("n", "<leader>fr", t_builtin.resume, noremap)
+wk.register({
+  ["<leader>f"] = {
+    name = "find",
+    ["d"] = { find_dotfiles, "", noremap = true },
+    ["h"] = { t_builtin.help_tags, "", noremap = true },
+    ["m"] = { t_builtin.keymaps, "", noremap = true },
+    ["c"] = { t_builtin.commands, "", noremap = true },
+    ["i"] = { t_builtin.highlights, "", noremap = true },
+    ["b"] = { t_builtin.buffers, "", noremap = true },
+    ["s"] = { t_builtin.current_buffer_fuzzy_find, "", noremap = true },
+    ["g"] = { t_builtin.git_branches, "", noremap = true },
+    ["x"] = { t_builtin.diagnostics, "", noremap = true },
+    ["r"] = { t_builtin.resume, "", noremap = true },
+
+  }
+})
 
 -- lsp/diagnostics/trouble
 u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
@@ -167,8 +187,8 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<CR>", noremap)
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<CR>", noremap)
 
 -- cybu
-u.remap("n", "<leader>zz", ":CybuLastusedPrev<CR>") -- Alacritty: Control + [
-u.remap("n", "<leader>zx", ":CybuLastusedNext<CR>") -- Alacritty: Control + ]
+u.remap("n", "[", ":CybuLastusedPrev<CR>")
+u.remap("n", "]", ":CybuLastusedNext<CR>")
 
 wk.register({
   ["<leader>s"] = {
@@ -181,13 +201,6 @@ wk.register({
     c = { settings.toggle_colorcode_highlights, "Toggle colorcode highlights" },
   },
 })
-
-api.nvim_create_user_command("WQ", "wq", {})
-api.nvim_create_user_command("Wq", "wq", {})
-api.nvim_create_user_command("W", "w", {})
-api.nvim_create_user_command("Qa", "qa", {})
-api.nvim_create_user_command("Q", "q", {})
-api.nvim_create_user_command("Lw", "w", {})
 
 local function set_colorscheme(name)
   return function()
@@ -210,7 +223,9 @@ wk.register({
 wk.register({
   ["<leader>l"] = {
     name = "LSP",
-    i = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
+    i = { vim_cmd("LspInfo"), "Info" },
+    r = { vim_cmd("LspRestart"), "Restart LSP" },
+    m = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
     f = { vim_cmd("TSToolsFixAll"), "Fix all" },
     u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
   },

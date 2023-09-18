@@ -17,6 +17,7 @@ M.highlight_overwrites = {
   StatusLine = { bg = palette.B2T_A0 },
   SignColumn = { bg = none },
 
+  CursorLine = { bg = none, bold = true },
   Comment = { fg = palette.B2T_A6 },
   Type = { fg = palette.B2T_D1 },
   Todo = { fg = palette.B2T_D4 },

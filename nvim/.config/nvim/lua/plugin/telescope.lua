@@ -148,16 +148,16 @@ require("telescope").setup({
     file_ignore_patterns = ignore_patterns,
     mappings = {
       i = {
-        ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
+        ["<C-t>"] = function(args) require("trouble.providers.telescope").open_with_trouble(args) end,
         ["<ESC>"] = actions.close,
-        ["<leader><leader>p"] = actions.close,               -- Alacritty: CMD + p
-        ["<leader><leader>k"] = actions.move_selection_previous, -- Alacritty: CMD + k
+        ["<D-p>"] = actions.close,
         ["<S-Tab>"] = actions.move_selection_previous,
-        ["<leader><leader>j"] = actions.move_selection_next, -- Alacritty: CMD + j
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
         ["<Tab>"] = actions.move_selection_next,
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-u>"] = actions.preview_scrolling_up,
-        ["<leader><leader><leader>n"] = actions.file_vsplit, -- Alacritty: CMD + <CR>
+        ["<D-CR>"] = actions.file_vsplit,
         ["<C-f>"] = actions.to_fuzzy_refine,
         ["<leader>f;"] = function() end,
       },

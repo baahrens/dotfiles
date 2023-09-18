@@ -169,14 +169,9 @@ local plugins = {
   },
 
   {
-    "aserowy/tmux.nvim",
-    keys = {
-      "<C-l>",
-      "<C-h>",
-      "<C-k>",
-      "<C-j>",
-    },
-    config = load_plugin_conf("tmux"),
+    'mrjones2014/smart-splits.nvim',
+    config = load_plugin_conf("smart-splits"),
+    lazy = false
   },
   {
     "kyazdani42/nvim-tree.lua",
@@ -282,9 +277,9 @@ local plugins = {
     end,
   },
   {
-    event = "VeryLazy",
     "williamboman/mason-lspconfig.nvim",
     config = load_plugin_conf("mason-lspconfig"),
+    cmd = "LspInstall"
   },
   {
     "williamboman/mason.nvim",
