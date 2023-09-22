@@ -1,31 +1,14 @@
 [user]
-	name = Bastian Ahrens
-	email = bastianahrens92@gmail.com 
+  name = Bastian Ahrens
+  email = bastianahrens92@gmail.com 
 [core]
-	editor = nvim
+  editor = nvim
 
 [init]
-	defaultBranch = main
-
-[alias]
-	a = add
-	ua = reset HEAD
-	c = commit
-	ca = commit -a
-	cm = commit -m
-	cam = commit -am
-	cne = commit --no-edit
-	amend = commit --amend
-	co = checkout
-	com = checkout main
-  cod = checkout development
-  s = status -sb
-	d = diff
-	cp = cherry-pick
-  l = log --graph --pretty=format:'%C(magenta)%h%C(blue)%d%Creset %s %C(blue bold)- %an, %ar%Creset'
-  ll = log --stat --abbrev-commit
+  defaultBranch = main
 
 [push]
-	default = current
+  default = current
+
 [pull]
-	ff = only
+  ff = only

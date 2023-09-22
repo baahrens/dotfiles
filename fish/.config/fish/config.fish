@@ -12,6 +12,13 @@ else
 end
 
 abbr -a g git
+abbr -a gm git switch master
+abbr -a gu git pull
+abbr -a gp git push
+abbr -a grm git rebase -i origin/master
+abbr -a grc git rebase --continue
+abbr -a gra git rebase --abort
+
 abbr -a v nvim
 
 abbr -a dot cd ~/.dotfiles/
