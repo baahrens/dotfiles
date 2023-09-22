@@ -116,17 +116,25 @@ wk.register({
     ["l"] = { vim_cmd("Git log"), "Log", noremap = true },
     ["p"] = { vim_cmd("Git push"), "Push", noremap = true },
     ["b"] = { vim_cmd("Git blame"), "Blame", noremap = true },
-    ["h"] = { vim_cmd("Gclog"), "File history", noremap = true },
-
-    ["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
+    ["f"] = { vim_cmd("Gclog"), "File history", noremap = true },
     ["A"] = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer", noremap = true },
-    ["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
-    ["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
-    ["g"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
-    ["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
-    ["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
-
     ["o"] = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master", noremap = true },
+    ["m"] = { vim.cmd("Git switch master"), "Switch to master", noremap = true },
+    ["r"] = {
+      name = "rebase",
+      ["m"] = { vim_cmd("Git rebase -i origin/master"), "Rebase master", noremap = true },
+      ["c"] = { vim_cmd("Git rebase --continue"), "Rebase continue", noremap = true },
+      ["a"] = { vim_cmd("Git rebase --abort"), "Rebase abort", noremap = true },
+    },
+    ["h"] = {
+      name = "hunk",
+      ["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
+      ["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
+      ["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
+      ["s"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
+      ["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
+      ["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
+    },
   },
 })
 
@@ -207,6 +215,9 @@ local function set_colorscheme(name)
     theme.set_colorscheme(name)
   end
 end
+
+u.remap("n", "<leader>nl", vim_cmd("Noice last"))
+u.remap("n", "<leader>nm", vim_cmd("Noice history"))
 
 wk.register({
   ["<leader>t"] = {
