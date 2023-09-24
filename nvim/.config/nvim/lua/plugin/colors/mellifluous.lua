@@ -13,14 +13,6 @@ local diagnostic_colors = {
 }
 
 M.highlight_overwrites = {
-  StatusLine = { bg = none },
-  WinBar = { bg = none },
-  WinBarNC = { bg = none },
-  CursorLine = { bg = none, bold = true },
-  Normal = { bg = none },
-  NormalFloat = { bg = none },
-  NoiceMini = { bg = none },
-
   diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
   diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
 

@@ -1,7 +1,7 @@
 local g = vim.g
 local api = vim.api
 local lsp = require("plugin/lsp")
-local theme = require("plugin/colors/theme")
+local theme_utils = require("plugin/colors/theme")
 
 local u = require("util")
 local t_builtin = require("telescope.builtin")
@@ -226,23 +226,7 @@ wk.register({
   },
 })
 
-local function set_colorscheme(name)
-  return function()
-    theme.set_colorscheme(name)
-  end
-end
-
 u.remap("n", "<leader>nl", vim_cmd("Noice last"))
 u.remap("n", "<leader>nm", vim_cmd("Noice history"))
 
-wk.register({
-  ["<leader>t"] = {
-    name = "theme",
-    ["1"] = { set_colorscheme("mellifluous"), "mellifluous" },
-    ["2"] = { set_colorscheme("duskfox"), "duskfox" },
-    ["3"] = { set_colorscheme("base2tone_drawbridge_dark"), "drawbridge" },
-    ["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
-    ["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
-    ["6"] = { set_colorscheme("nordfox"), "nord" },
-  },
-})
+u.remap("n", "<leader>t", theme_utils.switch_theme, noremap)

@@ -1,4 +1,5 @@
 local color_utils = require "plugin/colors/utils"
+local palette = require("nightfox.palette").load("duskfox")
 
 local M = {}
 
@@ -24,7 +25,49 @@ function M.set_colorscheme(colorscheme)
 
   vim.cmd("colorscheme" .. " " .. colorscheme)
 
+  color_utils.overwrite_hl_groups(M.global_overrides)
   color_utils.overwrite_hl_groups(colorscheme_conf.highlight_overwrites or {})
 end
+
+function M.switch_theme()
+  vim.ui.select({
+    "mellifluous",
+    "duskfox",
+    "base2tone_drawbridge_dark",
+    "no-clown-fiesta",
+    "tokyonight",
+    "nordfox",
+    "rose-pine"
+  }, {
+    prompt = 'Switch theme',
+  }, M.set_colorscheme)
+end
+
+local none = "NONE"
+
+M.global_overrides = {
+  SignColumn = { bg = none },
+  CursorLine = { bg = none, bold = true },
+  StatusLine = { bg = none },
+  WinBar = { bg = none },
+  WinBarNC = { bg = none },
+
+  Normal = { bg = none },
+  NormalFloat = { bg = none },
+
+  PMenu = { bg = none },
+  PmenuSel = { bg = "#343b47" },
+  PmenuThumb = { bg = palette.fg3 },
+
+  NoiceMini = { bg = none },
+
+  NvimTreeNormal = { bg = none },
+
+  FloatBorder = { bg = none, fg = palette.fg3 },
+  CmpDocBorder = { bg = none, fg = palette.fg3 },
+  CmpBorder = { bg = none, fg = palette.fg3 },
+
+  IndentBlanklineChar = { bg = "none", fg = color_utils.darken(palette.fg3, 0.5) }
+}
 
 return M

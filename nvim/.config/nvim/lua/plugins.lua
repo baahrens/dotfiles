@@ -72,6 +72,13 @@ local plugins = {
   },
 
   {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
     "stevearc/dressing.nvim",
     config = load_plugin_conf("dressing"),
     event = "VeryLazy",

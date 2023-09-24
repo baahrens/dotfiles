@@ -1,5 +1,4 @@
 local palette = require("no-clown-fiesta.palette")
-local utils = require("plugin/colors/utils")
 
 local none = "NONE"
 
