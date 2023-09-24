@@ -8,9 +8,11 @@ local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
 local settings = require("settings")
 local wk = require("which-key")
+
 local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
+
 local function vim_cmd(cmd)
   return function()
     vim.cmd(cmd)
@@ -99,41 +101,41 @@ vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 wk.register({
   ["<leader>q"] = {
     name = "quickfix",
-    ["c"] = { vim_cmd("cclose"), "Close", noremap = true },
-    ["n"] = { vim_cmd("cnext"), "Next", noremap = true },
-    ["o"] = { vim_cmd("copen"), "Open", noremap = true },
-    ["p"] = { vim_cmd("cprev"), "Previous", noremap = true },
-    ["a"] = { vim_cmd("cc"), "", noremap = true }
+    c = { vim_cmd("cclose"), "Close" },
+    o = { vim_cmd("copen"), "Open" },
+    a = { vim_cmd("cc"), "" },
+    n = { vim_cmd("lua require('trouble').next({skip_groups = true, jump = true})"), "next" },
+    N = { vim_cmd("lua require('trouble').previous({skip_groups = true, jump = true})"), "previous" }
   }
 })
 
 wk.register({
   ["<leader>g"] = {
     name = "git",
-    ["s"] = { vim_cmd("Git"), "Status", noremap = true },
-    ["c"] = { vim_cmd("Git commit"), "Commit", noremap = true },
-    ["u"] = { vim_cmd("Git pull"), "Pull", noremap = true },
-    ["l"] = { vim_cmd("Git log"), "Log", noremap = true },
-    ["p"] = { vim_cmd("Git push"), "Push", noremap = true },
-    ["b"] = { vim_cmd("Git blame"), "Blame", noremap = true },
-    ["f"] = { vim_cmd("Gclog"), "File history", noremap = true },
-    ["A"] = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer", noremap = true },
-    ["o"] = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master", noremap = true },
-    ["m"] = { vim.cmd("Git switch master"), "Switch to master", noremap = true },
-    ["r"] = {
+    s = { vim_cmd("Git"), "Status" },
+    c = { vim_cmd("Git commit"), "Commit" },
+    u = { vim_cmd("Git pull"), "Pull" },
+    l = { vim_cmd("Git log"), "Log" },
+    p = { vim_cmd("Git push"), "Push" },
+    b = { vim_cmd("Git blame"), "Blame" },
+    f = { vim_cmd("Gclog"), "File history" },
+    A = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
+    o = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master" },
+    m = { vim.cmd("Git switch master"), "Switch to master" },
+    r = {
       name = "rebase",
-      ["m"] = { vim_cmd("Git rebase -i origin/master"), "Rebase master", noremap = true },
-      ["c"] = { vim_cmd("Git rebase --continue"), "Rebase continue", noremap = true },
-      ["a"] = { vim_cmd("Git rebase --abort"), "Rebase abort", noremap = true },
+      m = { vim_cmd("Git rebase -i origin/master"), "Rebase master" },
+      c = { vim_cmd("Git rebase --continue"), "Rebase continue" },
+      a = { vim_cmd("Git rebase --abort"), "Rebase abort" },
     },
-    ["h"] = {
+    h = {
       name = "hunk",
-      ["a"] = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" }, noremap = true },
-      ["d"] = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" }, noremap = true },
-      ["r"] = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" }, noremap = true },
-      ["s"] = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk", noremap = true },
-      ["n"] = { vim_cmd("Gitsigns next_hunk"), "Next hunk", noremap = true },
-      ["N"] = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk", noremap = true },
+      a = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" } },
+      d = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" } },
+      r = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" } },
+      s = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk" },
+      n = { vim_cmd("Gitsigns next_hunk"), "Next hunk" },
+      N = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk" },
     },
   },
 })
@@ -143,16 +145,43 @@ u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
 wk.register({
   ["<leader>f"] = {
     name = "find",
-    ["d"] = { find_dotfiles, "", noremap = true },
-    ["h"] = { t_builtin.help_tags, "", noremap = true },
-    ["m"] = { t_builtin.keymaps, "", noremap = true },
-    ["c"] = { t_builtin.commands, "", noremap = true },
-    ["i"] = { t_builtin.highlights, "", noremap = true },
-    ["b"] = { t_builtin.buffers, "", noremap = true },
-    ["s"] = { t_builtin.current_buffer_fuzzy_find, "", noremap = true },
-    ["g"] = { t_builtin.git_branches, "", noremap = true },
-    ["x"] = { t_builtin.diagnostics, "", noremap = true },
-    ["r"] = { t_builtin.resume, "", noremap = true },
+    d = { find_dotfiles, "dotfiles" },
+    h = { t_builtin.help_tags, "help" },
+    m = { t_builtin.keymaps, "mappings" },
+    c = { t_builtin.commands, "commands" },
+    i = { t_builtin.highlights, "highlights" },
+    b = { t_builtin.buffers, "buffers" },
+    s = { t_builtin.current_buffer_fuzzy_find, "fuzzy" },
+    g = { t_builtin.git_branches, "branches" },
+    x = { t_builtin.diagnostics, "diagnostics" },
+    r = { t_builtin.resume, "Resume" },
+
+  }
+})
+
+wk.register({
+  ["<leader>c"] = {
+    name = "LSP",
+    r = { vim.lsp.buf.rename, "Rename" },
+    c = { vim.lsp.buf.code_action, "Code action" },
+    s = { vim.diagnostic.open_float, "Show diagnostic" },
+    n = { vim.diagnostic.goto_next, "Next diagnostic" },
+    N = { vim.diagnostic.goto_prev, "Previous diagnostic" },
+    i = { vim_cmd("LspInfo"), "Info" },
+    R = { vim_cmd("LspRestart"), "Restart LSP" },
+    m = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
+    f = { vim_cmd("TSToolsFixAll"), "Fix all" },
+    u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
+  }
+})
+wk.register({
+  ["<leader>x"] = {
+    name = "trouble",
+    x = { vim_cmd("Trouble"), "Trouble" },
+    w = { vim_cmd("Trouble lsp_workspace_diagnostics"), "Workspace diagnostics" },
+    d = { vim_cmd("Trouble lsp_document_diagnostics"), "Document diagnostics" },
+    l = { vim_cmd("Trouble loclist"), "Location list" },
+    q = { vim_cmd("Trouble quickfix"), "Quickfix list" }
 
   }
 })
@@ -164,21 +193,8 @@ u.remap("n", "gr", vim_cmd("Trouble lsp_references"), noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
 u.remap("v", "<C-f>", lsp.format, noremapSilent)
 u.remap("n", "<C-f>", lsp.format, noremapSilent)
-u.remap("n", "<leader>cr", vim.lsp.buf.rename, noremapSilent)
-u.remap("n", "<leader>ca", vim.lsp.buf.code_action, noremapSilent)
-u.remap("n", "<leader>cs", vim.diagnostic.open_float, noremapSilent)
-u.remap("n", "<leader>cn", vim.diagnostic.goto_next, noremapSilent)
-u.remap("n", "<leader>cN", vim.diagnostic.goto_prev, noremapSilent)
-u.remap("n", "<leader>cd", vim.diagnostic.get, noremapSilent)
 u.remap("n", "<leader>k", vim.lsp.buf.signature_help, noremapSilent)
 u.remap("n", "<leader>d", vim_cmd("Glance references"), noremapSilent)
-u.remap("n", "<leader>xx", vim_cmd("Trouble"), noremapSilent)
-u.remap("n", "<leader>xw", vim_cmd("Trouble lsp_workspace_diagnostics"), noremapSilent)
-u.remap("n", "<leader>xd", vim_cmd("Trouble lsp_document_diagnostics"), noremapSilent)
-u.remap("n", "<leader>xl", vim_cmd("Trouble loclist"), noremapSilent)
-u.remap("n", "<leader>xq", vim_cmd("Trouble quickfix"), noremapSilent)
-u.remap("n", "<leader>qN", vim_cmd("lua require('trouble').previous({skip_groups = true, jump = true})"), noremapSilent)
-u.remap("n", "<leader>qn", vim_cmd("lua require('trouble').next({skip_groups = true, jump = true})"), noremapSilent)
 
 -- search
 u.remap("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], silent)
@@ -228,16 +244,5 @@ wk.register({
     ["4"] = { set_colorscheme("no-clown-fiesta"), "no-clown-fiesta" },
     ["5"] = { set_colorscheme("tokyonight"), "tokyonight" },
     ["6"] = { set_colorscheme("nordfox"), "nord" },
-  },
-})
-
-wk.register({
-  ["<leader>l"] = {
-    name = "LSP",
-    i = { vim_cmd("LspInfo"), "Info" },
-    r = { vim_cmd("LspRestart"), "Restart LSP" },
-    m = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
-    f = { vim_cmd("TSToolsFixAll"), "Fix all" },
-    u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
   },
 })
