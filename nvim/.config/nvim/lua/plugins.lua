@@ -248,13 +248,13 @@ local plugins = {
   {
     "L3MON4D3/LuaSnip",
     config = load_plugin_conf("luasnip"),
-    event = "InsertEnter",
+    event = { "BufReadPre", "BufNewFile" },
   },
 
   {
     "hrsh7th/nvim-cmp",
     config = load_plugin_conf("cmp"),
-    event = "InsertEnter",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
