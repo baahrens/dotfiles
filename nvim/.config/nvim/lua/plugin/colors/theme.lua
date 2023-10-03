@@ -67,7 +67,8 @@ M.global_overrides = {
   CmpDocBorder = { bg = none, fg = palette.fg3 },
   CmpBorder = { bg = none, fg = palette.fg3 },
 
-  IndentBlanklineChar = { bg = "none", fg = color_utils.darken(palette.fg3, 0.5) }
+  IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  IblScope = { bg = none, fg = palette.fg3 },
 }
 
 return M

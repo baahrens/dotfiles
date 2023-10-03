@@ -46,6 +46,11 @@ local plugins = {
 
   -- =================== UI ===================
   {
+    "nvim-tree/nvim-web-devicons",
+    event = "VeryLazy",
+    config = load_plugin_conf("devicons")
+  },
+  {
     "atelierbram/Base2Tone-nvim",
     priority = 1000,
     lazy = false,
@@ -86,6 +91,7 @@ local plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     config = load_plugin_conf("indent"),
   },
@@ -185,7 +191,7 @@ local plugins = {
     cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
     config = load_plugin_conf("nvim_tree"),
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
@@ -229,7 +235,7 @@ local plugins = {
     config = load_plugin_conf("cybu"),
     cmd = { "CybuLastusedPrev", "CybuLastusedNext" },
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
     },
   },

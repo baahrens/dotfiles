@@ -18,7 +18,6 @@ M.highlight_overwrites = {
   NvimTreeSpecialFile = { fg = palette.fg1, bold = true },
   FloatTitle = { bg = none, fg = palette.fg1 },
   PmenuThumb = { bg = palette.fg3 },
-  PmenuSel = { bg = "#343b47" },
   TelescopeNormal = { bg = none, fg = palette.fg2 },
   TelescopeBorder = { fg = palette.cyan.base, bg = none },
   TelescopeResultsBorder = { fg = palette.blue.dim, bg = none },

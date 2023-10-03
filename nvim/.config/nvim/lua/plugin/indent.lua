@@ -1,5 +1,11 @@
-require("indent_blankline").setup {
-  space_char_blankline = " ",
-  show_current_context = true,
-  filetype_exclude = { "help", "alpha", "nvim-tree", "Trouble", "lazy" },
+require("ibl").setup {
+  indent = { char = "┊" },
+  scope = {
+    enabled = true,
+    show_start = false,
+    show_end = false,
+  },
+  exclude = {
+    filetypes = { "help", "alpha", "nvim-tree", "Trouble", "lazy" },
+  }
 }
