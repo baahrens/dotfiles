@@ -6,7 +6,6 @@ require('dressing').setup({
     },
     prompt_align = "left",
     border = "rounded",
-    anchor = "NW",
     mappings = {
       n = {
         ['<Esc>'] = 'Close',
