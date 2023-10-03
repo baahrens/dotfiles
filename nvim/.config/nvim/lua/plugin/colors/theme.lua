@@ -60,6 +60,7 @@ M.global_overrides = {
   PmenuThumb = { bg = palette.fg3 },
 
   NoiceMini = { bg = none },
+  NoiceCmdlinePopupBorder = { bg = none, fg = palette.fg3 },
 
   NvimTreeNormal = { bg = none },
 

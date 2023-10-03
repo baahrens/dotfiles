@@ -21,10 +21,6 @@ require("noice").setup({
         win_options = {
           concealcursor = 'n',
           conceallevel = 3,
-          winhighlight = {
-            Normal = 'NormalFloat',
-            FloatBorder = 'CmpBorder',
-          },
         }
       }
     },
@@ -40,10 +36,6 @@ require("noice").setup({
         win_options = {
           concealcursor = 'n',
           conceallevel = 3,
-          winhighlight = {
-            Normal = 'NormalFloat',
-            FloatBorder = 'CmpBorder',
-          },
         }
       }
     }
