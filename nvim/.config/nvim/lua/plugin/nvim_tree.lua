@@ -83,11 +83,11 @@ nvim_tree.setup({
     },
   },
   view = {
-    hide_root_folder = true,
     width = 50,
     side = "right",
   },
   renderer = {
+    root_folder_label = false,
     indent_markers = {
       enable = true,
       icons = {
