@@ -85,6 +85,7 @@ local ignore_patterns = {
   "package-lock.json",
   "prisma/data.db",
   ".next",
+  "dist",
   ".git"
 }
 
@@ -104,6 +105,7 @@ require("telescope").setup({
       prompt_title = "~ search ~",
     },
     find_files = {
+      hidden = true,
       layout_config = {
         width = 0.5,
       },
