@@ -29,10 +29,10 @@ local M = {
       },
     },
     signs = {
-      Error = " ",
-      Warn = " ",
-      Hint = " ",
-      Info = " ",
+      Hint = "",
+      Info = "",
+      Warn = "",
+      Error = "",
     },
   },
 }
