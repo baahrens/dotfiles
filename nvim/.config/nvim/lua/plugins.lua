@@ -274,14 +274,7 @@ local plugins = {
       "williamboman/mason-lspconfig.nvim",
     },
     config = function()
-      require("plugin/lsp")
-      require("plugin/lsp/lua")
-      require("plugin/lsp/typescript")
-      require("plugin/lsp/css")
-      require("plugin/lsp/prisma")
-      require("plugin/lsp/rust")
-      require("plugin/lsp/zig")
-      require("plugin/lsp/tailwind")
+      load_plugin_conf("lsp")
     end,
   },
   {
