@@ -212,6 +212,7 @@ local plugins = {
 
   { "nvim-telescope/telescope-fzy-native.nvim" },
 
+  { "nvim-telescope/telescope-project.nvim" },
   {
     "folke/trouble.nvim",
     config = load_plugin_conf("trouble"),
@@ -286,6 +287,7 @@ local plugins = {
       require("plugin/lsp/css")
       require("plugin/lsp/prisma")
       require("plugin/lsp/rust")
+      require("plugin/lsp/zig")
       require("plugin/lsp/tailwind")
     end,
   },

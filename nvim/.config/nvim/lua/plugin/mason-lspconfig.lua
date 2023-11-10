@@ -8,6 +8,7 @@ require("mason-lspconfig").setup({
     "jsonls",
     "cssls",
     "tailwindcss",
-    "vtsls"
+    "vtsls",
+    "zls"
   },
 })
