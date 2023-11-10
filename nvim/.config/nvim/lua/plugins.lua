@@ -164,12 +164,6 @@ local plugins = {
   },
 
   {
-    "echasnovski/mini.pairs",
-    event = "InsertEnter",
-    config = load_plugin_conf("pairs"),
-  },
-
-  {
     "echasnovski/mini.jump",
     event = "InsertEnter",
     config = load_plugin_conf("jump"),
@@ -212,7 +206,6 @@ local plugins = {
 
   { "nvim-telescope/telescope-fzy-native.nvim" },
 
-  { "nvim-telescope/telescope-project.nvim" },
   {
     "folke/trouble.nvim",
     config = load_plugin_conf("trouble"),
