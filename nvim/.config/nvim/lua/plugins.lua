@@ -180,18 +180,17 @@ local plugins = {
     config = load_plugin_conf("smart-splits"),
     lazy = false
   },
+
   {
-    "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFindFileToggle" },
-    config = load_plugin_conf("nvim_tree"),
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = load_plugin_conf("oil"),
+    event = "VeryLazy",
   },
 
   {
     "rebelot/heirline.nvim",
-    event = "VeryLazy",
     commit = "750a112",
     config = load_plugin_conf("heirline"),
   },

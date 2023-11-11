@@ -86,8 +86,12 @@ u.remap("v", "<leader>p", '"_dP', noremap)
 u.remap("v", "y", "ygv<ESC>", noremap)
 
 -- nvim tree
-u.remap("n", "<C-n>", vim_cmd("NvimTreeToggle"), noremap)
-u.remap("n", "<C-b>", vim_cmd("NvimTreeFindFileToggle"), noremap)
+-- u.remap("n", "<C-n>", vim_cmd("NvimTreeToggle"), noremap)
+-- u.remap("n", "<C-b>", vim_cmd("NvimTreeFindFileToggle"), noremap)
+u.remap("n", "<C-n>", function() require("oil").open(vim.fn.getcwd()) end, noremap)
+u.remap("n", "<C-b>", function()
+  require("oil").open(vim.fn.expand("%:p:h"))
+end, noremap)
 
 -- p <leader>o & <leader>O to newline without insert mode
 u.remap("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', noremapSilent)

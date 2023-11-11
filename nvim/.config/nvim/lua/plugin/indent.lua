@@ -6,6 +6,6 @@ require("ibl").setup {
     show_end = false,
   },
   exclude = {
-    filetypes = { "help", "alpha", "nvim-tree", "Trouble", "lazy" },
+    filetypes = { "help", "alpha", "oil", "Trouble", "lazy" },
   }
 }

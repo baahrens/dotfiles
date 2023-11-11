@@ -18,7 +18,7 @@ require("cybu").setup({
   },
   display_time = 700,
   exclude = {
-    "nvim-tree",
+    "oil",
     "fugitive",
     "trouble"
   },
