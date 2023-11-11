@@ -1,17 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "HeirlineInitWinbar",
-  callback = function(args)
-    local buf = args.buf
-    local buftype = vim.tbl_contains({ "prompt", "nofile", "help", "quickfix" }, vim.bo[buf].buftype)
-    local filetype = vim.tbl_contains({ "gitcommit", "fugitive" }, vim.bo[buf].filetype)
-    if buftype or filetype then
-      vim.opt_local.winbar = nil
-    end
-  end,
-})
+local settings = require("settings")
 
 local colors = {
   red = utils.get_highlight("DiagnosticError").fg,
@@ -133,10 +122,10 @@ local diagnostics = {
   condition = conditions.has_diagnostics,
 
   static = {
-    hint_icon = "",
-    info_icon = "",
-    warn_icon = "",
-    error_icon = "",
+    hint_icon = settings.diagnostics.signs.Hint,
+    info_icon = settings.diagnostics.signs.Info,
+    warn_icon = settings.diagnostics.signs.Warn,
+    error_icon = settings.diagnostics.signs.Error,
   },
 
   init = function(self)
@@ -236,11 +225,6 @@ local work_dir = {
   hl = { fg = colors.gray },
 }
 
--- local Recording = {
---   condition = require("noice").api.statusline.mode.has,
---   provider = require("noice").api.statusline.mode.get,
--- }
-
 local lazy = {
   condition = require("lazy.status").has_updates,
   update = { "User", pattern = "LazyUpdate" },
@@ -256,8 +240,6 @@ local DefaultStatusline = {
   work_dir,
   separator,
   branch_name,
-  -- separator,
-  -- Recording,
   align,
   lazy,
   space,
@@ -266,11 +248,11 @@ local DefaultStatusline = {
 }
 
 local SpecialStatusline = {
-  condition = function()
+  condition = function(args)
     return conditions.buffer_matches({
       buftype = { "nofile", "prompt", "help", "quickfix" },
-      filetype = { "^git.*", "fugitive" },
-    })
+      filetype = { "^git.*", "fugitive", "noice" },
+    }, args.buf)
   end,
 }
 
@@ -283,6 +265,7 @@ local InactiveStatusline = {
 }
 
 local StatusLines = {
+  fallthrough = false,
   hl = function()
     if conditions.is_active() then
       return {
@@ -296,8 +279,6 @@ local StatusLines = {
       }
     end
   end,
-  fallthrough = false,
-
   SpecialStatusline,
   InactiveStatusline,
   DefaultStatusline,
@@ -306,26 +287,14 @@ local StatusLines = {
 local WinBars = {
   fallthrough = false,
   {
-    condition = function()
-      return conditions.buffer_matches({
-        buftype = { "nofile", "prompt", "help", "quickfix" },
-        filetype = { "^git.*", "fugitive" },
-      })
-    end,
-    init = function()
-      vim.opt_local.winbar = nil
-    end,
-  },
-  {
-    condition = function()
-      return not conditions.is_active()
-    end,
+    condition = function() return not conditions.is_active() end,
     space,
     space,
     file_name_block,
     align,
   },
   {
+    condition = conditions.is_active,
     space,
     space,
     file_name_block,
@@ -342,4 +311,12 @@ local WinBars = {
 require("heirline").setup({
   statusline = StatusLines,
   winbar = WinBars,
+  opts = {
+    disable_winbar_cb = function(args)
+      return conditions.buffer_matches({
+        buftype = { "nofile", "prompt", "help", "quickfix" },
+        filetype = { "^git.*", "fugitive", "noice" },
+      }, args.buf)
+    end
+  }
 })

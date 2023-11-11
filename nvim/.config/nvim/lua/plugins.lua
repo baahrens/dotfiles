@@ -110,7 +110,6 @@ local plugins = {
 
   {
     "luukvbaal/statuscol.nvim",
-    enabled = false,
     event = "VeryLazy",
     config = load_plugin_conf("statuscol"),
   },
@@ -184,7 +183,6 @@ local plugins = {
 
   {
     'stevearc/oil.nvim',
-    opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = load_plugin_conf("oil"),
     event = "VeryLazy",
@@ -192,7 +190,7 @@ local plugins = {
 
   {
     "rebelot/heirline.nvim",
-    commit = "750a112",
+    event = "VeryLazy",
     config = load_plugin_conf("heirline"),
   },
 
