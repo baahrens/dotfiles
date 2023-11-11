@@ -110,6 +110,7 @@ local plugins = {
 
   {
     "luukvbaal/statuscol.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = load_plugin_conf("statuscol"),
   },
@@ -206,11 +207,10 @@ local plugins = {
   { "nvim-telescope/telescope-fzy-native.nvim" },
 
   {
-    "folke/trouble.nvim",
-    config = load_plugin_conf("trouble"),
-    cmd = { "Trouble" },
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    config = load_plugin_conf("bqf")
   },
-
   {
     "kevinhwang91/nvim-hlslens",
     event = { "BufReadPre", "BufNewFile" },

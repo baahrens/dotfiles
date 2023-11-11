@@ -20,6 +20,5 @@ require("cybu").setup({
   exclude = {
     "oil",
     "fugitive",
-    "trouble"
   },
 })

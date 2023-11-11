@@ -6,6 +6,6 @@ require("ibl").setup {
     show_end = false,
   },
   exclude = {
-    filetypes = { "help", "alpha", "oil", "Trouble", "lazy" },
+    filetypes = { "help", "alpha", "oil", "lazy" },
   }
 }

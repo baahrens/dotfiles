@@ -108,8 +108,8 @@ wk.register({
     c = { vim_cmd("cclose"), "Close" },
     o = { vim_cmd("copen"), "Open" },
     a = { vim_cmd("cc"), "" },
-    n = { vim_cmd("lua require('trouble').next({skip_groups = true, jump = true})"), "next" },
-    N = { vim_cmd("lua require('trouble').previous({skip_groups = true, jump = true})"), "previous" }
+    n = { vim_cmd("cnext"), "next" },
+    N = { vim_cmd("cprev"), "previous" }
   }
 })
 
@@ -178,22 +178,9 @@ wk.register({
     u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
   }
 })
-wk.register({
-  ["<leader>x"] = {
-    name = "trouble",
-    x = { vim_cmd("Trouble"), "Trouble" },
-    w = { vim_cmd("Trouble lsp_workspace_diagnostics"), "Workspace diagnostics" },
-    d = { vim_cmd("Trouble lsp_document_diagnostics"), "Document diagnostics" },
-    l = { vim_cmd("Trouble loclist"), "Location list" },
-    q = { vim_cmd("Trouble quickfix"), "Quickfix list" }
 
-  }
-})
-
--- lsp/diagnostics/trouble
 u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
 u.remap("n", "gD", vim_cmd("Telescope lsp_declarations"), noremapSilent)
-u.remap("n", "gr", vim_cmd("Trouble lsp_references"), noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
 u.remap("v", "<C-f>", lsp.format, noremapSilent)
 u.remap("n", "<C-f>", lsp.format, noremapSilent)

@@ -150,7 +150,6 @@ require("telescope").setup({
     file_ignore_patterns = ignore_patterns,
     mappings = {
       i = {
-        ["<C-t>"] = function(args) require("trouble.providers.telescope").open_with_trouble(args) end,
         ["<ESC>"] = actions.close,
         ["<D-p>"] = actions.close,
         ["<S-Tab>"] = actions.move_selection_previous,
