@@ -7,11 +7,14 @@ local u = require("util")
 local t_builtin = require("telescope.builtin")
 local t_themes = require("telescope.themes")
 local settings = require("settings")
+local notes = require("notes")
 local wk = require("which-key")
 
 local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
+
+local NOTES_DIR = "~/notes"
 
 local function vim_cmd(cmd)
   return function()
@@ -102,6 +105,27 @@ vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
 vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 
+wk.register({
+  ["<leader>x"] = {
+    name = "Open dir",
+    p = { vim_cmd("Oil " .. NOTES_DIR .. "/private"), "Private notes" },
+    w = { vim_cmd("Oil " .. NOTES_DIR .. "/work"), "Work notes" },
+    t = { vim_cmd("Oil " .. NOTES_DIR .. "/tech"), "Tech notes" },
+    d = { vim_cmd("Oil ~/.dotfiles"), "Dotfiles" },
+  },
+})
+
+wk.register({
+  ["<leader>n"] = {
+    name = "notes",
+    f = {
+      p = { notes.grep_private, "private notes" },
+      t = { notes.grep_tech, "tech notes" },
+      d = { notes.grep_daily, "daily notes" },
+    },
+    d = { notes.open_daily, "open daily note" }
+  }
+})
 wk.register({
   ["<leader>q"] = {
     name = "quickfix",
