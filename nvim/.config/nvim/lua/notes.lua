@@ -4,9 +4,14 @@ local t_themes = require("telescope.themes")
 local M = {}
 
 function M.grep_tech()
+  local note_dirs = { "tech" }
+  if vim.g.is_work_machine then
+    note_dirs.insert("work")
+  end
+
   return t_builtin.grep_string(t_themes.get_dropdown({
     cwd = vim.g.notes_dir,
-    search_dirs = { "tech", "work" },
+    search_dirs = note_dirs,
     prompt_title = "~ tech notes ~",
     previewer = true,
   }))
