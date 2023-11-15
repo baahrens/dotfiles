@@ -1,17 +1,13 @@
 local null_ls = require("null-ls")
 local settings = require("settings")
 
-local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local actions = null_ls.builtins.code_actions
 
 null_ls.setup({
   debug = true,
   sources = {
-    formatting.fish_indent,
-
     diagnostics.eslint_d,
-    diagnostics.fish,
 
     actions.eslint_d,
     actions.gitsigns,
