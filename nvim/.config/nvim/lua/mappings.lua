@@ -106,9 +106,9 @@ vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 wk.register({
   ["<leader>x"] = {
     name = "Open dir",
-    p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "Private notes" },
-    w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "Work notes" },
-    t = { vim_cmd("Oil " .. vim.g.notes_dir.. "/tech"), "Tech notes" },
+    p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "[dir] Private notes" },
+    w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "[dir] Work notes" },
+    t = { vim_cmd("Oil " .. vim.g.notes_dir .. "/tech"), "Tech notes" },
     d = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
   },
 })
@@ -117,6 +117,7 @@ wk.register({
   ["<leader>n"] = {
     name = "notes",
     f = {
+      name = "find",
       p = { notes.grep_private, "private notes" },
       t = { notes.grep_tech, "tech notes" },
       d = { notes.grep_daily, "daily notes" },
@@ -171,17 +172,16 @@ u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
 wk.register({
   ["<leader>f"] = {
     name = "find",
-    d = { find_dotfiles, "dotfiles" },
-    h = { t_builtin.help_tags, "help" },
-    m = { t_builtin.keymaps, "mappings" },
-    c = { t_builtin.commands, "commands" },
-    i = { t_builtin.highlights, "highlights" },
-    b = { t_builtin.buffers, "buffers" },
-    s = { t_builtin.current_buffer_fuzzy_find, "fuzzy" },
-    g = { t_builtin.git_branches, "branches" },
-    x = { t_builtin.diagnostics, "diagnostics" },
+    d = { find_dotfiles, "Dotfiles" },
+    h = { t_builtin.help_tags, "Help" },
+    m = { t_builtin.keymaps, "Mappings" },
+    c = { t_builtin.commands, "Commands" },
+    i = { t_builtin.highlights, "Highlights" },
+    b = { t_builtin.buffers, "Buffers" },
+    s = { t_builtin.current_buffer_fuzzy_find, "Current buffer" },
+    g = { t_builtin.git_branches, "Branches" },
+    x = { t_builtin.diagnostics, "Diagnostics" },
     r = { t_builtin.resume, "Resume" },
-
   }
 })
 

@@ -46,7 +46,7 @@ local plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     event = "VeryLazy",
-    config = load_plugin_conf("devicons")
+    config = load_plugin_conf("devicons"),
   },
   {
     "atelierbram/Base2Tone-nvim",

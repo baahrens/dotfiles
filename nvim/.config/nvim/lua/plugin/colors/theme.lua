@@ -70,6 +70,8 @@ M.global_overrides = {
 
   IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
   IblScope = { bg = none, fg = palette.fg3 },
+  
+  WhichKeyGroup = { fg = "#e0af68" }
 }
 
 return M
