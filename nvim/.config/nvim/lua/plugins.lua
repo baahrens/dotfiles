@@ -141,7 +141,9 @@ local plugins = {
     keys = { "<space>m", "<space>j", "<space>s" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require("treesj").setup({})
+      require("treesj").setup({
+        use_default_keymaps = false,
+      })
     end,
   },
   {

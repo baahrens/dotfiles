@@ -242,4 +242,6 @@ wk.register({
 u.remap("n", "<leader>nl", vim_cmd("Noice last"))
 u.remap("n", "<leader>nm", vim_cmd("Noice history"))
 
+u.remap('n', '<leader>m', require('treesj').toggle)
+
 u.remap("n", "<leader>t", theme_utils.switch_theme, noremap)
