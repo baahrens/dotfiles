@@ -14,8 +14,6 @@ local silent = { silent = true }
 local noremap = { noremap = true }
 local noremapSilent = { noremap = true, silent = true }
 
-local NOTES_DIR = "~/notes"
-
 local function vim_cmd(cmd)
   return function()
     vim.cmd(cmd)
@@ -24,7 +22,7 @@ end
 
 -- map CMD on mac, Alt on linux
 local function map_cmd_alt(key)
-  if u.is_macos() then
+  if vim.g.is_macos then
     return "<D-" .. key .. ">"
   else
     return "<A-" .. key .. ">"
@@ -34,7 +32,7 @@ end
 local function find_dotfiles()
   return t_builtin.find_files(t_themes.get_dropdown({
     find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-    cwd = "~/.dotfiles",
+    cwd = vim.g.dotfiles_dir,
     prompt_title = "~ dotfiles ~",
     previewer = false,
   }))
@@ -108,10 +106,10 @@ vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 wk.register({
   ["<leader>x"] = {
     name = "Open dir",
-    p = { vim_cmd("Oil " .. NOTES_DIR .. "/private"), "Private notes" },
-    w = { vim_cmd("Oil " .. NOTES_DIR .. "/work"), "Work notes" },
-    t = { vim_cmd("Oil " .. NOTES_DIR .. "/tech"), "Tech notes" },
-    d = { vim_cmd("Oil ~/.dotfiles"), "Dotfiles" },
+    p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "Private notes" },
+    w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "Work notes" },
+    t = { vim_cmd("Oil " .. vim.g.notes_dir.. "/tech"), "Tech notes" },
+    d = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
   },
 })
 

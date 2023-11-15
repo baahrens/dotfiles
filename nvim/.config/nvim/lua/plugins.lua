@@ -1,5 +1,3 @@
-vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
