@@ -1,13 +1,9 @@
 local g = vim.g
 local api = vim.api
-local lsp = require("plugin/lsp")
 local theme_utils = require("plugin/colors/theme")
 
 local u = require("util")
-local t_builtin = require("telescope.builtin")
-local t_themes = require("telescope.themes")
 local settings = require("settings")
-local notes = require("notes")
 local wk = require("which-key")
 
 local silent = { silent = true }
@@ -27,15 +23,6 @@ local function map_cmd_alt(key)
   else
     return "<A-" .. key .. ">"
   end
-end
-
-local function find_dotfiles()
-  return t_builtin.find_files(t_themes.get_dropdown({
-    find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-    cwd = vim.g.dotfiles_dir,
-    prompt_title = "~ dotfiles ~",
-    previewer = false,
-  }))
 end
 
 g.mapleader = " "
@@ -118,11 +105,11 @@ wk.register({
     name = "notes",
     f = {
       name = "find",
-      p = { notes.grep_private, "private notes" },
-      t = { notes.grep_tech, "tech notes" },
-      d = { notes.grep_daily, "daily notes" },
+      p = { function() require("notes").grep_private() end, "private notes" },
+      t = { function() require("notes").grep_tech() end, "tech notes" },
+      d = { function() require("notes").grep_daily() end, "daily notes" },
     },
-    d = { notes.open_daily, "open daily note" }
+    d = { function() require("notes").open_daily() end, "open daily note" }
   }
 })
 wk.register({
@@ -167,21 +154,29 @@ wk.register({
   },
 })
 
-u.remap("n", map_cmd_alt "p", t_builtin.find_files, noremap)
-u.remap("n", "<C-p>", t_builtin.live_grep, noremap)
+u.remap("n", map_cmd_alt "p", function() require("telescope.builtin").find_files() end, noremap)
+u.remap("n", "<C-p>", function() require("telescope.builtin").live_grep() end, noremap)
 wk.register({
   ["<leader>f"] = {
     name = "find",
-    d = { find_dotfiles, "Dotfiles" },
-    h = { t_builtin.help_tags, "Help" },
-    m = { t_builtin.keymaps, "Mappings" },
-    c = { t_builtin.commands, "Commands" },
-    i = { t_builtin.highlights, "Highlights" },
-    b = { t_builtin.buffers, "Buffers" },
-    s = { t_builtin.current_buffer_fuzzy_find, "Current buffer" },
-    g = { t_builtin.git_branches, "Branches" },
-    x = { t_builtin.diagnostics, "Diagnostics" },
-    r = { t_builtin.resume, "Resume" },
+    d = {
+      function()
+        require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({
+          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+          cwd = vim.g.dotfiles_dir,
+          prompt_title = "~ dotfiles ~",
+          previewer = false,
+        }))
+    end, "Dotfiles" },
+    h = { function() require("telescope.builtin").help_tags() end, "Help" },
+    m = { function() require("telescope.builtin").keymaps() end, "Mappings" },
+    c = { function() require("telescope.builtin").commands() end, "Commands" },
+    i = { function() require("telescope.builtin").highlights() end, "Highlights" },
+    b = { function() require("telescope.builtin").buffers() end, "Buffers" },
+    s = { function() require("telescope.builtin").current_buffer_fuzzy_find() end, "Current buffer" },
+    g = { function() require("telescope.builtin").git_branches () end, "Branches" },
+    x = { function() require("telescope.builtin").diagnostics() end, "Diagnostics" },
+    r = { function() require("telescope.builtin").resume() end, "Resume" },
   }
 })
 
@@ -204,8 +199,8 @@ wk.register({
 u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
 u.remap("n", "gD", vim_cmd("Telescope lsp_declarations"), noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
-u.remap("v", "<C-f>", lsp.format, noremapSilent)
-u.remap("n", "<C-f>", lsp.format, noremapSilent)
+u.remap("v", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
+u.remap("n", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
 u.remap("n", "<leader>k", vim.lsp.buf.signature_help, noremapSilent)
 u.remap("n", "<leader>d", vim_cmd("Glance references"), noremapSilent)
 
@@ -242,6 +237,6 @@ wk.register({
 u.remap("n", "<leader>nl", vim_cmd("Noice last"))
 u.remap("n", "<leader>nm", vim_cmd("Noice history"))
 
-u.remap('n', '<leader>m', require('treesj').toggle)
+u.remap('n', '<leader>m', function() require('treesj').toggle() end)
 
 u.remap("n", "<leader>t", theme_utils.switch_theme, noremap)

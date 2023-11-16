@@ -73,7 +73,6 @@ local plugins = {
     lazy = false,
     priority = 1000,
   },
-
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -185,7 +184,7 @@ local plugins = {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = load_plugin_conf("oil"),
-    event = "VeryLazy",
+    cmd = { "Oil" },
   },
 
   {
@@ -236,6 +235,7 @@ local plugins = {
     cmd = { "Glance" },
     config = load_plugin_conf("glance"),
   },
+
   {
     "folke/which-key.nvim",
     event = { "BufReadPre", "BufNewFile" },

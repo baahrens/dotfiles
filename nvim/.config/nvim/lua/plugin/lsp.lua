@@ -1,9 +1,6 @@
 local settings = require("settings")
 local lspconfig = require("lspconfig")
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = settings.border })
-vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = settings.border })
 vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
 
 local M = {}
