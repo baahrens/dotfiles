@@ -16,15 +16,6 @@ local function vim_cmd(cmd)
   end
 end
 
--- map CMD on mac, Alt on linux
-local function map_cmd_alt(key)
-  if vim.g.is_macos then
-    return "<D-" .. key .. ">"
-  else
-    return "<A-" .. key .. ">"
-  end
-end
-
 g.mapleader = " "
 
 u.remap("n", " ", "", noremap)
@@ -64,10 +55,10 @@ u.remap("v", "<", "<gv", noremap)
 u.remap("v", ">", ">gv", noremap)
 
 -- move lines in visual mode
-u.remap("n", map_cmd_alt "j", "<C>move .+1<CR>", silent)
-u.remap("n", map_cmd_alt "k", "<C>move .-2<CR>", silent)
-u.remap("x", map_cmd_alt "j", ":move '>+1<CR>gv=gv", silent)
-u.remap("x", map_cmd_alt "k", ":move '<-2<CR>gv=gv", silent)
+u.remap("n", u.map_cmd_alt "j", "<C>move .+1<CR>", silent)
+u.remap("n", u.map_cmd_alt "k", "<C>move .-2<CR>", silent)
+u.remap("x", u.map_cmd_alt "j", ":move '>+1<CR>gv=gv", silent)
+u.remap("x", u.map_cmd_alt "k", ":move '<-2<CR>gv=gv", silent)
 
 -- delete in v mode without loosing current yank
 u.remap("v", "<leader>p", '"_dP', noremap)
@@ -154,7 +145,7 @@ wk.register({
   },
 })
 
-u.remap("n", map_cmd_alt "p", function() require("telescope.builtin").find_files() end, noremap)
+u.remap("n", u.map_cmd_alt "p", function() require("telescope.builtin").find_files() end, noremap)
 u.remap("n", "<C-p>", function() require("telescope.builtin").live_grep() end, noremap)
 wk.register({
   ["<leader>f"] = {

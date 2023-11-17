@@ -1,3 +1,4 @@
+local u = require("util")
 local actions = require("telescope.actions")
 
 local generate_offset = function(str, tabsize)
@@ -151,14 +152,14 @@ require("telescope").setup({
     mappings = {
       i = {
         ["<ESC>"] = actions.close,
-        ["<D-p>"] = actions.close,
+        [u.map_cmd_alt("p")] = actions.close,
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
         ["<Tab>"] = actions.move_selection_next,
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-u>"] = actions.preview_scrolling_up,
-        ["<D-CR>"] = actions.file_vsplit,
+        [u.map_cmd_alt("CR")] = actions.file_vsplit,
         ["<C-f>"] = actions.to_fuzzy_refine,
         ["<leader>f;"] = function() end,
       },
