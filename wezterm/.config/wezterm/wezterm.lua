@@ -1,12 +1,16 @@
 local wezterm = require 'wezterm'
+
+local is_work_machine = wezterm.hostname() == "work"
+
 local config = {}
 
 config.color_scheme = 'Tokyo Night'
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
 config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Regular' })
-config.font_size = 14.0
+config.font_size = is_work_machine and 11.0 or 14.0
 config.enable_kitty_keyboard = true
+config.disable_default_key_bindings = true
 config.enable_csi_u_key_encoding = false
 config.cell_width = 1.0
 config.line_height = 1.3
@@ -68,6 +72,8 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(name or '')
 end)
 
+local cmd_alt = is_work_machine and "ALT" or "CMD"
+
 config.leader = { key = 'Enter', mods = 'CTRL' }
 config.keys = {
   {
@@ -78,31 +84,9 @@ config.keys = {
       one_shot = false,
     },
   },
-  { key = "a",     mods = "CMD", action = send_cmd_key(string.byte("a")) },
-  { key = "b",     mods = "CMD", action = send_cmd_key(string.byte("b")) },
-  { key = "d",     mods = "CMD", action = send_cmd_key(string.byte("d")) },
-  { key = "e",     mods = "CMD", action = send_cmd_key(string.byte("e")) },
-  { key = "f",     mods = "CMD", action = send_cmd_key(string.byte("f")) },
-  { key = "g",     mods = "CMD", action = send_cmd_key(string.byte("g")) },
-  { key = "h",     mods = "CMD", action = send_cmd_key(string.byte("h")) },
-  { key = "i",     mods = "CMD", action = send_cmd_key(string.byte("i")) },
-  { key = "j",     mods = "CMD", action = send_cmd_key(string.byte("j")) },
-  { key = "k",     mods = "CMD", action = send_cmd_key(string.byte("k")) },
-  { key = "l",     mods = "CMD", action = send_cmd_key(string.byte("l")) },
-  { key = "m",     mods = "CMD", action = send_cmd_key(string.byte("m")) },
-  { key = "n",     mods = "CMD", action = send_cmd_key(string.byte("n")) },
-  { key = "o",     mods = "CMD", action = send_cmd_key(string.byte("o")) },
-  { key = "p",     mods = "CMD", action = send_cmd_key(string.byte("p")) },
-  { key = "q",     mods = "CMD", action = send_cmd_key(string.byte("q")) },
-  { key = "s",     mods = "CMD", action = send_cmd_key(string.byte("s")) },
-  { key = "u",     mods = "CMD", action = send_cmd_key(string.byte("u")) },
-  { key = "x",     mods = "CMD", action = send_cmd_key(string.byte("x")) },
-  { key = "y",     mods = "CMD", action = send_cmd_key(string.byte("y")) },
-  { key = "z",     mods = "CMD", action = send_cmd_key(string.byte("z")) },
-  { key = "Enter", mods = "CMD", action = send_cmd_key(13) },
   {
     key = ",",
-    mods = "CMD",
+    mods = cmd_alt,
     action = wezterm.action.SplitPane {
       direction = 'Down',
       size = { Percent = 20 }
@@ -110,7 +94,7 @@ config.keys = {
   },
   {
     key = ".",
-    mods = "CMD",
+    mods = cmd_alt,
     action = wezterm.action.SplitPane {
       direction = 'Right',
       size = { Percent = 50 }
@@ -133,7 +117,45 @@ config.keys = {
     mods = 'LEADER',
     action = wezterm.action.CloseCurrentPane { confirm = false }
   },
+
+  { key = 't', mods = cmd_alt, action = wezterm.action.SpawnTab 'CurrentPaneDomain' },
+  { key = 'v', mods = cmd_alt, action = wezterm.action.PasteFrom 'Clipboard' },
+  { key = '1', mods = cmd_alt, action = wezterm.action.ActivateTab(0) },
+  { key = '2', mods = cmd_alt, action = wezterm.action.ActivateTab(1) },
+  { key = '3', mods = cmd_alt, action = wezterm.action.ActivateTab(2) },
+  { key = '4', mods = cmd_alt, action = wezterm.action.ActivateTab(3) },
+  { key = '5', mods = cmd_alt, action = wezterm.action.ActivateTab(4) },
+  { key = '6', mods = cmd_alt, action = wezterm.action.ActivateTab(5) },
+  { key = '7', mods = cmd_alt, action = wezterm.action.ActivateTab(6) },
+  { key = '8', mods = cmd_alt, action = wezterm.action.ActivateTab(7) },
+  { key = '9', mods = cmd_alt, action = wezterm.action.ActivateTab(-1) },
+  { key = 'r', mods = cmd_alt, action = wezterm.action.ReloadConfiguration },
 }
+
+if not is_work_machine then
+  table.insert(config.keys, { key = "a",     mods = cmd_alt, action = send_cmd_key(string.byte("a")) })
+  table.insert(config.keys, { key = "b",     mods = cmd_alt, action = send_cmd_key(string.byte("b")) })
+  table.insert(config.keys, { key = "d",     mods = cmd_alt, action = send_cmd_key(string.byte("d")) })
+  table.insert(config.keys, { key = "e",     mods = cmd_alt, action = send_cmd_key(string.byte("e")) })
+  table.insert(config.keys, { key = "f",     mods = cmd_alt, action = send_cmd_key(string.byte("f")) })
+  table.insert(config.keys, { key = "g",     mods = cmd_alt, action = send_cmd_key(string.byte("g")) })
+  table.insert(config.keys, { key = "h",     mods = cmd_alt, action = send_cmd_key(string.byte("h")) })
+  table.insert(config.keys, { key = "i",     mods = cmd_alt, action = send_cmd_key(string.byte("i")) })
+  table.insert(config.keys, { key = "j",     mods = cmd_alt, action = send_cmd_key(string.byte("j")) })
+  table.insert(config.keys, { key = "k",     mods = cmd_alt, action = send_cmd_key(string.byte("k")) })
+  table.insert(config.keys, { key = "l",     mods = cmd_alt, action = send_cmd_key(string.byte("l")) })
+  table.insert(config.keys, { key = "m",     mods = cmd_alt, action = send_cmd_key(string.byte("m")) })
+  table.insert(config.keys, { key = "n",     mods = cmd_alt, action = send_cmd_key(string.byte("n")) })
+  table.insert(config.keys, { key = "o",     mods = cmd_alt, action = send_cmd_key(string.byte("o")) })
+  table.insert(config.keys, { key = "p",     mods = cmd_alt, action = send_cmd_key(string.byte("p")) })
+  table.insert(config.keys, { key = "q",     mods = cmd_alt, action = send_cmd_key(string.byte("q")) })
+  table.insert(config.keys, { key = "s",     mods = cmd_alt, action = send_cmd_key(string.byte("s")) })
+  table.insert(config.keys, { key = "u",     mods = cmd_alt, action = send_cmd_key(string.byte("u")) })
+  table.insert(config.keys, { key = "x",     mods = cmd_alt, action = send_cmd_key(string.byte("x")) })
+  table.insert(config.keys, { key = "y",     mods = cmd_alt, action = send_cmd_key(string.byte("y")) })
+  table.insert(config.keys, { key = "z",     mods = cmd_alt, action = send_cmd_key(string.byte("z")) })
+  table.insert(config.keys, { key = "Enter", mods = cmd_alt, action = send_cmd_key(13) })
+end
 
 config.key_tables = {
   resize_pane = {
