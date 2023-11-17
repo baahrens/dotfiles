@@ -40,6 +40,6 @@ opt.fillchars:append({ diff = "╱" })
 global.is_work_machine = vim.loop.os_gethostname() == "work"
 global.is_macos = vim.loop.os_uname().sysname == "Darwin"
 
-global.dotfiles_dir = vim.fn.expand("~") .. (vim.g.is_macos and "/.dotfiles" or "/dotfiles")
+global.dotfiles_dir = vim.fn.expand("~") .. "/.dotfiles"
 global.notes_dir = vim.fn.expand("~") .. "/notes"
 global.template_dir = vim.g.dotfiles_dir .. "/nvim/.config/nvim/templates"
