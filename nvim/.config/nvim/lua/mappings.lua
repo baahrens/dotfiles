@@ -55,10 +55,10 @@ u.remap("v", "<", "<gv", noremap)
 u.remap("v", ">", ">gv", noremap)
 
 -- move lines in visual mode
-u.remap("n", u.map_cmd_alt "j", "<C>move .+1<CR>", silent)
-u.remap("n", u.map_cmd_alt "k", "<C>move .-2<CR>", silent)
-u.remap("x", u.map_cmd_alt "j", ":move '>+1<CR>gv=gv", silent)
-u.remap("x", u.map_cmd_alt "k", ":move '<-2<CR>gv=gv", silent)
+u.remap("n", "<M-j>", "<C>move .+1<CR>", silent)
+u.remap("n", "<M-k", "<C>move .-2<CR>", silent)
+u.remap("x", "<M-j>", ":move '>+1<CR>gv=gv", silent)
+u.remap("x", "<M-k>", ":move '<-2<CR>gv=gv", silent)
 
 -- delete in v mode without loosing current yank
 u.remap("v", "<leader>p", '"_dP', noremap)
@@ -158,14 +158,14 @@ wk.register({
           prompt_title = "~ dotfiles ~",
           previewer = false,
         }))
-    end, "Dotfiles" },
+      end, "Dotfiles" },
     h = { function() require("telescope.builtin").help_tags() end, "Help" },
     m = { function() require("telescope.builtin").keymaps() end, "Mappings" },
     c = { function() require("telescope.builtin").commands() end, "Commands" },
     i = { function() require("telescope.builtin").highlights() end, "Highlights" },
     b = { function() require("telescope.builtin").buffers() end, "Buffers" },
     s = { function() require("telescope.builtin").current_buffer_fuzzy_find() end, "Current buffer" },
-    g = { function() require("telescope.builtin").git_branches () end, "Branches" },
+    g = { function() require("telescope.builtin").git_branches() end, "Branches" },
     x = { function() require("telescope.builtin").diagnostics() end, "Diagnostics" },
     r = { function() require("telescope.builtin").resume() end, "Resume" },
   }
