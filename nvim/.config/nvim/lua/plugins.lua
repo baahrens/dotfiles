@@ -124,8 +124,8 @@ local plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    event = { "BufReadPost", "BufNewFile" },
     dependencies = "nvim-treesitter",
+    ft = { "html", "javascriptreact", "typescriptreact", "tsx", "jsx" }
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -245,13 +245,13 @@ local plugins = {
   {
     "L3MON4D3/LuaSnip",
     config = load_plugin_conf("luasnip"),
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "InsertEnter" },
   },
 
   {
     "hrsh7th/nvim-cmp",
     config = load_plugin_conf("cmp"),
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "InsertEnter" },
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
