@@ -1,9 +1,4 @@
-local g = vim.g
-local api = vim.api
-local theme_utils = require("plugin/colors/theme")
-
 local u = require("util")
-local settings = require("settings")
 local wk = require("which-key")
 
 local silent = { silent = true }
@@ -16,7 +11,7 @@ local function vim_cmd(cmd)
   end
 end
 
-g.mapleader = " "
+vim.g.mapleader = " "
 
 u.remap("n", " ", "", noremap)
 u.remap("x", " ", "", noremap)
@@ -30,12 +25,12 @@ u.remap("n", "k", "gk", noremap)
 u.remap("n", "Q", ":q<CR>", noremap)
 u.remap("n", "W", ":w<CR>", noremap)
 
-api.nvim_create_user_command("WQ", "wq", {})
-api.nvim_create_user_command("Wq", "wq", {})
-api.nvim_create_user_command("W", "w", {})
-api.nvim_create_user_command("Qa", "qa", {})
-api.nvim_create_user_command("Q", "q", {})
-api.nvim_create_user_command("Lw", "w", {})
+vim.api.nvim_create_user_command("WQ", "wq", {})
+vim.api.nvim_create_user_command("Wq", "wq", {})
+vim.api.nvim_create_user_command("W", "w", {})
+vim.api.nvim_create_user_command("Qa", "qa", {})
+vim.api.nvim_create_user_command("Q", "q", {})
+vim.api.nvim_create_user_command("Lw", "w", {})
 
 -- H/L to go to beginning/end of the line
 u.remap("n", "H", "^", noremap)
@@ -87,7 +82,7 @@ wk.register({
     p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "[dir] Private notes" },
     w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "[dir] Work notes" },
     t = { vim_cmd("Oil " .. vim.g.notes_dir .. "/tech"), "Tech notes" },
-    d = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
+    ["."] = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
   },
 })
 
@@ -145,29 +140,21 @@ wk.register({
   },
 })
 
-u.remap("n", u.map_cmd_alt "p", function() require("telescope.builtin").find_files() end, noremap)
-u.remap("n", "<C-p>", function() require("telescope.builtin").live_grep() end, noremap)
+u.remap("n", u.map_cmd_alt "p",
+  function() require("plugin/telescope_pickers").find_files() end, noremap)
+u.remap("n", "<C-p>", function() require("plugin/telescope_pickers").live_grep() end, noremap)
 wk.register({
   ["<leader>f"] = {
     name = "find",
-    d = {
-      function()
-        require("telescope.builtin").find_files(require("telescope.themes").get_dropdown({
-          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-          cwd = vim.g.dotfiles_dir,
-          prompt_title = "~ dotfiles ~",
-          previewer = false,
-        }))
-      end, "Dotfiles" },
-    h = { function() require("telescope.builtin").help_tags() end, "Help" },
-    m = { function() require("telescope.builtin").keymaps() end, "Mappings" },
-    c = { function() require("telescope.builtin").commands() end, "Commands" },
-    i = { function() require("telescope.builtin").highlights() end, "Highlights" },
-    b = { function() require("telescope.builtin").buffers() end, "Buffers" },
-    s = { function() require("telescope.builtin").current_buffer_fuzzy_find() end, "Current buffer" },
-    g = { function() require("telescope.builtin").git_branches() end, "Branches" },
-    x = { function() require("telescope.builtin").diagnostics() end, "Diagnostics" },
-    r = { function() require("telescope.builtin").resume() end, "Resume" },
+    h = { function() require("plugin/telescope_pickers").help() end, "Help" },
+    m = { function() require("plugin/telescope_pickers").mappings() end, "Mappings" },
+    c = { function() require("plugin/telescope_pickers").commands() end, "Commands" },
+    i = { function() require("plugin/telescope_pickers").highlights() end, "Highlights" },
+    b = { function() require("plugin/telescope_pickers").buffers() end, "Buffers" },
+    s = { function() require("plugin/telescope_pickers").current_buffer() end, "Current buffer" },
+    g = { function() require("plugin/telescope_pickers").branches() end, "Branches" },
+    x = { function() require("plugin/telescope_pickers").diagnostics() end, "Diagnostics" },
+    r = { function() require("plugin/telescope_pickers").resume() end, "Resume" },
   }
 })
 
@@ -216,12 +203,12 @@ u.remap("n", "]", ":CybuLastusedNext<CR>")
 wk.register({
   ["<leader>s"] = {
     name = "settings",
-    f = { settings.toggle_format_on_save, "Toggle on save formatting" },
-    p = { settings.toggle_format_prettier, "Toggle prettier formatting" },
-    e = { settings.toggle_format_eslint, "Toggle eslint formatting" },
-    u = { settings.toggle_diagnostic_underline, "Toggle diagnostic underline" },
-    v = { settings.toggle_diagnostic_virtual, "Toggle diagnostic virtual" },
-    c = { settings.toggle_colorcode_highlights, "Toggle colorcode highlights" },
+    f = { function() require("settings").toggle_format_on_save() end, "Toggle on save formatting" },
+    p = { function() require("settings").toggle_format_prettier() end, "Toggle prettier formatting" },
+    e = { function() require("settings").toggle_format_eslint() end, "Toggle eslint formatting" },
+    u = { function() require("settings").toggle_diagnostic_underline() end, "Toggle diagnostic underline" },
+    v = { function() require("settings").toggle_diagnostic_virtual() end, "Toggle diagnostic virtual" },
+    c = { function() require("settings").toggle_colorcode_highlights() end, "Toggle colorcode highlights" },
   },
 })
 
@@ -230,4 +217,4 @@ u.remap("n", "<leader>nm", vim_cmd("Noice history"))
 
 u.remap('n', '<leader>m', function() require('treesj').toggle() end)
 
-u.remap("n", "<leader>t", theme_utils.switch_theme, noremap)
+u.remap("n", "<leader>t", function() require("plugin/colors/theme").switch_theme() end, noremap)

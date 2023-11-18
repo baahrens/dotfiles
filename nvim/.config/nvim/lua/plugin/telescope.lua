@@ -85,6 +85,7 @@ local ignore_patterns = {
   "yarn.lock",
   "package-lock.json",
   "prisma/data.db",
+  "build",
   ".next",
   "dist",
   ".git"
@@ -103,7 +104,6 @@ require("telescope").setup({
     live_grep = {
       entry_maker = grep_entry_maker,
       additional_args = { "--trim" },
-      prompt_title = "~ search ~",
     },
     find_files = {
       hidden = true,
@@ -114,7 +114,6 @@ require("telescope").setup({
       path_display = {
         shorten = 5,
       },
-      prompt_title = false,
     },
     lsp_references = {
       entry_maker = lsp_entry_maker,
@@ -130,23 +129,8 @@ require("telescope").setup({
     },
   },
   defaults = {
+    dynamic_preview_title = true,
     results_title = false,
-    layout_strategy = "flex",
-    layout_config = {
-      prompt_position = "bottom",
-      width = 0.75,
-      height = 0.5,
-      flex = {
-        flip_columns = 200,
-        flip_lines = 50,
-        vertical = {
-          mirror = true,
-        },
-        horizontal = {
-          mirror = false,
-        },
-      },
-    },
     color_devicons = false,
     file_ignore_patterns = ignore_patterns,
     mappings = {

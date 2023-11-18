@@ -8,7 +8,7 @@ function M.setup()
     highlight_groups = {
       TelescopeBorder = { fg = "highlight_high", bg = "none" },
       TelescopeNormal = { bg = "none" },
-      TelescopePromptNormal = { bg = "base" },
+      TelescopePromptNormal = { bg = "none" },
       TelescopeResultsNormal = { fg = "subtle", bg = "none" },
     },
   })
