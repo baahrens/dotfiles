@@ -106,10 +106,8 @@ require("telescope").setup({
       additional_args = { "--trim" },
     },
     find_files = {
+      no_ignore = true,
       hidden = true,
-      layout_config = {
-        width = 0.5,
-      },
       entry_maker = files_entry_maker,
       path_display = {
         shorten = 5,
@@ -135,15 +133,15 @@ require("telescope").setup({
     file_ignore_patterns = ignore_patterns,
     mappings = {
       i = {
-        ["<ESC>"] = actions.close,
-        [u.map_cmd_alt("p")] = actions.close,
-        ["<S-Tab>"] = actions.move_selection_previous,
         [u.map_cmd_alt("k")] = actions.move_selection_previous,
         [u.map_cmd_alt("j")] = actions.move_selection_next,
+        [u.map_cmd_alt("CR")] = actions.file_vsplit,
+        [u.map_cmd_alt("p")] = actions.close,
+        ["<ESC>"] = actions.close,
+        ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-u>"] = actions.preview_scrolling_up,
-        [u.map_cmd_alt("CR")] = actions.file_vsplit,
         ["<C-f>"] = actions.to_fuzzy_refine,
         ["<leader>f;"] = function() end,
       },
