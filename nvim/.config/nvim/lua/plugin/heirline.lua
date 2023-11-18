@@ -28,6 +28,79 @@ local align = { provider = "%=" }
 local space = { provider = "   " }
 local separator = { provider = "  │  ", hl = { fg = colors.inactive } }
 
+local mode = {
+  init = function(self)
+    self.mode = vim.fn.mode(1)
+  end,
+  static = {
+    mode_names = {
+      n = "Normal",
+      no = "N?",
+      nov = "N?",
+      noV = "N?",
+      ["no\22"] = "N?",
+      niI = "Ni",
+      niR = "Nr",
+      niV = "Nv",
+      nt = "Nt",
+      v = "Visual",
+      vs = "Vs",
+      V = "VLine",
+      Vs = "Vs",
+      ["\22"] = "VBlock",
+      ["\22s"] = "VBlock",
+      s = "S",
+      S = "S_",
+      ["\19"] = "^S",
+      i = "Insert",
+      ic = "Ic",
+      ix = "Ix",
+      R = "R",
+      Rc = "Rc",
+      Rx = "Rx",
+      Rv = "Rv",
+      Rvc = "Rv",
+      Rvx = "Rv",
+      c = "Command",
+      cv = "Ex",
+      r = "...",
+      rm = "M",
+      ["r?"] = "?",
+      ["!"] = "!",
+      t = "T",
+    },
+    mode_colors = {
+      n = colors.diag.info,
+      i = colors.diag.warn,
+      v = colors.diag.hint,
+      V = colors.diag.hint,
+      ["\22"] = colors.diag.hint,
+      c = "orange",
+      s = "purple",
+      S = "purple",
+      ["\19"] = "purple",
+      R = "orange",
+      r = "orange",
+      ["!"] = "red",
+      t = "red",
+    }
+  },
+  provider = function(self)
+    return self.mode_names[self.mode]
+  end,
+  hl = function(self)
+    local mode = self.mode:sub(1, 1)
+    return { fg = self.mode_colors[mode], bold = true, }
+  end,
+  update = {
+    "ModeChanged",
+    pattern = "*:*",
+    callback = vim.schedule_wrap(function()
+      vim.cmd("redrawstatus")
+    end),
+  },
+}
+
 local file_icon = {
   init = function(self)
     local filename = self.filename
@@ -166,28 +239,22 @@ local branch_name = {
 
   init = function(self)
     self.status_dict = vim.b.gitsigns_status_dict
-    self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
   end,
-
-  hl = { fg = colors.diag.warn },
 
   {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { bold = true },
+    hl = { bold = true, fg = colors.diag.warn },
   },
 }
 
-local git = {
+local git_status = {
   condition = conditions.is_git_repo,
 
   init = function(self)
     self.status_dict = vim.b.gitsigns_status_dict
-    self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
   end,
-
-  hl = { fg = colors.gray },
 
   {
     provider = function(self)
@@ -245,13 +312,14 @@ local DefaultStatusline = {
   space,
   lsp_servers,
   space,
+  mode
 }
 
 local SpecialStatusline = {
   condition = function(args)
     return conditions.buffer_matches({
       buftype = { "nofile", "prompt", "help", "quickfix" },
-      filetype = { "^git.*", "fugitive", "noice" },
+      filetype = { "^git.*", "fugitive", "noice", "TelescopeResults", "TelescopePrompt" },
     }, args.buf)
   end,
 }
@@ -299,7 +367,7 @@ local WinBars = {
     space,
     file_name_block,
     separator,
-    git,
+    git_status,
     align,
     diagnostics,
     separator,
@@ -315,7 +383,7 @@ require("heirline").setup({
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
         buftype = { "nofile", "prompt", "help", "quickfix" },
-        filetype = { "^git.*", "fugitive", "noice" },
+        filetype = { "^git.*", "fugitive", "noice", "TelescopePrompt", "TelescopeResults" },
       }, args.buf)
     end
   }

@@ -5,11 +5,6 @@ require("noice").setup({
     progress = {
       enabled = true,
     },
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
     hover = {
       enabled = true,
       opts = {
@@ -46,10 +41,6 @@ require("noice").setup({
       opts = { skip = true },
     },
     {
-      view = "notify",
-      filter = { event = "msg_showmode" },
-    },
-    {
       filter = { event = "msg_show", kind = "", find = "written" },
       opts = { skip = true },
     },
@@ -68,6 +59,21 @@ require("noice").setup({
         height = "auto",
       }
     },
+    popupmenu = {
+        relative = "editor",
+        position = {
+          row = 8,
+          col = "50%",
+        },
+        size = {
+          width = 60,
+          height = 10,
+        },
+        border = {
+          style = "rounded",
+          padding = { 0, 1 },
+        },
+      },
     mini = {
       win_options = {
         winblend = 0
