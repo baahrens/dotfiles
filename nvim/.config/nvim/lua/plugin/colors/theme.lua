@@ -66,8 +66,8 @@ M.global_overrides = {
 
   TelescopeResultsLineNr = { fg = palette.fg3 },
   TelescopeNormal = { bg = none },
-  TelescopeBorder = { fg = palette.bg4},
-  TelescopePreviewBorder = { fg = palette.bg2, bg = none},
+  TelescopeBorder = { fg = palette.bg4 },
+  TelescopePreviewBorder = { fg = palette.bg2, bg = none },
 
   FloatBorder = { bg = none, fg = palette.fg3 },
   CmpDocBorder = { bg = none, fg = palette.fg3 },
@@ -76,7 +76,10 @@ M.global_overrides = {
   IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
   IblScope = { bg = none, fg = palette.fg3 },
 
-  WhichKeyGroup = { fg = "#e0af68" }
+  WhichKeyGroup = { fg = "#e0af68" },
+  OilFile = { fg = palette.fg3 },
+  OilDir = { fg = palette.fg2 },
+  OilDirIcon = { fg = palette.fg3 },
 }
 
 return M

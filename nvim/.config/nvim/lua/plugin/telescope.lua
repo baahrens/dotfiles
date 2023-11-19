@@ -106,7 +106,7 @@ require("telescope").setup({
       additional_args = { "--trim" },
     },
     find_files = {
-      no_ignore = true,
+      no_ignore = false,
       hidden = true,
       entry_maker = files_entry_maker,
       path_display = {

@@ -3,6 +3,7 @@ require("oil").setup({
   default_file_explorer = true,
   skip_confirm_for_simple_edits = true,
   delete_to_trash = true,
+  use_default_keymaps = false,
   view_options = {
     show_hidden = true,
   },
@@ -15,6 +16,23 @@ require("oil").setup({
     list = false,
     conceallevel = 3,
     concealcursor = "nvic",
+  },
+  float = {
+    padding = 5,
+    max_width = 50,
+    max_height = 0,
+    win_options = {
+      winblend = 0,
+    },
+    override = function(config)
+      config.relative = "editor"
+      config.border = "rounded"
+      config.height = vim.o.lines / 2
+      config.col = vim.o.columns - 5
+      config.row = vim.o.lines / 2
+      config.style = "minimal"
+      return config
+    end
   },
   buf_options = {
     buflisted = false,
@@ -33,7 +51,6 @@ require("oil").setup({
       winblend = 0,
     },
   },
-  use_default_keymaps = false,
   keymaps = {
     ["g?"] = actions.show_help,
     ["<CR>"] = actions.select,
@@ -42,9 +59,9 @@ require("oil").setup({
       actions.select.callback({ vertical = true })
       actions.close.callback()
     end,
-    ["K"] = actions.preview,
     ["<C-n>"] = actions.close,
     ["<C-b>"] = actions.close,
+    ["q"] = actions.close,
     ["H"] = actions.parent,
     ["_"] = actions.open_cwd,
     ["`"] = actions.cd,

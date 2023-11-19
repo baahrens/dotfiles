@@ -319,7 +319,7 @@ local SpecialStatusline = {
   condition = function(args)
     return conditions.buffer_matches({
       buftype = { "nofile", "prompt", "help", "quickfix" },
-      filetype = { "^git.*", "fugitive", "noice", "TelescopeResults", "TelescopePrompt" },
+      filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopeResults", "TelescopePrompt" },
     }, args.buf)
   end,
 }
@@ -383,7 +383,7 @@ require("heirline").setup({
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
         buftype = { "nofile", "prompt", "help", "quickfix" },
-        filetype = { "^git.*", "fugitive", "noice", "TelescopePrompt", "TelescopeResults" },
+        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults" },
       }, args.buf)
     end
   }
