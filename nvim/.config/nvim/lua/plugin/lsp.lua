@@ -15,6 +15,7 @@ local format_clients = {
   "null-ls",
   "prismals",
   "rust_analyzer",
+  "zls"
 }
 
 function M.format()
@@ -133,6 +134,13 @@ require("typescript-tools").setup({
     tsserver_format_options = {},
     tsserver_file_preferences = {},
     complete_function_calls = false,
+
+    code_lens = "all",
+    disable_member_code_lens = true,
+    jsx_close_tag = {
+      enable = true,
+      filetypes = { "javascriptreact", "typescriptreact" },
+    }
   },
 })
 
