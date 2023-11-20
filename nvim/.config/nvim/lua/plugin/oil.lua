@@ -27,7 +27,7 @@ require("oil").setup({
     override = function(config)
       config.relative = "editor"
       config.border = "rounded"
-      config.height = vim.o.lines / 2
+      config.height = vim.api.nvim_win_get_height(0) / 2
       config.col = vim.o.columns - 5
       config.row = vim.o.lines / 2
       config.style = "minimal"
