@@ -65,120 +65,127 @@ u.remap("n", "<C-b>", function()
   require("oil").open_float(vim.fn.expand("%:p:h"))
 end, noremap)
 
--- p <leader>o & <leader>O to newline without insert mode
-u.remap("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', noremapSilent)
-u.remap("n", "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', noremapSilent)
+-- leader mappings
+wk.register({
+  ["<leader>"] = {
+    o = { ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', "New line below" },
+    O = { ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', "New line above" },
+    m = { function() require('treesj').toggle() end, "Split/Join lines" },
+    t = { function() require("plugin/colors/theme").switch_theme() end, "Switch theme" },
+    k = { vim.lsp.buf.signature_help, "Signature Help" },
+    d = { "Glance references", "Show References" },
+
+    x = {
+      name = "Open dir",
+      p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "[dir] Private notes" },
+      w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "[dir] Work notes" },
+      t = { vim_cmd("Oil " .. vim.g.notes_dir .. "/tech"), "Tech notes" },
+      ["."] = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
+    },
+
+    n = {
+      name = "notes",
+      f = {
+        name = "find",
+        p = { function() require("notes").grep_private() end, "private notes" },
+        t = { function() require("notes").grep_tech() end, "tech notes" },
+        d = { function() require("notes").grep_daily() end, "daily notes" },
+      },
+      d = { function() require("notes").open_daily() end, "open daily note" }
+    },
+
+    q = {
+      name = "quickfix",
+      c = { vim_cmd("cclose"), "Close" },
+      o = { vim_cmd("copen"), "Open" },
+      a = { vim_cmd("cc"), "" },
+      n = { vim_cmd("cnext"), "next" },
+      N = { vim_cmd("cprev"), "previous" }
+    },
+
+    g = {
+      name = "git",
+      s = { vim_cmd("Git"), "Status" },
+      c = { vim_cmd("Git commit"), "Commit" },
+      u = { vim_cmd("Git pull"), "Pull" },
+      l = { vim_cmd("Git log"), "Log" },
+      p = { vim_cmd("Git push"), "Push" },
+      b = { vim_cmd("Git blame"), "Blame" },
+      f = { vim_cmd("Gclog"), "File history" },
+      A = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
+      o = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master" },
+      m = { vim.cmd("Git switch master"), "Switch to master" },
+      r = {
+        name = "rebase",
+        m = { vim_cmd("Git rebase -i origin/master"), "Rebase master" },
+        c = { vim_cmd("Git rebase --continue"), "Rebase continue" },
+        a = { vim_cmd("Git rebase --abort"), "Rebase abort" },
+      },
+      h = {
+        name = "hunk",
+        a = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" } },
+        d = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" } },
+        r = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" } },
+        s = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk" },
+        n = { vim_cmd("Gitsigns next_hunk"), "Next hunk" },
+        N = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk" },
+      },
+    },
+
+    f = {
+      name = "find",
+      h = { function() require("plugin/telescope_pickers").help() end, "Help" },
+      m = { function() require("plugin/telescope_pickers").mappings() end, "Mappings" },
+      c = { function() require("plugin/telescope_pickers").commands() end, "Commands" },
+      i = { function() require("plugin/telescope_pickers").highlights() end, "Highlights" },
+      b = { function() require("plugin/telescope_pickers").buffers() end, "Buffers" },
+      s = { function() require("plugin/telescope_pickers").current_buffer() end, "Current buffer" },
+      g = { function() require("plugin/telescope_pickers").branches() end, "Branches" },
+      x = { function() require("plugin/telescope_pickers").diagnostics() end, "Diagnostics" },
+      r = { function() require("plugin/telescope_pickers").resume() end, "Resume" },
+    },
+
+    c = {
+      name = "LSP",
+      r = { vim.lsp.buf.rename, "Rename" },
+      c = { vim.lsp.buf.code_action, "Code action" },
+      s = { vim.diagnostic.open_float, "Show diagnostic" },
+      n = { vim.diagnostic.goto_next, "Next diagnostic" },
+      N = { vim.diagnostic.goto_prev, "Previous diagnostic" },
+      i = { vim_cmd("LspInfo"), "Info" },
+      R = { vim_cmd("LspRestart"), "Restart LSP" },
+      m = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
+      f = { vim_cmd("TSToolsFixAll"), "Fix all" },
+      u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
+    },
+
+    s = {
+      name = "settings",
+      f = { function() require("settings").toggle_format_on_save() end, "Toggle on save formatting" },
+      p = { function() require("settings").toggle_format_prettier() end, "Toggle prettier formatting" },
+      e = { function() require("settings").toggle_format_eslint() end, "Toggle eslint formatting" },
+      u = { function() require("settings").toggle_diagnostic_underline() end, "Toggle diagnostic underline" },
+      v = { function() require("settings").toggle_diagnostic_virtual() end, "Toggle diagnostic virtual" },
+      c = { function() require("settings").toggle_colorcode_highlights() end, "Toggle colorcode highlights" },
+    },
+  }
+})
+
 
 vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
 vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 
-wk.register({
-  ["<leader>x"] = {
-    name = "Open dir",
-    p = { vim_cmd("Oil " .. vim.g.notes_dir .. "/private"), "[dir] Private notes" },
-    w = { vim_cmd("Oil " .. vim.g.notes_dir .. "/work"), "[dir] Work notes" },
-    t = { vim_cmd("Oil " .. vim.g.notes_dir .. "/tech"), "Tech notes" },
-    ["."] = { vim_cmd("Oil " .. vim.g.dotfiles_dir), "Dotfiles" },
-  },
-})
-
-wk.register({
-  ["<leader>n"] = {
-    name = "notes",
-    f = {
-      name = "find",
-      p = { function() require("notes").grep_private() end, "private notes" },
-      t = { function() require("notes").grep_tech() end, "tech notes" },
-      d = { function() require("notes").grep_daily() end, "daily notes" },
-    },
-    d = { function() require("notes").open_daily() end, "open daily note" }
-  }
-})
-wk.register({
-  ["<leader>q"] = {
-    name = "quickfix",
-    c = { vim_cmd("cclose"), "Close" },
-    o = { vim_cmd("copen"), "Open" },
-    a = { vim_cmd("cc"), "" },
-    n = { vim_cmd("cnext"), "next" },
-    N = { vim_cmd("cprev"), "previous" }
-  }
-})
-
-wk.register({
-  ["<leader>g"] = {
-    name = "git",
-    s = { vim_cmd("Git"), "Status" },
-    c = { vim_cmd("Git commit"), "Commit" },
-    u = { vim_cmd("Git pull"), "Pull" },
-    l = { vim_cmd("Git log"), "Log" },
-    p = { vim_cmd("Git push"), "Push" },
-    b = { vim_cmd("Git blame"), "Blame" },
-    f = { vim_cmd("Gclog"), "File history" },
-    A = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
-    o = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master" },
-    m = { vim.cmd("Git switch master"), "Switch to master" },
-    r = {
-      name = "rebase",
-      m = { vim_cmd("Git rebase -i origin/master"), "Rebase master" },
-      c = { vim_cmd("Git rebase --continue"), "Rebase continue" },
-      a = { vim_cmd("Git rebase --abort"), "Rebase abort" },
-    },
-    h = {
-      name = "hunk",
-      a = { vim_cmd("Gitsigns stage_hunk"), "Stage hunk", mode = { "v", "n" } },
-      d = { vim_cmd("Gitsigns undo_stage_hunk"), "Undo stage hunk", mode = { "v", "n" } },
-      r = { vim_cmd("Gitsigns reset_hunk"), "Reset hunk", mode = { "v", "n" } },
-      s = { vim_cmd("Gitsigns preview_hunk"), "Preview hunk" },
-      n = { vim_cmd("Gitsigns next_hunk"), "Next hunk" },
-      N = { vim_cmd("Gitsigns prev_hunk"), "Previous hunk" },
-    },
-  },
-})
-
 u.remap("n", u.map_cmd_alt "p",
   function() require("plugin/telescope_pickers").find_files() end, noremap)
 u.remap("n", "<C-p>", function() require("plugin/telescope_pickers").live_grep() end, noremap)
-wk.register({
-  ["<leader>f"] = {
-    name = "find",
-    h = { function() require("plugin/telescope_pickers").help() end, "Help" },
-    m = { function() require("plugin/telescope_pickers").mappings() end, "Mappings" },
-    c = { function() require("plugin/telescope_pickers").commands() end, "Commands" },
-    i = { function() require("plugin/telescope_pickers").highlights() end, "Highlights" },
-    b = { function() require("plugin/telescope_pickers").buffers() end, "Buffers" },
-    s = { function() require("plugin/telescope_pickers").current_buffer() end, "Current buffer" },
-    g = { function() require("plugin/telescope_pickers").branches() end, "Branches" },
-    x = { function() require("plugin/telescope_pickers").diagnostics() end, "Diagnostics" },
-    r = { function() require("plugin/telescope_pickers").resume() end, "Resume" },
-  }
-})
-
-wk.register({
-  ["<leader>c"] = {
-    name = "LSP",
-    r = { vim.lsp.buf.rename, "Rename" },
-    c = { vim.lsp.buf.code_action, "Code action" },
-    s = { vim.diagnostic.open_float, "Show diagnostic" },
-    n = { vim.diagnostic.goto_next, "Next diagnostic" },
-    N = { vim.diagnostic.goto_prev, "Previous diagnostic" },
-    i = { vim_cmd("LspInfo"), "Info" },
-    R = { vim_cmd("LspRestart"), "Restart LSP" },
-    m = { vim_cmd("TSToolsAddMissingImports"), "Add missing imports" },
-    f = { vim_cmd("TSToolsFixAll"), "Fix all" },
-    u = { vim_cmd("TSToolsRemoveUnused"), "Remove unused" },
-  }
-})
 
 u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
 u.remap("n", "gD", vim_cmd("Telescope lsp_declarations"), noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
 u.remap("v", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
 u.remap("n", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
-u.remap("n", "<leader>k", vim.lsp.buf.signature_help, noremapSilent)
-u.remap("n", "<leader>d", vim_cmd("Glance references"), noremapSilent)
 
 -- search
 u.remap("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]], silent)
@@ -197,22 +204,3 @@ u.remap("n", "S", "<cmd>lua require('substitute').eol()<CR>", noremap)
 -- cybu
 u.remap("n", "[", ":CybuLastusedPrev<CR>")
 u.remap("n", "]", ":CybuLastusedNext<CR>")
-
-wk.register({
-  ["<leader>s"] = {
-    name = "settings",
-    f = { function() require("settings").toggle_format_on_save() end, "Toggle on save formatting" },
-    p = { function() require("settings").toggle_format_prettier() end, "Toggle prettier formatting" },
-    e = { function() require("settings").toggle_format_eslint() end, "Toggle eslint formatting" },
-    u = { function() require("settings").toggle_diagnostic_underline() end, "Toggle diagnostic underline" },
-    v = { function() require("settings").toggle_diagnostic_virtual() end, "Toggle diagnostic virtual" },
-    c = { function() require("settings").toggle_colorcode_highlights() end, "Toggle colorcode highlights" },
-  },
-})
-
-u.remap("n", "<leader>nl", vim_cmd("Noice last"))
-u.remap("n", "<leader>nm", vim_cmd("Noice history"))
-
-u.remap('n', '<leader>m', function() require('treesj').toggle() end)
-
-u.remap("n", "<leader>t", function() require("plugin/colors/theme").switch_theme() end, noremap)
