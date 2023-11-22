@@ -168,9 +168,16 @@ wk.register({
       v = { function() require("settings").toggle_diagnostic_virtual() end, "Toggle diagnostic virtual" },
       c = { function() require("settings").toggle_colorcode_highlights() end, "Toggle colorcode highlights" },
     },
+
+    h = {
+      name = "build",
+      s = { vim_cmd("OverseerToggle right"), "Show" },
+      r = { vim_cmd("OverseerRun"), "Run" }
+    }
   }
 })
 
+vim.keymap.set('n', "<C-a>", "<CMD>OverseerToggle right<CR>")
 
 vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)

@@ -94,6 +94,12 @@ local plugins = {
   },
 
   {
+    'stevearc/overseer.nvim',
+    lazy = false,
+    config = load_plugin_conf("overseer"),
+  },
+
+  {
     "levouh/tint.nvim",
     config = load_plugin_conf("tint"),
     event = { "BufReadPost", "BufNewFile" },
@@ -176,6 +182,7 @@ local plugins = {
 
   {
     'mrjones2014/smart-splits.nvim',
+    tag = 'v1.2.4',
     config = load_plugin_conf("smart-splits"),
     lazy = false
   },

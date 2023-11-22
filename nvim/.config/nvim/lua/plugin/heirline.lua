@@ -292,33 +292,95 @@ local work_dir = {
   hl = { fg = colors.gray },
 }
 
-local lazy = {
-  condition = require("lazy.status").has_updates,
-  update = { "User", pattern = "LazyUpdate" },
-  provider = function()
-    return "  " .. require("lazy.status").updates() .. " "
+local function clean_task_name(task_name)
+  return string.gsub(task_name, "yarn run", "")
+end
+
+local function overseer_running()
+  return {
+    condition = function(self)
+      return #self.running_tasks > 0
+    end,
+    provider = function(self)
+      local running_task_names = {}
+      for _, task in ipairs(self.running_tasks) do
+        local task_name = clean_task_name(task.name)
+        table.insert(running_task_names, task_name)
+      end
+
+      local running_tasks = table.concat(running_task_names, " - ")
+      return string.format("[%s]  ", running_tasks)
+    end,
+    hl = function()
+      return {
+        fg = colors.diag.info
+      }
+    end,
+  }
+end
+local function overseer_status(status)
+  return {
+    condition = function(self)
+      return self.tasks[status]
+    end,
+    provider = function(self)
+      return string.format("%s%d  ", self.symbols[status], #self.tasks[status])
+    end,
+    hl = function()
+      local icon_color = status == "CANCELED" and colors.diag.warn
+          or status == "RUNNING" and colors.diag.info
+          or status == "SUCCESS" and colors.diag.hint
+          or colors.diag.error
+      return {
+        fg = icon_color
+      }
+    end,
+  }
+end
+
+local overseer = {
+  condition = function()
+    return package.loaded.overseer
   end,
-  hl = { fg = "gray" },
+  init = function(self)
+    local tasks = require("overseer.task_list").list_tasks({ unique = true })
+    local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
+    self.tasks = tasks_by_status
+    self.running_tasks = require("overseer.task_list").list_tasks({ unique = true, status = "RUNNING", recent_first = true })
+  end,
+  static = {
+    symbols = {
+      ["CANCELED"] = " ",
+      ["FAILURE"] = "󰅚 ",
+      ["SUCCESS"] = "󰄴 ",
+      ["RUNNING"] = "󰑮 ",
+    },
+  },
+
+  overseer_running(),
+  overseer_status("RUNNING"),
+  overseer_status("SUCCESS"),
+  overseer_status("FAILURE"),
+  overseer_status("CANCELED"),
 }
 
 local DefaultStatusline = {
   space,
+  mode,
   space,
   work_dir,
   separator,
   branch_name,
   align,
-  lazy,
-  space,
+  overseer,
+  separator,
   lsp_servers,
-  space,
-  mode
 }
 
 local SpecialStatusline = {
   condition = function(args)
     return conditions.buffer_matches({
-      buftype = { "nofile", "prompt", "help", "quickfix" },
+      buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
       filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopeResults", "TelescopePrompt" },
     }, args.buf)
   end,
@@ -382,7 +444,7 @@ require("heirline").setup({
   opts = {
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
-        buftype = { "nofile", "prompt", "help", "quickfix" },
+        buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
         filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults" },
       }, args.buf)
     end

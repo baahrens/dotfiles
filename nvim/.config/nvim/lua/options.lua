@@ -28,7 +28,7 @@ options.wildignore =
 ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 options.grepprg = "rg --vimgrep --no-heading --smart-case"
 options.grepformat = "%f:%l:%c:%m"
-options.shell = "/bin/bash"
+options.shell = "fish"
 options.completeopt = "menuone,noselect,noinsert"
 options.pumheight = 10
 options.pumblend = 0
