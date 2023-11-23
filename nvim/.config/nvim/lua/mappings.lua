@@ -73,7 +73,7 @@ wk.register({
     m = { function() require('treesj').toggle() end, "Split/Join lines" },
     t = { function() require("plugin/colors/theme").switch_theme() end, "Switch theme" },
     k = { vim.lsp.buf.signature_help, "Signature Help" },
-    d = { "Glance references", "Show References" },
+    d = { vim_cmd("Glance references"), "Show References" },
 
     x = {
       name = "Open dir",
