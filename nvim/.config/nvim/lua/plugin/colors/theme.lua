@@ -77,7 +77,7 @@ M.global_overrides = {
   IblScope = { bg = none, fg = palette.fg3 },
 
   WhichKeyGroup = { fg = "#e0af68" },
-  OilFile = { fg = palette.fg3 },
+  OilFile = { fg = color_utils.lighten(palette.fg3, 0.6) },
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
 }

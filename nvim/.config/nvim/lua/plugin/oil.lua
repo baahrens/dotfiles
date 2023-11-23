@@ -7,9 +7,10 @@ require("oil").setup({
   view_options = {
     show_hidden = true,
   },
+  columns = { { "icon", add_padding = true } },
   win_options = {
     wrap = false,
-    signcolumn = "no",
+    signcolumn = "yes",
     cursorcolumn = false,
     foldcolumn = "0",
     spell = false,
@@ -18,17 +19,24 @@ require("oil").setup({
     concealcursor = "nvic",
   },
   float = {
-    padding = 5,
     max_width = 50,
-    max_height = 0,
     win_options = {
       winblend = 0,
     },
     override = function(config)
       config.relative = "editor"
-      config.border = "rounded"
+      config.border = {
+        "╭",
+        "─",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "│",
+      }
       config.height = vim.api.nvim_win_get_height(0) / 2
-      config.col = vim.o.columns - 5
+      config.col = vim.o.columns
       config.row = vim.o.lines / 2
       config.style = "minimal"
       return config
