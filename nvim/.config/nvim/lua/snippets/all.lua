@@ -1,7 +1,21 @@
-local ls = require("luasnip")
+local luasnip = require("luasnip")
+local snippet = luasnip.s
+local u = require("snippets/utils")
 local partial = require("luasnip.extras").partial
 
 return {
-	ls.s("time", partial(vim.fn.strftime, "%H:%M:%S")),
-	ls.s("date", partial(vim.fn.strftime, "%d.%m.%Y")),
+  snippet("time", partial(vim.fn.strftime, "%H:%M:%S")),
+  snippet("date", partial(vim.fn.strftime, "%d.%m.%Y")),
+
+  -- auto pairs
+  snippet("{ | }", u.define_pair("{ ", " }")),
+  snippet("({ | })", u.define_pair("({ ", " })")),
+  snippet("${|}", u.define_pair("${", "}")),
+  snippet("<|>", u.define_pair("<", ">")),
+  snippet("<| />", u.define_pair("<", " />")),
+  snippet("(|)", u.define_pair("(", ")")),
+  snippet("[|]", u.define_pair("[", "]")),
+  snippet('"|"', u.define_pair('"', '"')),
+  snippet("'|'", u.define_pair("'", "'")),
+  snippet("`|`", u.define_pair("`", "`")),
 }

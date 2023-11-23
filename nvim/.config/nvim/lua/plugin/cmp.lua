@@ -1,6 +1,6 @@
+local settings = require("settings")
 local u = require("util")
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 local kind_icons = {
   Text = "",
@@ -30,26 +30,13 @@ local kind_icons = {
   TypeParameter = "",
 }
 
-local function border(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
 cmp.setup({
   window = {
     completion = {
-      border = border("CmpBorder"),
+      border = settings.border
     },
     documentation = {
-      border = border("CmpBorder"),
+      border = settings.border
     },
   },
   formatting = {
@@ -63,7 +50,7 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -83,8 +70,8 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
+      elseif require("luasnip").expand_or_locally_jumpable() then
+        require("luasnip").expand_or_jump()
       else
         fallback()
       end
@@ -92,8 +79,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif require("luasnip").jumpable(-1) then
+        require("luasnip").jump(-1)
       else
         fallback()
       end
