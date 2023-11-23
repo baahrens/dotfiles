@@ -1,6 +1,7 @@
 local overseer = require("overseer")
 overseer.setup({
   task_list = {
+    width = 50,
     bindings = {
       ["?"] = "ShowHelp",
       ["g?"] = "ShowHelp",
