@@ -114,7 +114,7 @@ wk.register({
       f = { vim_cmd("Gclog"), "File history" },
       A = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
       o = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master" },
-      m = { vim.cmd("Git switch master"), "Switch to master" },
+      m = { vim_cmd("Git switch master"), "Switch to master" },
       r = {
         name = "rebase",
         m = { vim_cmd("Git rebase -i origin/master"), "Rebase master" },
