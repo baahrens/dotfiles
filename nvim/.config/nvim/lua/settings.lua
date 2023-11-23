@@ -1,22 +1,12 @@
-local BORDER = {
-  { "╭", "CmpBorder" },
-  { "─", "CmpBorder" },
-  { "╮", "CmpBorder" },
-  { "│", "CmpBorder" },
-  { "╯", "CmpBorder" },
-  { "─", "CmpBorder" },
-  { "╰", "CmpBorder" },
-  { "│", "CmpBorder" },
-}
-
 local M = {
   format = {
     on_save = true,
     prettier = true,
     eslint = false,
   },
+  winblend = 0,
   colorcode_highlights = true,
-  border = BORDER,
+  border = "rounded",
   diagnostics = {
     show_underline = true,
     show_virtual = true,

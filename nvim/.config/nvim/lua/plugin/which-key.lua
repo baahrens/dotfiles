@@ -1,6 +1,8 @@
+local settings = require("settings")
+
 require("which-key").setup({
   window = {
-    border = "rounded"
+    border = settings.border
   },
   plugins = {
     presets = {

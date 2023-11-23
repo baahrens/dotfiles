@@ -1,6 +1,8 @@
+local settings = require("settings")
+
 require("mason").setup({
   ui = {
-    border = "rounded",
+    border = settings.border,
     icons = {
       package_installed = "✓",
       package_pending = "➜",

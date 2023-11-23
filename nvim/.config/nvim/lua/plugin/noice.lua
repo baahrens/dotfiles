@@ -1,3 +1,4 @@
+local settings = require("settings")
 require('noice.util.hacks').fix_cmp()
 
 require("noice").setup({
@@ -8,7 +9,7 @@ require("noice").setup({
     hover = {
       enabled = true,
       opts = {
-        border = { style = 'rounded' },
+        border = { style = settings.border },
         relative = 'cursor',
         position = {
           row = 2,
@@ -23,7 +24,7 @@ require("noice").setup({
       enabled = true,
       view = "hover",
       opts = {
-        border = { style = 'rounded' },
+        border = { style = settings.border },
         relative = 'cursor',
         position = {
           row = 2,
@@ -70,13 +71,13 @@ require("noice").setup({
           height = 10,
         },
         border = {
-          style = "rounded",
+          style = settings.border,
           padding = { 0, 1 },
         },
       },
     mini = {
       win_options = {
-        winblend = 0
+        winblend = settings.winblend
       }
     },
   },

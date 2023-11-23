@@ -1,3 +1,5 @@
+local settings = require("settings")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -20,6 +22,8 @@ local function load_plugin_conf(name)
   end
 end
 
+local theme_name = vim.fn.getenv("THEME") or "duskfox"
+
 local plugins = {
   -- =================== git ===================
   {
@@ -35,6 +39,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
+
   {
     "sindrets/diffview.nvim",
     dependencies = "nvim-lua/plenary.nvim",
@@ -48,36 +53,36 @@ local plugins = {
     event = "VeryLazy",
     config = load_plugin_conf("devicons"),
   },
+
   {
     "atelierbram/Base2Tone-nvim",
-    priority = 1000,
-    lazy = false,
+    priority = theme_name == "base2tone_drawbridge_dark" and 1000 or 1,
   },
+
   {
     "ramojus/mellifluous.nvim",
-    priority = 1000,
-    lazy = false,
+    priority = theme_name == "mellifluous" and 1000 or 1,
   },
+
   {
     "aktersnurra/no-clown-fiesta.nvim",
-    priority = 1000,
-    lazy = false,
+    priority = theme_name == "no-clown-fiesta" and 1000 or 1,
   },
+
   {
     "EdenEast/nightfox.nvim",
-    priority = 1000,
-    lazy = false,
+    priority = theme_name == "nightfox" or theme_name == "nordfox" and 1000 or 1,
   },
+
   {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    priority = theme_name == "tokyonight" and 1000 or 1,
   },
+
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    lazy = false,
-    priority = 1000,
+    priority = theme_name == "rose-pine" and 1000 or 1,
   },
 
   {
@@ -95,7 +100,7 @@ local plugins = {
 
   {
     'stevearc/overseer.nvim',
-    lazy = false,
+    cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
   },
 
@@ -104,6 +109,7 @@ local plugins = {
     config = load_plugin_conf("tint"),
     event = { "BufReadPost", "BufNewFile" },
   },
+
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -123,16 +129,19 @@ local plugins = {
     event = { "BufReadPost", "BufNewFile" },
     config = load_plugin_conf("treesitter"),
   },
+
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = "nvim-treesitter",
   },
+
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter",
     ft = { "html", "javascriptreact", "typescriptreact", "tsx", "jsx" }
   },
+
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
@@ -151,11 +160,13 @@ local plugins = {
       })
     end,
   },
+
   {
     "uga-rosa/ccc.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = load_plugin_conf("ccc"),
   },
+
   {
     "numToStr/Comment.nvim",
     event = { "BufReadPost", "BufNewFile" },
@@ -321,7 +332,7 @@ local lazy_config = {
     lazy = true,
   },
   ui = {
-    border = "rounded",
+    border = settings.border
   },
   performance = {
     rtp = {
@@ -349,3 +360,4 @@ local lazy_config = {
 }
 
 require("lazy").setup(plugins, lazy_config)
+require("plugin/colors/theme").set_colorscheme(theme_name)

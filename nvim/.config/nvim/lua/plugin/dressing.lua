@@ -1,11 +1,13 @@
+local settings = require("settings")
+
 require('dressing').setup({
   input = {
     enable = true,
     win_options = {
-      winblend = 0,
+      winblend = settings.winblend,
     },
     prompt_align = "left",
-    border = "rounded",
+    border = settings.border,
     mappings = {
       n = {
         ['<Esc>'] = 'Close',
@@ -22,9 +24,9 @@ require('dressing').setup({
   select = {
     enable = true,
     win_options = {
-      winblend = 0,
+      winblend = settings.winblend,
     },
-    border = "rounded",
+    border = settings.border,
     mappings = {
       ['<Esc>'] = 'Close',
       ['<C-c>'] = 'Close',

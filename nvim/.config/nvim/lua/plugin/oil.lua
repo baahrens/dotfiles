@@ -1,4 +1,6 @@
+local settings = require("setting")
 local actions = require("oil.actions")
+
 require("oil").setup({
   default_file_explorer = true,
   skip_confirm_for_simple_edits = true,
@@ -21,7 +23,7 @@ require("oil").setup({
   float = {
     max_width = 50,
     win_options = {
-      winblend = 0,
+      winblend = settings.winblend,
     },
     override = function(config)
       config.relative = "editor"
@@ -53,10 +55,10 @@ require("oil").setup({
     max_height = { 10, 0.9 },
     min_height = { 5, 0.1 },
     height = nil,
-    border = "rounded",
+    border = settings.border,
     minimized_border = "none",
     win_options = {
-      winblend = 0,
+      winblend = settings.winblend,
     },
   },
   keymaps = {

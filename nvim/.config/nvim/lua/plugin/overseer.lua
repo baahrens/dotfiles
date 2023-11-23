@@ -1,4 +1,6 @@
+local settings = require("settings")
 local overseer = require("overseer")
+
 overseer.setup({
   task_list = {
     width = 50,
@@ -34,13 +36,13 @@ overseer.setup({
     ["open output in quickfix"] = false,
   },
   task_win = {
-    win_opts = { winblend = 0, },
+    win_opts = { winblend = settings.winblend, },
   },
   form = {
-    win_opts = { winblend = 0, },
+    win_opts = { winblend = settings.winblend, },
   },
   confirm = {
-    win_opts = { winblend = 0, },
+    win_opts = { winblend = settings.winblend, },
   },
 })
 

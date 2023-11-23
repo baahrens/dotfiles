@@ -1,3 +1,5 @@
+local settings = require("settings")
+
 require("cybu").setup({
   position = {
     relative_to = "win",
@@ -14,7 +16,7 @@ require("cybu").setup({
   style = {
     padding = 4,
     hide_buffer_id = true,
-    border = "rounded"
+    border = settings.border,
   },
   display_time = 700,
   exclude = {
