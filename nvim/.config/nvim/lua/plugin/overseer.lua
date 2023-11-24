@@ -1,5 +1,8 @@
 local settings = require("settings")
 local overseer = require("overseer")
+local root_pattern = require("lspconfig.util").root_pattern
+
+local has_package_json = root_pattern("package.json")
 
 overseer.setup({
   task_list = {
@@ -47,29 +50,59 @@ overseer.setup({
 })
 
 overseer.register_template({
-  name = "reinstall dependencies",
-  builder = function()
-    return {
-      priority = 1,
-      name = "reinstall dependencies",
-      strategy = {
-        "orchestrator",
-        tasks = {
-          { "shell", cmd = "rm -rf node_modules" },
-          { "shell", cmd = "yarn install" }
+  name = "Commands",
+  generator = function(_, cb)
+    cb({
+      {
+        name = "[Linux] Fix umlaute",
+        builder = function()
+          return {
+            cmd = "setxkbmap -option compose:menu",
+          }
+        end,
+        condition = {
+          callback = function()
+            return vim.g.is_work_machine
+          end
         },
       },
-    }
-  end
-})
-
-overseer.register_template({
-  name = "install dependencies",
-  builder = function()
-    return {
-      priority = 1,
-      name = "install dependencies",
-      cmd = "yarn install",
-    }
-  end
+      {
+        name = "[Node] Add dependency",
+        builder = function(params)
+          local package_version = params.package_name .. "@" .. params.version
+          return {
+            name = "[Node] Add " .. package_version,
+            cmd = { "yarn" },
+            args = { "add", params.dev and "-D" or nil, package_version }
+          }
+        end,
+        params = {
+          package_name = { type = "string" },
+          dev = { type = "boolean", default = false },
+          version = { type = "string", default = "latest" }
+        },
+        condition = {
+          callback = function(opts) return has_package_json(opts.dir) end,
+        },
+      },
+      {
+        name = "[Node] Reinstall dependencies",
+        builder = function()
+          return {
+            name = "[Node] Reinstall dependencies",
+            strategy = {
+              "orchestrator",
+              tasks = {
+                { "shell", cmd = "rm -rf node_modules" },
+                { "shell", cmd = "yarn install" }
+              },
+            },
+          }
+        end,
+        condition = {
+          callback = function(opts) return has_package_json(opts.dir) end,
+        },
+      }
+    })
+  end,
 })
