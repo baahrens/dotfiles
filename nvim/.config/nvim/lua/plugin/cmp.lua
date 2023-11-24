@@ -87,14 +87,14 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = "nvim_lsp",                max_item_count = 50, keyword_length = 2 },
-    { name = "nvim_lsp_signature_help", max_item_count = 10 },
-    { name = "luasnip",                 max_item_count = 10 },
-    { name = "buffer",                  max_item_count = 10 },
-    { name = "path",                    max_item_count = 10 },
+    { name = "nvim_lsp",                max_item_count = 50, priority = 2, keyword_length = 2 },
+    { name = "nvim_lsp_signature_help", max_item_count = 10, priority = 2 },
+    { name = "luasnip",                 max_item_count = 10, priority = 3 },
+    { name = "buffer",                  max_item_count = 10, priority = 1 },
+    { name = "path",                    max_item_count = 10, priority = 1 },
   }),
   performance = {
-    debounce = 300,
+    debounce = 200,
   },
   experimental = {
     native_menu = false,

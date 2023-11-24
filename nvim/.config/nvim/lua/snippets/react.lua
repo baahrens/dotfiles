@@ -1,53 +1,48 @@
 local ls = require("luasnip")
 local snippet = ls.snippet
-local text_node = ls.text_node
-local insert_node = ls.insert_node
+local text = ls.text_node
+local insert = ls.insert_node
 local lambda = require("luasnip.extras").lambda
 
 return {
-  -- useState
-  snippet("us", {
-    text_node("const ["),
-    insert_node(1),
-    text_node(", set"),
+  snippet("useState", {
+    text("const ["),
+    insert(1),
+    text(", set"),
     lambda(lambda._1:gsub("^%l", string.upper), 1),
-    text_node("] = useState("),
-    insert_node(2),
-    text_node(")"),
+    text("] = useState("),
+    insert(2),
+    text(")"),
   }),
-  -- useEffect
-  snippet("ue", {
-    text_node({ "useEffect(() => {", "\t" }),
-    insert_node(1),
-    text_node({ "", "}, [" }),
-    insert_node(2),
-    text_node("])"),
+  snippet("useEffect", {
+    text({ "useEffect(() => {", "\t" }),
+    insert(1),
+    text({ "", "}, [" }),
+    insert(2),
+    text("])"),
   }),
-  -- useRef
-  snippet("ur", {
-    text_node("const "),
-    insert_node(1),
-    text_node(" = useRef(null)")
+  snippet("useRef", {
+    text("const "),
+    insert(1),
+    text(" = useRef(null)")
   }),
-  -- useMemo
-  snippet("um", {
-    text_node("const "),
-    insert_node(1),
-    text_node({ " = useMemo(() => {", "\t" }),
-    insert_node(2),
-    text_node({ "\t", "}, [" }),
-    insert_node(3),
-    text_node("])"),
+  snippet("useMemo", {
+    text("const "),
+    insert(1),
+    text({ " = useMemo(() => {", "\t" }),
+    insert(2),
+    text({ "\t", "}, [" }),
+    insert(3),
+    text("])"),
   }),
-  -- useCallback
-  snippet("uc", {
-    text_node("const "),
-    insert_node(1),
-    text_node({ " = useCallback(() => {", "\t" }),
-    insert_node(2),
-    text_node({ "\t", "}, [" }),
-    insert_node(3),
-    text_node("])"),
+  snippet("useCallback", {
+    text("const "),
+    insert(1),
+    text({ " = useCallback(() => {", "\t" }),
+    insert(2),
+    text({ "\t", "}, [" }),
+    insert(3),
+    text("])"),
   })
 
 }
