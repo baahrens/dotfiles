@@ -61,12 +61,12 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
-    [u.map_cmd_alt("k")] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-    [u.map_cmd_alt("j")] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
     ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     }),
+    [u.map_cmd_alt("k")] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    [u.map_cmd_alt("j")] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
