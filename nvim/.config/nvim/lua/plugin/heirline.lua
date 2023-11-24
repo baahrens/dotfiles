@@ -377,23 +377,6 @@ local DefaultStatusline = {
   lsp_servers,
 }
 
-local SpecialStatusline = {
-  condition = function(args)
-    return conditions.buffer_matches({
-      buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-      filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopeResults", "TelescopePrompt" },
-    }, args.buf)
-  end,
-}
-
-local InactiveStatusline = {
-  condition = function()
-    return not conditions.is_active()
-  end,
-
-  space,
-}
-
 local StatusLines = {
   fallthrough = false,
   hl = function()
@@ -409,8 +392,6 @@ local StatusLines = {
       }
     end
   end,
-  SpecialStatusline,
-  InactiveStatusline,
   DefaultStatusline,
 }
 
@@ -445,7 +426,7 @@ require("heirline").setup({
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
         buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults" },
+        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm" },
       }, args.buf)
     end
   }
