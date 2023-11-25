@@ -5,7 +5,9 @@ local root_pattern = require("lspconfig.util").root_pattern
 local has_package_json = root_pattern("package.json")
 
 overseer.setup({
+  dap = false,
   task_list = {
+    direction = "right",
     width = 50,
     bindings = {
       ["?"] = "ShowHelp",
@@ -16,9 +18,8 @@ overseer.setup({
       ["<C-d>"] = "<CMD>OverseerQuickAction dispose<CR>",
       ["o"] = "Open",
       ["<C-s>"] = "OpenSplit",
-      ["<C-f>"] = "OpenFloat",
       ["<C-q>"] = "OpenQuickFix",
-      ["p"] = "TogglePreview",
+      ["K"] = "TogglePreview",
       ["L"] = "IncreaseDetail",
       ["H"] = "DecreaseDetail",
       ["["] = "DecreaseWidth",
@@ -38,13 +39,20 @@ overseer.setup({
     ["open tab"] = false,
     ["open output in quickfix"] = false,
   },
+  help_win = {
+    border = settings.border,
+    win_opts = { winblend = settings.winblend, },
+  },
   task_win = {
+    border = settings.border,
     win_opts = { winblend = settings.winblend, },
   },
   form = {
+    border = settings.border,
     win_opts = { winblend = settings.winblend, },
   },
   confirm = {
+    border = settings.border,
     win_opts = { winblend = settings.winblend, },
   },
 })

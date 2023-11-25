@@ -426,7 +426,7 @@ require("heirline").setup({
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
         buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm" },
+        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm", "OverseerList" },
       }, args.buf)
     end
   }

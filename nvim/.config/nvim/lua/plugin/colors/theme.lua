@@ -82,6 +82,7 @@ M.global_overrides = {
   OilDirIcon = { fg = palette.fg3 },
 
   CmpItemKindSnippet = { fg = "#e0af68" },
+  OverseerTaskBorder = { bg = none, fg = palette.bg2 },
 }
 
 return M

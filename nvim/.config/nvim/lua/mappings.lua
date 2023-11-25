@@ -171,13 +171,13 @@ wk.register({
 
     h = {
       name = "build",
-      s = { vim_cmd("OverseerToggle right"), "Show" },
+      s = { vim_cmd("OverseerToggle"), "Show" },
       r = { vim_cmd("OverseerRun"), "Run" }
     }
   }
 })
 
-vim.keymap.set('n', "<C-a>", "<CMD>OverseerToggle right<CR>")
+vim.keymap.set('n', "<C-a>", "<CMD>OverseerToggle<CR>")
 
 vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
