@@ -86,7 +86,7 @@ local mode = {
     }
   },
   provider = function(self)
-    return self.mode_names[self.mode]
+    return " " .. self.mode_names[self.mode]
   end,
   hl = function(self)
     local mode = self.mode:sub(1, 1)
@@ -129,9 +129,9 @@ local file_name = {
   end,
   hl = function()
     if conditions.is_active() then
-      return { fg = colors.diag.warn }
+      return { fg = colors.cyan }
     else
-      return { fg = colors.inactive }
+      return { fg = colors.gray}
     end
   end,
 }
@@ -140,15 +140,15 @@ local FileFlags = {
   {
     provider = function()
       if vim.bo.modified then
-        return " [+] "
+        return " 󰣕 "
       end
     end,
-    hl = { fg = colors.green },
+    hl = { fg = colors.diag.warn },
   },
   {
     provider = function()
       if (not vim.bo.modifiable) or vim.bo.readonly then
-        return ""
+        return "  "
       end
     end,
     hl = { fg = colors.orange },
@@ -158,7 +158,7 @@ local FileFlags = {
 local file_name_modifier = {
   hl = function()
     if vim.bo.modified then
-      return { fg = colors.cyan, bold = true, force = true }
+      return { fg = colors.diag.warn, bold = true, force = true }
     end
   end,
 }
@@ -174,7 +174,7 @@ local ruler = {
   -- %L = number of lines in the buffer
   -- %c = column number
   -- %P = percentage through file of displayed window
-  provider = "%l/%3L%: %2c %P",
+  provider = " %l/%3L%: %2c %P",
   hl = { fg = colors.purple },
 }
 
@@ -186,7 +186,7 @@ local lsp_servers = {
     for _, server in ipairs(vim.lsp.buf_get_clients(0)) do
       table.insert(names, server.name)
     end
-    return " " .. table.concat(names, " - ") .. ""
+    return " " .. table.concat(names, " - ") .. ""
   end,
   hl = { fg = colors.gray },
 }
@@ -253,27 +253,32 @@ local git_status = {
   condition = conditions.is_git_repo,
 
   init = function(self)
-    self.status_dict = vim.b.gitsigns_status_dict
+    self.added = vim.b.gitsigns_status_dict.added or 0
+    self.removed = vim.b.gitsigns_status_dict.removed or 0
+    self.changed = vim.b.gitsigns_status_dict.changed or 0
   end,
 
   {
+    condition = function(self)
+      return self.added > 0 or self.removed > 0 or self.changed > 0
+    end,
+    provider = ""
+  },
+  {
     provider = function(self)
-      local count = self.status_dict.added or 0
-      return count > 0 and ("+" .. count)
+      return self.added > 0 and (" 󰐕 " .. self.added)
     end,
     hl = { fg = colors.git.add },
   },
   {
     provider = function(self)
-      local count = self.status_dict.removed or 0
-      return count > 0 and (" -" .. count)
+      return self.removed > 0 and (" 󰍴 " .. self.removed)
     end,
     hl = { fg = colors.git.del },
   },
   {
     provider = function(self)
-      local count = self.status_dict.changed or 0
-      return count > 0 and (" ~" .. count)
+      return self.changed > 0 and (" 󰜥 " .. self.changed)
     end,
     hl = { fg = colors.git.change },
   },
@@ -287,7 +292,7 @@ local work_dir = {
       cwd = vim.fn.pathshorten(cwd)
     end
     local trail = cwd:sub(-1) == "/" and "" or "/"
-    return " " .. cwd .. trail
+    return "󰉋 " .. cwd .. trail
   end,
   hl = { fg = colors.gray },
 }
@@ -309,7 +314,7 @@ local function overseer_running()
       end
 
       local running_tasks = table.concat(running_task_names, " - ")
-      return string.format("[%s]  ", running_tasks)
+      return string.format(" %s  ", running_tasks)
     end,
     hl = function()
       return {
@@ -367,7 +372,7 @@ local overseer = {
 local DefaultStatusline = {
   space,
   mode,
-  space,
+  separator,
   work_dir,
   separator,
   branch_name,
