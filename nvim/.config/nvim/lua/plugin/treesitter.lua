@@ -2,7 +2,6 @@ require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
   matchup = { enable = true },
   auto_install = true,
-  ensure_installed = {
     "bash",
     "c",
     "css",
@@ -17,6 +16,8 @@ require("nvim-treesitter.configs").setup({
     "luadoc",
     "markdown",
     "markdown_inline",
+    "prisma",
+    "query",
     "rust",
     "tsx",
     "typescript",
@@ -24,6 +25,7 @@ require("nvim-treesitter.configs").setup({
     "vimdoc",
     "yaml",
     "zig",
+  ensure_installed = {
   },
   autotag = {
     enable = true,
