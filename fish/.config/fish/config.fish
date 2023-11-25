@@ -1,5 +1,6 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 fnm env --use-on-cd | source
 
