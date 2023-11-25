@@ -27,18 +27,9 @@ require("oil").setup({
     },
     override = function(config)
       config.relative = "editor"
-      config.border = {
-        "╭",
-        "─",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "│",
-      }
-      config.height = vim.api.nvim_win_get_height(0) / 2
       config.col = vim.o.columns
+      config.border = "rounded"
+      config.height = math.floor(vim.o.lines * 0.5)
       config.row = vim.o.lines / 2
       config.style = "minimal"
       return config
