@@ -284,14 +284,12 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
-    config = function()
-      load_plugin_conf("lsp")
-    end,
+    config = load_plugin_conf("lsp")
   },
   {
     "williamboman/mason-lspconfig.nvim",
