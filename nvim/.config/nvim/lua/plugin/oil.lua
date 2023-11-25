@@ -1,4 +1,4 @@
-local settings = require("setting")
+local settings = require("settings")
 local actions = require("oil.actions")
 
 require("oil").setup({
@@ -28,7 +28,16 @@ require("oil").setup({
     override = function(config)
       config.relative = "editor"
       config.col = vim.o.columns
-      config.border = "rounded"
+      config.border = {
+        "╭",
+        "─",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "│",
+      }
       config.height = math.floor(vim.o.lines * 0.5)
       config.row = vim.o.lines / 2
       config.style = "minimal"
