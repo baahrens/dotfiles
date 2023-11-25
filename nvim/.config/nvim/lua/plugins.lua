@@ -126,7 +126,7 @@ local plugins = {
   -- =================== treesitter ===================
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     config = load_plugin_conf("treesitter"),
   },
 
