@@ -80,6 +80,8 @@ M.global_overrides = {
   OilFile = { fg = color_utils.lighten(palette.fg3, 0.6) },
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
+
+  CmpItemKindSnippet = { fg = "#e0af68" },
 }
 
 return M
