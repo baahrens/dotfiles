@@ -105,14 +105,14 @@ wk.register({
 
     g = {
       name = "git",
-      s = { vim_cmd("Git"), "Status" },
+      s = { function() require("plugin/fugitive").git_status() end, "Status" },
+      l = { function() require("plugin/fugitive").git_log() end, "Log" },
       c = { vim_cmd("Git commit"), "Commit" },
       u = { vim_cmd("Git pull"), "Pull" },
-      l = { vim_cmd("Git log"), "Log" },
       p = { vim_cmd("Git push"), "Push" },
       b = { vim_cmd("Git blame"), "Blame" },
       f = { vim_cmd("Gclog"), "File history" },
-      A = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
+      a = { vim_cmd("Gitsigns stage_buffer"), "Stage buffer" },
       o = { vim_cmd("DiffviewOpen origin/master...HEAD"), "Diffview master" },
       m = { vim_cmd("Git switch master"), "Switch to master" },
       r = {
