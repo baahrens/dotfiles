@@ -1,5 +1,7 @@
 local u = require("util")
 local actions = require("telescope.actions")
+local action_set = require "telescope.actions.set"
+local action_state = require "telescope.actions.state"
 
 local generate_offset = function(str, tabsize)
   local offset = (tabsize - vim.fn.strdisplaywidth(str) % tabsize) % tabsize
@@ -101,6 +103,18 @@ require("telescope").setup({
     },
   },
   pickers = {
+    help_tags = {
+      attach_mappings = function(prompt_bufnr)
+        action_set.select:replace(function()
+          local selection = action_state.get_selected_entry()
+
+          actions.close(prompt_bufnr)
+          vim.cmd("vert help " .. selection.value)
+        end)
+
+        return true
+      end,
+    },
     live_grep = {
       entry_maker = grep_entry_maker,
       additional_args = { "--trim" },
