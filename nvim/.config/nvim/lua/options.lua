@@ -35,7 +35,10 @@ options.pumblend = 0
 options.undofile = true
 options.laststatus = 3
 
-opt.fillchars:append({ diff = "╱" })
+opt.fillchars:append({
+  diff = "╱",
+  eob = " ",
+})
 
 global.is_work_machine = vim.loop.os_gethostname() == "work"
 global.is_macos = vim.loop.os_uname().sysname == "Darwin"
