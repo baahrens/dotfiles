@@ -88,9 +88,9 @@ local ignore_patterns = {
   "package-lock.json",
   "prisma/data.db",
   "build",
-  ".next",
+  ".next/",
   "dist",
-  ".git"
+  ".git/"
 }
 
 require("telescope").setup({
