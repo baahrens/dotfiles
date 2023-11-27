@@ -1,5 +1,9 @@
+local default_config = {
+  layout_config = { height = 0.4 }
+}
 local function get_current_theme(options)
-  return require("telescope.themes").get_ivy(options or {})
+  local opts = vim.tbl_deep_extend("force", default_config, options or {})
+  return require("telescope.themes").get_ivy(opts)
 end
 
 local M = {}
