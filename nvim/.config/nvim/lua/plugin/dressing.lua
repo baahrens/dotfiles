@@ -3,6 +3,7 @@ local settings = require("settings")
 require('dressing').setup({
   input = {
     enable = true,
+    insert_only = false,
     win_options = {
       winblend = settings.winblend,
     },
