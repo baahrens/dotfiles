@@ -1,4 +1,3 @@
-local settings = require("settings")
 local u = require("util")
 local cmp = require("cmp")
 
@@ -30,13 +29,24 @@ local kind_icons = {
   TypeParameter = "󰅲",
 }
 
+local BORDER = {
+  { "╭", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "╮", "CmpBorder" },
+  { "│", "CmpBorder" },
+  { "╯", "CmpBorder" },
+  { "─", "CmpBorder" },
+  { "╰", "CmpBorder" },
+  { "│", "CmpBorder" },
+}
+
 cmp.setup({
   window = {
     completion = {
-      border = settings.border
+      border = BORDER
     },
     documentation = {
-      border = settings.border
+      border = BORDER
     },
   },
   formatting = {

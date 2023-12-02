@@ -62,18 +62,18 @@ M.global_overrides = {
   PmenuThumb = { bg = palette.fg3 },
 
   NoiceMini = { bg = none },
-  NoiceCmdlinePopupBorder = { bg = none, fg = palette.fg3 },
+  NoiceCmdlinePopupBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
   NvimTreeNormal = { bg = none },
 
   TelescopeResultsLineNr = { fg = palette.fg3 },
   TelescopeNormal = { bg = none },
-  TelescopeBorder = { fg = palette.bg4 },
-  TelescopePreviewBorder = { fg = palette.bg2, bg = none },
+  TelescopeBorder = { fg = color_utils.darken(palette.fg3, 0.7) },
+  TelescopePreviewBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
-  FloatBorder = { bg = none, fg = palette.fg3 },
-  CmpDocBorder = { bg = none, fg = palette.fg3 },
-  CmpBorder = { bg = none, fg = palette.fg3 },
+  FloatBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  CmpDocBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  CmpBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
   IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
   IblScope = { bg = none, fg = palette.fg3 },
