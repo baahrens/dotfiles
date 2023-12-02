@@ -100,7 +100,7 @@ cmp.setup({
     {
       name = "nvim_lsp",
       max_item_count = 50,
-      priority = 2,
+      priority = 4,
       keyword_length = 2
     },
     { name = "nvim_lua" },
