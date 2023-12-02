@@ -47,7 +47,7 @@ M.on_attach = on_attach
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.diagnostic.config({
-  virtual_text = settings.diagnostics.virtual_text,
+  virtual_text = settings.diagnostics.show_virtual and settings.diagnostics.virtual_text,
   float = { border = settings.border, source = true },
   signs = true,
   update_in_insert = false,
