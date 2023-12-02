@@ -245,7 +245,7 @@ local branch_name = {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { bold = true, fg = colors.diag.warn },
+    hl = { bold = true, fg = utils.get_highlight("@type").fg },
   },
 }
 
@@ -294,7 +294,7 @@ local work_dir = {
     local trail = cwd:sub(-1) == "/" and "" or "/"
     return "󰉋 " .. cwd .. trail
   end,
-  hl = { fg = colors.gray },
+  hl = { fg = utils.get_highlight("@type").fg },
 }
 
 local function clean_task_name(task_name)
