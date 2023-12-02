@@ -1,6 +1,6 @@
 local M = {}
 
-local split_width = 60
+local split_width = 80
 
 local function resize_split()
   vim.cmd(string.format("vertical resize %s", split_width))
