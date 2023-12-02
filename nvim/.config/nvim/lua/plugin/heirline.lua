@@ -1,5 +1,6 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
+local color_utils = require("plugin/colors/utils")
 local settings = require("settings")
 
 local colors = {
@@ -111,9 +112,6 @@ local file_icon = {
   provider = function(self)
     return self.icon and (self.icon .. " ")
   end,
-  hl = function(self)
-    return { fg = self.icon_color }
-  end,
 }
 
 local file_name = {
@@ -126,13 +124,6 @@ local file_name = {
       filename = vim.fn.pathshorten(filename)
     end
     return filename
-  end,
-  hl = function()
-    if conditions.is_active() then
-      return { fg = colors.cyan }
-    else
-      return { fg = colors.gray}
-    end
   end,
 }
 
@@ -164,10 +155,18 @@ local file_name_modifier = {
 }
 
 local file_name_block = utils.insert({
-  init = function(self)
-    self.filename = vim.api.nvim_buf_get_name(0)
-  end,
-}, file_icon, utils.insert(file_name_modifier, file_name), unpack(FileFlags), { provider = "%<" })
+    init = function(self)
+      self.filename = vim.api.nvim_buf_get_name(0)
+    end,
+    hl = function()
+      if conditions.is_active() then
+        return { fg = colors.cyan, }
+      else
+        return { fg = colors.gray }
+      end
+    end
+  }, file_icon, utils.insert(file_name_modifier, file_name), unpack(FileFlags), { provider = "%<" },
+  space)
 
 local ruler = {
   -- %l = current line number
@@ -370,7 +369,7 @@ local overseer = {
 }
 
 local DefaultStatusline = {
-  space,
+  { provider = "    " },
   mode,
   separator,
   work_dir,
@@ -385,34 +384,25 @@ local DefaultStatusline = {
 local StatusLines = {
   fallthrough = false,
   hl = function()
-    if conditions.is_active() then
-      return {
-        fg = utils.get_highlight("StatusLine").fg,
-        bg = utils.get_highlight("StatusLine").bg,
-      }
-    else
-      return {
-        fg = utils.get_highlight("StatusLineNC").fg,
-        bg = utils.get_highlight("StatusLineNC").bg,
-      }
-    end
+    return { bg = color_utils.lighten("#1a1b26", 0.95) }
   end,
   DefaultStatusline,
 }
 
 local WinBars = {
   fallthrough = false,
+  hl = function()
+    return { bg = color_utils.lighten("#1a1b26", 0.95) }
+  end,
   {
     condition = function() return not conditions.is_active() end,
-    space,
-    space,
+    { provider = "    " },
     file_name_block,
     align,
   },
   {
     condition = conditions.is_active,
-    space,
-    space,
+    { provider = "    " },
     file_name_block,
     separator,
     git_status,

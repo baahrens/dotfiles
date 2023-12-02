@@ -14,12 +14,11 @@ require("statuscol").setup({
     "OverseerList",
   },
   segments = {
-    { text = { "%s" } },
-    { text = { "%C" } },
+    { text = { "   " }, condition = { true } },
     {
       text = { builtin.lnumfunc, " " },
       condition = { true, builtin.not_empty },
     },
-    { text = { "  " } },
+    { text = { "%s" },  condition = { true } },
   },
 })
