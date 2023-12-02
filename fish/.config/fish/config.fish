@@ -1,6 +1,8 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
+export PATH="/usr/local/opt/llvm@14/bin:$PATH"
+export PATH="$HOME/dev/projects/Odin:$PATH"
 
 fnm env --use-on-cd | source
 
