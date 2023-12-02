@@ -28,6 +28,7 @@ local colors = {
 local align = { provider = "%=" }
 local space = { provider = "   " }
 local separator = { provider = "  │  ", hl = { fg = colors.inactive } }
+local left_padding = { provider = "    " }
 
 local mode = {
   init = function(self)
@@ -396,13 +397,13 @@ local WinBars = {
   end,
   {
     condition = function() return not conditions.is_active() end,
-    { provider = "    " },
+    left_padding,
     file_name_block,
     align,
   },
   {
     condition = conditions.is_active,
-    { provider = "    " },
+    left_padding,
     file_name_block,
     separator,
     git_status,
