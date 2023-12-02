@@ -37,7 +37,9 @@ function M.switch_theme()
     "no-clown-fiesta",
     "tokyonight",
     "nordfox",
-    "rose-pine"
+    "rose-pine",
+    "tokyobones",
+    "zenwritten"
   }, {
     prompt = 'Switch theme',
   }, M.set_colorscheme)

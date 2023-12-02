@@ -60,6 +60,12 @@ local plugins = {
   },
 
   {
+    "mcchrish/zenbones.nvim",
+    priority = theme_name == "zenwritten" or theme_name == "tokyobones" and 1000 or 1,
+    dependencies = "rktjmp/lush.nvim"
+  },
+
+  {
     "ramojus/mellifluous.nvim",
     priority = theme_name == "mellifluous" and 1000 or 1,
   },
