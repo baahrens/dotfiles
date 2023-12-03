@@ -13,6 +13,7 @@ end
 local format_clients = {
   "lua_ls",
   "null-ls",
+  "ols",
   "prismals",
   "rust_analyzer",
   "zls"
@@ -143,6 +144,16 @@ require("typescript-tools").setup({
 })
 
 lspconfig.zls.setup({
+  capabilities = capabilities,
+  on_attach = function(client)
+    client.server_capabilities.document_formatting = true
+    client.server_capabilities.document_range_formatting = true
+
+    on_attach(client)
+  end,
+})
+
+lspconfig.ols.setup({
   capabilities = capabilities,
   on_attach = function(client)
     client.server_capabilities.document_formatting = true
