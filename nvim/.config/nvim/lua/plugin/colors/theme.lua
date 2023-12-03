@@ -52,6 +52,7 @@ M.global_overrides = {
   CursorLine = { bg = none, bold = true },
   StatusLine = { bg = none },
   WinBar = { bg = none },
+  LineNr = { bg = none, fg = palette.fg3 },
   WinBarNC = { bg = none },
 
   Normal = { bg = none },
