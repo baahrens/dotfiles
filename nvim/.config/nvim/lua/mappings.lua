@@ -60,9 +60,9 @@ u.remap("v", "<leader>p", '"_dP', noremap)
 u.remap("v", "y", "ygv<ESC>", noremap)
 
 -- File explorer
-u.remap("n", "<C-n>", function() require("oil").open_float(vim.fn.getcwd()) end, noremap)
+u.remap("n", "<C-n>", function() require("oil").open(vim.fn.getcwd()) end, noremap)
 u.remap("n", "<C-b>", function()
-  require("oil").open_float(vim.fn.expand("%:p:h"))
+  require("oil").open(vim.fn.expand("%:p:h"))
 end, noremap)
 
 -- leader mappings

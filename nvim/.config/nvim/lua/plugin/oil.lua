@@ -1,3 +1,4 @@
+local u = require("util")
 local settings = require("settings")
 local actions = require("oil.actions")
 
@@ -65,12 +66,12 @@ require("oil").setup({
     ["g?"] = actions.show_help,
     ["<CR>"] = actions.select,
     ["L"] = actions.select,
-    ["<C-s>"] = function()
+    ["<C-n>"] = actions.close,
+    ["<C-b>"] = actions.close,
+    [u.map_cmd_alt("CR")] = function()
       actions.select.callback({ vertical = true })
       actions.close.callback()
     end,
-    ["<C-n>"] = actions.close,
-    ["<C-b>"] = actions.close,
     ["q"] = actions.close,
     ["H"] = actions.parent,
     ["_"] = actions.open_cwd,

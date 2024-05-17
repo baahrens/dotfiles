@@ -157,7 +157,7 @@ require("telescope").setup({
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-u>"] = actions.preview_scrolling_up,
         ["<C-f>"] = actions.to_fuzzy_refine,
-        ["<leader>f;"] = function() end,
+        ["<leader>f;"] = false
       },
     },
     prompt_prefix = " ",
