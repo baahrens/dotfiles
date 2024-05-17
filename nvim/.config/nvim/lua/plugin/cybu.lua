@@ -3,17 +3,19 @@ local settings = require("settings")
 require("cybu").setup({
   position = {
     relative_to = "win",
-    anchor = "topright"
+    anchor = "center"
   },
   behavior = {
     mode = {
       last_used = {
         switch = "immediate",
-        view = "rolling"
+        view = "paging"
       },
     }
   },
   style = {
+    path = "relative",
+    path_abbreviation = "shortened",
     padding = 4,
     hide_buffer_id = true,
     border = settings.border,

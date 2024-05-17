@@ -209,5 +209,5 @@ u.remap("n", "ss", "<cmd>lua require('substitute').line()<CR>", noremap)
 u.remap("n", "S", "<cmd>lua require('substitute').eol()<CR>", noremap)
 
 -- cybu
-u.remap("n", "[", ":CybuLastusedPrev<CR>")
-u.remap("n", "]", ":CybuLastusedNext<CR>")
+u.remap("n", "]", ":CybuLastusedPrev<CR>")
+u.remap("n", "[", ":CybuLastusedNext<CR>")
