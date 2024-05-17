@@ -94,6 +94,7 @@ local plugins = {
   {
     "stevearc/dressing.nvim",
     config = load_plugin_conf("dressing"),
+    lazy = false,
     event = "VeryLazy",
   },
 
