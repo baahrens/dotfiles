@@ -396,6 +396,13 @@ local WinBars = {
     return { bg = color_utils.lighten("#1a1b26", 0.95) }
   end,
   {
+    condition = function()
+      return conditions.buffer_matches({
+        filetype = { "fugitiveblame" }
+      })
+    end,
+  },
+  {
     condition = function() return not conditions.is_active() end,
     left_padding,
     file_name_block,
@@ -422,7 +429,7 @@ require("heirline").setup({
     disable_winbar_cb = function(args)
       return conditions.buffer_matches({
         buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-        filetype = { "^git.*", "fugitive", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm", "OverseerList" },
+        filetype = { "^git.*", "fugitive$", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm", "OverseerList" },
       }, args.buf)
     end
   }
