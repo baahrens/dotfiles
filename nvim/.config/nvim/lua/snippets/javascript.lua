@@ -68,18 +68,18 @@ return {
     insert(2),
     text({ "", "}" }),
   }),
-  snippet(".forEach", {
+  snippet("forEach", {
     text({ "forEach((" }), insert(1), text({ ") => " }), insert(2), text(")"),
   }),
-  snippet(".forEach block", {
+  snippet("forEach block", {
     text({ "forEach((" }), insert(1), text({ ") => {", "  " }),
     insert(2, { "" }),
     text({ "", "})" }),
   }),
-  snippet(".map", {
+  snippet("map", {
     text({ "map((" }), insert(1), text({ ") => " }), insert(2), text(")"),
   }),
-  snippet(".map block", {
+  snippet("map block", {
     text({ "map((" }), insert(1), text({ ") => {", "  " }),
     insert(2, { "" }),
     text({ "", "})" }),
