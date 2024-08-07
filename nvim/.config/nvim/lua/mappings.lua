@@ -184,12 +184,12 @@ vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
 vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
 
+u.remap("n", u.map_cmd_alt "CR", ":vsplit<CR>", noremap)
 u.remap("n", u.map_cmd_alt "p",
   function() require("plugin/telescope_pickers").find_files() end, noremap)
 u.remap("n", "<C-p>", function() require("plugin/telescope_pickers").live_grep() end, noremap)
-
-u.remap("n", "gd", vim_cmd("Telescope lsp_definitions"), noremapSilent)
-u.remap("n", "gD", vim_cmd("Telescope lsp_declarations"), noremapSilent)
+u.remap("n", "gd", vim.lsp.buf.definition, noremapSilent)
+u.remap("n", "gD", "<cmd>vsplit +v:lua.vim.lsp.buf.definition()<CR>", noremapSilent)
 u.remap("n", "K", vim.lsp.buf.hover, noremapSilent)
 u.remap("v", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
 u.remap("n", "<C-f>", function() require("plugin/lsp").format() end, noremapSilent)
