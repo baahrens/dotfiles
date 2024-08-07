@@ -22,7 +22,7 @@ local colors = {
 local align = { provider = "%=" }
 local space = { provider = "   " }
 local separator = { provider = "  │  ", hl = { fg = colors.inactive } }
-local left_padding = { provider = "    " }
+local left_padding = { provider = "     " }
 
 local mode = {
   init = function(self)
@@ -253,12 +253,6 @@ local git_status = {
   end,
 
   {
-    condition = function(self)
-      return self.added > 0 or self.removed > 0 or self.changed > 0
-    end,
-    provider = ""
-  },
-  {
     provider = function(self)
       return self.added > 0 and (" 󰐕 " .. self.added)
     end,
@@ -364,7 +358,8 @@ local overseer = {
 }
 
 local DefaultStatusline = {
-  { provider = "    " },
+  left_padding,
+  separator,
   mode,
   separator,
   work_dir,
@@ -405,8 +400,8 @@ local WinBars = {
   {
     condition = conditions.is_active,
     left_padding,
-    file_name_block,
     separator,
+    file_name_block,
     git_status,
     separator,
     diagnostics,
