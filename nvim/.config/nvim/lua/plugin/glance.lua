@@ -1,3 +1,4 @@
+local u = require("util")
 local glance = require('glance')
 local actions = glance.actions
 
@@ -26,11 +27,11 @@ glance.setup({
       ['k'] = actions.previous,
       ['<Down>'] = actions.next,
       ['<Up>'] = actions.previous,
-      ['<Tab>'] = actions.next_location,
-      ['<S-Tab>'] = actions.previous_location,
+      [u.map_cmd_alt("k")] = actions.previous_location,
+      [u.map_cmd_alt("j")] = actions.next_location,
       ['<C-u>'] = actions.preview_scroll_win(5),
       ['<C-d>'] = actions.preview_scroll_win(-5),
-      ['v'] = actions.jump_vsplit,
+      [u.map_cmd_alt("CR")] = actions.jump_vsplit,
       ['s'] = actions.jump_split,
       ['t'] = false,
       ['<CR>'] = actions.jump,
@@ -42,8 +43,8 @@ glance.setup({
     },
     preview = {
       ['Q'] = actions.close,
-      ['<Tab>'] = actions.next_location,
-      ['<S-Tab>'] = actions.previous_location,
+      [u.map_cmd_alt("k")] = actions.previous_location,
+      [u.map_cmd_alt("j")] = actions.next_location,
       ['<leader>l'] = actions.enter_win('list'),
     },
   },
