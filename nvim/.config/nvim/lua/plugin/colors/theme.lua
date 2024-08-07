@@ -66,6 +66,8 @@ M.global_overrides = {
   Normal = { bg = none },
   NormalFloat = { bg = none },
 
+  String = { italic = false },
+
   PMenu = { bg = none },
   PmenuSel = { link = "Visual" },
   PmenuThumb = { bg = palette.bg3 },
@@ -73,22 +75,18 @@ M.global_overrides = {
   NoiceMini = { bg = none },
   NoiceCmdlinePopupBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
-
-  NvimTreeNormal = { bg = none },
-
   TelescopeResultsLineNr = { fg = palette.fg3 },
   TelescopeNormal = { bg = none },
   TelescopeBorder = { fg = color_utils.darken(palette.fg3, 0.7) },
   TelescopePreviewBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
   FloatBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-  CmpDocBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-  CmpBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
   IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
   IblScope = { bg = none, fg = palette.fg3 },
 
-  WhichKeyGroup = { fg = "#e0af68" },
+  WhichKeyGroup = { fg = diagnostic_colors.Warning },
+
   OilFile = { fg = color_utils.lighten(palette.fg3, 0.6) },
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
@@ -98,9 +96,11 @@ M.global_overrides = {
   DiagnosticInfo = { fg = diagnostic_colors.Information },
   DiagnosticHint = { fg = diagnostic_colors.Hint },
 
-  CmpItemKindSnippet = { fg = "#e0af68" },
+  CmpItemKindSnippet = { fg = diagnostic_colors.Warning },
+  CmpDocBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  CmpBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+
   OverseerTaskBorder = { bg = none, fg = palette.bg2 },
-  String = { italic = false },
 }
 
 return M

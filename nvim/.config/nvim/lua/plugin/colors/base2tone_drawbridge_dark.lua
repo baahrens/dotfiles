@@ -31,16 +31,6 @@ M.highlight_overwrites = {
   DiagnosticInfo = { fg = diagnostic_colors.Information },
   DiagnosticHint = { fg = diagnostic_colors.Hint },
 
-  DiagnosticSignError = { fg = diagnostic_colors.Error },
-  DiagnosticSignWarn = { fg = diagnostic_colors.Warning },
-  DiagnosticSignInfo = { fg = diagnostic_colors.Information },
-  DiagnosticSignHint = { fg = diagnostic_colors.Hint },
-
-  DiagnosticVirtualTextError = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
-  DiagnosticVirtualTextWarn = { fg = utils.darken(diagnostic_colors.Warning, 0.8) },
-  DiagnosticVirtualTextInfo = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
-  DiagnosticVirtualTextHint = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
-
   ["@punctuation"] = { fg = palette.B2T_C3 },
 
   Pmenu = { bg = palette.B2T_A0 },
@@ -59,12 +49,6 @@ M.highlight_overwrites = {
   GitSignsAdd = { bg = none, fg = utils.darken(diagnostic_colors.Hint, 0.8) },
   GitSignsDelete = { bg = none, fg = utils.darken(diagnostic_colors.Error, 0.8) },
   GitSignsChange = { bg = none, fg = utils.darken(diagnostic_colors.Information, 0.8) },
-
-  NvimTreeNormal = { fg = palette.B2T_B4 },
-  NvimTreeGitNew = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
-  NvimTreeGitDirty = { fg = utils.darken(diagnostic_colors.Warning, 0.8) },
-  NvimTreeGitDeleted = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
-  NvimTreeGitStaged = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
 
   TreesitterContextLineNumber = { fg = utils.darken(diagnostic_colors.Information, 0.8) },
 }
