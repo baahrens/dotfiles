@@ -331,6 +331,11 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = load_plugin_conf("tiny-inline-diagnostic"),
+  }
 }
 
 local lazy_config = {

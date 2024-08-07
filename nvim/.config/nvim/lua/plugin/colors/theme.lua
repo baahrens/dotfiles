@@ -45,25 +45,34 @@ function M.switch_theme()
   }, M.set_colorscheme)
 end
 
+local diagnostic_colors = {
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#67c9e4",
+  Hint = "#10B981",
+}
+
 local none = "NONE"
 
 M.global_overrides = {
   SignColumn = { bg = none },
   CursorLine = { bg = none, bold = true },
+  LineNr = { bg = none, fg = palette.fg3 },
+  CursorLineNr = { bg = none, bold = true, fg = palette.fg2 },
   StatusLine = { bg = none },
   WinBar = { bg = none },
-  LineNr = { bg = none, fg = palette.fg3 },
   WinBarNC = { bg = none },
 
   Normal = { bg = none },
   NormalFloat = { bg = none },
 
   PMenu = { bg = none },
-  PmenuSel = { bg = "#343b47" },
-  PmenuThumb = { bg = palette.fg3 },
+  PmenuSel = { link = "Visual" },
+  PmenuThumb = { bg = palette.bg3 },
 
   NoiceMini = { bg = none },
   NoiceCmdlinePopupBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+
 
   NvimTreeNormal = { bg = none },
 
@@ -84,8 +93,14 @@ M.global_overrides = {
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
 
+  DiagnosticError = { fg = diagnostic_colors.Error },
+  DiagnosticWarn = { fg = diagnostic_colors.Warning },
+  DiagnosticInfo = { fg = diagnostic_colors.Information },
+  DiagnosticHint = { fg = diagnostic_colors.Hint },
+
   CmpItemKindSnippet = { fg = "#e0af68" },
   OverseerTaskBorder = { bg = none, fg = palette.bg2 },
+  String = { italic = false },
 }
 
 return M
