@@ -1,17 +1,11 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
-local color_utils = require("plugin/colors/utils")
 local settings = require("settings")
+local color_utils = require("plugin/colors/utils")
 
 local colors = {
-  red = utils.get_highlight("DiagnosticError").fg,
-  green = utils.get_highlight("String").fg,
-  blue = utils.get_highlight("Function").fg,
   gray = utils.get_highlight("Keyword").fg,
-  inactive = utils.get_highlight("LineNr").fg,
-  orange = utils.get_highlight("DiagnosticWarn").fg,
-  purple = utils.get_highlight("Statement").fg,
-  cyan = utils.get_highlight("Special").fg,
+  inactive = color_utils.darken(utils.get_highlight("LineNr").fg, 0.8),
   diag = {
     warn = utils.get_highlight("DiagnosticWarn").fg,
     error = utils.get_highlight("DiagnosticError").fg,
@@ -19,9 +13,9 @@ local colors = {
     info = utils.get_highlight("DiagnosticInfo").fg,
   },
   git = {
-    del = utils.get_highlight("diffRemoved").fg,
-    add = utils.get_highlight("diffAdded").fg,
-    change = utils.get_highlight("diffChanged").fg,
+    del = utils.get_highlight("GitSignsDelete").fg,
+    add = utils.get_highlight("GitSignsAdd").fg,
+    change = utils.get_highlight("GitSignsChange").fg,
   },
 }
 
@@ -143,7 +137,7 @@ local FileFlags = {
         return "  "
       end
     end,
-    hl = { fg = colors.orange },
+    hl = { fg = colors.diag.error },
   },
 }
 
@@ -161,7 +155,7 @@ local file_name_block = utils.insert({
     end,
     hl = function()
       if conditions.is_active() then
-        return { fg = colors.cyan, }
+        return { fg = colors.diag.info, }
       else
         return { fg = colors.gray }
       end
@@ -175,7 +169,7 @@ local ruler = {
   -- %c = column number
   -- %P = percentage through file of displayed window
   provider = " %l/%3L%: %2c %P",
-  hl = { fg = colors.purple },
+  hl = { fg = colors.gray },
 }
 
 local lsp_servers = {
@@ -183,7 +177,7 @@ local lsp_servers = {
 
   provider = function()
     local names = {}
-    for _, server in ipairs(vim.lsp.buf_get_clients(0)) do
+    for _, server in ipairs(vim.lsp.get_clients()) do
       table.insert(names, server.name)
     end
     return " " .. table.concat(names, " - ") .. ""
@@ -245,7 +239,7 @@ local branch_name = {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { bold = true, fg = utils.get_highlight("@type").fg },
+    hl = { bold = true, fg = colors.gray },
   },
 }
 
@@ -294,7 +288,7 @@ local work_dir = {
     local trail = cwd:sub(-1) == "/" and "" or "/"
     return "󰉋 " .. cwd .. trail
   end,
-  hl = { fg = utils.get_highlight("@type").fg },
+  hl = { fg = colors.gray },
 }
 
 local function clean_task_name(task_name)
@@ -414,8 +408,9 @@ local WinBars = {
     file_name_block,
     separator,
     git_status,
-    align,
+    separator,
     diagnostics,
+    align,
     separator,
     ruler,
     space,
