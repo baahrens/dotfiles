@@ -51,6 +51,9 @@ require("noice").setup({
   },
   views = {
     cmdline_popup = {
+      win_options = {
+        winblend = settings.winblend
+      },
       position = {
         row = 5,
         col = "50%",
