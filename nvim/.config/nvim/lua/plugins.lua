@@ -22,6 +22,7 @@ local function load_plugin_conf(name)
   end
 end
 
+
 local theme_name = vim.fn.getenv("THEME") or "duskfox"
 
 local plugins = {
@@ -283,7 +284,7 @@ local plugins = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lua"
+      "hrsh7th/cmp-nvim-lua",
     },
   },
 
@@ -335,6 +336,12 @@ local plugins = {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
     config = load_plugin_conf("tiny-inline-diagnostic"),
+    },
+  {
+    "zbirenbaum/copilot.lua",
+    lazy = false,
+    enabled = vim.g.is_work_machine,
+    config = load_plugin_conf("copilot"),
   }
 }
 
