@@ -394,6 +394,7 @@ local WinBars = {
   {
     condition = function() return not conditions.is_active() end,
     left_padding,
+    separator,
     file_name_block,
     align,
   },
