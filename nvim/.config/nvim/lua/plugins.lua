@@ -246,16 +246,6 @@ local plugins = {
   },
 
   {
-    "ghillb/cybu.nvim",
-    config = load_plugin_conf("cybu"),
-    cmd = { "CybuLastusedPrev", "CybuLastusedNext" },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
     "dnlhc/glance.nvim",
     cmd = { "Glance" },
     config = load_plugin_conf("glance"),
