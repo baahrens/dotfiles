@@ -201,7 +201,6 @@ local plugins = {
 
   {
     'mrjones2014/smart-splits.nvim',
-    tag = 'v1.2.4',
     config = load_plugin_conf("smart-splits"),
     lazy = false
   },
