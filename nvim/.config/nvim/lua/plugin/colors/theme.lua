@@ -79,6 +79,7 @@ M.global_overrides = {
   TelescopeNormal = { bg = none },
   TelescopeBorder = { fg = color_utils.darken(palette.fg3, 0.7) },
   TelescopePreviewBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  TelescopePreviewNormal = { bg = none },
 
   FloatBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
 
