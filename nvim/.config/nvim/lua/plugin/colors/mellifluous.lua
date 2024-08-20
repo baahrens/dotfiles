@@ -19,10 +19,6 @@ M.highlight_overwrites = {
   fugitiveUntrackedHeading = { fg = palette.B2T_D1 },
   fugitiveUnstagedHeading = { fg = palette.B2T_D1 },
 
-  GitSignsAdd = { bg = none, fg = utils.darken(diagnostic_colors.Hint, 0.8) },
-  GitSignsDelete = { bg = none, fg = utils.darken(diagnostic_colors.Error, 0.8) },
-  GitSignsChange = { bg = none, fg = utils.darken(diagnostic_colors.Warning, 0.8) },
-
   TelescopeResultsBorder = { fg = palette.medium_gray, bg = none },
   TelescopePromptBorder = { fg = palette.medium_gray, bg = none },
 }

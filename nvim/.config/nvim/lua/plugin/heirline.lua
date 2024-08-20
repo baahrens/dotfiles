@@ -1,11 +1,13 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local settings = require("settings")
-local color_utils = require("plugin/colors/utils")
 
+print(vim.inspect(utils.get_highlight("NormalNC")))
 local colors = {
-  gray = utils.get_highlight("Keyword").fg,
-  inactive = color_utils.darken(utils.get_highlight("LineNr").fg, 0.8),
+  gray = utils.get_highlight("Identifier").fg,
+  primary = utils.get_highlight("StatuslineFilename").fg or utils.get_highlight("Keyword").fg,
+  background = utils.get_highlight("StatuslineBackground").bg or utils.get_highlight("Normal").bg,
+  background_nc = utils.get_highlight("StatuslineBackgroundNC").bg or utils.get_highlight("NormalNC").bg,
   diag = {
     warn = utils.get_highlight("DiagnosticWarn").fg,
     error = utils.get_highlight("DiagnosticError").fg,
@@ -21,81 +23,7 @@ local colors = {
 
 local align = { provider = "%=" }
 local space = { provider = "   " }
-local separator = { provider = "  │  ", hl = { fg = colors.inactive } }
 local left_padding = { provider = "     " }
-
-local mode = {
-  init = function(self)
-    self.mode = vim.fn.mode(1)
-  end,
-  static = {
-    mode_names = {
-      n = "NORMAL",
-      no = "NORMAL-",
-      nov = "NORMAL-",
-      noV = "NORMAL-",
-      ["no\22"] = "NORMAL-",
-      niI = "NORMAL-",
-      niR = "NORMAL-",
-      niV = "NORMAL-",
-      nt = "NORMAL-",
-      v = "VISUAL",
-      vs = "VISUAL-",
-      V = "V-LINE",
-      Vs = "V-LINE-",
-      ["\22"] = "V-BLOCK",
-      ["\22s"] = "V-BLOCK-",
-      s = "SELECT",
-      S = "S-LINE",
-      ["\19"] = "S-BLOCK",
-      i = "INSERT",
-      ic = "INSERT-",
-      ix = "INSERT-",
-      R = "REPLACE",
-      Rc = "REPLACE-",
-      Rx = "REPLACE-",
-      Rv = "REPLACE-",
-      Rvc = "REPLACE-",
-      Rvx = "REPLACE-",
-      c = "COMMAND",
-      cv = "COMMAND-",
-      r = "PROMPT",
-      rm = "MORE",
-      ["r?"] = "CONFIRM",
-      ["!"] = "SHELL",
-      t = "TERMINAL",
-    },
-    mode_colors = {
-      n = colors.diag.info,
-      i = colors.diag.warn,
-      v = colors.diag.hint,
-      V = colors.diag.hint,
-      ["\22"] = colors.diag.hint,
-      c = "orange",
-      s = "purple",
-      S = "purple",
-      ["\19"] = "purple",
-      R = "orange",
-      r = "orange",
-      ["!"] = "red",
-      t = "red",
-    }
-  },
-  provider = function(self)
-    return " " .. self.mode_names[self.mode]
-  end,
-  hl = function(self)
-    local mode = self.mode:sub(1, 1)
-    return { fg = self.mode_colors[mode], bold = true, }
-  end,
-  update = {
-    "ModeChanged",
-    pattern = "*:*",
-    callback = vim.schedule_wrap(function()
-      vim.cmd("redrawstatus")
-    end),
-  },
-}
 
 local file_icon = {
   init = function(self)
@@ -155,7 +83,7 @@ local file_name_block = utils.insert({
     end,
     hl = function()
       if conditions.is_active() then
-        return { fg = colors.diag.info, }
+        return { fg = colors.primary }
       else
         return { fg = colors.gray }
       end
@@ -357,32 +285,28 @@ local overseer = {
   overseer_status("CANCELED"),
 }
 
-local DefaultStatusline = {
-  left_padding,
-  separator,
-  mode,
-  separator,
-  work_dir,
-  separator,
-  branch_name,
-  align,
-  overseer,
-  separator,
-  lsp_servers,
-}
-
 local StatusLines = {
-  fallthrough = false,
-  hl = function()
-    return { bg = color_utils.lighten("#1a1b26", 0.95) }
-  end,
-  DefaultStatusline,
+  hl = { bg = colors.background },
+  {
+    left_padding,
+    align,
+    overseer,
+    space,
+    work_dir,
+    space,
+    branch_name,
+    space,
+  }
 }
 
 local WinBars = {
   fallthrough = false,
   hl = function()
-    return { bg = color_utils.lighten("#1a1b26", 0.95) }
+    if conditions.is_active() then
+      return { bg = colors.background }
+    else
+      return { bg = colors.background_nc }
+    end
   end,
   {
     condition = function()
@@ -394,20 +318,21 @@ local WinBars = {
   {
     condition = function() return not conditions.is_active() end,
     left_padding,
-    separator,
+    space,
     file_name_block,
     align,
   },
   {
     condition = conditions.is_active,
     left_padding,
-    separator,
+    space,
     file_name_block,
     git_status,
-    separator,
-    diagnostics,
     align,
-    separator,
+    diagnostics,
+    space,
+    lsp_servers,
+    space,
     ruler,
     space,
   },

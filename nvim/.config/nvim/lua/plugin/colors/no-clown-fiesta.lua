@@ -13,7 +13,7 @@ function M.setup()
       functions = {},
       variables = {},
       type = { bold = true },
-      lsp = { underline = true },
+      lsp = { underline = false },
     },
   })
 end
