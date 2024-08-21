@@ -2,7 +2,6 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local settings = require("settings")
 
-print(vim.inspect(utils.get_highlight("NormalNC")))
 local colors = {
   gray = utils.get_highlight("Identifier").fg,
   primary = utils.get_highlight("StatuslineFilename").fg or utils.get_highlight("Keyword").fg,
