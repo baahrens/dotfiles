@@ -64,20 +64,20 @@ require("noice").setup({
       }
     },
     popupmenu = {
-        relative = "editor",
-        position = {
-          row = 8,
-          col = "50%",
-        },
-        size = {
-          width = 60,
-          height = 10,
-        },
-        border = {
-          style = settings.border,
-          padding = { 0, 1 },
-        },
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
       },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = settings.border,
+        padding = { 0, 1 },
+      },
+    },
     mini = {
       win_options = {
         winblend = settings.winblend
