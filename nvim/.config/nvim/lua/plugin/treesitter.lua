@@ -10,7 +10,6 @@ require("nvim-treesitter.configs").setup({
     "fish",
     "git_rebase",
     "gitcommit",
-    "help",
     "html",
     "javascript",
     "json",
