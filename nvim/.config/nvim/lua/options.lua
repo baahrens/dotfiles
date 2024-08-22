@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field, undefined-field
 local options = vim.o
 local opt = vim.opt
 local global = vim.g
