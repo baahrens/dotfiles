@@ -1,9 +1,5 @@
 local M = {}
 
-function M.is_macos()
-  return vim.loop.os_uname().sysname == "Darwin"
-end
-
 M.functions = {}
 
 function M.execute(id)
