@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local u = require("util")
 local wk = require("which-key")
 
@@ -11,6 +12,7 @@ local function vim_cmd(cmd)
   end
 end
 
+---@diagnostic disable-next-line: inject-field
 vim.g.mapleader = " "
 
 u.remap("n", " ", "", noremap)
@@ -134,8 +136,8 @@ wk.add({
   { "<leader>cr",  vim.lsp.buf.rename,                                                  desc = "Rename" },
   { "<leader>cc",  vim.lsp.buf.code_action,                                             desc = "Code action" },
   { "<leader>cs",  vim.diagnostic.open_float,                                           desc = "Show diagnostic" },
-  { "<leader>cn",  vim.diagnostic.goto_next,                                            desc = "Next diagnostic" },
-  { "<leader>cN",  vim.diagnostic.goto_prev,                                            desc = "Previous diagnostic" },
+  { "<leader>cn",  function() vim.diagnostic.jump { count = 1 } end,                    desc = "Next diagnostic" },
+  { "<leader>cN",  function() vim.diagnostic.jump { count = -1 } end,                   desc = "Previous diagnostic" },
   { "<leader>ci",  vim_cmd("LspInfo"),                                                  desc = "Info" },
   { "<leader>cR",  vim_cmd("LspRestart"),                                               desc = "Restart LSP" },
   { "<leader>cm",  vim_cmd("TSToolsAddMissingImports"),                                 desc = "Add missing imports" },
