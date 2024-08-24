@@ -12,6 +12,10 @@ local diagnostic_colors = {
   Hint = "#10B981",
 }
 
+require("mellifluous").setup({
+  color_set = "kanagawa_dragon",
+})
+
 M.highlight_overwrites = {
   diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
   diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
