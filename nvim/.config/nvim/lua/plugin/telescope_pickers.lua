@@ -72,4 +72,8 @@ function M.resume()
   require("telescope.builtin").resume(get_current_theme())
 end
 
+function M.old_files()
+  require("telescope.builtin").oldfiles(get_current_theme())
+end
+
 return M

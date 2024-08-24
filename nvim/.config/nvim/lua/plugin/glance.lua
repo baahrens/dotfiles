@@ -1,5 +1,6 @@
 local u = require("util")
 local glance = require('glance')
+local mappings = require("mappings")
 local actions = glance.actions
 
 glance.setup({
@@ -25,13 +26,13 @@ glance.setup({
     list = {
       ['j'] = actions.next,
       ['k'] = actions.previous,
-      ['<Down>'] = actions.next,
-      ['<Up>'] = actions.previous,
-      [u.map_cmd_alt("k")] = actions.previous_location,
-      [u.map_cmd_alt("j")] = actions.next_location,
-      ['<C-u>'] = actions.preview_scroll_win(5),
-      ['<C-d>'] = actions.preview_scroll_win(-5),
-      [u.map_cmd_alt("CR")] = actions.jump_vsplit,
+      ['<Tab>'] = actions.next,
+      ['<S-Tab>'] = actions.previous,
+      [mappings.common.select_prev] = actions.previous_location,
+      [mappings.common.select_next] = actions.next_location,
+      [mappings.common.scroll_down] = actions.preview_scroll_win(5),
+      [mappings.common.scroll_up] = actions.preview_scroll_win(-5),
+      [mappings.common.open_vsplit] = actions.jump_vsplit,
       ['s'] = actions.jump_split,
       ['t'] = false,
       ['<CR>'] = actions.jump,
@@ -43,8 +44,8 @@ glance.setup({
     },
     preview = {
       ['Q'] = actions.close,
-      [u.map_cmd_alt("k")] = actions.previous_location,
-      [u.map_cmd_alt("j")] = actions.next_location,
+      [mappings.common.select_prev] = actions.previous_location,
+      [mappings.common.select_next] = actions.next_location,
       ['<leader>l'] = actions.enter_win('list'),
     },
   },

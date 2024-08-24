@@ -1,4 +1,4 @@
-local u = require("util")
+local mappings = require("mappings")
 local settings = require("settings")
 local actions = require("oil.actions")
 
@@ -68,7 +68,7 @@ require("oil").setup({
     ["L"] = actions.select,
     ["<C-n>"] = actions.close,
     ["<C-b>"] = actions.close,
-    [u.map_cmd_alt("CR")] = function()
+    [mappings.common.open_vsplit] = function()
       actions.select.callback({ vertical = true })
       actions.close.callback()
     end,
