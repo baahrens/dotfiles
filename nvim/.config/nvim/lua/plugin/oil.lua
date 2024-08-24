@@ -21,30 +21,6 @@ require("oil").setup({
     conceallevel = 3,
     concealcursor = "nvic",
   },
-  float = {
-    max_width = 50,
-    win_options = {
-      winblend = settings.winblend,
-    },
-    override = function(config)
-      config.relative = "editor"
-      config.col = vim.o.columns
-      config.border = {
-        "╭",
-        "─",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "│",
-      }
-      config.height = math.floor(vim.o.lines * 0.5)
-      config.row = vim.o.lines / 2
-      config.style = "minimal"
-      return config
-    end
-  },
   buf_options = {
     buflisted = false,
     bufhidden = "hide",
