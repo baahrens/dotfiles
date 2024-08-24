@@ -38,6 +38,15 @@ require("noice").setup({
   },
   routes = {
     {
+      view = "virtualtext",
+      filter = {
+        event = "msg_showmode",
+        any = {
+          { find = 'recording' },
+        },
+      },
+    },
+    {
       filter = { event = "msg_show", kind = "search_count" },
       opts = { skip = true },
     },
