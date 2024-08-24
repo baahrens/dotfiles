@@ -19,7 +19,6 @@ require("statuscol").setup({
       text = { builtin.lnumfunc, " " },
       condition = { true, builtin.not_empty },
     },
-    { text = { "%s" }, condition = { true } },
-    { text = { "│  " }, condition = { true }, hl = "FloatBorder" },
+    { text = { "%s " }, condition = { true } },
   },
 })
