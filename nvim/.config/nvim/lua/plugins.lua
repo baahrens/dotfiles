@@ -332,7 +332,12 @@ local plugins = {
     lazy = false,
     enabled = vim.g.is_work_machine,
     config = load_plugin_conf("copilot"),
-  }
+  },
+  {
+    "goolord/alpha-nvim",
+    lazy = false,
+    config = load_plugin_conf("alpha")
+  },
 }
 
 local lazy_config = {
