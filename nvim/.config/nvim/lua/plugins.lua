@@ -183,9 +183,9 @@ local plugins = {
   },
 
   {
-    "echasnovski/mini.surround",
-    event = { "BufReadPost", "BufNewFile" },
-    config = load_plugin_conf("surround"),
+    "tpope/vim-surround",
+    lazy = false,
+    keys = { "c", "d", "y" }
   },
 
   {
