@@ -4,7 +4,7 @@ local is_work_machine = wezterm.hostname() == "work"
 
 local config = {}
 
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = 'zenbones_dark'
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
 config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Regular' })
@@ -133,27 +133,27 @@ config.keys = {
 }
 
 if not is_work_machine then
-  table.insert(config.keys, { key = "a",     mods = cmd_alt, action = send_cmd_key(string.byte("a")) })
-  table.insert(config.keys, { key = "b",     mods = cmd_alt, action = send_cmd_key(string.byte("b")) })
-  table.insert(config.keys, { key = "d",     mods = cmd_alt, action = send_cmd_key(string.byte("d")) })
-  table.insert(config.keys, { key = "e",     mods = cmd_alt, action = send_cmd_key(string.byte("e")) })
-  table.insert(config.keys, { key = "f",     mods = cmd_alt, action = send_cmd_key(string.byte("f")) })
-  table.insert(config.keys, { key = "g",     mods = cmd_alt, action = send_cmd_key(string.byte("g")) })
-  table.insert(config.keys, { key = "h",     mods = cmd_alt, action = send_cmd_key(string.byte("h")) })
-  table.insert(config.keys, { key = "i",     mods = cmd_alt, action = send_cmd_key(string.byte("i")) })
-  table.insert(config.keys, { key = "j",     mods = cmd_alt, action = send_cmd_key(string.byte("j")) })
-  table.insert(config.keys, { key = "k",     mods = cmd_alt, action = send_cmd_key(string.byte("k")) })
-  table.insert(config.keys, { key = "l",     mods = cmd_alt, action = send_cmd_key(string.byte("l")) })
-  table.insert(config.keys, { key = "m",     mods = cmd_alt, action = send_cmd_key(string.byte("m")) })
-  table.insert(config.keys, { key = "n",     mods = cmd_alt, action = send_cmd_key(string.byte("n")) })
-  table.insert(config.keys, { key = "o",     mods = cmd_alt, action = send_cmd_key(string.byte("o")) })
-  table.insert(config.keys, { key = "p",     mods = cmd_alt, action = send_cmd_key(string.byte("p")) })
-  table.insert(config.keys, { key = "q",     mods = cmd_alt, action = send_cmd_key(string.byte("q")) })
-  table.insert(config.keys, { key = "s",     mods = cmd_alt, action = send_cmd_key(string.byte("s")) })
-  table.insert(config.keys, { key = "u",     mods = cmd_alt, action = send_cmd_key(string.byte("u")) })
-  table.insert(config.keys, { key = "x",     mods = cmd_alt, action = send_cmd_key(string.byte("x")) })
-  table.insert(config.keys, { key = "y",     mods = cmd_alt, action = send_cmd_key(string.byte("y")) })
-  table.insert(config.keys, { key = "z",     mods = cmd_alt, action = send_cmd_key(string.byte("z")) })
+  table.insert(config.keys, { key = "a", mods = cmd_alt, action = send_cmd_key(string.byte("a")) })
+  table.insert(config.keys, { key = "b", mods = cmd_alt, action = send_cmd_key(string.byte("b")) })
+  table.insert(config.keys, { key = "d", mods = cmd_alt, action = send_cmd_key(string.byte("d")) })
+  table.insert(config.keys, { key = "e", mods = cmd_alt, action = send_cmd_key(string.byte("e")) })
+  table.insert(config.keys, { key = "f", mods = cmd_alt, action = send_cmd_key(string.byte("f")) })
+  table.insert(config.keys, { key = "g", mods = cmd_alt, action = send_cmd_key(string.byte("g")) })
+  table.insert(config.keys, { key = "h", mods = cmd_alt, action = send_cmd_key(string.byte("h")) })
+  table.insert(config.keys, { key = "i", mods = cmd_alt, action = send_cmd_key(string.byte("i")) })
+  table.insert(config.keys, { key = "j", mods = cmd_alt, action = send_cmd_key(string.byte("j")) })
+  table.insert(config.keys, { key = "k", mods = cmd_alt, action = send_cmd_key(string.byte("k")) })
+  table.insert(config.keys, { key = "l", mods = cmd_alt, action = send_cmd_key(string.byte("l")) })
+  table.insert(config.keys, { key = "m", mods = cmd_alt, action = send_cmd_key(string.byte("m")) })
+  table.insert(config.keys, { key = "n", mods = cmd_alt, action = send_cmd_key(string.byte("n")) })
+  table.insert(config.keys, { key = "o", mods = cmd_alt, action = send_cmd_key(string.byte("o")) })
+  table.insert(config.keys, { key = "p", mods = cmd_alt, action = send_cmd_key(string.byte("p")) })
+  table.insert(config.keys, { key = "q", mods = cmd_alt, action = send_cmd_key(string.byte("q")) })
+  table.insert(config.keys, { key = "s", mods = cmd_alt, action = send_cmd_key(string.byte("s")) })
+  table.insert(config.keys, { key = "u", mods = cmd_alt, action = send_cmd_key(string.byte("u")) })
+  table.insert(config.keys, { key = "x", mods = cmd_alt, action = send_cmd_key(string.byte("x")) })
+  table.insert(config.keys, { key = "y", mods = cmd_alt, action = send_cmd_key(string.byte("y")) })
+  table.insert(config.keys, { key = "z", mods = cmd_alt, action = send_cmd_key(string.byte("z")) })
   table.insert(config.keys, { key = "Enter", mods = cmd_alt, action = send_cmd_key(13) })
 end
 
