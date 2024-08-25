@@ -99,19 +99,6 @@ local ruler = {
   hl = { fg = colors.gray },
 }
 
-local lsp_servers = {
-  condition = conditions.lsp_attached,
-
-  provider = function()
-    local names = {}
-    for _, server in ipairs(vim.lsp.get_clients()) do
-      table.insert(names, server.name)
-    end
-    return " " .. table.concat(names, " - ") .. ""
-  end,
-  hl = { fg = colors.gray },
-}
-
 local diagnostics = {
   condition = conditions.has_diagnostics,
 
@@ -166,7 +153,7 @@ local branch_name = {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { bold = true, fg = colors.gray },
+    hl = { bold = true, fg = colors.primary },
   },
 }
 
@@ -329,8 +316,6 @@ local WinBars = {
     git_status,
     align,
     diagnostics,
-    space,
-    lsp_servers,
     space,
     ruler,
     space,

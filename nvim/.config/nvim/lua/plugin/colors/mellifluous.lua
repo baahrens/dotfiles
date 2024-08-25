@@ -12,9 +12,7 @@ local diagnostic_colors = {
   Hint = "#10B981",
 }
 
-require("mellifluous").setup({
-  color_set = "kanagawa_dragon",
-})
+require("mellifluous").setup({})
 
 M.highlight_overwrites = {
   fugitiveUntrackedHeading = { fg = palette.B2T_D1 },
