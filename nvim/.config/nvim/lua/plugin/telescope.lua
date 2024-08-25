@@ -152,6 +152,7 @@ require("telescope").setup({
         [mappings.common.select_next] = actions.move_selection_next,
         [mappings.common.open_vsplit] = actions.file_vsplit,
         [u.map_cmd_alt("p")] = actions.close,
+        ['<c-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<ESC>"] = actions.close,
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
