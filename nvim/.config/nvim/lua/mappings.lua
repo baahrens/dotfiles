@@ -140,6 +140,8 @@ wk.add({
 
   { "ss",                 "<cmd>lua require('substitute').line()<CR>" },
   { "S",                  "<cmd>lua require('substitute').eol()<CR>" },
+  { "s",                  "<cmd>lua require('substitute').operator()<CR>" },
+  { "s",                  "<cmd>lua require('substitute').visual()<CR>",                                             mode = "x" },
 
   { "j",                  "gj" },
   { "k",                  "gk" },
