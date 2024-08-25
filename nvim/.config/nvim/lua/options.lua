@@ -37,7 +37,7 @@ options.undofile = true
 options.laststatus = 3
 
 opt.fillchars:append({
-  diff = "╱",
+  diff = " ",
   eob = " ",
 })
 

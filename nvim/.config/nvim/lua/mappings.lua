@@ -58,9 +58,9 @@ wk.add({
   { "<leader>gu",           vim_cmd("Git pull"),                                                                       desc = "Pull" },
   { "<leader>gp",           vim_cmd("Git push"),                                                                       desc = "Push" },
   { "<leader>gb",           vim_cmd("Git blame"),                                                                      desc = "Blame" },
-  { "<leader>gf",           vim_cmd("Gclog"),                                                                          desc = "File history" },
+  { "<leader>gf",           vim_cmd("DiffviewFileHistory"),                                                            desc = "File history" },
   { "<leader>ga",           vim_cmd("Gitsigns stage_buffer"),                                                          desc = "Stage buffer" },
-  { "<leader>go",           vim_cmd("DiffviewOpen origin/master...HEAD"),                                              desc = "Diffview master" },
+  { "<leader>go",           vim_cmd("DiffviewOpen"),                                              desc = "Diffview master" },
   { "<leader>gm",           vim_cmd("Git switch master"),                                                              desc = "Switch to master" },
 
   { "<leader>gr",           group = "rebase" },

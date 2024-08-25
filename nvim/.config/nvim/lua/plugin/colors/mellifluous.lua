@@ -17,9 +17,6 @@ require("mellifluous").setup({
 })
 
 M.highlight_overwrites = {
-  diffAdded = { fg = utils.darken(diagnostic_colors.Hint, 0.8) },
-  diffRemoved = { fg = utils.darken(diagnostic_colors.Error, 0.8) },
-
   fugitiveUntrackedHeading = { fg = palette.B2T_D1 },
   fugitiveUnstagedHeading = { fg = palette.B2T_D1 },
 

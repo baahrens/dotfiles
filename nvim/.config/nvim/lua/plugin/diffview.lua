@@ -37,7 +37,7 @@ require("diffview").setup({
       -- Config for conflicted files in diff views during a merge or rebase.
       layout = "diff3_horizontal",
       disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
-      winbar_info = true,      -- See ':h diffview-config-view.x.winbar_info'
+      winbar_info = true,         -- See ':h diffview-config-view.x.winbar_info'
     },
     file_history = {
       -- Config for changed files in file history views.
@@ -47,7 +47,7 @@ require("diffview").setup({
   },
   file_panel = {
     listing_style = "list", -- One of 'list' or 'tree'
-    win_config = {        -- See ':h diffview-config-win_config'
+    win_config = {          -- See ':h diffview-config-win_config'
       position = "right",
       width = 50,
       win_opts = {},

@@ -1,6 +1,5 @@
 local color_utils = require "plugin/colors/utils"
 local palette = require("nightfox.palette").load("duskfox")
-
 local M = {}
 
 local function set_theme_env(name)

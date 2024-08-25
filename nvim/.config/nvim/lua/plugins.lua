@@ -44,7 +44,7 @@ local plugins = {
   {
     "sindrets/diffview.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    cmd = { "DiffviewOpen" },
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     config = load_plugin_conf("diffview"),
   },
 
