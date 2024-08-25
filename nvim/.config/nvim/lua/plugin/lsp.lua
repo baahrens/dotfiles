@@ -30,12 +30,14 @@ end
 local function on_attach(client, bufnr)
   local formatting_augroup = vim.api.nvim_create_augroup("Formatting", { clear = true })
   if client.supports_method("textDocument/formatting") then
+    client.server_capabilities.document_formatting = vim.tbl_contains(format_clients, client.name)
+    client.server_capabilities.document_range_formatting = vim.tbl_contains(format_clients, client.name)
     vim.api.nvim_clear_autocmds({ group = formatting_augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = formatting_augroup,
       buffer = bufnr,
       callback = function()
-        if settings.format.on_save and client.server_capabilities.document_formatting then
+        if settings.format.on_save then
           M.format()
         end
       end,
@@ -48,7 +50,8 @@ M.on_attach = on_attach
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.diagnostic.config({
-  virtual_text = settings.diagnostics.show_virtual and settings.diagnostics.virtual_text,
+  -- virtual_text = settings.diagnostics.show_virtual and settings.diagnostics.virtual_text,
+  virtual_text = false,
   float = { border = settings.border, source = true },
   signs = true,
   update_in_insert = false,
@@ -57,12 +60,7 @@ vim.diagnostic.config({
 
 lspconfig.cssls.setup({
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 lspconfig.lua_ls.setup({
@@ -84,32 +82,17 @@ lspconfig.lua_ls.setup({
     },
   },
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 lspconfig.prismals.setup({
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 lspconfig.tailwindcss.setup {
@@ -121,7 +104,10 @@ require("typescript-tools").setup({
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
 
-    require("util").remap("n", "gd", "<cmd>TSToolsGoToSourceDefinition<CR>", { noremap = true, silent = true })
+    wk.add({
+      { "gd", "<cmd>TSToolsGoToSourceDefinition<CR>",         { noremap = true, silent = true } },
+      { "gD", "<cmd>vsplit +TSToolsGoToSourceDefinition<CR>", { noremap = true, silent = true } }
+    })
 
     on_attach(client)
   end,
@@ -145,22 +131,12 @@ require("typescript-tools").setup({
 
 lspconfig.zls.setup({
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 lspconfig.ols.setup({
   capabilities = capabilities,
-  on_attach = function(client)
-    client.server_capabilities.document_formatting = true
-    client.server_capabilities.document_range_formatting = true
-
-    on_attach(client)
-  end,
+  on_attach = on_attach
 })
 
 return M

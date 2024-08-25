@@ -126,12 +126,6 @@ local plugins = {
     commit = "d9328ef903168b6f52385a751eb384ae7e906c6f"
   },
 
-  {
-    "luukvbaal/statuscol.nvim",
-    event = "VeryLazy",
-    config = load_plugin_conf("statuscol"),
-  },
-
   -- =================== treesitter ===================
   {
     "nvim-treesitter/nvim-treesitter",

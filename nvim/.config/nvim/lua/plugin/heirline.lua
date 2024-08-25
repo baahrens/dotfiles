@@ -2,6 +2,25 @@ local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 local settings = require("settings")
 
+local excluded_filetypes = {
+  "^git.*",
+  "fugitive",
+  "noice",
+  "oil",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "OverseerForm",
+  "OverseerList",
+}
+
+local excluded_buftypes = {
+  "nofile",
+  "prompt",
+  "help",
+  "quickfix",
+  "terminal",
+}
+
 local colors = {
   gray = utils.get_highlight("Identifier").fg,
   primary = utils.get_highlight("StatuslineFilename").fg or utils.get_highlight("Keyword").fg,
@@ -271,7 +290,7 @@ local overseer = {
   overseer_status("CANCELED"),
 }
 
-local StatusLines = {
+local statusline = {
   hl = { bg = colors.background },
   {
     left_padding,
@@ -285,7 +304,7 @@ local StatusLines = {
   }
 }
 
-local WinBars = {
+local winbar = {
   fallthrough = false,
   hl = function()
     if conditions.is_active() then
@@ -322,15 +341,32 @@ local WinBars = {
   },
 }
 
+local statuscolumn = {
+  condition = function()
+    return not conditions.buffer_matches({
+      filetype = excluded_filetypes,
+      buftype = excluded_buftypes
+    })
+  end,
+
+  { provider = " " },
+  { provider = "%=%4{v:virtnum ? '' : &nu ? (&rnu && v:relnum ? v:relnum : v:lnum) . ' ' : ''}" },
+  { provider = "%s " },
+}
+
+local options = {
+  disable_winbar_cb = function(args)
+    return conditions.buffer_matches({
+      buftype = excluded_buftypes,
+      filetype = excluded_filetypes,
+    }, args.buf)
+  end
+}
+
+
 require("heirline").setup({
-  statusline = StatusLines,
-  winbar = WinBars,
-  opts = {
-    disable_winbar_cb = function(args)
-      return conditions.buffer_matches({
-        buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-        filetype = { "^git.*", "fugitive$", "noice", "oil", "TelescopePrompt", "TelescopeResults", "OverseerForm", "OverseerList" },
-      }, args.buf)
-    end
-  }
+  statusline = statusline,
+  winbar = winbar,
+  statuscolumn = statuscolumn,
+  opts = options
 })
