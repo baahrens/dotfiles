@@ -171,12 +171,6 @@ local plugins = {
   },
 
   {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    config = load_plugin_conf("comment"),
-  },
-
-  {
     "tpope/vim-surround",
     lazy = false,
     keys = { "c", "d", "y" }
