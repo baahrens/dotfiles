@@ -294,23 +294,23 @@ local plugins = {
     config = load_plugin_conf("mason"),
   },
 
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = load_plugin_conf("null-ls"),
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-    },
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = load_plugin_conf("mason-null-ls"),
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
-  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   config = load_plugin_conf("null-ls"),
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --   },
+  -- },
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = load_plugin_conf("mason-null-ls"),
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --     "jose-elias-alvarez/null-ls.nvim",
+  --   },
+  -- },
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -332,6 +332,11 @@ local plugins = {
     lazy = false,
     config = load_plugin_conf("alpha")
   },
+  {
+    'stevearc/conform.nvim',
+    lazy = false,
+    config = load_plugin_conf("conform"),
+  }
 }
 
 local lazy_config = {

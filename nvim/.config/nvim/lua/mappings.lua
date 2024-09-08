@@ -104,7 +104,7 @@ wk.add({
   { "gd",                 vim.lsp.buf.definition },
   { "gD",                 "<cmd>vsplit +v:lua.vim.lsp.buf.definition()<CR>" },
   { "K",                  vim.lsp.buf.hover },
-  { "<C-f>",              function() require("plugin/lsp").format() end,                                             mode = { "n", "v" } },
+  { "<C-f>",              function() require("conform").format({ bufnr = 0, quiet = true}) end,                            mode = { "n", "v" } },
 
   { "<leader>s",          group = "settings" },
   { "<leader>sf",         function() require("settings").toggle_format_on_save() end,                                desc = "Toggle on save formatting" },

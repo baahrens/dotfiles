@@ -43,26 +43,14 @@ function M.toggle_colorcode_highlights()
 end
 
 function M.toggle_format_prettier()
-  local null_ls = require("null-ls")
-
   M.format.prettier = not M.format.prettier
-  if M.format.prettier then
-    null_ls.register(null_ls.builtins.formatting.prettierd)
-  else
-    null_ls.deregister("prettierd")
-  end
+  require("plugin/conform").toggle_prettier(M.format.prettier)
   notify("Formatting with prettier", M.format.prettier)
 end
 
 function M.toggle_format_eslint()
-  local null_ls = require("null-ls")
-
   M.format.eslint = not M.format.eslint
-  if M.format.eslint then
-    null_ls.register(null_ls.builtins.formatting.eslint_d)
-  else
-    null_ls.deregister("eslint_d")
-  end
+  require("plugin/conform").toggle_eslint(M.format.eslint)
   notify("Formatting with eslint", M.format.eslint)
 end
 
