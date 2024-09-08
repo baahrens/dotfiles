@@ -22,7 +22,6 @@ local function load_plugin_conf(name)
   end
 end
 
-
 local theme_name = vim.fn.getenv("THEME") or "duskfox"
 
 local plugins = {
@@ -63,7 +62,7 @@ local plugins = {
   {
     "mcchrish/zenbones.nvim",
     priority = theme_name == "zenwritten" or theme_name == "tokyobones" and 1000 or 1,
-    dependencies = "rktjmp/lush.nvim"
+    dependencies = "rktjmp/lush.nvim",
   },
 
   {
@@ -87,8 +86,8 @@ local plugins = {
   },
 
   {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    "rose-pine/neovim",
+    name = "rose-pine",
     priority = theme_name == "rose-pine" and 1000 or 1,
   },
 
@@ -107,7 +106,7 @@ local plugins = {
   },
 
   {
-    'stevearc/overseer.nvim',
+    "stevearc/overseer.nvim",
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
   },
@@ -123,7 +122,7 @@ local plugins = {
     event = "VeryLazy",
     config = load_plugin_conf("noice"),
     dependencies = "MunifTanjim/nui.nvim",
-    commit = "d9328ef903168b6f52385a751eb384ae7e906c6f"
+    commit = "d9328ef903168b6f52385a751eb384ae7e906c6f",
   },
 
   -- =================== treesitter ===================
@@ -142,7 +141,7 @@ local plugins = {
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter",
-    ft = { "html", "javascriptreact", "typescriptreact", "tsx", "jsx" }
+    ft = { "html", "javascriptreact", "typescriptreact", "tsx", "jsx" },
   },
 
   {
@@ -179,7 +178,7 @@ local plugins = {
   {
     "tpope/vim-surround",
     lazy = false,
-    keys = { "c", "d", "y" }
+    keys = { "c", "d", "y" },
   },
 
   {
@@ -195,13 +194,13 @@ local plugins = {
   },
 
   {
-    'mrjones2014/smart-splits.nvim',
+    "mrjones2014/smart-splits.nvim",
     config = load_plugin_conf("smart-splits"),
-    lazy = false
+    lazy = false,
   },
 
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = load_plugin_conf("oil"),
     cmd = { "Oil" },
@@ -224,9 +223,9 @@ local plugins = {
   { "nvim-telescope/telescope-fzy-native.nvim" },
 
   {
-    'kevinhwang91/nvim-bqf',
-    ft = 'qf',
-    config = load_plugin_conf("bqf")
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+    config = load_plugin_conf("bqf"),
   },
   {
     "kevinhwang91/nvim-hlslens",
@@ -281,36 +280,18 @@ local plugins = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
-    config = load_plugin_conf("lsp")
+    config = load_plugin_conf("lsp"),
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = load_plugin_conf("mason-lspconfig"),
-    cmd = "LspInstall"
+    cmd = "LspInstall",
   },
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
     config = load_plugin_conf("mason"),
   },
-
-  -- {
-  --   "jose-elias-alvarez/null-ls.nvim",
-  --   config = load_plugin_conf("null-ls"),
-  --   event = { "BufReadPost", "BufNewFile" },
-  --   dependencies = {
-  --     "williamboman/mason.nvim",
-  --   },
-  -- },
-  -- {
-  --   "jay-babu/mason-null-ls.nvim",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = load_plugin_conf("mason-null-ls"),
-  --   dependencies = {
-  --     "williamboman/mason.nvim",
-  --     "jose-elias-alvarez/null-ls.nvim",
-  --   },
-  -- },
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -330,13 +311,18 @@ local plugins = {
   {
     "goolord/alpha-nvim",
     lazy = false,
-    config = load_plugin_conf("alpha")
+    config = load_plugin_conf("alpha"),
   },
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     lazy = false,
     config = load_plugin_conf("conform"),
-  }
+  },
+  {
+    "mfussenegger/nvim-lint",
+    lazy = false,
+    config = load_plugin_conf("lint"),
+  },
 }
 
 local lazy_config = {
@@ -344,7 +330,7 @@ local lazy_config = {
     lazy = true,
   },
   ui = {
-    border = settings.border
+    border = settings.border,
   },
   performance = {
     rtp = {

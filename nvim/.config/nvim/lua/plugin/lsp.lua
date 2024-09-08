@@ -13,7 +13,6 @@ end
 
 local format_clients = {
   "lua_ls",
-  "null-ls",
   "ols",
   "prismals",
   "rust_analyzer",
