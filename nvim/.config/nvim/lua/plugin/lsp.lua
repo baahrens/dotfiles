@@ -1,5 +1,6 @@
 local settings = require("settings")
 local lspconfig = require("lspconfig")
+local wk = require("which-key")
 
 vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
 
@@ -56,6 +57,7 @@ vim.diagnostic.config({
   signs = true,
   update_in_insert = false,
   severity_sort = true,
+  underline = settings.diagnostics.show_underline
 })
 
 lspconfig.cssls.setup({
