@@ -118,6 +118,13 @@ wk.add({
   { "<leader>hs",         vim_cmd("OverseerToggle"),                                                                 desc = "Show" },
   { "<leader>hr",         vim_cmd("OverseerRun"),                                                                    desc = "Run" },
 
+  { "<leader>a",          group = "AI" },
+  { "<leader>aa",         vim_cmd("CopilotChatToggle"),                                                              desc = "Toggle Chat" },
+  { "<leader>ae",         vim_cmd("CopilotChatExplain"),                                                             mode = { "n", "v" },                 desc = "Explain" },
+  { "<leader>ar",         vim_cmd("CopilotChatReview"),                                                              mode = { "n", "v" },                 desc = "Review" },
+  { "<leader>at",         vim_cmd("CopilotChatTests"),                                                               mode = { "n", "v" },                 desc = "Tests" },
+  { "<leader>ao",         vim_cmd("CopilotChatOptimize"),                                                            mode = { "n", "v" },                 desc = "Optimize" },
+
   { '<C-h>',              require('smart-splits').move_cursor_left },
   { '<C-j>',              require('smart-splits').move_cursor_down },
   { '<C-k>',              require('smart-splits').move_cursor_up },

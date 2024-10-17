@@ -322,6 +322,17 @@ local plugins = {
     config = load_plugin_conf("copilot"),
   },
   {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = vim.g.is_work_machine,
+    branch = "canary",
+    lazy = false,
+    dependencies = {
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    config = load_plugin_conf("copilot-chat"),
+  },
+  {
     "goolord/alpha-nvim",
     lazy = false,
     config = load_plugin_conf("alpha")
