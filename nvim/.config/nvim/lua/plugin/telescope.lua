@@ -102,6 +102,15 @@ require("telescope").setup({
       override_file_sorter = true,
       case_mode = "smart_case"
     },
+    smart_open = {
+      show_score = true,
+      match_algorithm = "fzy",
+      disable_devicons = false,
+      open_buffer_indicators = {
+        previous = "•",
+        others = "∘",
+      },
+    },
   },
   pickers = {
     help_tags = {
@@ -168,3 +177,4 @@ require("telescope").setup({
 })
 
 require('telescope').load_extension('fzy_native')
+require("telescope").load_extension("smart_open")

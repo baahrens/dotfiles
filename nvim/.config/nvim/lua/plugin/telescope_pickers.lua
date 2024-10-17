@@ -9,8 +9,12 @@ end
 local M = {}
 
 function M.find_files()
-  require("telescope.builtin").find_files(
-    get_current_theme({ prompt_title = "files" })
+  require("telescope").extensions.smart_open.smart_open(
+    get_current_theme({
+      prompt_title = "files",
+      cwd_only = true,
+      filename_first = false,
+    })
   )
 end
 

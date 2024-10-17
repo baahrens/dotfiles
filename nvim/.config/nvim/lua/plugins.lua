@@ -215,6 +215,15 @@ local plugins = {
     },
   },
 
+  {
+    "danielfalk/smart-open.nvim",
+    lazy = false,
+    dependencies = {
+      "kkharji/sqlite.lua",
+      "nvim-telescope/telescope-fzy-native.nvim",
+    },
+  },
+
   { "nvim-telescope/telescope-fzy-native.nvim" },
 
   {
