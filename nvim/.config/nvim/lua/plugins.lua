@@ -220,11 +220,11 @@ local plugins = {
     lazy = false,
     dependencies = {
       "kkharji/sqlite.lua",
-      "nvim-telescope/telescope-fzy-native.nvim",
+      'nvim-telescope/telescope-fzf-native.nvim'
     },
   },
 
-  { "nvim-telescope/telescope-fzy-native.nvim" },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   {
     'kevinhwang91/nvim-bqf',
