@@ -8,7 +8,7 @@ require("mason-lspconfig").setup({
     "prismals",
     "rust_analyzer",
     "tailwindcss",
-    "tsserver",
+    "ts_ls",
     "vtsls",
     "zls"
   },
