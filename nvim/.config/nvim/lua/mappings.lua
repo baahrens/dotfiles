@@ -119,7 +119,7 @@ wk.add({
   { "<leader>hr",         vim_cmd("OverseerRun"),                                                                    desc = "Run" },
 
   { "<leader>a",          group = "AI" },
-  { "<leader>aa",         vim_cmd("CopilotChatToggle"),                                                              desc = "Toggle Chat" },
+  { "<leader>aa",         vim_cmd("CopilotChatToggle"),                                                              mode = { "n", "v" },                 desc = "Toggle Chat" },
   { "<leader>ae",         vim_cmd("CopilotChatExplain"),                                                             mode = { "n", "v" },                 desc = "Explain" },
   { "<leader>ar",         vim_cmd("CopilotChatReview"),                                                              mode = { "n", "v" },                 desc = "Review" },
   { "<leader>at",         vim_cmd("CopilotChatTests"),                                                               mode = { "n", "v" },                 desc = "Tests" },
