@@ -28,8 +28,8 @@ end
 
 function M.grep_daily()
   return t_builtin.grep_string(t_themes.get_dropdown({
-    cwd = vim.g.notes_dir,
-    search_dirs = { "work/daily" },
+    cwd = vim.g.notes_dir .. "/work",
+    search_dirs = { "daily" },
     prompt_title = "~ daily notes ~",
     previewer = true,
   }))
