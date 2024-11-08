@@ -52,8 +52,8 @@ wk.add({
   { "<leader>qN",         vim_cmd("cprev"),                                                                          desc = "Previous" },
 
   { "<leader>g",          group = "git" },
-  { "<leader>gs",         function() require("plugin/fugitive").git_status() end,                                    desc = "Status" },
-  { "<leader>gl",         function() require("plugin/fugitive").git_log() end,                                       desc = "Log" },
+  { "<leader>gs",         function() require("plugin/fugitive").status() end,                                        desc = "Status" },
+  { "<leader>gl",         function() require("plugin/fugitive").log() end,                                           desc = "Log" },
   { "<leader>gc",         vim_cmd("Git commit"),                                                                     desc = "Commit" },
   { "<leader>gu",         vim_cmd("Git pull"),                                                                       desc = "Pull" },
   { "<leader>gp",         vim_cmd("Git push"),                                                                       desc = "Push" },
@@ -62,6 +62,10 @@ wk.add({
   { "<leader>ga",         vim_cmd("Gitsigns stage_buffer"),                                                          desc = "Stage buffer" },
   { "<leader>go",         vim_cmd("DiffviewOpen"),                                                                   desc = "Diffview master" },
   { "<leader>gm",         vim_cmd("Git switch master"),                                                              desc = "Switch to master" },
+  { "<leader>g-",         vim_cmd("Git switch -"),                                                                   desc = "Switch back" },
+  { "<leader>gr",         vim_cmd("Git reset HEAD^"),                                                                desc = "reset HEAD^" },
+  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "reset HEAD^" },
+  { "<leader>gn",         function() require("plugin/fugitive").new_branch() end,                                    desc = "Switch to new branch" },
 
   { "<leader>gr",         group = "rebase" },
   { "<leader>grm",        vim_cmd("Git rebase -i origin/master"),                                                    desc = "Rebase master" },
