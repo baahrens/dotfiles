@@ -38,7 +38,9 @@ function M.switch_theme()
     "nordfox",
     "rose-pine",
     "tokyobones",
-    "zenwritten"
+    "zenwritten",
+    "oxocarbon",
+    "poimandres"
   }, {
     prompt = 'Switch theme',
   }, M.set_colorscheme)
@@ -63,6 +65,7 @@ M.global_overrides = {
   WinBarNC = { bg = none },
 
   Normal = { bg = none },
+  NormalNC = { bg = none },
   NormalFloat = { bg = none },
 
   String = { italic = false },
@@ -91,14 +94,15 @@ M.global_overrides = {
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
 
-  DiagnosticError = { fg = diagnostic_colors.Error },
-  DiagnosticWarn = { fg = diagnostic_colors.Warning },
-  DiagnosticInfo = { fg = diagnostic_colors.Information },
-  DiagnosticHint = { fg = diagnostic_colors.Hint },
+  -- DiagnosticError = { fg = diagnostic_colors.Error },
+  -- DiagnosticWarn = { fg = diagnostic_colors.Warning },
+  -- DiagnosticInfo = { fg = diagnostic_colors.Information },
+  -- DiagnosticHint = { fg = diagnostic_colors.Hint },
 
-  CmpItemKindSnippet = { fg = diagnostic_colors.Warning },
   CmpDocBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
   CmpBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  CmpItemKindSnippet = { fg = "#e0af68" },
+  CmpItemMenu = { fg = color_utils.darken(palette.fg3, 0.7) },
 
   OverseerTaskBorder = { bg = none, fg = palette.bg2 },
 }

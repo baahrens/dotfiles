@@ -67,6 +67,11 @@ local plugins = {
   },
 
   {
+    'olivercederborg/poimandres.nvim',
+    priority = theme_name == "poimandres" and 1000 or 1,
+  },
+
+  {
     "ramojus/mellifluous.nvim",
     priority = theme_name == "mellifluous" and 1000 or 1,
   },
@@ -90,6 +95,11 @@ local plugins = {
     'rose-pine/neovim',
     name = 'rose-pine',
     priority = theme_name == "rose-pine" and 1000 or 1,
+  },
+
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    priority = theme_name == "oxocarbon" and 1000 or 1,
   },
 
   {
@@ -353,6 +363,7 @@ local lazy_config = {
     lazy = true,
   },
   ui = {
+    backdrop = 0,
     border = settings.border
   },
   performance = {
