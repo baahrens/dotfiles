@@ -38,12 +38,6 @@ abbr -a .... cd ../../..
 abbr -a q exit
 abbr -a :q exit
 
-abbr -a t tmux
-abbr -a ta tmux attach -t
-abbr -a tn tmux new-session
-abbr -a tl tmux list-sessions
-abbr -a tk tmux kill-server
-
 abbr -a cl clear
 
 if command -v exa >/dev/null
