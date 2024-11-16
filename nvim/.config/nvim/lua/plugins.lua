@@ -25,6 +25,19 @@ end
 
 local theme_name = vim.fn.getenv("THEME") or "duskfox"
 
+local function theme_priority(...)
+  local args = table.pack(...)
+  local priority = 1
+
+  for i, v in ipairs(args) do
+    if v == theme_name then
+      priority = 1000
+    end
+  end
+
+  return priority
+end
+
 local plugins = {
   -- =================== git ===================
   {
@@ -56,50 +69,55 @@ local plugins = {
   },
 
   {
+    "wnkz/monoglow.nvim",
+    priority = theme_priority("monoglow"),
+  },
+
+  {
     "atelierbram/Base2Tone-nvim",
-    priority = theme_name == "base2tone_drawbridge_dark" and 1000 or 1,
+    priority = theme_priority("base2tone_drawbridge_dark")
   },
 
   {
     "mcchrish/zenbones.nvim",
-    priority = theme_name == "zenwritten" or theme_name == "tokyobones" and 1000 or 1,
+    priority = theme_priority("zenwritten", "tokyobones"),
     dependencies = "rktjmp/lush.nvim"
   },
 
   {
     'olivercederborg/poimandres.nvim',
-    priority = theme_name == "poimandres" and 1000 or 1,
+    priority = theme_priority("poimandres")
   },
 
   {
     "ramojus/mellifluous.nvim",
-    priority = theme_name == "mellifluous" and 1000 or 1,
+    priority = theme_priority("mellifluous")
   },
 
   {
     "aktersnurra/no-clown-fiesta.nvim",
-    priority = theme_name == "no-clown-fiesta" and 1000 or 1,
+    priority = theme_priority("no-clown-fiesta")
   },
 
   {
     "EdenEast/nightfox.nvim",
-    priority = theme_name == "nightfox" or theme_name == "nordfox" and 1000 or 1,
+    priority = theme_priority("nightfox", "nordfox")
   },
 
   {
     "folke/tokyonight.nvim",
-    priority = theme_name == "tokyonight" and 1000 or 1,
+    priority = theme_priority("tokyonight")
   },
 
   {
     'rose-pine/neovim',
     name = 'rose-pine',
-    priority = theme_name == "rose-pine" and 1000 or 1,
+    priority = theme_priority("rose-pine")
   },
 
   {
     "nyoom-engineering/oxocarbon.nvim",
-    priority = theme_name == "oxocarbon" and 1000 or 1,
+    priority = theme_priority("oxocarbon")
   },
 
   {

@@ -3,7 +3,7 @@ local palette = require("nightfox.palette").load("duskfox")
 local M = {}
 
 local function set_theme_env(name)
-  vim.fn.system([[fish -c 'set -Ux THEME "]] .. name .. [["']])
+  vim.fn.system([[fish -c 'set -Ux THEME ]] .. name .. [[']])
 end
 
 function M.set_colorscheme(colorscheme)
@@ -11,36 +11,34 @@ function M.set_colorscheme(colorscheme)
     set_theme_env(colorscheme)
   end
 
-  local ok, colorscheme_conf = pcall(require, "plugin/colors/" .. colorscheme)
-  if not ok then
-    print("Error loading colorscheme config: " .. colorscheme)
-    print(colorscheme_conf)
-    return
-  end
+  local _, colorscheme_conf = pcall(require, "plugin/colors/" .. colorscheme)
 
-  if colorscheme_conf.setup then
+  if colorscheme_conf and colorscheme_conf.setup then
     colorscheme_conf.setup()
   end
 
   vim.cmd("colorscheme" .. " " .. colorscheme)
 
   color_utils.overwrite_hl_groups(M.global_overrides)
-  color_utils.overwrite_hl_groups(colorscheme_conf.highlight_overwrites or {})
+  if colorscheme_conf then
+    color_utils.overwrite_hl_groups(colorscheme_conf.highlight_overwrites or {})
+  end
 end
 
 function M.switch_theme()
   vim.ui.select({
-    "mellifluous",
-    "duskfox",
     "base2tone_drawbridge_dark",
+    "duskfox",
+    "mellifluous",
+    "monoglow",
     "no-clown-fiesta",
-    "tokyonight",
     "nordfox",
-    "rose-pine",
-    "tokyobones",
-    "zenwritten",
     "oxocarbon",
     "poimandres"
+    "rose-pine",
+    "tokyobones",
+    "tokyonight",
+    "zenwritten",
   }, {
     prompt = 'Switch theme',
   }, M.set_colorscheme)
