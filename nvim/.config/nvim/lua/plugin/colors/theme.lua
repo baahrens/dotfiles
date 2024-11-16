@@ -39,70 +39,43 @@ function M.switch_theme()
     "tokyobones",
     "tokyonight",
     "zenwritten",
+    "lackluster"
   }, {
     prompt = 'Switch theme',
   }, M.set_colorscheme)
 end
 
-local diagnostic_colors = {
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#67c9e4",
-  Hint = "#10B981",
-}
+local border_color = color_utils.darken(palette.fg3, 0.7)
 
 local none = "NONE"
 
 M.global_overrides = {
-  SignColumn = { bg = none },
   CursorLine = { bg = none, bold = true },
-  LineNr = { bg = none, fg = palette.fg3 },
-  CursorLineNr = { bg = none, bold = true, fg = palette.fg2 },
-  StatusLine = { bg = none },
-  WinBar = { bg = none },
-  WinBarNC = { bg = none },
-
-  Normal = { bg = none },
-  NormalNC = { bg = none },
-  NormalFloat = { bg = none },
-
-  String = { italic = false },
+  LineNr = { fg = palette.fg3 },
+  CursorLineNr = { bold = true, fg = palette.fg2 },
 
   PMenu = { bg = none },
   PmenuSel = { link = "Visual" },
   PmenuThumb = { bg = palette.bg3 },
 
   NoiceMini = { bg = none },
-  NoiceCmdlinePopupBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  NoiceCmdlinePopupBorder = { bg = none, fg = border_color },
 
-  TelescopeResultsLineNr = { fg = palette.fg3 },
   TelescopeNormal = { bg = none },
-  TelescopeBorder = { fg = color_utils.darken(palette.fg3, 0.7) },
-  TelescopePreviewBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
+  TelescopeBorder = { fg = border_color },
+  TelescopePreviewBorder = { bg = none, fg = border_color },
   TelescopePreviewNormal = { bg = none },
 
-  FloatBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-
-  IblIndent = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-  IblScope = { bg = none, fg = palette.fg3 },
-
-  WhichKeyGroup = { fg = diagnostic_colors.Warning },
+  FloatBorder = { bg = none, fg = border_color },
 
   OilFile = { fg = color_utils.lighten(palette.fg3, 0.6) },
   OilDir = { fg = palette.fg2 },
   OilDirIcon = { fg = palette.fg3 },
 
-  -- DiagnosticError = { fg = diagnostic_colors.Error },
-  -- DiagnosticWarn = { fg = diagnostic_colors.Warning },
-  -- DiagnosticInfo = { fg = diagnostic_colors.Information },
-  -- DiagnosticHint = { fg = diagnostic_colors.Hint },
+  CmpDocBorder = { bg = none, fg = border_color },
+  CmpBorder = { bg = none, fg = border_color },
 
-  CmpDocBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-  CmpBorder = { bg = none, fg = color_utils.darken(palette.fg3, 0.7) },
-  CmpItemKindSnippet = { fg = "#e0af68" },
-  CmpItemMenu = { fg = color_utils.darken(palette.fg3, 0.7) },
-
-  OverseerTaskBorder = { bg = none, fg = palette.bg2 },
+  OverseerTaskBorder = { bg = none, fg = border_color },
 }
 
 return M
