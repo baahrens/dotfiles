@@ -64,7 +64,7 @@ wk.add({
   { "<leader>gm",         vim_cmd("Git switch master"),                                                              desc = "Switch to master" },
   { "<leader>g-",         vim_cmd("Git switch -"),                                                                   desc = "Switch back" },
   { "<leader>gr",         vim_cmd("Git reset HEAD^"),                                                                desc = "reset HEAD^" },
-  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "reset HEAD^" },
+  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "reset hard master^" },
   { "<leader>gn",         function() require("plugin/fugitive").new_branch() end,                                    desc = "Switch to new branch" },
 
   { "<leader>gr",         group = "rebase" },
