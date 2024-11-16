@@ -4,8 +4,11 @@ export PATH="$HOME/.bun/bin:$PATH"
 export PATH="/usr/local/opt/llvm@14/bin:$PATH"
 export PATH="$HOME/dev/projects/Odin:$PATH"
 export PATH="$HOME/.binaries:$PATH"
+export NODE_EXTRA_CA_CERTS="/etc/ssl/certs/ca-certificates.crt"
 
 fnm env --use-on-cd | source
+
+set -ge THEME
 
 if test uname = Linux
     setxkbmap -option compose:menu
