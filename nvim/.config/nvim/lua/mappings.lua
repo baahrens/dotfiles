@@ -106,7 +106,7 @@ wk.add({
   { "<leader>cf",         vim_cmd("TSToolsFixAll"),                                                                  desc = "Fix all" },
   { "<leader>cu",         vim_cmd("TSToolsRemoveUnused"),                                                            desc = "Remove unused" },
   { "gd",                 vim.lsp.buf.definition },
-  { "gD",                 "<cmd>vsplit +v:lua.vim.lsp.buf.definition()<CR>" },
+  { "gD",                 '<Cmd>vs<CR><Cmd>lua vim.lsp.buf.definition()<CR>' },
   { "K",                  vim.lsp.buf.hover },
   { "<C-f>",              function() require("plugin/lsp").format() end,                                             mode = { "n", "v" } },
 
