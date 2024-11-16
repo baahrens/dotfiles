@@ -34,7 +34,7 @@ function M.switch_theme()
     "no-clown-fiesta",
     "nordfox",
     "oxocarbon",
-    "poimandres"
+    "poimandres",
     "rose-pine",
     "tokyobones",
     "tokyonight",
