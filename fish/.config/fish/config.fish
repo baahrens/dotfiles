@@ -17,6 +17,7 @@ end
 
 abbr -a g git
 abbr -a gm git switch master
+abbr -a g- git switch -
 abbr -a gu git pull
 abbr -a gp git push
 abbr -a grm git rebase -i origin/master
