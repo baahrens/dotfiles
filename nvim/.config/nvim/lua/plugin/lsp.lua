@@ -1,5 +1,6 @@
 local settings = require("settings")
 local lspconfig = require("lspconfig")
+local wk = require("which-key")
 
 vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
 
@@ -52,6 +53,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.diagnostic.config({
   -- virtual_text = settings.diagnostics.show_virtual and settings.diagnostics.virtual_text,
   virtual_text = false,
+  underline = settings.diagnostics.show_underline,
   float = { border = settings.border, source = true },
   signs = true,
   update_in_insert = false,
