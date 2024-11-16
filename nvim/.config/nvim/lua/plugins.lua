@@ -121,6 +121,11 @@ local plugins = {
   },
 
   {
+    "slugbyte/lackluster.nvim",
+    priority = theme_priority("lackluster")
+  },
+
+  {
     "stevearc/dressing.nvim",
     config = load_plugin_conf("dressing"),
     lazy = false,
