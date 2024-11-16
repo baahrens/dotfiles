@@ -3,6 +3,8 @@ local overseer = require("overseer")
 local root_pattern = require("lspconfig.util").root_pattern
 
 local has_package_json = root_pattern("package.json")
+local has_package_lock_json = root_pattern("package-lock.json")
+local has_yarn_lock = root_pattern("yarn.lock")
 
 overseer.setup({
   dap = false,
@@ -37,7 +39,6 @@ overseer.setup({
     ["open float"] = false,
     ["open vsplit"] = false,
     ["open tab"] = false,
-    ["open output in quickfix"] = false,
   },
   help_win = {
     border = settings.border,
@@ -109,6 +110,43 @@ overseer.register_template({
         end,
         condition = {
           callback = function(opts) return has_package_json(opts.dir) end,
+        },
+      },
+      {
+        name = "[Node] Install dependencies",
+        builder = function()
+          return {
+            name = "[Node] Install dependencies",
+            strategy = {
+              "orchestrator",
+              tasks = {
+                { "shell", cmd = "yarn install" }
+              },
+            },
+          }
+        end,
+        condition = {
+          callback = function(opts) return has_package_json(opts.dir) and has_yarn_lock(opts.dir) end,
+        },
+      },
+      {
+        name = "[Node] Install dependencies",
+        builder = function()
+          return {
+            name = "[Node] Install dependencies",
+            strategy = {
+              "orchestrator",
+              tasks = {
+                { "shell", cmd = "npm install" }
+              },
+            },
+          }
+        end,
+        condition = {
+          callback = function(opts)
+            print(has_yarn_lock(opts.dir))
+            return has_package_json(opts.dir) and has_package_lock_json(opts.dir)
+          end,
         },
       }
     })
