@@ -70,9 +70,9 @@ wk.add({
   { "<leader>gra",        vim_cmd("Git rebase --abort"),                                                             desc = "Rebase abort" },
 
   { "<leader>gh",         group = "hunk" },
-  { "<leader>gha",        vim_cmd("Gitsigns stage_hunk"),                                                            desc = "Stage hunk",                 mode = { "v", "n" } },
-  { "<leader>ghd",        vim_cmd("Gitsigns undo_stage_hunk"),                                                       desc = "Undo stage hunk",            mode = { "v", "n" } },
-  { "<leader>ghr",        vim_cmd("Gitsigns reset_hunk"),                                                            desc = "Reset hunk",                 mode = { "v", "n" } },
+  { "<leader>gha",        vim_cmd("Gitsigns stage_hunk"),                                                            mode = { "v", "n" },                 desc = "Stage hunk", },
+  { "<leader>ghd",        vim_cmd("Gitsigns undo_stage_hunk"),                                                       mode = { "v", "n" },                 desc = "Undo stage hunk", },
+  { "<leader>ghr",        vim_cmd("Gitsigns reset_hunk"),                                                            mode = { "v", "n" },                 desc = "Reset hunk", },
   { "<leader>ghs",        vim_cmd("Gitsigns preview_hunk"),                                                          desc = "Preview hunk" },
   { "<leader>ghn",        vim_cmd("Gitsigns next_hunk"),                                                             desc = "Next hunk" },
   { "<leader>ghN",        vim_cmd("Gitsigns prev_hunk"),                                                             desc = "Previous hunk" },
