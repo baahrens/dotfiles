@@ -21,23 +21,21 @@ local excluded_buftypes = {
   "terminal",
 }
 
-local colors = {
-  gray = utils.get_highlight("Identifier").fg,
-  primary = utils.get_highlight("StatuslineFilename").fg or utils.get_highlight("Keyword").fg,
-  background = utils.get_highlight("StatuslineBackground").bg or utils.get_highlight("Normal").bg,
-  background_nc = utils.get_highlight("StatuslineBackgroundNC").bg or utils.get_highlight("NormalNC").bg,
-  diag = {
-    warn = utils.get_highlight("DiagnosticWarn").fg,
-    error = utils.get_highlight("DiagnosticError").fg,
-    hint = utils.get_highlight("DiagnosticHint").fg,
-    info = utils.get_highlight("DiagnosticInfo").fg,
-  },
-  git = {
-    del = utils.get_highlight("GitSignsDelete").fg,
-    add = utils.get_highlight("GitSignsAdd").fg,
-    change = utils.get_highlight("GitSignsChange").fg,
-  },
-}
+local function setup_colors()
+  return {
+    gray = utils.get_highlight("Identifier").fg,
+    primary = utils.get_highlight("Keyword").fg,
+    background = utils.get_highlight("Normal").bg,
+    background_nc = utils.get_highlight("NormalNC").bg or utils.get_highlight("Normal").bg,
+    diag_warn = utils.get_highlight("DiagnosticWarn").fg,
+    diag_error = utils.get_highlight("DiagnosticError").fg,
+    diag_hint = utils.get_highlight("DiagnosticHint").fg,
+    diag_info = utils.get_highlight("DiagnosticInfo").fg,
+    git_del = utils.get_highlight("GitSignsDelete").fg,
+    git_add = utils.get_highlight("GitSignsAdd").fg,
+    git_change = utils.get_highlight("GitSignsChange").fg,
+  }
+end
 
 local align = { provider = "%=" }
 local space = { provider = "   " }
@@ -75,7 +73,7 @@ local FileFlags = {
         return " 󰣕 "
       end
     end,
-    hl = { fg = colors.diag.warn },
+    hl = { fg = "diag_warn" },
   },
   {
     provider = function()
@@ -83,14 +81,14 @@ local FileFlags = {
         return "  "
       end
     end,
-    hl = { fg = colors.diag.error },
+    hl = { fg = "diag_error" },
   },
 }
 
 local file_name_modifier = {
   hl = function()
     if vim.bo.modified then
-      return { fg = colors.diag.warn, bold = true, force = true }
+      return { fg = "diag_warn", bold = true, force = true }
     end
   end,
 }
@@ -101,9 +99,9 @@ local file_name_block = utils.insert({
     end,
     hl = function()
       if conditions.is_active() then
-        return { fg = colors.primary }
+        return { fg = "primary" }
       else
-        return { fg = colors.gray }
+        return { fg = "gray" }
       end
     end
   }, file_icon, utils.insert(file_name_modifier, file_name), unpack(FileFlags), { provider = "%<" },
@@ -115,7 +113,7 @@ local ruler = {
   -- %c = column number
   -- %P = percentage through file of displayed window
   provider = " %l/%3L%: %2c %P",
-  hl = { fg = colors.gray },
+  hl = { fg = "gray" },
 }
 
 local diagnostics = {
@@ -139,25 +137,25 @@ local diagnostics = {
     provider = function(self)
       return self.errors > 0 and (self.error_icon .. " " .. self.errors .. " ")
     end,
-    hl = { fg = colors.diag.error },
+    hl = { fg = "diag_error" },
   },
   {
     provider = function(self)
       return self.warnings > 0 and (self.warn_icon .. " " .. self.warnings .. " ")
     end,
-    hl = { fg = colors.diag.warn },
+    hl = { fg = "diag_warn" },
   },
   {
     provider = function(self)
       return self.info > 0 and (self.info_icon .. " " .. self.info .. " ")
     end,
-    hl = { fg = colors.diag.info },
+    hl = { fg = "diag_info" },
   },
   {
     provider = function(self)
       return self.hints > 0 and (self.hint_icon .. " " .. self.hints)
     end,
-    hl = { fg = colors.diag.hint },
+    hl = { fg = "diag_hint" },
   },
 }
 
@@ -172,7 +170,7 @@ local branch_name = {
     provider = function(self)
       return " " .. self.status_dict.head
     end,
-    hl = { bold = true, fg = colors.primary },
+    hl = { bold = true, fg = "diag_info" },
   },
 }
 
@@ -189,19 +187,19 @@ local git_status = {
     provider = function(self)
       return self.added > 0 and (" 󰐕 " .. self.added)
     end,
-    hl = { fg = colors.git.add },
+    hl = { fg = "git_add" },
   },
   {
     provider = function(self)
       return self.removed > 0 and (" 󰍴 " .. self.removed)
     end,
-    hl = { fg = colors.git.del },
+    hl = { fg = "git_del" },
   },
   {
     provider = function(self)
       return self.changed > 0 and (" 󰜥 " .. self.changed)
     end,
-    hl = { fg = colors.git.change },
+    hl = { fg = "git_change" },
   },
 }
 
@@ -215,7 +213,7 @@ local work_dir = {
     local trail = cwd:sub(-1) == "/" and "" or "/"
     return "󰉋 " .. cwd .. trail
   end,
-  hl = { fg = colors.gray },
+  hl = { fg = "gray" },
 }
 
 local function clean_task_name(task_name)
@@ -239,7 +237,7 @@ local function overseer_running()
     end,
     hl = function()
       return {
-        fg = colors.diag.info
+        fg = "diag_info"
       }
     end,
   }
@@ -253,10 +251,10 @@ local function overseer_status(status)
       return string.format("%s%d  ", self.symbols[status], #self.tasks[status])
     end,
     hl = function()
-      local icon_color = status == "CANCELED" and colors.diag.warn
-          or status == "RUNNING" and colors.diag.info
-          or status == "SUCCESS" and colors.diag.hint
-          or colors.diag.error
+      local icon_color = status == "CANCELED" and "diag_warn"
+          or status == "RUNNING" and "diag_info"
+          or status == "SUCCESS" and "diag_hint"
+          or "diag_error"
       return {
         fg = icon_color
       }
@@ -291,15 +289,15 @@ local overseer = {
 }
 
 local statusline = {
-  hl = { bg = colors.background },
+  hl = { bg = "background" },
   {
+    space,
+    branch_name,
     left_padding,
     align,
     overseer,
     space,
     work_dir,
-    space,
-    branch_name,
     space,
   }
 }
@@ -308,9 +306,9 @@ local winbar = {
   fallthrough = false,
   hl = function()
     if conditions.is_active() then
-      return { bg = colors.background }
+      return { bg = "background" }
     else
-      return { bg = colors.background_nc }
+      return { bg = "background_nc" }
     end
   end,
   {
@@ -354,19 +352,24 @@ local statuscolumn = {
   { provider = "%s " },
 }
 
-local options = {
-  disable_winbar_cb = function(args)
-    return conditions.buffer_matches({
-      buftype = excluded_buftypes,
-      filetype = excluded_filetypes,
-    }, args.buf)
-  end
-}
-
-
 require("heirline").setup({
   statusline = statusline,
   winbar = winbar,
   statuscolumn = statuscolumn,
-  opts = options
+  opts = {
+    colors = setup_colors,
+    disable_winbar_cb = function(args)
+      return conditions.buffer_matches({
+        buftype = excluded_buftypes,
+        filetype = excluded_filetypes,
+      }, args.buf)
+    end
+  }
+})
+vim.api.nvim_create_augroup("Heirline", { clear = true })
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    utils.on_colorscheme(setup_colors)
+  end,
+  group = "Heirline",
 })
