@@ -3,34 +3,18 @@ local t_themes = require("telescope.themes")
 
 local M = {}
 
-function M.grep_tech()
+function M.grep_notes()
   local note_dirs = { "tech" }
   if vim.g.is_work_machine then
-    note_dirs.insert("work")
+    table.insert(note_dirs, "work")
+  else
+    table.insert(note_dirs, "private")
   end
 
   return t_builtin.grep_string(t_themes.get_dropdown({
     cwd = vim.g.notes_dir,
     search_dirs = note_dirs,
     prompt_title = "~ tech notes ~",
-    previewer = true,
-  }))
-end
-
-function M.grep_private()
-  return t_builtin.grep_string(t_themes.get_dropdown({
-    cwd = vim.g.notes_dir,
-    search_dirs = { "private" },
-    prompt_title = "~ private notes ~",
-    previewer = true,
-  }))
-end
-
-function M.grep_daily()
-  return t_builtin.grep_string(t_themes.get_dropdown({
-    cwd = vim.g.notes_dir .. "/work",
-    search_dirs = { "daily" },
-    prompt_title = "~ daily notes ~",
     previewer = true,
   }))
 end
@@ -49,7 +33,7 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 
 function M.open_daily()
   local date = os.date("%d-%m-%Y")
-  local file_name =  vim.g.notes_dir .. "/work/daily/" .. date .. ".md"
+  local file_name = vim.g.notes_dir .. "/work/daily/" .. date .. ".md"
   vim.cmd("vsplit " .. file_name)
 end
 

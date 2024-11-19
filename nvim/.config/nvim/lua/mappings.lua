@@ -38,10 +38,7 @@ wk.add({
   { "<C-b>",              function() require("oil").open(vim.fn.expand("%:p:h")) end },
 
   { "<leader>n",          group = "notes" },
-  { "<leader>nf",         group = "find" },
-  { "<leader>nfp",        function() require("notes").grep_private() end,                                            desc = "Private notes" },
-  { "<leader>nft",        function() require("notes").grep_tech() end,                                               desc = "Tech notes" },
-  { "<leader>nfd",        function() require("notes").grep_daily() end,                                              desc = "Daily notes" },
+  { "<leader>nf",         function() require("notes").grep_notes() end,                                              desc = "Private notes" },
   { "<leader>nd",         function() require("notes").open_daily() end,                                              desc = "Open daily note" },
 
   { "<leader>q",          group = "quickfix" },
@@ -63,8 +60,8 @@ wk.add({
   { "<leader>go",         vim_cmd("DiffviewOpen"),                                                                   desc = "Diffview master" },
   { "<leader>gm",         vim_cmd("Git switch master"),                                                              desc = "Switch to master" },
   { "<leader>g-",         vim_cmd("Git switch -"),                                                                   desc = "Switch back" },
-  { "<leader>gr",         vim_cmd("Git reset HEAD^"),                                                                desc = "reset HEAD^" },
-  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "reset hard master^" },
+  { "<leader>gr",         vim_cmd("Git reset HEAD^"),                                                                desc = "Reset HEAD^" },
+  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "Reset hard master" },
   { "<leader>gn",         function() require("plugin/fugitive").new_branch() end,                                    desc = "Switch to new branch" },
 
   { "<leader>gr",         group = "rebase" },
