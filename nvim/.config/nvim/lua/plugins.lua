@@ -133,22 +133,9 @@ local plugins = {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    config = load_plugin_conf("indent"),
-  },
-
-  {
     'stevearc/overseer.nvim',
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
-  },
-
-  {
-    "levouh/tint.nvim",
-    config = load_plugin_conf("tint"),
-    event = { "BufReadPost", "BufNewFile" },
   },
 
   {
@@ -205,7 +192,6 @@ local plugins = {
 
   {
     "tpope/vim-surround",
-    lazy = false,
     keys = { "c", "d", "y" }
   },
 
@@ -213,6 +199,11 @@ local plugins = {
     "echasnovski/mini.jump",
     event = "InsertEnter",
     config = load_plugin_conf("jump"),
+  },
+  {
+    "echasnovski/mini.indentscope",
+    event = "InsertEnter",
+    config = load_plugin_conf("indent"),
   },
 
   {

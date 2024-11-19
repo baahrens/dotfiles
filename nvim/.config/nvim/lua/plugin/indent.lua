@@ -1,11 +1,6 @@
-require("ibl").setup {
-  indent = { char = "┊" },
-  scope = {
-    enabled = true,
-    show_start = false,
-    show_end = false,
-  },
-  exclude = {
-    filetypes = { "help", "alpha", "oil", "lazy" },
+require("mini.indentscope").setup({
+  symbol = "│",
+  draw = {
+    animation = require('mini.indentscope').gen_animation.none()
   }
-}
+})

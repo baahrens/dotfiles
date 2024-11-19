@@ -76,6 +76,8 @@ M.global_overrides = {
   CmpBorder = { bg = none, fg = border_color },
 
   OverseerTaskBorder = { bg = none, fg = border_color },
+
+  MiniIndentscopeSymbol = { link = "FloatBorder" }
 }
 
 return M
