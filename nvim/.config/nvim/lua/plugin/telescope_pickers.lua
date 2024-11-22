@@ -1,4 +1,10 @@
 local default_config = {
+  results_title = false,
+  color_devicons = false,
+  borderchars = {
+    preview = { " ", " ", " ", " ", " ", " ", " ", " " }
+  },
+  preview_title = " ",
   layout_config = { height = 0.4 }
 }
 local function get_current_theme(options)

@@ -151,7 +151,6 @@ require("telescope").setup({
     },
   },
   defaults = {
-    dynamic_preview_title = true,
     results_title = false,
     color_devicons = false,
     file_ignore_patterns = ignore_patterns,
