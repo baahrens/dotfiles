@@ -22,11 +22,12 @@ local excluded_buftypes = {
 }
 
 local function setup_colors()
+  local bg = utils.get_highlight("Normal").bg or "none"
   return {
     gray = utils.get_highlight("Identifier").fg,
     primary = utils.get_highlight("Keyword").fg,
-    background = utils.get_highlight("Normal").bg,
-    background_nc = utils.get_highlight("NormalNC").bg or utils.get_highlight("Normal").bg,
+    background = bg,
+    background_nc = utils.get_highlight("NormalNC").bg or bg,
     diag_warn = utils.get_highlight("DiagnosticWarn").fg,
     diag_error = utils.get_highlight("DiagnosticError").fg,
     diag_hint = utils.get_highlight("DiagnosticHint").fg,
