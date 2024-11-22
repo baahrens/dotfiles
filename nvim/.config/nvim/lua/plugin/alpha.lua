@@ -37,13 +37,10 @@ local header = [[
                      |||  |||
                      ]]
 
-local alpha = require 'alpha'
-local dashboard = require 'alpha.themes.dashboard'
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.buttons.val = {
-  dashboard.button("p", "Files", function() require("plugin/telescope_pickers").find_files() end),
-  dashboard.button("g", "Git status", function() require("plugin/fugitive").git_status() end)
-}
+dashboard.section.buttons.val = {}
 
 dashboard.config.opts.noautocmd = true
 dashboard.section.header.val = header
