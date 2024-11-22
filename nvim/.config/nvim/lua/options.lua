@@ -26,7 +26,7 @@ options.splitbelow = true
 options.splitright = true
 options.timeoutlen = 300
 options.wildignore =
-".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 options.grepprg = "rg --vimgrep --no-heading --smart-case"
 options.grepformat = "%f:%l:%c:%m"
 options.shell = "fish"
@@ -35,6 +35,7 @@ options.pumheight = 10
 options.pumblend = 0
 options.undofile = true
 options.laststatus = 3
+opt.colorcolumn = { 81, 121 }
 
 opt.fillchars:append({
   diff = " ",
