@@ -16,7 +16,7 @@ local format_clients = {
   "ols",
   "prismals",
   "rust_analyzer",
-  "zls"
+  "zls",
 }
 
 function M.format()
@@ -50,19 +50,18 @@ M.on_attach = on_attach
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.diagnostic.config({
-  -- virtual_text = settings.diagnostics.show_virtual and settings.diagnostics.virtual_text,
   virtual_text = false,
   underline = settings.diagnostics.show_underline,
   float = { border = settings.border, source = true },
   signs = true,
   update_in_insert = false,
   severity_sort = true,
-  underline = settings.diagnostics.show_underline
+  underline = settings.diagnostics.show_underline,
 })
 
 lspconfig.cssls.setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
 lspconfig.lua_ls.setup({
@@ -82,37 +81,32 @@ lspconfig.lua_ls.setup({
         enable = false,
       },
       format = {
-        enable = false
-      }
+        enable = false,
+      },
     },
   },
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
 lspconfig.prismals.setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
 lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
-lspconfig.tailwindcss.setup {
-  capabilities = capabilities
-}
+lspconfig.tailwindcss.setup({
+  capabilities = capabilities,
+})
 
 require("typescript-tools").setup({
   on_attach = function(client)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
-
-    wk.add({
-      { "gd", "<cmd>TSToolsGoToSourceDefinition<CR>",         { noremap = true, silent = true } },
-      { "gD", "<cmd>vsplit +TSToolsGoToSourceDefinition<CR>", { noremap = true, silent = true } }
-    })
 
     on_attach(client)
   end,
@@ -130,18 +124,18 @@ require("typescript-tools").setup({
     jsx_close_tag = {
       enable = true,
       filetypes = { "javascriptreact", "typescriptreact" },
-    }
+    },
   },
 })
 
 lspconfig.zls.setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
 lspconfig.ols.setup({
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach,
 })
 
 return M
