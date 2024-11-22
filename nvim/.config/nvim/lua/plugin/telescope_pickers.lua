@@ -8,15 +8,20 @@ end
 
 local M = {}
 
-function M.find_files()
-  require("telescope.builtin").find_files(
-    get_current_theme({ prompt_title = "files" })
+function M.find_files(cwd)
+  require("telescope").extensions.smart_open.smart_open(
+    get_current_theme({
+      prompt_title = "files",
+      cwd_only = true,
+      filename_first = false,
+      cwd = cwd or vim.fn.getcwd()
+    })
   )
 end
 
-function M.live_grep()
+function M.live_grep(cwd)
   require("telescope.builtin").live_grep(
-    get_current_theme({ prompt_title = "grep" })
+    get_current_theme({ prompt_title = "grep", cwd = cwd or vim.fn.getcwd() })
   )
 end
 

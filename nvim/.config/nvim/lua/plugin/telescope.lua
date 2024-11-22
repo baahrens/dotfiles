@@ -96,11 +96,20 @@ local ignore_patterns = {
 
 require("telescope").setup({
   extensions = {
-    fzy_native = {
+    fzf = {
       fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case"
+    },
+    smart_open = {
+      show_score = true,
+      match_algorithm = "fzf",
+      disable_devicons = false,
+      open_buffer_indicators = {
+        previous = "•",
+        others = "∘",
+      },
     },
   },
   pickers = {
@@ -167,4 +176,5 @@ require("telescope").setup({
   },
 })
 
-require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('fzf')
+require("telescope").load_extension("smart_open")

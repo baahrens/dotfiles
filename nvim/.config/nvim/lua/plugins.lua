@@ -24,6 +24,19 @@ end
 
 local theme_name = vim.fn.getenv("THEME") or "duskfox"
 
+local function theme_priority(...)
+  local args = table.pack(...)
+  local priority = 1
+
+  for i, v in ipairs(args) do
+    if v == theme_name then
+      priority = 1000
+    end
+  end
+
+  return priority
+end
+
 local plugins = {
   -- =================== git ===================
   {
@@ -55,40 +68,60 @@ local plugins = {
   },
 
   {
+    "wnkz/monoglow.nvim",
+    priority = theme_priority("monoglow"),
+  },
+
+  {
     "atelierbram/Base2Tone-nvim",
-    priority = theme_name == "base2tone_drawbridge_dark" and 1000 or 1,
+    priority = theme_priority("base2tone_drawbridge_dark")
   },
 
   {
     "mcchrish/zenbones.nvim",
-    priority = theme_name == "zenwritten" or theme_name == "tokyobones" and 1000 or 1,
-    dependencies = "rktjmp/lush.nvim",
+    priority = theme_priority("zenwritten", "tokyobones"),
+    dependencies = "rktjmp/lush.nvim"
+  },
+
+  {
+    'olivercederborg/poimandres.nvim',
+    priority = theme_priority("poimandres")
   },
 
   {
     "ramojus/mellifluous.nvim",
-    priority = theme_name == "mellifluous" and 1000 or 1,
+    priority = theme_priority("mellifluous")
   },
 
   {
     "aktersnurra/no-clown-fiesta.nvim",
-    priority = theme_name == "no-clown-fiesta" and 1000 or 1,
+    priority = theme_priority("no-clown-fiesta")
   },
 
   {
     "EdenEast/nightfox.nvim",
-    priority = theme_name == "nightfox" or theme_name == "nordfox" and 1000 or 1,
+    priority = theme_priority("nightfox", "nordfox")
   },
 
   {
     "folke/tokyonight.nvim",
-    priority = theme_name == "tokyonight" and 1000 or 1,
+    priority = theme_priority("tokyonight")
   },
 
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    priority = theme_name == "rose-pine" and 1000 or 1,
+    priority = theme_priority("rose-pine")
+  },
+
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    priority = theme_priority("oxocarbon")
+  },
+
+  {
+    "slugbyte/lackluster.nvim",
+    priority = theme_priority("lackluster")
   },
 
   {
@@ -99,22 +132,9 @@ local plugins = {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    config = load_plugin_conf("indent"),
-  },
-
-  {
-    "stevearc/overseer.nvim",
+    'stevearc/overseer.nvim',
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
-  },
-
-  {
-    "levouh/tint.nvim",
-    config = load_plugin_conf("tint"),
-    event = { "BufReadPost", "BufNewFile" },
   },
 
   {
@@ -170,21 +190,19 @@ local plugins = {
   },
 
   {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    config = load_plugin_conf("comment"),
-  },
-
-  {
     "tpope/vim-surround",
-    lazy = false,
-    keys = { "c", "d", "y" },
+    keys = { "c", "d", "y" }
   },
 
   {
     "echasnovski/mini.jump",
     event = "InsertEnter",
     config = load_plugin_conf("jump"),
+  },
+  {
+    "echasnovski/mini.indentscope",
+    event = "InsertEnter",
+    config = load_plugin_conf("indent"),
   },
 
   {
@@ -220,7 +238,16 @@ local plugins = {
     },
   },
 
-  { "nvim-telescope/telescope-fzy-native.nvim" },
+  {
+    "danielfalk/smart-open.nvim",
+    lazy = false,
+    dependencies = {
+      "kkharji/sqlite.lua",
+      'nvim-telescope/telescope-fzf-native.nvim'
+    },
+  },
+
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   {
     "kevinhwang91/nvim-bqf",
@@ -309,6 +336,17 @@ local plugins = {
     config = load_plugin_conf("copilot"),
   },
   {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    enabled = vim.g.is_work_machine,
+    branch = "canary",
+    lazy = false,
+    dependencies = {
+      { "zbirenbaum/copilot.lua" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    config = load_plugin_conf("copilot-chat"),
+  },
+  {
     "goolord/alpha-nvim",
     lazy = false,
     config = load_plugin_conf("alpha"),
@@ -330,7 +368,8 @@ local lazy_config = {
     lazy = true,
   },
   ui = {
-    border = settings.border,
+    backdrop = 0,
+    border = settings.border
   },
   performance = {
     rtp = {

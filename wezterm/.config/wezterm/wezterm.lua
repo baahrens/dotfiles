@@ -14,6 +14,7 @@ config.disable_default_key_bindings = true
 config.enable_csi_u_key_encoding = false
 config.cell_width = 1.0
 config.line_height = 1.3
+config.warn_about_missing_glyphs = false
 config.window_padding = {
   left = 12,
   right = 12,

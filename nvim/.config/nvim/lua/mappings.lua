@@ -38,10 +38,7 @@ wk.add({
   { "<C-b>",              function() require("oil").open(vim.fn.expand("%:p:h")) end },
 
   { "<leader>n",          group = "notes" },
-  { "<leader>nf",         group = "find" },
-  { "<leader>nfp",        function() require("notes").grep_private() end,                                            desc = "Private notes" },
-  { "<leader>nft",        function() require("notes").grep_tech() end,                                               desc = "Tech notes" },
-  { "<leader>nfd",        function() require("notes").grep_daily() end,                                              desc = "Daily notes" },
+  { "<leader>nf",         function() require("notes").grep_notes() end,                                              desc = "Private notes" },
   { "<leader>nd",         function() require("notes").open_daily() end,                                              desc = "Open daily note" },
 
   { "<leader>q",          group = "quickfix" },
@@ -52,8 +49,8 @@ wk.add({
   { "<leader>qN",         vim_cmd("cprev"),                                                                          desc = "Previous" },
 
   { "<leader>g",          group = "git" },
-  { "<leader>gs",         function() require("plugin/fugitive").git_status() end,                                    desc = "Status" },
-  { "<leader>gl",         function() require("plugin/fugitive").git_log() end,                                       desc = "Log" },
+  { "<leader>gs",         function() require("plugin/fugitive").status() end,                                        desc = "Status" },
+  { "<leader>gl",         function() require("plugin/fugitive").log() end,                                           desc = "Log" },
   { "<leader>gc",         vim_cmd("Git commit"),                                                                     desc = "Commit" },
   { "<leader>gu",         vim_cmd("Git pull"),                                                                       desc = "Pull" },
   { "<leader>gp",         vim_cmd("Git push"),                                                                       desc = "Push" },
@@ -62,6 +59,10 @@ wk.add({
   { "<leader>ga",         vim_cmd("Gitsigns stage_buffer"),                                                          desc = "Stage buffer" },
   { "<leader>go",         vim_cmd("DiffviewOpen"),                                                                   desc = "Diffview master" },
   { "<leader>gm",         vim_cmd("Git switch master"),                                                              desc = "Switch to master" },
+  { "<leader>g-",         vim_cmd("Git switch -"),                                                                   desc = "Switch back" },
+  { "<leader>gr",         vim_cmd("Git reset HEAD^"),                                                                desc = "Reset HEAD^" },
+  { "<leader>gR",         function() require("plugin/fugitive").reset_hard() end,                                    desc = "Reset hard master" },
+  { "<leader>gn",         function() require("plugin/fugitive").new_branch() end,                                    desc = "Switch to new branch" },
 
   { "<leader>gr",         group = "rebase" },
   { "<leader>grm",        vim_cmd("Git rebase -i origin/master"),                                                    desc = "Rebase master" },
@@ -69,9 +70,9 @@ wk.add({
   { "<leader>gra",        vim_cmd("Git rebase --abort"),                                                             desc = "Rebase abort" },
 
   { "<leader>gh",         group = "hunk" },
-  { "<leader>gha",        vim_cmd("Gitsigns stage_hunk"),                                                            desc = "Stage hunk",                 mode = { "v", "n" } },
-  { "<leader>ghd",        vim_cmd("Gitsigns undo_stage_hunk"),                                                       desc = "Undo stage hunk",            mode = { "v", "n" } },
-  { "<leader>ghr",        vim_cmd("Gitsigns reset_hunk"),                                                            desc = "Reset hunk",                 mode = { "v", "n" } },
+  { "<leader>gha",        vim_cmd("Gitsigns stage_hunk"),                                                            mode = { "v", "n" },                 desc = "Stage hunk", },
+  { "<leader>ghd",        vim_cmd("Gitsigns undo_stage_hunk"),                                                       mode = { "v", "n" },                 desc = "Undo stage hunk", },
+  { "<leader>ghr",        vim_cmd("Gitsigns reset_hunk"),                                                            mode = { "v", "n" },                 desc = "Reset hunk", },
   { "<leader>ghs",        vim_cmd("Gitsigns preview_hunk"),                                                          desc = "Preview hunk" },
   { "<leader>ghn",        vim_cmd("Gitsigns next_hunk"),                                                             desc = "Next hunk" },
   { "<leader>ghN",        vim_cmd("Gitsigns prev_hunk"),                                                             desc = "Previous hunk" },
@@ -102,7 +103,7 @@ wk.add({
   { "<leader>cf",         vim_cmd("TSToolsFixAll"),                                                                  desc = "Fix all" },
   { "<leader>cu",         vim_cmd("TSToolsRemoveUnused"),                                                            desc = "Remove unused" },
   { "gd",                 vim.lsp.buf.definition },
-  { "gD",                 "<cmd>vsplit +v:lua.vim.lsp.buf.definition()<CR>" },
+  { "gD",                 '<Cmd>vs<CR><Cmd>lua vim.lsp.buf.definition()<CR>' },
   { "K",                  vim.lsp.buf.hover },
   { "<C-f>",              function() require("conform").format({ bufnr = 0, quiet = true}) end,                            mode = { "n", "v" } },
 
@@ -117,6 +118,13 @@ wk.add({
   { "<leader>h",          group = "build" },
   { "<leader>hs",         vim_cmd("OverseerToggle"),                                                                 desc = "Show" },
   { "<leader>hr",         vim_cmd("OverseerRun"),                                                                    desc = "Run" },
+
+  { "<leader>a",          group = "AI" },
+  { "<leader>aa",         vim_cmd("CopilotChatToggle"),                                                              mode = { "n", "v" },                 desc = "Toggle Chat" },
+  { "<leader>ae",         vim_cmd("CopilotChatExplain"),                                                             mode = { "n", "v" },                 desc = "Explain" },
+  { "<leader>ar",         vim_cmd("CopilotChatReview"),                                                              mode = { "n", "v" },                 desc = "Review" },
+  { "<leader>at",         vim_cmd("CopilotChatTests"),                                                               mode = { "n", "v" },                 desc = "Tests" },
+  { "<leader>ao",         vim_cmd("CopilotChatOptimize"),                                                            mode = { "n", "v" },                 desc = "Optimize" },
 
   { '<C-h>',              require('smart-splits').move_cursor_left },
   { '<C-j>',              require('smart-splits').move_cursor_down },

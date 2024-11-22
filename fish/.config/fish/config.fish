@@ -4,8 +4,11 @@ export PATH="$HOME/.bun/bin:$PATH"
 export PATH="/usr/local/opt/llvm@14/bin:$PATH"
 export PATH="$HOME/dev/projects/Odin:$PATH"
 export PATH="$HOME/.binaries:$PATH"
+export NODE_EXTRA_CA_CERTS="/etc/ssl/certs/ca-certificates.crt"
 
 fnm env --use-on-cd | source
+
+set -ge THEME
 
 if test uname = Linux
     setxkbmap -option compose:menu
@@ -17,6 +20,7 @@ end
 
 abbr -a g git
 abbr -a gm git switch master
+abbr -a g- git switch -
 abbr -a gu git pull
 abbr -a gp git push
 abbr -a grm git rebase -i origin/master
@@ -36,12 +40,6 @@ abbr -a .... cd ../../..
 
 abbr -a q exit
 abbr -a :q exit
-
-abbr -a t tmux
-abbr -a ta tmux attach -t
-abbr -a tn tmux new-session
-abbr -a tl tmux list-sessions
-abbr -a tk tmux kill-server
 
 abbr -a cl clear
 
