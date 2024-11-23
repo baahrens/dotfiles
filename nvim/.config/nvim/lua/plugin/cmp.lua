@@ -43,10 +43,10 @@ local BORDER = {
 cmp.setup({
   window = {
     completion = {
-      border = BORDER
+      border = BORDER,
     },
     documentation = {
-      border = BORDER
+      border = BORDER,
     },
   },
   formatting = {
@@ -75,8 +75,8 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
-    [mappings.common.select_prev] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-    [mappings.common.select_next] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+    [mappings.common.select_prev] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    [mappings.common.select_next] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -101,13 +101,13 @@ cmp.setup({
       name = "nvim_lsp",
       max_item_count = 50,
       priority = 4,
-      keyword_length = 2
+      keyword_length = 2,
     },
     { name = "nvim_lua" },
     { name = "nvim_lsp_signature_help", priority = 2 },
-    { name = "luasnip",                 priority = 3 },
-    { name = "buffer",                  priority = 1, keyword_length = 4 },
-    { name = "path",                    priority = 1 },
+    { name = "luasnip", priority = 3 },
+    { name = "buffer", priority = 1, keyword_length = 4 },
+    { name = "path", priority = 1 },
   }),
   performance = {
     debounce = 200,

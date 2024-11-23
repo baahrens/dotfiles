@@ -10,6 +10,6 @@ require("mason-lspconfig").setup({
     "tailwindcss",
     "ts_ls",
     "vtsls",
-    "zls"
+    "zls",
   },
 })

@@ -29,7 +29,7 @@ overseer.setup({
       ["{"] = "PrevTask",
       ["}"] = "NextTask",
       ["q"] = "Close",
-    }
+    },
   },
   actions = {
     watch = false,
@@ -42,19 +42,19 @@ overseer.setup({
   },
   help_win = {
     border = settings.border,
-    win_opts = { winblend = settings.winblend, },
+    win_opts = { winblend = settings.winblend },
   },
   task_win = {
     border = settings.border,
-    win_opts = { winblend = settings.winblend, },
+    win_opts = { winblend = settings.winblend },
   },
   form = {
     border = settings.border,
-    win_opts = { winblend = settings.winblend, },
+    win_opts = { winblend = settings.winblend },
   },
   confirm = {
     border = settings.border,
-    win_opts = { winblend = settings.winblend, },
+    win_opts = { winblend = settings.winblend },
   },
 })
 
@@ -72,7 +72,7 @@ overseer.register_template({
         condition = {
           callback = function()
             return vim.g.is_work_machine
-          end
+          end,
         },
       },
       {
@@ -82,16 +82,18 @@ overseer.register_template({
           return {
             name = "[Node] Add " .. package_version,
             cmd = { "yarn" },
-            args = { "add", params.dev and "-D" or nil, package_version }
+            args = { "add", params.dev and "-D" or nil, package_version },
           }
         end,
         params = {
           package_name = { type = "string" },
           dev = { type = "boolean", default = false },
-          version = { type = "string", default = "latest" }
+          version = { type = "string", default = "latest" },
         },
         condition = {
-          callback = function(opts) return has_package_json(opts.dir) end,
+          callback = function(opts)
+            return has_package_json(opts.dir)
+          end,
         },
       },
       {
@@ -103,13 +105,15 @@ overseer.register_template({
               "orchestrator",
               tasks = {
                 { "shell", cmd = "rm -rf node_modules" },
-                { "shell", cmd = "yarn install" }
+                { "shell", cmd = "yarn install" },
               },
             },
           }
         end,
         condition = {
-          callback = function(opts) return has_package_json(opts.dir) end,
+          callback = function(opts)
+            return has_package_json(opts.dir)
+          end,
         },
       },
       {
@@ -120,13 +124,15 @@ overseer.register_template({
             strategy = {
               "orchestrator",
               tasks = {
-                { "shell", cmd = "yarn install" }
+                { "shell", cmd = "yarn install" },
               },
             },
           }
         end,
         condition = {
-          callback = function(opts) return has_package_json(opts.dir) and has_yarn_lock(opts.dir) end,
+          callback = function(opts)
+            return has_package_json(opts.dir) and has_yarn_lock(opts.dir)
+          end,
         },
       },
       {
@@ -137,7 +143,7 @@ overseer.register_template({
             strategy = {
               "orchestrator",
               tasks = {
-                { "shell", cmd = "npm install" }
+                { "shell", cmd = "npm install" },
               },
             },
           }
@@ -148,7 +154,7 @@ overseer.register_template({
             return has_package_json(opts.dir) and has_package_lock_json(opts.dir)
           end,
         },
-      }
+      },
     })
   end,
 })

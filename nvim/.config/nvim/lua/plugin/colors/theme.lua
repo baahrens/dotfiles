@@ -1,4 +1,4 @@
-local color_utils = require "plugin/colors/utils"
+local color_utils = require("plugin/colors/utils")
 local palette = require("nightfox.palette").load("duskfox")
 local M = {}
 
@@ -39,9 +39,9 @@ function M.switch_theme()
     "tokyobones",
     "tokyonight",
     "zenwritten",
-    "lackluster"
+    "lackluster",
   }, {
-    prompt = 'Switch theme',
+    prompt = "Switch theme",
   }, M.set_colorscheme)
 end
 
@@ -77,7 +77,7 @@ M.global_overrides = {
 
   OverseerTaskBorder = { bg = none, fg = border_color },
 
-  MiniIndentscopeSymbol = { link = "FloatBorder" }
+  MiniIndentscopeSymbol = { link = "FloatBorder" },
 }
 
 return M

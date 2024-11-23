@@ -46,8 +46,7 @@ local file_icon = {
   init = function(self)
     local filename = self.filename
     local extension = vim.fn.fnamemodify(filename, ":e")
-    self.icon, self.icon_color =
-        require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+    self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
   end,
   provider = function(self)
     return self.icon and (self.icon .. " ")
@@ -95,18 +94,17 @@ local file_name_modifier = {
 }
 
 local file_name_block = utils.insert({
-    init = function(self)
-      self.filename = vim.api.nvim_buf_get_name(0)
-    end,
-    hl = function()
-      if conditions.is_active() then
-        return { fg = "primary" }
-      else
-        return { fg = "gray" }
-      end
+  init = function(self)
+    self.filename = vim.api.nvim_buf_get_name(0)
+  end,
+  hl = function()
+    if conditions.is_active() then
+      return { fg = "primary" }
+    else
+      return { fg = "gray" }
     end
-  }, file_icon, utils.insert(file_name_modifier, file_name), unpack(FileFlags), { provider = "%<" },
-  space)
+  end,
+}, file_icon, utils.insert(file_name_modifier, file_name), unpack(FileFlags), { provider = "%<" }, space)
 
 local ruler = {
   -- %l = current line number
@@ -238,7 +236,7 @@ local function overseer_running()
     end,
     hl = function()
       return {
-        fg = "diag_info"
+        fg = "diag_info",
       }
     end,
   }
@@ -253,11 +251,11 @@ local function overseer_status(status)
     end,
     hl = function()
       local icon_color = status == "CANCELED" and "diag_warn"
-          or status == "RUNNING" and "diag_info"
-          or status == "SUCCESS" and "diag_hint"
-          or "diag_error"
+        or status == "RUNNING" and "diag_info"
+        or status == "SUCCESS" and "diag_hint"
+        or "diag_error"
       return {
-        fg = icon_color
+        fg = icon_color,
       }
     end,
   }
@@ -271,7 +269,8 @@ local overseer = {
     local tasks = require("overseer.task_list").list_tasks({ unique = true })
     local tasks_by_status = require("overseer.util").tbl_group_by(tasks, "status")
     self.tasks = tasks_by_status
-    self.running_tasks = require("overseer.task_list").list_tasks({ unique = true, status = "RUNNING", recent_first = true })
+    self.running_tasks =
+      require("overseer.task_list").list_tasks({ unique = true, status = "RUNNING", recent_first = true })
   end,
   static = {
     symbols = {
@@ -300,7 +299,7 @@ local statusline = {
     space,
     work_dir,
     space,
-  }
+  },
 }
 
 local winbar = {
@@ -315,12 +314,14 @@ local winbar = {
   {
     condition = function()
       return conditions.buffer_matches({
-        filetype = { "fugitiveblame" }
+        filetype = { "fugitiveblame" },
       })
     end,
   },
   {
-    condition = function() return not conditions.is_active() end,
+    condition = function()
+      return not conditions.is_active()
+    end,
     left_padding,
     space,
     file_name_block,
@@ -344,7 +345,7 @@ local statuscolumn = {
   condition = function()
     return not conditions.buffer_matches({
       filetype = excluded_filetypes,
-      buftype = excluded_buftypes
+      buftype = excluded_buftypes,
     })
   end,
 
@@ -364,8 +365,8 @@ require("heirline").setup({
         buftype = excluded_buftypes,
         filetype = excluded_filetypes,
       }, args.buf)
-    end
-  }
+    end,
+  },
 })
 vim.api.nvim_create_augroup("Heirline", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {

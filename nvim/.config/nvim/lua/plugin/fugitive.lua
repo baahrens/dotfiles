@@ -23,7 +23,6 @@ local function ask_to_confirm(prompt, default_value, yes_values)
   return false
 end
 
-
 local function resize_split()
   vim.cmd(string.format("vertical resize %s", split_width))
 end

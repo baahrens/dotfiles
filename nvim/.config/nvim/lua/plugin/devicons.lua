@@ -1,4 +1,4 @@
-require 'nvim-web-devicons'.setup {
+require("nvim-web-devicons").setup({
   default = true,
-  color_icons = false
-}
+  color_icons = false,
+})

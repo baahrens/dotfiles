@@ -57,24 +57,19 @@ require("oil").setup({
     ["gs"] = actions.change_sort,
     ["gx"] = actions.open_external,
     ["g."] = actions.toggle_hidden,
-    [u.map_cmd_alt "p"] = {
+    [u.map_cmd_alt("p")] = {
       function()
-        require("plugin/telescope_pickers").find_files(
-          require("oil").get_current_dir()
-        )
+        require("plugin/telescope_pickers").find_files(require("oil").get_current_dir())
       end,
       mode = "n",
       nowait = true,
     },
     ["<C-p>"] = {
       function()
-        require("plugin/telescope_pickers").live_grep(
-          require("oil").get_current_dir()
-        )
+        require("plugin/telescope_pickers").live_grep(require("oil").get_current_dir())
       end,
       mode = "n",
       nowait = true,
     },
-
   },
 })

@@ -1,1 +1,1 @@
-require('smart-splits').setup()
+require("smart-splits").setup()

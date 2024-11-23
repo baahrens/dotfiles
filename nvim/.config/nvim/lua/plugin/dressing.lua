@@ -1,6 +1,6 @@
 local settings = require("settings")
 
-require('dressing').setup({
+require("dressing").setup({
   input = {
     enable = true,
     insert_only = false,
@@ -11,14 +11,14 @@ require('dressing').setup({
     border = settings.border,
     mappings = {
       n = {
-        ['<Esc>'] = 'Close',
-        ['<CR>'] = 'Confirm',
+        ["<Esc>"] = "Close",
+        ["<CR>"] = "Confirm",
       },
       i = {
-        ['<C-c>'] = 'Close',
-        ['<CR>'] = 'Confirm',
-        ['<Up>'] = 'HistoryPrev',
-        ['<Down>'] = 'HistoryNext',
+        ["<C-c>"] = "Close",
+        ["<CR>"] = "Confirm",
+        ["<Up>"] = "HistoryPrev",
+        ["<Down>"] = "HistoryNext",
       },
     },
   },
@@ -29,9 +29,9 @@ require('dressing').setup({
     },
     border = settings.border,
     mappings = {
-      ['<Esc>'] = 'Close',
-      ['<C-c>'] = 'Close',
-      ['<CR>'] = 'Confirm',
+      ["<Esc>"] = "Close",
+      ["<C-c>"] = "Close",
+      ["<CR>"] = "Confirm",
     },
   },
 })

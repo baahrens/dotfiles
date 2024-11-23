@@ -74,54 +74,54 @@ local plugins = {
 
   {
     "atelierbram/Base2Tone-nvim",
-    priority = theme_priority("base2tone_drawbridge_dark")
+    priority = theme_priority("base2tone_drawbridge_dark"),
   },
 
   {
     "mcchrish/zenbones.nvim",
     priority = theme_priority("zenwritten", "tokyobones"),
-    dependencies = "rktjmp/lush.nvim"
+    dependencies = "rktjmp/lush.nvim",
   },
 
   {
-    'olivercederborg/poimandres.nvim',
-    priority = theme_priority("poimandres")
+    "olivercederborg/poimandres.nvim",
+    priority = theme_priority("poimandres"),
   },
 
   {
     "ramojus/mellifluous.nvim",
-    priority = theme_priority("mellifluous")
+    priority = theme_priority("mellifluous"),
   },
 
   {
     "aktersnurra/no-clown-fiesta.nvim",
-    priority = theme_priority("no-clown-fiesta")
+    priority = theme_priority("no-clown-fiesta"),
   },
 
   {
     "EdenEast/nightfox.nvim",
-    priority = theme_priority("nightfox", "nordfox")
+    priority = theme_priority("nightfox", "nordfox"),
   },
 
   {
     "folke/tokyonight.nvim",
-    priority = theme_priority("tokyonight")
+    priority = theme_priority("tokyonight"),
   },
 
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    priority = theme_priority("rose-pine")
+    priority = theme_priority("rose-pine"),
   },
 
   {
     "nyoom-engineering/oxocarbon.nvim",
-    priority = theme_priority("oxocarbon")
+    priority = theme_priority("oxocarbon"),
   },
 
   {
     "slugbyte/lackluster.nvim",
-    priority = theme_priority("lackluster")
+    priority = theme_priority("lackluster"),
   },
 
   {
@@ -132,7 +132,7 @@ local plugins = {
   },
 
   {
-    'stevearc/overseer.nvim',
+    "stevearc/overseer.nvim",
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
   },
@@ -191,7 +191,7 @@ local plugins = {
 
   {
     "tpope/vim-surround",
-    keys = { "c", "d", "y" }
+    keys = { "c", "d", "y" },
   },
 
   {
@@ -243,11 +243,11 @@ local plugins = {
     lazy = false,
     dependencies = {
       "kkharji/sqlite.lua",
-      'nvim-telescope/telescope-fzf-native.nvim'
+      "nvim-telescope/telescope-fzf-native.nvim",
     },
   },
 
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   {
     "kevinhwang91/nvim-bqf",
@@ -369,7 +369,7 @@ local lazy_config = {
   },
   ui = {
     backdrop = 0,
-    border = settings.border
+    border = settings.border,
   },
   performance = {
     rtp = {

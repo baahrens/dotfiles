@@ -1,8 +1,8 @@
 local u = require("util")
 local actions = require("telescope.actions")
 local mappings = require("mappings")
-local action_set = require "telescope.actions.set"
-local action_state = require "telescope.actions.state"
+local action_set = require("telescope.actions.set")
+local action_state = require("telescope.actions.state")
 
 local generate_offset = function(str, tabsize)
   local offset = (tabsize - vim.fn.strdisplaywidth(str) % tabsize) % tabsize
@@ -45,7 +45,7 @@ local lsp_entry_maker = function(entry)
       icon,
       dir,
       name,
-      { pos,                   "TelescopeResultsLineNr" },
+      { pos, "TelescopeResultsLineNr" },
       { offset .. trimmed_text },
     })
   end
@@ -91,7 +91,7 @@ local ignore_patterns = {
   "build",
   ".next/",
   "dist",
-  ".git/"
+  ".git/",
 }
 
 require("telescope").setup({
@@ -100,7 +100,7 @@ require("telescope").setup({
       fuzzy = true,
       override_generic_sorter = true,
       override_file_sorter = true,
-      case_mode = "smart_case"
+      case_mode = "smart_case",
     },
     smart_open = {
       show_score = true,
@@ -160,14 +160,14 @@ require("telescope").setup({
         [mappings.common.select_next] = actions.move_selection_next,
         [mappings.common.open_vsplit] = actions.file_vsplit,
         [u.map_cmd_alt("p")] = actions.close,
-        ['<c-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<c-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<ESC>"] = actions.close,
         ["<S-Tab>"] = actions.move_selection_previous,
         ["<Tab>"] = actions.move_selection_next,
         [mappings.common.scroll_down] = actions.preview_scrolling_down,
         [mappings.common.scroll_up] = actions.preview_scrolling_up,
         ["<C-f>"] = actions.to_fuzzy_refine,
-        ["<leader>f;"] = false
+        ["<leader>f;"] = false,
       },
     },
     prompt_prefix = " ",
@@ -175,5 +175,5 @@ require("telescope").setup({
   },
 })
 
-require('telescope').load_extension('fzf')
+require("telescope").load_extension("fzf")
 require("telescope").load_extension("smart_open")

@@ -1,5 +1,5 @@
 local settings = require("settings")
-require('noice.util.hacks').fix_cmp()
+require("noice.util.hacks").fix_cmp()
 
 require("noice").setup({
   lsp = {
@@ -10,31 +10,31 @@ require("noice").setup({
       enabled = true,
       opts = {
         border = { style = settings.border },
-        relative = 'cursor',
+        relative = "cursor",
         position = {
           row = 2,
         },
         win_options = {
-          concealcursor = 'n',
+          concealcursor = "n",
           conceallevel = 3,
-        }
-      }
+        },
+      },
     },
     signature = {
       enabled = true,
       view = "hover",
       opts = {
         border = { style = settings.border },
-        relative = 'cursor',
+        relative = "cursor",
         position = {
           row = 2,
         },
         win_options = {
-          concealcursor = 'n',
+          concealcursor = "n",
           conceallevel = 3,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   routes = {
     {
@@ -42,7 +42,7 @@ require("noice").setup({
       filter = {
         event = "msg_showmode",
         any = {
-          { find = 'recording' },
+          { find = "recording" },
         },
       },
     },
@@ -61,7 +61,7 @@ require("noice").setup({
   views = {
     cmdline_popup = {
       win_options = {
-        winblend = settings.winblend
+        winblend = settings.winblend,
       },
       position = {
         row = 5,
@@ -70,7 +70,7 @@ require("noice").setup({
       size = {
         width = 60,
         height = "auto",
-      }
+      },
     },
     popupmenu = {
       relative = "editor",
@@ -89,8 +89,8 @@ require("noice").setup({
     },
     mini = {
       win_options = {
-        winblend = settings.winblend
-      }
+        winblend = settings.winblend,
+      },
     },
   },
 })

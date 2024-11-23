@@ -7,15 +7,15 @@ require("copilot").setup({
     keymap = {
       accept = "<C-f>",
       next = u.map_cmd_alt("f"),
-    }
+    },
   },
   server_opts_overrides = {
     settings = {
       advanced = {
         debug = {
-          acceptSelfSignedCertificate = true
-        }
-      }
-    }
-  }
+          acceptSelfSignedCertificate = true,
+        },
+      },
+    },
+  },
 })

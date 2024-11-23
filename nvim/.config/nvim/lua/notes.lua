@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     vim.cmd("0r " .. vim.g.template_dir .. "/daily.md")
     vim.cmd("s/{{DATE}}/" .. date .. "/")
     vim.cmd("3")
-  end
+  end,
 })
 
 function M.open_daily()
