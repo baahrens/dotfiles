@@ -11,14 +11,6 @@ local function vim_cmd(cmd)
   end
 end
 
-M.common = {
-  open_vsplit = u.map_cmd_alt("CR"),
-  select_next = u.map_cmd_alt("j"),
-  select_prev = u.map_cmd_alt("k"),
-  scroll_up = "<C-u>",
-  scroll_down = "<C-d>",
-}
-
 ---@diagnostic disable-next-line: inject-field
 vim.g.mapleader = " "
 
@@ -282,7 +274,7 @@ wk.add({
 
   { "<C-a>", "<CMD>OverseerToggle<CR>" },
 
-  { M.common.open_vsplit, ":vsplit<CR>" },
+  { u.common_mappings.open_vsplit, ":vsplit<CR>" },
 
   -- search
   { "n", [[<Cmd>execute('normal! ' . v:count1 . 'nzz')<CR><Cmd>lua require('hlslens').start()<CR>]] },

@@ -10,4 +10,12 @@ function M.map_cmd_alt(key)
   end
 end
 
+M.common_mappings = {
+  open_vsplit = M.map_cmd_alt("CR"),
+  select_next = M.map_cmd_alt("j"),
+  select_prev = M.map_cmd_alt("k"),
+  scroll_up = "<C-u>",
+  scroll_down = "<C-d>",
+}
+
 return M

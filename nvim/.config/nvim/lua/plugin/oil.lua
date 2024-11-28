@@ -45,7 +45,7 @@ require("oil").setup({
     ["L"] = actions.select,
     ["<C-n>"] = actions.close,
     ["<C-b>"] = actions.close,
-    [mappings.common.open_vsplit] = function()
+    [u.common_mappings.open_vsplit] = function()
       actions.select.callback({ vertical = true })
       actions.close.callback()
     end,

@@ -1,4 +1,5 @@
 local mappings = require("mappings")
+local u = require("util")
 local cmp = require("cmp")
 
 local kind_icons = {
@@ -64,8 +65,8 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    [mappings.common.scroll_up] = cmp.mapping.scroll_docs(-4),
-    [mappings.common.scroll_down] = cmp.mapping.scroll_docs(4),
+    [u.common_mappings.scroll_up] = cmp.mapping.scroll_docs(-4),
+    [u.common_mappings.scroll_down] = cmp.mapping.scroll_docs(4),
     ["<C-s>"] = cmp.mapping.close(),
     ["<C-a>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
@@ -75,8 +76,8 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
-    [mappings.common.select_prev] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    [mappings.common.select_next] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    [u.common_mappings.select_prev] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    [u.common_mappings.select_next] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
