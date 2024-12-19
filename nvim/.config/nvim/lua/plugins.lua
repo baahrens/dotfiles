@@ -337,7 +337,7 @@ local plugins = {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     enabled = vim.g.is_work_machine,
-    branch = "canary",
+    branch = "main",
     lazy = false,
     dependencies = {
       { "zbirenbaum/copilot.lua" },
