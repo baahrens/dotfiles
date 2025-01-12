@@ -7,18 +7,32 @@ return {
   snippet("media query", {
     text("@media screen and (min-width: "),
     insert(1),
-    text({") {", "\t"}),
+    text({ ") {", "\t" }),
     insert(2),
     text({ "\t", "}", "\t" }),
   }),
   snippet("keyframes", {
     text("@keyframes "),
     insert(1),
-    text({" {", "\tfrom {", "\t\t" }),
+    text({ " {", "\tfrom {", "\t\t" }),
     insert(2),
-    text({"\t", "\t}", "\tto {", "\t\t" }),
+    text({ "\t", "\t}", "\tto {", "\t\t" }),
     insert(3),
     text({ "", "\t}", "}", "" }),
   }),
   snippet("border red", text("border: 1px solid red;")),
+  snippet("flex", text({ "display: flex;" })),
+  snippet("flex_column", {
+    text({
+      "display: flex;",
+      "flex-direction: column;",
+    }),
+  }),
+  snippet("flex_center", {
+    text({
+      "display: flex;",
+      "justify-content: center;",
+      "align-items: center;",
+    }),
+  }),
 }
