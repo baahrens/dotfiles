@@ -25,10 +25,10 @@ end
 local theme_name = vim.fn.getenv("THEME") or "duskfox"
 
 local function theme_priority(...)
-  local args = table.pack(...)
+  local args = { ... }
   local priority = 1
 
-  for i, v in ipairs(args) do
+  for _, v in ipairs(args) do
     if v == theme_name then
       priority = 1000
     end
@@ -172,17 +172,6 @@ local plugins = {
 
   -- =================== various ===================
   {
-    "Wansmer/treesj",
-    keys = { "<space>m" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("treesj").setup({
-        use_default_keymaps = false,
-      })
-    end,
-  },
-
-  {
     "uga-rosa/ccc.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = load_plugin_conf("ccc"),
@@ -198,10 +187,14 @@ local plugins = {
     event = "InsertEnter",
     config = load_plugin_conf("jump"),
   },
+
   {
-    "echasnovski/mini.indentscope",
-    event = "InsertEnter",
-    config = load_plugin_conf("indent"),
+    "echasnovski/mini.splitjoin",
+    version = "*",
+    config = function()
+      require("mini.splitjoin").setup()
+    end,
+    lazy = false,
   },
 
   {

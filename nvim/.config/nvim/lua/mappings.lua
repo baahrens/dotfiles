@@ -18,13 +18,6 @@ wk.add({
   { "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', desc = "New line below" },
   { "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', desc = "New line above" },
   {
-    "<leader>m",
-    function()
-      require("treesj").toggle()
-    end,
-    desc = "Split/Join lines",
-  },
-  {
     "<leader>t",
     function()
       require("plugin/colors/theme").switch_theme()
