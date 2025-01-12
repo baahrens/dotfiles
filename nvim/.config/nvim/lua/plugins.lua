@@ -125,13 +125,6 @@ local plugins = {
   },
 
   {
-    "stevearc/dressing.nvim",
-    config = load_plugin_conf("dressing"),
-    lazy = false,
-    event = "VeryLazy",
-  },
-
-  {
     "stevearc/overseer.nvim",
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),
@@ -339,11 +332,6 @@ local plugins = {
     config = load_plugin_conf("copilot-chat"),
   },
   {
-    "goolord/alpha-nvim",
-    lazy = false,
-    config = load_plugin_conf("alpha"),
-  },
-  {
     "stevearc/conform.nvim",
     lazy = false,
     config = load_plugin_conf("conform"),
@@ -352,6 +340,12 @@ local plugins = {
     "mfussenegger/nvim-lint",
     lazy = false,
     config = load_plugin_conf("lint"),
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    config = load_plugin_conf("snacks"),
   },
 }
 
