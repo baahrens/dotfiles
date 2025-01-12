@@ -1,4 +1,4 @@
-require('plugins')
-require('options')
-require('mappings')
-require('autocommands')
+require("options")
+require("plugins")
+require("mappings")
+require("autocommands")
