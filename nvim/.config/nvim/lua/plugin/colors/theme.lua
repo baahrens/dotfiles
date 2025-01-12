@@ -78,6 +78,9 @@ M.global_overrides = {
   OverseerTaskBorder = { bg = none, fg = border_color },
 
   MiniIndentscopeSymbol = { link = "FloatBorder" },
+
+  Search = { bg = none, fg = "#ffa400" },
+  CurSearch = { bg = none, fg = "#ffa400" },
 }
 
 return M
