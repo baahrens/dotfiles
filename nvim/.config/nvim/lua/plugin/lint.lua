@@ -13,9 +13,6 @@ end
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
   callback = function()
-    local ok, msg = pcall(lint.try_lint)
-    if not ok then
-      vim.notify(msg, vim.log.levels.WARN, { title = "Nvim-Lint" })
-    end
+    local ok, msg = pcall(lint.try_lint, { ignore_errors = true })
   end,
 })

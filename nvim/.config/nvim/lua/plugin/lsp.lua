@@ -17,6 +17,7 @@ local format_clients = {
   "prismals",
   "rust_analyzer",
   "zls",
+  "astro",
 }
 
 function M.format()
@@ -129,6 +130,11 @@ require("typescript-tools").setup({
 })
 
 lspconfig.zls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lspconfig.astro.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
