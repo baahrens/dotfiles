@@ -81,6 +81,8 @@ M.global_overrides = {
 
   Search = { bg = none, fg = "#ffa400" },
   CurSearch = { bg = none, fg = "#ffa400" },
+
+  Delimiter = { link = "FloatBorder" },
 }
 
 return M

@@ -235,10 +235,11 @@ local plugins = {
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   {
-    "kevinhwang91/nvim-bqf",
-    ft = "qf",
-    config = load_plugin_conf("bqf"),
+    "stevearc/quicker.nvim",
+    lazy = false,
+    config = load_plugin_conf("quicker"),
   },
+
   {
     "kevinhwang91/nvim-hlslens",
     event = { "BufReadPre", "BufNewFile" },
