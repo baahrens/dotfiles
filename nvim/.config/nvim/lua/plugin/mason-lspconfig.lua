@@ -6,6 +6,7 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "ols",
     "prismals",
+    "pyright",
     "rust_analyzer",
     "tailwindcss",
     "ts_ls",
