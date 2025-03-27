@@ -83,6 +83,7 @@ M.global_overrides = {
   CurSearch = { bg = none, fg = "#ffa400" },
 
   Delimiter = { link = "FloatBorder" },
+  BlinkCmpMenuBorder = { link = "FloatBorder" },
 }
 
 return M

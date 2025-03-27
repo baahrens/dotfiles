@@ -48,8 +48,6 @@ end
 
 M.on_attach = on_attach
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 vim.diagnostic.config({
   virtual_text = false,
   underline = settings.diagnostics.show_underline,
@@ -61,7 +59,6 @@ vim.diagnostic.config({
 })
 
 lspconfig.cssls.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
@@ -86,23 +83,18 @@ lspconfig.lua_ls.setup({
       },
     },
   },
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.prismals.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
-lspconfig.tailwindcss.setup({
-  capabilities = capabilities,
-})
+lspconfig.tailwindcss.setup({})
 
 require("typescript-tools").setup({
   on_attach = function(client)
@@ -130,22 +122,18 @@ require("typescript-tools").setup({
 })
 
 lspconfig.zls.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.astro.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.ols.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 lspconfig.pyright.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 

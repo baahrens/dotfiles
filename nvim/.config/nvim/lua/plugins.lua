@@ -271,19 +271,15 @@ local plugins = {
   },
 
   {
-    "hrsh7th/nvim-cmp",
-    config = load_plugin_conf("cmp"),
-    event = { "InsertEnter" },
+    "saghen/blink.cmp",
+    lazy = false,
     dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lua",
+      { "L3MON4D3/LuaSnip", version = "v2.*" },
+      "fang2hou/blink-copilot",
     },
+    version = "1.*",
+    config = load_plugin_conf("blink"),
   },
-
   -- =================== lsp ===================
 
   {
