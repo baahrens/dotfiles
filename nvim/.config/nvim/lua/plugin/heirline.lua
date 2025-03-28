@@ -291,6 +291,7 @@ local overseer = {
 local statusline = {
   hl = { bg = "background" },
   {
+    left_padding,
     space,
     branch_name,
     left_padding,
