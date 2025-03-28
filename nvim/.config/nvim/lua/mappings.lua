@@ -188,7 +188,7 @@ wk.add({
   {
     u.map_cmd_alt("p"),
     function()
-      require("snacks").picker.files()
+      require("snacks").picker.smart()
     end,
     desc = "Files",
   },

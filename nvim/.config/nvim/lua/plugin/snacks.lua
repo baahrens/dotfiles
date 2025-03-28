@@ -17,13 +17,14 @@ require("snacks").setup({
   input = { enabled = true },
   quickfile = { enabled = true },
   picker = {
-    layout = { preset = "ivy_split" },
+    layout = { preset = "ivy" },
     matcher = {
       frecency = true,
     },
     win = {
       input = {
         keys = {
+          ["<Esc>"] = { "close", mode = { "n", "i" } },
           [u.common_mappings.select_prev] = { "list_up", mode = { "i", "n" } },
           [u.common_mappings.select_next] = { "list_down", mode = { "i", "n" } },
           [u.common_mappings.open_vsplit] = { "edit_vsplit", mode = { "i", "n" } },
