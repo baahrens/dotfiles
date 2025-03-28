@@ -4,7 +4,6 @@ require("snacks").setup({
     enabled = true,
     sections = {
       { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1, cwd = true },
-      { section = "startup" },
     },
   },
   indent = {
