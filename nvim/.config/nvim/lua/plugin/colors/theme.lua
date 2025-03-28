@@ -42,7 +42,11 @@ function M.switch_theme()
     "lackluster",
   }, {
     prompt = "Switch theme",
-  }, M.set_colorscheme)
+  }, function(colorscheme)
+    if colorscheme then
+      M.set_colorscheme(colorscheme)
+    end
+  end)
 end
 
 local border_color = color_utils.darken(palette.fg3, 0.7)
