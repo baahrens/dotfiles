@@ -22,6 +22,7 @@ abbr -a g git
 abbr -a gm git switch master
 abbr -a g- git switch -
 abbr -a gu git pull
+alias gmu="git switch master && git pull"
 abbr -a gp git push
 abbr -a grm git rebase -i origin/master
 abbr -a grc git rebase --continue
