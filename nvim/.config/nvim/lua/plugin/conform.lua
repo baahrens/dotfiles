@@ -8,14 +8,14 @@ local js_filetypes = {
   "json",
   "typescriptreact",
   "astro",
+  "html"
 }
 
-local js_formatters = { "eslint_d", "prettierd" }
+local js_formatters = { "biome", "prettierd", "prettier", stop_after_first = true }
 
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-    astro = { "prettierd" },
   },
   formatters = {
     prettierd = {

@@ -8,7 +8,7 @@ local js_filetypes = {
 }
 
 for _, v in pairs(js_filetypes) do
-  lint.linters_by_ft[v] = { "eslint_d" }
+  lint.linters_by_ft[v] = { "biomejs" }
 end
 
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
