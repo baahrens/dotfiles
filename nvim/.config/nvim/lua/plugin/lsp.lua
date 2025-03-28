@@ -137,4 +137,9 @@ lspconfig.pyright.setup({
   on_attach = on_attach,
 })
 
+lspconfig.jsonls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 return M
