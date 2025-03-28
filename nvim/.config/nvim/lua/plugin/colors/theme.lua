@@ -65,11 +65,6 @@ M.global_overrides = {
   NoiceMini = { bg = none },
   NoiceCmdlinePopupBorder = { bg = none, fg = border_color },
 
-  TelescopeNormal = { bg = none },
-  TelescopeBorder = { fg = border_color },
-  TelescopePreviewBorder = { bg = none, fg = border_color },
-  TelescopePreviewNormal = { bg = none },
-
   FloatBorder = { bg = none, fg = border_color },
 
   OilFile = { fg = color_utils.lighten(palette.fg3, 0.6) },

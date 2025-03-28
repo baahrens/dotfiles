@@ -46,11 +46,6 @@ M.highlight_overwrites = {
 
   LineNr = { fg = palette.medium_gray },
   CursorLineNr = { fg = palette.orange },
-
-  TelescopeBorder = { fg = palette.medium_gray, bg = none },
-  TelescopeResultsBorder = { fg = palette.medium_gray, bg = none },
-  TelescopePreviewBorder = { fg = palette.medium_gray, bg = none },
-  TelescopePromptBorder = { fg = palette.medium_gray, bg = none },
 }
 
 return M

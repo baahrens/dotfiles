@@ -22,10 +22,6 @@ M.highlight_overwrites = {
   ["@lsp.type.namespace"] = { fg = palette.B2T_D1 },
   ["@lsp.type.interface"] = { fg = palette.B2T_D1 },
 
-  TelescopeMatching = { fg = palette.B2T_D3 },
-  TelescopeResultsLineNr = { fg = palette.B2T_D3 },
-  TelescopeResultsSpecialComment = { fg = palette.B2T_A5 },
-
   DiagnosticError = { fg = diagnostic_colors.Error },
   DiagnosticWarn = { fg = diagnostic_colors.Warning },
   DiagnosticInfo = { fg = diagnostic_colors.Information },

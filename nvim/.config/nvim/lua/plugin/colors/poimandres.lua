@@ -7,7 +7,6 @@ function M.setup()
 end
 
 M.highlight_overwrites = {
-  TelescopePreviewTitle = { fg = "none" },
   ColorColumn = { bg = "#21212b" },
 }
 

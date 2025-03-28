@@ -7,8 +7,6 @@ local excluded_filetypes = {
   "fugitive",
   "noice",
   "oil",
-  "TelescopePrompt",
-  "TelescopeResults",
   "OverseerForm",
   "OverseerList",
 }

@@ -59,14 +59,14 @@ require("oil").setup({
     ["g."] = actions.toggle_hidden,
     [u.map_cmd_alt("p")] = {
       function()
-        require("plugin/telescope_pickers").find_files(require("oil").get_current_dir())
+        require("snacks").picker.files({ cwd = require("oil").get_current_dir() })
       end,
       mode = "n",
       nowait = true,
     },
     ["<C-p>"] = {
       function()
-        require("plugin/telescope_pickers").live_grep(require("oil").get_current_dir())
+        require("snacks").picker.grep({ cwd = require("oil").get_current_dir() })
       end,
       mode = "n",
       nowait = true,

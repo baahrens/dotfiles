@@ -216,25 +216,6 @@ local plugins = {
   },
 
   {
-    "nvim-telescope/telescope.nvim",
-    config = load_plugin_conf("telescope"),
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
-    "danielfalk/smart-open.nvim",
-    lazy = false,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      "nvim-telescope/telescope-fzf-native.nvim",
-    },
-  },
-
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-
-  {
     "stevearc/quicker.nvim",
     lazy = false,
     config = load_plugin_conf("quicker"),

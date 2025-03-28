@@ -2,7 +2,7 @@ local settings = require("settings")
 local lspconfig = require("lspconfig")
 local wk = require("which-key")
 
-vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
+vim.lsp.handlers["textDocument/references"] = require("snacks").picker.references
 
 local M = {}
 

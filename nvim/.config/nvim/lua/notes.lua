@@ -1,6 +1,3 @@
-local t_builtin = require("telescope.builtin")
-local t_themes = require("telescope.themes")
-
 local M = {}
 
 function M.grep_notes()
@@ -11,12 +8,11 @@ function M.grep_notes()
     table.insert(note_dirs, "private")
   end
 
-  return t_builtin.grep_string(t_themes.get_dropdown({
+  return require("snacks").picker.grep({
     cwd = vim.g.notes_dir,
     search_dirs = note_dirs,
     prompt_title = "~ tech notes ~",
-    previewer = true,
-  }))
+  })
 end
 
 local daily_augroup = vim.api.nvim_create_augroup("Daily", {})

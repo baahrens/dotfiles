@@ -125,84 +125,77 @@ wk.add({
   {
     "<leader>fh",
     function()
-      require("plugin/telescope_pickers").help()
+      require("snacks").picker.help()
     end,
     desc = "Help",
   },
   {
     "<leader>fm",
     function()
-      require("plugin/telescope_pickers").mappings()
+      require("snacks").picker.keymaps()
     end,
     desc = "Mappings",
   },
   {
     "<leader>fc",
     function()
-      require("plugin/telescope_pickers").commands()
+      require("snacks").picker.commands()
     end,
     desc = "Commands",
   },
   {
     "<leader>fi",
     function()
-      require("plugin/telescope_pickers").highlights()
+      require("snacks").picker.highlights()
     end,
     desc = "Highlights",
   },
   {
     "<leader>fb",
     function()
-      require("plugin/telescope_pickers").buffers()
+      require("snacks").picker.buffers()
     end,
     desc = "Buffers",
   },
   {
     "<leader>fs",
     function()
-      require("plugin/telescope_pickers").current_buffer()
+      require("snacks").picker.grep_buffers()
     end,
     desc = "Current buffer",
   },
   {
     "<leader>fg",
     function()
-      require("plugin/telescope_pickers").branches()
+      require("snacks").picker.git_branches()
     end,
     desc = "Branches",
   },
   {
     "<leader>fx",
     function()
-      require("plugin/telescope_pickers").diagnostics()
+      require("snacks").picker.diagnostics()
     end,
     desc = "Diagnostics",
   },
   {
     "<leader>fr",
     function()
-      require("plugin/telescope_pickers").resume()
+      require("snacks").picker.resume()
     end,
     desc = "Resume",
   },
   {
-    u.map_cmd_alt("o"),
-    function()
-      require("plugin/telescope_pickers").old_files()
-    end,
-    desc = "Old files",
-  },
-  {
     u.map_cmd_alt("p"),
     function()
-      require("plugin/telescope_pickers").find_files()
+      require("snacks").picker.files()
     end,
     desc = "Files",
   },
   {
     "<C-p>",
     function()
-      require("plugin/telescope_pickers").live_grep()
+      require("snacks").picker.grep()
     end,
     desc = "Live grep",
   },

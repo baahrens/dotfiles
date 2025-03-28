@@ -17,9 +17,6 @@ require("mellifluous").setup({})
 M.highlight_overwrites = {
   fugitiveUntrackedHeading = { fg = palette.B2T_D1 },
   fugitiveUnstagedHeading = { fg = palette.B2T_D1 },
-
-  TelescopeResultsBorder = { fg = palette.medium_gray, bg = none },
-  TelescopePromptBorder = { fg = palette.medium_gray, bg = none },
 }
 
 return M
