@@ -5,6 +5,7 @@ local react_snippets = require("snippets/react")
 local css_snippets = require("snippets/css")
 local html_snippets = require("snippets/html")
 local lua_snippets = require("snippets/lua")
+local gitcommit_snippets = require("snippets/gitcommit")
 
 luasnip.add_snippets("all", require("snippets/all"))
 
@@ -25,3 +26,5 @@ luasnip.add_snippets("astro", html_snippets)
 
 luasnip.add_snippets("html", html_snippets)
 luasnip.add_snippets("lua", lua_snippets)
+
+luasnip.add_snippets("gitcommit", gitcommit_snippets)
