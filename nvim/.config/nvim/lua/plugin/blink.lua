@@ -50,7 +50,6 @@ require("blink.cmp").setup({
   cmdline = {
     keymap = {
       ["<Tab>"] = { "accept" },
-      ["<CR>"] = { "accept_and_enter", "fallback" },
       [u.common_mappings.select_prev] = { "select_prev", "fallback" },
       [u.common_mappings.select_next] = { "select_next", "fallback" },
     },
