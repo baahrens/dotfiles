@@ -13,13 +13,11 @@ config.enable_kitty_keyboard = true
 config.disable_default_key_bindings = true
 config.enable_csi_u_key_encoding = false
 config.cell_width = 1.0
-config.line_height = 1.55
+config.line_height = 1.8
 config.warn_about_missing_glyphs = false
 config.window_padding = {
-	left = 12,
-	right = 12,
-	top = 12,
-	bottom = 0,
+	left = "2cell",
+	right = "2cell",
 }
 
 config.window_frame = {
@@ -116,6 +114,16 @@ config.keys = {
 		key = "x",
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentPane({ confirm = false }),
+	},
+	{
+		key = "=",
+		mods = cmd_alt,
+		action = wezterm.action.IncreaseFontSize,
+	},
+	{
+		key = "-",
+		mods = cmd_alt,
+		action = wezterm.action.DecreaseFontSize,
 	},
 
 	{ key = "t", mods = cmd_alt, action = wezterm.action.SpawnTab("CurrentPaneDomain") },
