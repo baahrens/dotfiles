@@ -55,7 +55,6 @@ vim.diagnostic.config({
   signs = true,
   update_in_insert = false,
   severity_sort = true,
-  underline = settings.diagnostics.show_underline,
 })
 
 lspconfig.cssls.setup({
@@ -100,6 +99,10 @@ require("typescript-tools").setup({
   on_attach = function(client)
     client.server_capabilities.document_formatting = false
     client.server_capabilities.document_range_formatting = false
+    wk.add({
+      { "gd", "<cmd>TSToolsGoToSourceDefinition<CR>", { noremap = true, silent = true } },
+      { "gD", "<cmd>vsplit +TSToolsGoToSourceDefinition<CR>", { noremap = true, silent = true } },
+    })
 
     on_attach(client)
   end,
@@ -138,7 +141,6 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.jsonls.setup({
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
