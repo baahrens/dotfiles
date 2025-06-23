@@ -4,7 +4,7 @@ local settings = require("settings")
 
 local excluded_filetypes = {
   "^git.*",
-  "fugitive",
+  "fugitive$",
   "noice",
   "oil",
   "OverseerForm",
@@ -301,6 +301,37 @@ local statusline = {
   },
 }
 
+local blame_winbar = {
+  condition = function()
+    return conditions.buffer_matches({
+      filetype = { "fugitiveblame" },
+    })
+  end,
+  provider = "%=",
+}
+
+local active_winbar = {
+  condition = function()
+    return not conditions.is_active()
+  end,
+  left_padding,
+  space,
+  file_name_block,
+  align,
+}
+
+local inactive_winbar = {
+  condition = function()
+    return conditions.is_active()
+  end,
+  left_padding,
+  space,
+  file_name_block,
+  diagnostics,
+  git_status,
+  align,
+}
+
 local winbar = {
   fallthrough = false,
   hl = function()
@@ -310,34 +341,9 @@ local winbar = {
       return { bg = "background_nc" }
     end
   end,
-  {
-    condition = function()
-      return conditions.buffer_matches({
-        filetype = { "fugitiveblame" },
-      })
-    end,
-  },
-  {
-    condition = function()
-      return not conditions.is_active()
-    end,
-    left_padding,
-    space,
-    file_name_block,
-    align,
-  },
-  {
-    condition = conditions.is_active,
-    left_padding,
-    space,
-    file_name_block,
-    git_status,
-    align,
-    diagnostics,
-    space,
-    ruler,
-    space,
-  },
+  blame_winbar,
+  active_winbar,
+  inactive_winbar,
 }
 
 local statuscolumn = {
