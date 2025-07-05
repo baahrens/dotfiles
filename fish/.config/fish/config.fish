@@ -27,6 +27,7 @@ abbr -a gp git push
 abbr -a grm git rebase -i origin/master
 abbr -a grc git rebase --continue
 abbr -a gra git rebase --abort
+abbr -a gs nvim +"Git"
 
 abbr -a v nvim
 
