@@ -1,16 +1,20 @@
 local settings = require("settings")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 local function load_plugin_conf(name)
@@ -68,6 +72,11 @@ local plugins = {
   },
 
   {
+    "adibhanna/forest-night.nvim",
+    priority = theme_priority("forest-night"),
+  },
+
+  {
     "wnkz/monoglow.nvim",
     priority = theme_priority("monoglow"),
   },
@@ -86,6 +95,11 @@ local plugins = {
   {
     "olivercederborg/poimandres.nvim",
     priority = theme_priority("poimandres"),
+  },
+
+  {
+    "hyperb1iss/silkcircuit-nvim",
+    priority = theme_priority("silkcircuit"),
   },
 
   {
@@ -140,12 +154,52 @@ local plugins = {
   -- =================== treesitter ===================
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
-    config = load_plugin_conf("treesitter"),
+    branch = "main",
+    build = ":TSUpdate",
+    lazy = false,
+  },
+
+  {
+    "MeanderingProgrammer/treesitter-modules.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "css",
+        "diff",
+        "fish",
+        "git_rebase",
+        "gitcommit",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "prisma",
+        "query",
+        "regex",
+        "rust",
+        "swift",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
+        "zig",
+      },
+      fold = { enable = false },
+      highlight = { enable = true },
+      indent = { enable = false },
+      incremental_selection = { enable = true },
+    },
   },
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = "nvim-treesitter",
   },
@@ -265,16 +319,16 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
+    lazy = false,
     config = load_plugin_conf("lsp"),
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = load_plugin_conf("mason-lspconfig"),
+        dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
     cmd = "LspInstall",
   },
   {
@@ -282,11 +336,11 @@ local plugins = {
     cmd = "Mason",
     config = load_plugin_conf("mason"),
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
+  -- {
+  --   "pmizio/typescript-tools.nvim",
+  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  --   opts = {},
+  -- },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
@@ -324,6 +378,21 @@ local plugins = {
     priority = 1000,
     lazy = false,
     config = load_plugin_conf("snacks"),
+  },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false,
+  },
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    lazy = false,
+    dependencies = {
+      "folke/snacks.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("xcodebuild").setup({})
+    end,
   },
 }
 

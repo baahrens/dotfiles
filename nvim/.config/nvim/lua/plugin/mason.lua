@@ -1,6 +1,7 @@
 local settings = require("settings")
 
 require("mason").setup({
+    PATH = "skip",
   ui = {
     border = settings.border,
     icons = {

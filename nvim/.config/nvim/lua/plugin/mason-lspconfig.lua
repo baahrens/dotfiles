@@ -1,16 +1,6 @@
+local language_servers = require("plugin.lsp").language_servers
+
 require("mason-lspconfig").setup({
-  automatic_installation = true,
-  ensure_installed = {
-    "cssls",
-    "jsonls",
-    "lua_ls",
-    "ols",
-    "prismals",
-    "pyright",
-    "rust_analyzer",
-    "tailwindcss",
-    "ts_ls",
-    "vtsls",
-    "zls",
-  },
+    automatic_enable = false,
+    ensure_installed = language_servers
 })
