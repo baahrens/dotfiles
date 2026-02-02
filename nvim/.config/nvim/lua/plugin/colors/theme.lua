@@ -40,6 +40,8 @@ function M.switch_theme()
     "tokyonight",
     "zenwritten",
     "lackluster",
+    "forest-night",
+    "silkcircuit"
   }, {
     prompt = "Switch theme",
   }, function(colorscheme)
