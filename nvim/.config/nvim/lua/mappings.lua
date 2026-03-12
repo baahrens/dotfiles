@@ -282,7 +282,6 @@ wk.add({
   { "k", "gk" },
 
   { "Q", ":q<CR>" },
-  { u.map_cmd_alt("W"), ":w<CR>" },
 
   { "H", "^", mode = { "n", "x" } },
   { "L", "$", mode = { "n", "x" } },
