@@ -309,7 +309,7 @@ local plugins = {
     "saghen/blink.cmp",
     lazy = false,
     dependencies = {
-      { "L3MON4D3/LuaSnip", version = "v2.*" },
+      { "L3MON4D3/LuaSnip", version = "1.*" },
       "fang2hou/blink-copilot",
     },
     version = "1.*",
@@ -341,6 +341,11 @@ local plugins = {
   --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   --   opts = {},
   -- },
+  {
+    "j-hui/fidget.nvim",
+    config = load_plugin_conf("fidget"),
+    lazy = false,
+  },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",

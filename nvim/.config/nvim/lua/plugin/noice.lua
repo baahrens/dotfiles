@@ -1,39 +1,15 @@
 local settings = require("settings")
-require("noice.util.hacks").fix_cmp()
 
 require("noice").setup({
   lsp = {
     progress = {
-      enabled = true,
+      enabled = false,
     },
     hover = {
-      enabled = true,
-      opts = {
-        border = { style = settings.border },
-        relative = "cursor",
-        position = {
-          row = 2,
-        },
-        win_options = {
-          concealcursor = "n",
-          conceallevel = 3,
-        },
-      },
+      enabled = false,
     },
     signature = {
-      enabled = true,
-      view = "hover",
-      opts = {
-        border = { style = settings.border },
-        relative = "cursor",
-        position = {
-          row = 2,
-        },
-        win_options = {
-          concealcursor = "n",
-          conceallevel = 3,
-        },
-      },
+      enabled = false,
     },
   },
   routes = {
@@ -55,38 +31,20 @@ require("noice").setup({
       opts = { skip = true },
     },
   },
+  cmdline = {
+    view = "cmdline"
+  },
+
+  presets = {
+    bottom_search = true,
+    command_palette = false,
+    inc_rename = false,
+    lsp_doc_border = false
+  },
   notify = {
     enabled = false,
   },
   views = {
-    cmdline_popup = {
-      win_options = {
-        winblend = settings.winblend,
-      },
-      position = {
-        row = 5,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = "auto",
-      },
-    },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = settings.border,
-        padding = { 0, 1 },
-      },
-    },
     mini = {
       win_options = {
         winblend = settings.winblend,
