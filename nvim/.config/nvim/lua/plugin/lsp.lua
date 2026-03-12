@@ -22,7 +22,9 @@ M.language_servers = {
   "rust_analyzer",
   "sourcekit",
   "tailwindcss",
-  "ts_ls",
+  -- "ts_ls",
+  "gopls",
+  "tsgo",
   "zls",
 }
 
@@ -50,12 +52,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufnr = args.buf
     local formatting_augroup = vim.api.nvim_create_augroup("Formatting", { clear = true })
 
-    if (client.name == "ts_ls") then
-        wk.add({
-        { "gd", "<cmd>LspTypescriptGoToSourceDefinition<CR>", { noremap = true, silent = true } },
-        { "gD", "<cmd>vsplit +LspTypescriptGoToSourceDefinition<CR>", { noremap = true, silent = true } },
-        })
-    end
+    -- if (client.name == "ts_ls") then
+    --     wk.add({
+    --     { "gd", "<cmd>LspTypescriptGoToSourceDefinition<CR>", { noremap = true, silent = true } },
+    --     { "gD", "<cmd>vsplit +LspTypescriptGoToSourceDefinition<CR>", { noremap = true, silent = true } },
+    --     })
+    -- end
 
     if client.supports_method("textDocument/formatting") then
       client.server_capabilities.document_formatting = vim.tbl_contains(format_language_servers, client.name)
@@ -79,7 +81,7 @@ vim.diagnostic.config({
   virtual_text = false,
   underline = settings.diagnostics.show_underline,
   float = { border = settings.border, source = true },
-  signs = true,
+  signs = false,
   update_in_insert = false,
   severity_sort = true,
 })
