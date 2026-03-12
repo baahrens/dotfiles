@@ -150,7 +150,6 @@ overseer.register_template({
         end,
         condition = {
           callback = function(opts)
-            print(has_yarn_lock(opts.dir))
             return has_package_json(opts.dir) and has_package_lock_json(opts.dir)
           end,
         },

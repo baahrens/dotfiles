@@ -12,7 +12,7 @@ glance.setup({
     wrap = true,
   },
   list = {
-    position = "right",
+    position = "left",
     width = 0.33,
   },
   theme = {

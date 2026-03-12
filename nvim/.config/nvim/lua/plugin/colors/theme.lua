@@ -85,6 +85,8 @@ M.global_overrides = {
 
   Delimiter = { link = "FloatBorder" },
   BlinkCmpMenuBorder = { link = "FloatBorder" },
+  BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
+
   SnacksPickerInput = { bg = none, default = true },
   SnacksPickerList = { bg = none, default = true },
   SnacksPickerPreview = { bg = none, default = true },
