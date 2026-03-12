@@ -4,7 +4,7 @@ export PATH="$HOME/.bun/bin:$PATH"
 export PATH="/usr/local/opt/llvm@14/bin:$PATH"
 export PATH="$HOME/dev/projects/Odin:$PATH"
 export PATH="$HOME/.binaries:$PATH"
-export PATH="$HOME/.local/share/nvim/mason:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 set --universal pure_symbol_ssh_prefix true
 set --universal pure_color_primary "#dc8cc3"
