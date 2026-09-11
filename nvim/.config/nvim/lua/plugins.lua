@@ -146,7 +146,7 @@ local plugins = {
 
   {
     "stevearc/overseer.nvim",
-    cmd = { "OverseerRun", "OverseerToggle" },
+    cmd = { "OverseerRun", "OverseerToggle", "OverseerShell" },
     config = load_plugin_conf("overseer"),
   },
 

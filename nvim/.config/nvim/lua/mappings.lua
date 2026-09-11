@@ -70,6 +70,14 @@ wk.add({
 
   { "<leader>g", group = "git" },
   {
+    u.map_cmd_alt("g"),
+    function()
+      require("plugin/fugitive").status()
+    end,
+    desc = "Status",
+  },
+
+  {
     "<leader>gs",
     function()
       require("plugin/fugitive").status()
@@ -199,6 +207,29 @@ wk.add({
     end,
     desc = "Live grep",
   },
+  {
+    u.map_cmd_alt("l"),
+    function()
+      require("snacks").picker.lsp_symbols({ tree = true, filter = {
+        default = {
+          "Class",
+          "Constructor",
+          "Enum",
+          --"Field",
+          "Function",
+          "Interface",
+          "Method",
+          "Module",
+          "Namespace",
+          "Package",
+          "Property",
+          "Struct",
+          "Trait",
+        },
+      }})
+    end,
+    desc = "LSP symbols",
+  },
 
   { "<leader>c", group = "lsp" },
   { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
@@ -243,8 +274,9 @@ wk.add({
   { "<leader>sc", settings.toggle_colorcode_highlights, desc = "Toggle colorcode highlights" },
 
   { "<leader>h", group = "build" },
-  { "<leader>hs", vim_cmd("OverseerToggle"), desc = "Show" },
+  { "<leader>hs", vim_cmd("OverseerShell"), desc = "Shell" },
   { "<leader>hr", vim_cmd("OverseerRun"), desc = "Run" },
+  { u.map_cmd_alt("b"), vim_cmd("OverseerToggle"), desc = "Show" },
 
   { "<leader>a", group = "AI" },
   { "<leader>aa", vim_cmd("CopilotChatToggle"), mode = { "n", "v" }, desc = "Toggle Chat" },
@@ -257,8 +289,6 @@ wk.add({
   { "<C-j>", require("smart-splits").move_cursor_down },
   { "<C-k>", require("smart-splits").move_cursor_up },
   { "<C-l>", require("smart-splits").move_cursor_right },
-
-  { "<C-a>", "<CMD>OverseerToggle<CR>" },
 
   { u.common_mappings.open_vsplit, ":vsplit<CR>" },
 

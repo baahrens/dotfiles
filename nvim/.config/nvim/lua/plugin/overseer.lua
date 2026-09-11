@@ -3,6 +3,7 @@ local overseer = require("overseer")
 local root_pattern = require("lspconfig.util").root_pattern
 
 local has_package_json = root_pattern("package.json")
+local has_build_zig_zon = root_pattern("build.zig.zon")
 local has_package_lock_json = root_pattern("package-lock.json")
 local has_yarn_lock = root_pattern("yarn.lock")
 
@@ -11,25 +12,9 @@ overseer.setup({
   task_list = {
     direction = "right",
     width = 50,
-    bindings = {
-      ["?"] = "ShowHelp",
-      ["g?"] = "ShowHelp",
-      ["<CR>"] = "RunAction",
-      ["<C-e>"] = "Edit",
-      ["<C-r>"] = "<CMD>OverseerQuickAction restart<CR>",
-      ["<C-d>"] = "<CMD>OverseerQuickAction dispose<CR>",
-      ["o"] = "Open",
-      ["<C-s>"] = "OpenSplit",
-      ["<C-q>"] = "OpenQuickFix",
-      ["K"] = "TogglePreview",
-      ["L"] = "IncreaseDetail",
-      ["H"] = "DecreaseDetail",
-      ["["] = "DecreaseWidth",
-      ["]"] = "IncreaseWidth",
-      ["{"] = "PrevTask",
-      ["}"] = "NextTask",
-      ["q"] = "Close",
-    },
+    keymaps = {
+          ["<C-r>"] = { "keymap.run_action", opts = { action = "restart" }, desc = "Do something cool" },
+    }
   },
   actions = {
     watch = false,
@@ -63,15 +48,15 @@ overseer.register_template({
   generator = function(_, cb)
     cb({
       {
-        name = "[Linux] Fix umlaute",
+        name = "[Zig] build run",
         builder = function()
           return {
-            cmd = "setxkbmap -option compose:menu",
+            cmd = "zig build run",
           }
         end,
         condition = {
-          callback = function()
-            return vim.g.is_work_machine
+          callback = function(opts)
+            return has_build_zig_zon(opts.dir)
           end,
         },
       },
