@@ -18,43 +18,30 @@ require("diffview").setup({
     done = "✓",
   },
   view = {
-    -- Configure the layout and behavior of different types of views.
-    -- Available layouts:
-    --  'diff1_plain'
-    --    |'diff2_horizontal'
-    --    |'diff2_vertical'
-    --    |'diff3_horizontal'
-    --    |'diff3_vertical'
-    --    |'diff3_mixed'
-    --    |'diff4_mixed'
-    -- For more info, see ':h diffview-config-view.x.layout'.
     default = {
-      -- Config for changed files, and staged files in diff views.
       layout = "diff2_horizontal",
-      winbar_info = false, -- See ':h diffview-config-view.x.winbar_info'
+      winbar_info = false,
     },
     merge_tool = {
-      -- Config for conflicted files in diff views during a merge or rebase.
-      layout = "diff3_horizontal",
-      disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
-      winbar_info = true, -- See ':h diffview-config-view.x.winbar_info'
+      layout = "diff3_mixed",
+      disable_diagnostics = true,
+      winbar_info = true,
     },
     file_history = {
-      -- Config for changed files in file history views.
       layout = "diff2_horizontal",
-      winbar_info = false, -- See ':h diffview-config-view.x.winbar_info'
+      winbar_info = false,
     },
   },
   file_panel = {
-    listing_style = "list", -- One of 'list' or 'tree'
-    win_config = { -- See ':h diffview-config-win_config'
+    listing_style = "list",
+    win_config = {
       position = "right",
       width = 50,
       win_opts = {},
     },
   },
   file_history_panel = {
-    log_options = { -- See ':h diffview-config-log_options'
+    log_options = {
       git = {
         single_file = {
           diff_merges = "combined",
@@ -68,44 +55,24 @@ require("diffview").setup({
         multi_file = {},
       },
     },
-    win_config = { -- See ':h diffview-config-win_config'
+    win_config = {
       position = "bottom",
       height = 16,
       win_opts = {},
     },
   },
   commit_log_panel = {
-    win_config = { -- See ':h diffview-config-win_config'
+    win_config = {
       win_opts = {},
     },
   },
-  default_args = { -- Default args prepended to the arg-list for the listed commands
+  default_args = {
     DiffviewOpen = { "--imply-local" },
     DiffviewFileHistory = {},
   },
-  hooks = {
-    diff_buf_win_enter = function(bufnr, winid, ctx)
-      if ctx.symbol == "a" then
-        vim.opt_local.winhl = table.concat({
-          "DiffAdd:DiffviewDiffAddAsDelete",
-          "DiffDelete:DiffviewDiffDelete",
-          "DiffChange:DiffAddAsDelete",
-          "DiffText:DiffDeleteText",
-        }, ",")
-      elseif ctx.symbol == "b" then
-        vim.opt_local.winhl = table.concat({
-          "DiffDelete:DiffviewDiffDelete",
-          "DiffChange:DiffAdd",
-          "DiffText:DiffAddText",
-        }, ",")
-      end
-    end,
-  },
   keymaps = {
-    disable_defaults = false, -- Disable the default keymaps
+    disable_defaults = false,
     view = {
-      -- The `view` bindings are active in the diff buffers, only when the current
-      -- tabpage is a Diffview.
       { "n", "q", "<Cmd>tabc<CR>", { desc = "Close" } },
       {
         "n",
