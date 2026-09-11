@@ -52,14 +52,10 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = load_plugin_conf("gitsigns"),
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
   },
 
   {
     "sindrets/diffview.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     config = load_plugin_conf("diffview"),
   },
