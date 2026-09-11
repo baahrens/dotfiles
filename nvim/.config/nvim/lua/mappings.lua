@@ -5,6 +5,20 @@ local wk = require("which-key")
 
 local M = {}
 
+function restart_last_task()
+  local overseer = require("overseer")
+  local task_list = require("overseer.task_list")
+  local tasks = overseer.list_tasks({ status = {
+    overseer.STATUS.SUCCESS,
+    overseer.STATUS.FAILURE,
+    overseer.STATUS.CANCELED,
+  }, sort = task_list.sort_finished_recently })
+  if vim.tbl_isempty(tasks) then else
+    local most_recent = tasks[1]
+    overseer.run_action(most_recent, "restart")
+  end
+end
+
 local function vim_cmd(cmd)
   return function()
     vim.cmd(cmd)
@@ -273,10 +287,11 @@ wk.add({
   { "<leader>sv", settings.toggle_diagnostic_virtual, desc = "Toggle diagnostic virtual" },
   { "<leader>sc", settings.toggle_colorcode_highlights, desc = "Toggle colorcode highlights" },
 
-  { "<leader>h", group = "build" },
-  { "<leader>hs", vim_cmd("OverseerShell"), desc = "Shell" },
-  { "<leader>hr", vim_cmd("OverseerRun"), desc = "Run" },
+  { "<leader>b", group = "build" },
+  { "<leader>bs", vim_cmd("OverseerShell"), desc = "Shell" },
+  { "<leader>br", vim_cmd("OverseerRun"), desc = "Run" },
   { u.map_cmd_alt("b"), vim_cmd("OverseerToggle"), desc = "Show" },
+  { "<leader>bb", restart_last_task, desc = "Restart last" },
 
   { "<leader>a", group = "AI" },
   { "<leader>aa", vim_cmd("CopilotChatToggle"), mode = { "n", "v" }, desc = "Toggle Chat" },
