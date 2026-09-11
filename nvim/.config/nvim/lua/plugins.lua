@@ -139,6 +139,12 @@ local plugins = {
   },
 
   {
+    'kyzabuilds/xeno.nvim',
+    config = load_plugin_conf("xeno"),
+    lazy = false,
+  },
+
+  {
     "stevearc/overseer.nvim",
     cmd = { "OverseerRun", "OverseerToggle" },
     config = load_plugin_conf("overseer"),

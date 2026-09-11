@@ -41,7 +41,10 @@ function M.switch_theme()
     "zenwritten",
     "lackluster",
     "forest-night",
-    "silkcircuit"
+    "silkcircuit",
+    "polarized",
+    "astral",
+    "sylvan"
   }, {
     prompt = "Switch theme",
   }, function(colorscheme)
