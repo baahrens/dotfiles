@@ -22,9 +22,8 @@ M.language_servers = {
   "rust_analyzer",
   "sourcekit",
   "tailwindcss",
-  -- "ts_ls",
+  "ts_ls",
   "gopls",
-  "tsgo",
   "zls",
 }
 

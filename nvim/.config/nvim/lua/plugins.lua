@@ -307,6 +307,7 @@ local plugins = {
 
   {
     "L3MON4D3/LuaSnip",
+    version = "1.*",
     config = load_plugin_conf("luasnip"),
     event = { "InsertEnter" },
   },
@@ -342,11 +343,6 @@ local plugins = {
     cmd = "Mason",
     config = load_plugin_conf("mason"),
   },
-  -- {
-  --   "pmizio/typescript-tools.nvim",
-  --   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  --   opts = {},
-  -- },
   {
     "j-hui/fidget.nvim",
     config = load_plugin_conf("fidget"),
