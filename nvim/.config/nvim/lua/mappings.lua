@@ -288,17 +288,10 @@ wk.add({
   { "<leader>sc", settings.toggle_colorcode_highlights, desc = "Toggle colorcode highlights" },
 
   { "<leader>b", group = "build" },
+  { u.map_cmd_alt("b"), vim_cmd("OverseerToggle"), desc = "Show" },
   { "<leader>bs", vim_cmd("OverseerShell"), desc = "Shell" },
   { "<leader>br", vim_cmd("OverseerRun"), desc = "Run" },
-  { u.map_cmd_alt("b"), vim_cmd("OverseerToggle"), desc = "Show" },
   { "<leader>bb", restart_last_task, desc = "Restart last" },
-
-  { "<leader>a", group = "AI" },
-  { "<leader>aa", vim_cmd("CopilotChatToggle"), mode = { "n", "v" }, desc = "Toggle Chat" },
-  { "<leader>ae", vim_cmd("CopilotChatExplain"), mode = { "n", "v" }, desc = "Explain" },
-  { "<leader>ar", vim_cmd("CopilotChatReview"), mode = { "n", "v" }, desc = "Review" },
-  { "<leader>at", vim_cmd("CopilotChatTests"), mode = { "n", "v" }, desc = "Tests" },
-  { "<leader>ao", vim_cmd("CopilotChatOptimize"), mode = { "n", "v" }, desc = "Optimize" },
 
   { "<C-h>", require("smart-splits").move_cursor_left },
   { "<C-j>", require("smart-splits").move_cursor_down },

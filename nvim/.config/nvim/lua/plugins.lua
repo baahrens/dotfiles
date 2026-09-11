@@ -317,7 +317,6 @@ local plugins = {
     lazy = false,
     dependencies = {
       { "L3MON4D3/LuaSnip", version = "1.*" },
-      "fang2hou/blink-copilot",
     },
     version = "1.*",
     config = load_plugin_conf("blink"),
@@ -354,23 +353,6 @@ local plugins = {
     config = load_plugin_conf("tiny-inline-diagnostic"),
   },
   {
-    "zbirenbaum/copilot.lua",
-    lazy = false,
-    enabled = vim.g.is_work_machine,
-    config = load_plugin_conf("copilot"),
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    enabled = vim.g.is_work_machine,
-    branch = "main",
-    lazy = false,
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    config = load_plugin_conf("copilot-chat"),
-  },
-  {
     "stevearc/conform.nvim",
     lazy = false,
     config = load_plugin_conf("conform"),
@@ -390,17 +372,17 @@ local plugins = {
     "OXY2DEV/markview.nvim",
     lazy = false,
   },
-  {
-    "wojciech-kulik/xcodebuild.nvim",
-    lazy = false,
-    dependencies = {
-      "folke/snacks.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require("xcodebuild").setup({})
-    end,
-  },
+  -- {
+  --   "wojciech-kulik/xcodebuild.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --     "folke/snacks.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   config = function()
+  --     require("xcodebuild").setup({})
+  --   end,
+  -- },
 }
 
 local lazy_config = {

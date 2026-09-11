@@ -23,15 +23,7 @@ require("blink.cmp").setup({
   },
 
   sources = {
-    default = { "lsp", "path", "snippets", "buffer", "copilot" },
-    providers = {
-      copilot = {
-        name = "copilot",
-        module = "blink-copilot",
-        score_offset = 100,
-        async = true,
-      },
-    },
+    default = { "lsp", "path", "snippets", "buffer" },
   },
   cmdline = {
     keymap = {
