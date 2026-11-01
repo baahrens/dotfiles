@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
+local smart_splits = wezterm.plugin.require('https://github.com/smart-splits-nvim/backend-wezterm')
+local config = wezterm.config_builder()
 
 local is_work_machine = wezterm.hostname() == "work"
-
-local config = {}
 
 config.color_scheme = "Oxocarbon Dark (Gogh)"
 config.enable_tab_bar = true
@@ -36,29 +36,6 @@ wezterm.on("gui-startup", function(cmd)
     local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
     window:gui_window():maximize()
 end)
-
-local function is_vim(pane)
-    return pane:get_user_vars().IS_NVIM == "true"
-end
-local direction_keys = {
-    h = "Left",
-    j = "Down",
-    k = "Up",
-    l = "Right",
-}
-local function pane_navigation(key)
-    return {
-        key = key,
-        mods = "CTRL",
-        action = wezterm.action_callback(function(win, pane)
-            if is_vim(pane) then
-                win:perform_action({ SendKey = { key = key, mods = "CTRL" } }, pane)
-            else
-                win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-            end
-        end),
-    }
-end
 
 wezterm.on("update-right-status", function(window, pane)
     local name = window:active_key_table()
@@ -96,10 +73,6 @@ config.keys = {
             size = { Percent = 50 },
         }),
     },
-    pane_navigation("h"),
-    pane_navigation("j"),
-    pane_navigation("k"),
-    pane_navigation("l"),
 
     {
         key = "f",
@@ -171,5 +144,16 @@ config.key_tables = {
         { key = "Escape", action = "PopKeyTable" },
     },
 }
+
+smart_splits.apply_to_config(config, {
+     direction_keys = {
+       move = { 'h', 'j', 'k', 'l' },
+       resize = { 'LeftArrow', 'DownArrow', 'UpArrow', 'RightArrow' },
+     },
+    modifiers = {
+      move = 'CTRL',
+      resize = 'META',
+    },
+})
 
 return config

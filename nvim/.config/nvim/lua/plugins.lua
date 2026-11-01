@@ -253,9 +253,18 @@ local plugins = {
   },
 
   {
-    "mrjones2014/smart-splits.nvim",
+    'smart-splits-nvim/smart-splits.nvim',
+    version = '^3.0.0',
     config = load_plugin_conf("smart-splits"),
     lazy = false,
+    dependencies = {
+      {
+        "smart-splits-nvim/backend-wezterm",
+        opts = {
+          cli_path = 'wezterm',
+        },
+      },
+    },
   },
 
   {
