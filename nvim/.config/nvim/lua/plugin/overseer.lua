@@ -10,10 +10,11 @@ local has_yarn_lock = root_pattern("yarn.lock")
 overseer.setup({
   dap = false,
   task_list = {
-    direction = "right",
+    direction = "bottom",
     width = 50,
     keymaps = {
           ["<C-r>"] = { "keymap.run_action", opts = { action = "restart" }, desc = "Do something cool" },
+          ["<C-k>"] = false
     }
   },
   actions = {

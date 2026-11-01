@@ -290,8 +290,8 @@ wk.add({
   { "<leader>b", group = "build" },
   { u.map_cmd_alt("b"), vim_cmd("OverseerToggle"), desc = "Show" },
   { "<leader>bs", vim_cmd("OverseerShell"), desc = "Shell" },
-  { "<leader>br", vim_cmd("OverseerRun"), desc = "Run" },
-  { "<leader>bb", restart_last_task, desc = "Restart last" },
+  { "<leader>bx", vim_cmd("OverseerRun"), desc = "Run" },
+  { "<leader>br", restart_last_task, desc = "Restart last" },
 
   { "<C-h>", require("smart-splits").move_cursor_left },
   { "<C-j>", require("smart-splits").move_cursor_down },
