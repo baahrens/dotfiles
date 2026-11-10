@@ -110,7 +110,7 @@ local ruler = {
   -- %L = number of lines in the buffer
   -- %c = column number
   -- %P = percentage through file of displayed window
-  provider = " %l/%3L%: %2c %P",
+  provider = " %l/%3L%: %P",
   hl = { fg = "gray" },
 }
 
@@ -311,7 +311,7 @@ local blame_winbar = {
   provider = "%=",
 }
 
-local active_winbar = {
+local inactive_winbar = {
   condition = function()
     return not conditions.is_active()
   end,
@@ -321,7 +321,7 @@ local active_winbar = {
   align,
 }
 
-local inactive_winbar = {
+local active_winbar = {
   condition = function()
     return conditions.is_active()
   end,
@@ -330,6 +330,8 @@ local inactive_winbar = {
   file_name_block,
   diagnostics,
   git_status,
+  space,
+  ruler,
   align,
 }
 
